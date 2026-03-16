@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+@plugin 'daisyui' {
+	logs: false;
+	themes:
+		cupcake --default,
+		dark --prefersdark;
+}
+@plugin '@tailwindcss/typography';
