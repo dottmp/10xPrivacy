@@ -1,8 +1,44 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 @plugin 'daisyui' {
 	logs: false;
+
 	themes:
-		cupcake --default,
+		nord --default,
 		dark --prefersdark;
 }
-@plugin '@tailwindcss/typography';
+
+@plugin 'daisyui/theme' {
+	name: 'vscode';
+	default: false;
+	prefersdark: true;
+	color-scheme: 'dark';
+	--color-base-100: #1f1f1f;
+	--color-base-200: #252526;
+	--color-base-300: #2d2d30;
+	--color-base-content: #b3bfd2;
+	--color-primary: #0371bb;
+	--color-primary-content: oklch(96% 0.018 272.314);
+	--color-secondary: #c768c4;
+	--color-secondary-content: oklch(94% 0.028 342.258);
+	--color-accent: #22919a;
+	--color-accent-content: oklch(38% 0.063 188.416);
+	--color-neutral: #0371bb;
+	--color-neutral-content: #b3bfd2;
+	--color-info: #a2d4e7;
+	--color-info-content: oklch(29% 0.066 243.157);
+	--color-success: #036839;
+	--color-success-content: #eee8d5;
+	--color-warning: #e98c04;
+	--color-warning-content: oklch(41% 0.112 45.904);
+	--color-error: #7d0436;
+	--color-error-content: oklch(27% 0.105 12.094);
+	--radius-selector: 0.25rem;
+	--radius-field: 0rem;
+	--radius-box: 0.25rem;
+	--size-selector: 0.25rem;
+	--size-field: 0.25rem;
+	--border: 1px;
+	--depth: 1;
+	--noise: 0;
+}
