@@ -29,7 +29,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
 	const allItems = results.flatMap((r) => (r.status === 'fulfilled' ? r.value : []));
 
 	// Find by decoded id, then by slug, then by partial match
-	let item =
+	const item =
 		allItems.find((i) => i.id === originalId) ||
 		allItems.find((i) => i.slug === idParam.split('__')[0]) ||
 		allItems.find((i) => i.id.includes(originalId) && originalId.length > 5);
