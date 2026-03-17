@@ -1,3 +1,4 @@
+@import 'https://www.nerdfonts.com/assets/css/webfont.css';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @plugin 'daisyui' {
@@ -33,9 +34,9 @@
 	--color-warning-content: oklch(41% 0.112 45.904);
 	--color-error: #7d0436;
 	--color-error-content: oklch(27% 0.105 12.094);
-	--radius-selector: 0.25rem;
+	--radius-selector: 0rem;
 	--radius-field: 0rem;
-	--radius-box: 0.25rem;
+	--radius-box: 0rem;
 	--size-selector: 0.25rem;
 	--size-field: 0.25rem;
 	--border: 1px;

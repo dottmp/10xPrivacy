@@ -41,6 +41,8 @@
 		"vitest": "^4.1.0"
 	},
 	"dependencies": {
-		"feed": "^5.2.0"
+		"isomorphic-dompurify": "^3.4.0",
+		"rss-parser": "^3.13.0",
+		"tailwind-merge": "^3.5.0"
 	}
 }
