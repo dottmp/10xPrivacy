@@ -1,7 +1,9 @@
-import { tryCatch } from '$lib/utils/try-catch';
 import { error } from '@sveltejs/kit';
+
 import type { LayoutServerLoad } from './$types';
+
 import { rss } from '$lib/rss';
+import { tryCatch } from '$lib/utils/try-catch';
 
 export const load: LayoutServerLoad = async ({ url }) => {
 	const sourceSearchParam = url.searchParams.get('source') as SourceSearchParam;

@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/cn';
 	import type { HTMLAttributes } from 'svelte/elements';
+
+	import { cn } from '$lib/utils/cn';
 
 	type SourceBadgeProps = HTMLAttributes<HTMLDivElement> & {
 		source: Source;

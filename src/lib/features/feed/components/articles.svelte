@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/cn';
 	import type { HTMLAttributes } from 'svelte/elements';
+
 	import SourceBadge from './source-badge.svelte';
-	import { formatDate } from '$lib/utils/date';
+
 	import { resolve } from '$app/paths';
+	import { cn } from '$lib/utils/cn';
+	import { formatDate } from '$lib/utils/date';
 
 	type ArticlesProps = HTMLAttributes<HTMLUListElement> & {
 		feed: FeedResponse;

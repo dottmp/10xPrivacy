@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import SourceBadge from '$lib/features/feed/components/source-badge.svelte';
-	import type { FeedItem } from '$lib/types';
 	import { formatDate } from '$lib/utils/date.js';
 
 	type ArticleProps = {

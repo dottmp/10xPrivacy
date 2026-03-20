@@ -1,9 +1,10 @@
 <script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { FEED_SOURCES } from '$lib/configs';
 	import { cn } from '$lib/utils/cn';
-	import type { HTMLAttributes } from 'svelte/elements';
 
 	const FILTERS = [{ id: 'all', name: 'All' }, ...FEED_SOURCES] as const;
 

@@ -1,7 +1,8 @@
 import Parser from 'rss-parser';
+
 import { FEED_SOURCES } from './configs';
-import { tryCatch } from './utils/try-catch';
 import { sanitizeHtml } from './utils/sanitize';
+import { tryCatch } from './utils/try-catch';
 
 class RSS {
 	private _parser = new Parser<Record<string, never>, CustomData>({
@@ -26,8 +27,6 @@ class RSS {
 			return dateB - dateA;
 		});
 	}
-
-	private _flattenFeed(feed: ParsedFeed) {}
 
 	async getSources(searchParams: { source: SourceSearchParam }) {
 		const sources = FEED_SOURCES.filter(
