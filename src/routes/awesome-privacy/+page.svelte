@@ -1,13 +1,17 @@
-<main class="mx-auto max-w-3xl px-4 py-8">
-	<header class="mb-6 flex items-start justify-between">
-		<div>
-			<h1 class="text-2xl font-semibold text-primary">Awesome Privacy</h1>
-			<p class="text-sm text-base-content">
-				A curated list of awesome privacy tools, resources, and news. This is a personal project to
-				keep track of the latest developments in the privacy space and share them with others.
-			</p>
-		</div>
+<script lang="ts">
+	import Categories from '$lib/features/awesome-privacy/components/categories.svelte';
+
+	let { data } = $props();
+</script>
+
+<main class="mx-auto max-w-6xl px-4 py-10">
+	<header class="mb-8">
+		<h1 class="text-3xl font-bold text-primary">Awesome Privacy</h1>
+		<p class="mt-1 text-sm text-base-content/60">
+			A curated guide to privacy-respecting software and services.
+		</p>
 	</header>
 
-	<ul class=""></ul>
+	<!-- Bento Grid -->
+	<Categories categories={data.categories} />
 </main>
