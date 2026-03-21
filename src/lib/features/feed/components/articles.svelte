@@ -21,7 +21,7 @@
 			<a href={resolve(`/article/${item.slug}`)} class="flex items-baseline gap-3">
 				<!-- Title -->
 				<span
-					class="min-w-0 flex-1 text-sm leading-snug font-semibold text-base-content group-hover:underline"
+					class="min-w-0 flex-1 text-sm leading-snug font-semibold text-base-content group-hover:text-primary group-hover:underline"
 				>
 					{item.title}
 				</span>
@@ -38,6 +38,6 @@
 	{/each}
 </ul>
 
-{#if articlesResponse.count !== 0}
+{#if articlesResponse.count === 0}
 	<p class="py-12 text-center text-sm text-base-content/40">No articles found.</p>
 {/if}

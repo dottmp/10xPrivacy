@@ -4,6 +4,7 @@
 	import { resolve } from '$app/paths';
 	import { awesomePrivacy, type Category } from '$lib/awesome-privacy';
 	import { cn } from '$lib/utils/cn';
+	import CategoryIcon from './category-icon.svelte';
 
 	type CategoriesProps = HTMLAttributes<HTMLUListElement> & {
 		categories: Category[];
@@ -20,7 +21,7 @@
 		<li class="group col-span-1 bg-base-100 px-4 py-3 shadow-sm">
 			<!-- Icon + title -->
 			<div class="mb-3 flex items-center gap-2">
-				<!-- <i class="nf {CATEGORY_ICONS[slug] ?? 'nf-fa-circle'} text-xl text-primary"></i> -->
+				<CategoryIcon category={category.name} class="text-xl text-primary" />
 				<a href={resolve(`/awesome-privacy/${slug}`)}>
 					<h2 class="font-semibold hover:text-primary hover:underline">
 						{category.name}
@@ -57,6 +58,6 @@
 </ul>
 
 <!-- "Show everything" CTA card -->
-<a href={resolve('/awesome-privacy/all')} class="btn mx-auto mt-4 btn-primary">
+<a href={resolve('/awesome-privacy/all')} class="btn mt-4 w-full btn-primary sm:w-fit">
 	Show all categories
 </a>
