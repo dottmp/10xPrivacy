@@ -20,7 +20,7 @@
 		<p class="mt-4 text-center text-sm text-base-content/40">{description}</p>
 		<a href={resolve('/')} class="btn mt-6 btn-primary"> Back to home </a>
 		{#if status !== 404}
-			<button on:click={() => location.reload()} class="btn mt-6"> Try again </button>
+			<button onclick={() => location.reload()} class="btn mt-6"> Try again </button>
 		{/if}
 	</div>
 </main>
