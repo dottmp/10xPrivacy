@@ -2,7 +2,8 @@ import { error } from '@sveltejs/kit';
 
 import type { PageLoad } from './$types';
 
-import { awesomePrivacy, type Section } from '$lib/features/awesome-privacy/service';
+import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
+import type { Section } from '$lib/features/awesome-privacy/types';
 
 export const ssr = false;
 
