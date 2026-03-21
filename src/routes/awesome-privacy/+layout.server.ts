@@ -1,6 +1,6 @@
 import type { LayoutServerLoad } from './$types';
 
-import { awesomePrivacy, type AwesomePrivacyData } from '$lib/awesome-privacy';
+import { awesomePrivacy, type AwesomePrivacyData } from '$lib/features/awesome-privacy/service';
 
 export const load: LayoutServerLoad = () => {
 	const awesomePrivacyData = awesomePrivacy.getData();

@@ -1,6 +1,6 @@
 import yaml from 'js-yaml';
 
-import rawYaml from '../data/awesome-privacy.yml?raw';
+import rawYaml from '../../data/awesome-privacy.yml?raw';
 
 export type ShortService = {
 	name: string;

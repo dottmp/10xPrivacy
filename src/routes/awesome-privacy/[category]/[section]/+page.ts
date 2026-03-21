@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 
 import type { PageLoad } from './$types';
 
-import { awesomePrivacy, type Section } from '$lib/awesome-privacy';
+import { awesomePrivacy, type Section } from '$lib/features/awesome-privacy/service';
 
 export const ssr = false;
 

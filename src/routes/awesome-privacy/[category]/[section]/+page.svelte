@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { awesomePrivacy } from '$lib/awesome-privacy';
+	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import { markdownToHtml, markdownToInlineHtml } from '$lib/utils/markdown';
 
 	let { data } = $props();

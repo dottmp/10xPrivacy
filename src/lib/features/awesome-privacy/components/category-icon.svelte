@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	import { awesomePrivacy } from '$lib/awesome-privacy';
+	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import { cn } from '$lib/utils/cn';
 
 	type CategoryIconProps = HTMLAttributes<HTMLElement> & {

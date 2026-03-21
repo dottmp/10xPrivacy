@@ -2,7 +2,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	import { resolve } from '$app/paths';
-	import { awesomePrivacy, type Category } from '$lib/awesome-privacy';
+	import { awesomePrivacy, type Category } from '$lib/features/awesome-privacy/service';
 	import { cn } from '$lib/utils/cn';
 	import CategoryIcon from './category-icon.svelte';
 
