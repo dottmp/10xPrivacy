@@ -8,15 +8,15 @@
 	import { formatDate } from '$lib/utils/date';
 
 	type ArticlesProps = HTMLAttributes<HTMLUListElement> & {
-		feed: FeedResponse;
+		articlesResponse: ArticlesResponse;
 	};
 
-	let { feed, class: klass, ...props }: ArticlesProps = $props();
+	let { articlesResponse, class: klass, ...props }: ArticlesProps = $props();
 </script>
 
 <!-- List -->
 <ul class={cn('space-y-3', klass)} {...props}>
-	{#each feed.data as item (item.id)}
+	{#each articlesResponse.data as item (item.guid)}
 		<li class="group bg-base-100 px-4 py-3 shadow-sm hover:shadow-none">
 			<a href={resolve(`/article/${item.slug}`)} class="flex items-baseline gap-3">
 				<!-- Title -->
@@ -26,16 +26,18 @@
 					{item.title}
 				</span>
 
-				<!-- Meta: feed + date -->
+				<!-- Meta: articlesResponse + date -->
 				<span class="ml-auto flex shrink-0 items-center gap-2">
 					<SourceBadge class="badge-sm" source={item.source} />
-					<span class="text-xs text-base-content/40">{formatDate(item.pubDate)}</span>
-				</span>
-			</a>
+					<span class="text-xs text-base-content/40"
+						>{item.date ? formatDate(item.date) : 'Date unknown'}
+					</span>
+				</span></a
+			>
 		</li>
 	{/each}
 </ul>
 
-{#if feed.count !== 0}
+{#if articlesResponse.count !== 0}
 	<p class="py-12 text-center text-sm text-base-content/40">No articles found.</p>
 {/if}

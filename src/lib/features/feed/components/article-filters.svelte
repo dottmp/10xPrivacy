@@ -3,18 +3,18 @@
 
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { FEED_SOURCES } from '$lib/configs';
+	import { SOURCE_REGISTRY } from '$lib/configs';
 	import { cn } from '$lib/utils/cn';
 
-	const FILTERS = [{ id: 'all', name: 'All' }, ...FEED_SOURCES] as const;
+	const FILTERS = Object.freeze([{ id: 'all', name: 'All' }, ...SOURCE_REGISTRY] as const);
 
 	let activeFilter = $state(page.url.searchParams.get('source') as SourceSearchParam);
 
 	type ArticleFiltersProps = HTMLAttributes<HTMLDivElement> & {
-		feed: FeedResponse;
+		articlesResponse: ArticlesResponse;
 	};
 
-	let { feed, class: klass, ...props }: ArticleFiltersProps = $props();
+	let { articlesResponse, class: klass, ...props }: ArticleFiltersProps = $props();
 </script>
 
 <div role="tablist" class={cn('tabs-border mb-6 tabs', klass)} {...props}>
@@ -32,7 +32,7 @@
 		>
 			{filter.name}
 			{#if isActive}
-				<span class="ml-1 text-xs">[{feed.count}]</span>
+				<span class="ml-1 text-xs">[{articlesResponse.count}]</span>
 			{/if}
 		</a>
 	{/each}

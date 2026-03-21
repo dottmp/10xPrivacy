@@ -3,15 +3,13 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params, parent }) => {
-	const { feed } = await parent();
+	const { articlesResponse } = await parent();
 
-	const article = feed.data.find(
-		(article) => article.slug === params.slug || article.slug === params.slug
-	);
+	const article = articlesResponse.data.find((article) => article.slug === params.slug);
 
 	if (!article) {
 		error(404, 'Article not found');
 	}
 
-	return { article };
+	return { article } satisfies { article: Article };
 };

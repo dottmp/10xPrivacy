@@ -4,7 +4,7 @@
 	import { formatDate } from '$lib/utils/date.js';
 
 	type ArticleProps = {
-		article: FeedItem;
+		article: Article;
 	};
 
 	let { article }: ArticleProps = $props();
@@ -20,12 +20,12 @@
 		<!-- header -->
 		<div class="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-base-content/50">
 			<SourceBadge source={article.source} />
-			{#if article.pubDate}
-				<time datetime={article.pubDate}>{formatDate(article.pubDate)}</time>
+			{#if article.date}
+				<time datetime={article.date}>{formatDate(article.date)}</time>
 			{/if}
 
-			{#if article.author}
-				<span>by {article.author}</span>
+			{#if article.creator}
+				<span>by {article.creator}</span>
 			{/if}
 		</div>
 

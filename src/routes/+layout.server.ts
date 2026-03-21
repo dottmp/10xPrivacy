@@ -8,13 +8,13 @@ import { tryCatch } from '$lib/utils/try-catch';
 export const load: LayoutServerLoad = async ({ url }) => {
 	const sourceSearchParam = url.searchParams.get('source') as SourceSearchParam;
 
-	const { data: feed, error: err } = await tryCatch(rss.getFeed({ source: sourceSearchParam }));
+	const { data, error: err } = await tryCatch(rss.getArticles({ source: sourceSearchParam }));
 
 	if (err) {
 		error(500, { message: 'Failed to fetch feed data' });
 	}
 
 	return {
-		feed
-	};
+		articlesResponse: data
+	} satisfies { articlesResponse: ArticlesResponse };
 };

@@ -1,51 +1,61 @@
 import type Parser from 'rss-parser';
 
-export {};
-
 declare global {
-	type SourceId = 'tuta' | 'privacyguides' | 'techlore';
+	//----------------------------------------------------------------------
+	// raw rss output
+	//----------------------------------------------------------------------
 
-	type SourceSearchParam = SourceId | 'all' | null;
-
-	type CustomData = {
-		'media:content': { $: { url: string } };
+	type CustomItem = {
+		'media:content': { $?: { url?: string } };
 		'content:encoded': string;
 	};
 
-	type ParsedFeed = Record<string, never> & Parser.Output<CustomData>;
+	type Output = Record<symbol, never> & Parser.Output<CustomItem>;
 
-	interface FeedItem {
-		id: string;
-		title: string;
-		link: string;
-		description: string;
-		content: string;
-		pubDate: string | null;
-		author: string | null;
-		imageUrl: string | null;
+	//----------------------------------------------------------------------
+	// article
+	//----------------------------------------------------------------------
+
+	type Article = Parser.Item & {
+		date?: Parser.Item['pubDate'] | Parser.Item['isoDate'];
+		thumbnailUrl?: CustomItem['media:content']['$']['url'];
+		slug: Parser.Item['title'] | Parser.Item['guid'] | string;
+		description: Parser.Item['contentSnippet'] | Parser.Item['summary'] | string;
 		source: Source;
-		slug: string;
-	}
+	};
 
-	interface Source {
+	type ArticlesResponse = {
+		data: Article[];
+		count: number;
+	};
+
+	//----------------------------------------------------------------------
+	// source
+	//----------------------------------------------------------------------
+
+	type SourceId = 'tuta' | 'privacyguides' | 'techlore';
+	type SourceSearchParam = SourceId | 'all' | null;
+
+	type Source = {
 		id: SourceId;
 		name: string;
 		url: string;
 		feedUrl: string;
-	}
+	};
 
-	type FeedResponse = {
-		data: FeedItem[];
-		count: number;
+	type ParsedSource = {
+		source: Source;
+		output: Output;
 	};
 
 	type SourcesResponse = {
-		data: {
-			feed: ParsedFeed;
-			source: Source;
-		}[];
+		data: ParsedSource[];
 		count: number;
 	};
+
+	//----------------------------------------------------------------------
+	// svelte internals
+	//----------------------------------------------------------------------
 
 	namespace App {
 		// interface Error {}
@@ -55,3 +65,5 @@ declare global {
 		// interface Platform {}
 	}
 }
+
+export {};

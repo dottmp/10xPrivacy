@@ -1,4 +1,4 @@
-export const FEED_SOURCES = Object.freeze([
+export const SOURCE_REGISTRY = Object.freeze([
 	{
 		id: 'tuta',
 		name: 'Tuta',
@@ -17,4 +17,4 @@ export const FEED_SOURCES = Object.freeze([
 		url: 'https://techlore.tech',
 		feedUrl: 'https://techlore.tech/rss/'
 	}
-] satisfies Source[]);
+] as const satisfies Source[]);
