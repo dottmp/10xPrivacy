@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import Heading from '$lib/components/headings/heading.svelte';
+	import Subheading, { subheadingVariants } from '$lib/components/headings/subheading.svelte';
+	import { textVariants } from '$lib/components/text';
+	import Link from '$lib/components/text/link.svelte';
 	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
+	import { cn } from '$lib/utils/cn';
 	import { markdownToHtml } from '$lib/utils/markdown';
 
 	let { data } = $props();
@@ -13,19 +18,25 @@
 
 <main class="mx-auto max-w-3xl px-4 py-10">
 	<!-- Breadcrumb -->
-	<nav class="mb-4 text-xs text-base-content/50 capitalize">
-		<a href={resolve('/awesome-privacy')} class="hover:text-primary">Awesome Privacy</a>
-		<span class="mx-1">›</span>
-		<a href={resolve(`/awesome-privacy/${data.categorySlug}`)} class="hover:text-primary"
-			>{data.categorySlug}</a
-		>
-		<span class="mx-1">›</span>
-		<a
-			href={resolve(`/awesome-privacy/${data.categorySlug}/${data.sectionSlug}`)}
-			class="hover:text-primary">{data.section.name}</a
-		>
-		<span class="mx-1">›</span>
-		<span>{data.service.name}</span>
+	<nav
+		class="breadcrumbs mb-4 text-sm font-medium text-base-content/50 capitalize [&_a]:hover:text-primary"
+	>
+		<ul>
+			<li><a href={resolve('/awesome-privacy')}>Awesome Privacy</a></li>
+			<li>
+				<a href={resolve(`/awesome-privacy/${data.categorySlug}`)}>
+					{awesomePrivacy.slugToName(data.categorySlug)}
+				</a>
+			</li>
+			<li>
+				<a
+					href={resolve(`/awesome-privacy/${data.categorySlug}/${data.sectionSlug}`)}
+					class="hover:text-primary">{data.section.name}</a
+				>
+			</li>
+
+			<li>{data.service.name}</li>
+		</ul>
 	</nav>
 
 	<!-- Hero -->
@@ -35,24 +46,19 @@
 				referrerpolicy="no-referrer"
 				src={data.service.icon}
 				alt={data.service.name}
-				class="mt-1 h-14 w-14 shrink-0 object-contain"
+				class=" size-14 shrink-0 object-contain"
 			/>
 		{/if}
 		<div>
-			<h1 class="text-3xl font-bold text-primary">{data.service.name}</h1>
+			<Heading size="display">{data.service.name}</Heading>
 			{#if data.service.url}
-				<a
-					href={data.service.url}
-					target="_blank"
-					rel="noopener noreferrer external"
-					class="mt-0.5 text-sm text-base-content/50 hover:text-primary"
-				>
+				<Link href={data.service.url} external class="mt-0.5">
 					{data.service.url.replace(/^https?:\/\//, '')}
-				</a>
+				</Link>
 			{/if}
 			<!-- Badges -->
 			<div class="mt-2 flex flex-wrap gap-2">
-				{#if data.service.openSource}
+				{#if data.service.openSource || data.service.github}
 					<span class="badge badge-soft badge-sm badge-success">Open Source</span>
 				{/if}
 				{#if data.service.securityAudited}
@@ -75,16 +81,18 @@
 	</div>
 
 	<!-- Description -->
-	<section class="mb-8 bg-base-100 p-5 shadow-sm">
-		<div class="text-sm leading-relaxed text-base-content/80">
-			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			{@html markdownToHtml(data.service.description)}
-		</div>
+	<section
+		class={cn('mb-8 rounded-lg bg-base-100 p-5', textVariants.base, textVariants.size.default)}
+	>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		{@html markdownToHtml(data.service.description)}
 	</section>
 
 	<!-- Links -->
 	<section class="mb-8">
-		<h2 class="mb-3 text-sm font-semibold tracking-widest text-base-content/40 uppercase">Links</h2>
+		<Subheading size="xs" class={cn('mb-3 tracking-widest uppercase', textVariants.base)}
+			>Links</Subheading
+		>
 		<ul
 			class="space-y-2 [&_a]:text-primary [&_a]:hover:underline [&_i]:w-4 [&_i]:text-primary [&_li]:flex [&_li]:items-center [&_li]:gap-3 [&_li]:text-sm [&_span]:text-base-content/50"
 		>
@@ -92,19 +100,15 @@
 				<li>
 					<i class="nf nf-fa-globe"></i>
 					<span>Homepage:</span>
-					<a href={data.service.url} target="_blank" rel="noopener noreferrer external"
-						>{data.service.url}</a
-					>
+					<Link href={data.service.url} external>{data.service.url}</Link>
 				</li>
 			{/if}
 			{#if data.service.github}
 				<li>
 					<i class="nf nf-fa-github"></i>
 					<span>GitHub:</span>
-					<a
-						href="https://github.com/{data.service.github}"
-						target="_blank"
-						rel="noopener noreferrer external">github.com/{data.service.github}</a
+					<Link href="https://github.com/{data.service.github}" external
+						>github.com/{data.service.github}</Link
 					>
 				</li>
 			{/if}
@@ -112,10 +116,8 @@
 				<li>
 					<i class="nf nf-fa-reddit"></i>
 					<span>Reddit:</span>
-					<a
-						href="https://reddit.com/r/{data.service.subreddit}"
-						target="_blank"
-						rel="noopener noreferrer external">r/{data.service.subreddit}</a
+					<Link href="https://reddit.com/r/{data.service.subreddit}" external
+						>r/{data.service.subreddit}</Link
 					>
 				</li>
 			{/if}
@@ -123,21 +125,16 @@
 				<li>
 					<i class="nf nf-fa-comment"></i>
 					<span class="text-base-content/50">Discord:</span>
-					<a
-						href="https://discord.gg/{data.service.discordInvite}"
-						target="_blank"
-						rel="noopener noreferrer external">Join server</a
-					>
+					<Link href="https://discord.gg/{data.service.discordInvite}" external>Join server</Link>
 				</li>
 			{/if}
 			{#if data.service.androidApp}
 				<li>
 					<i class="nf nf-fa-android"></i>
 					<span> Android:</span>
-					<a
+					<Link
 						href="https://play.google.com/store/apps/details?id={data.service.androidApp}"
-						target="_blank"
-						rel="noopener noreferrer external">{data.service.androidApp}</a
+						external>{data.service.androidApp}</Link
 					>
 				</li>
 			{/if}
@@ -145,12 +142,11 @@
 				<li>
 					<i class="nf nf-fa-apple"></i>
 					<span>iOS:</span>
-					<a
+					<Link
 						href={data.service.iosApp.startsWith('http')
 							? data.service.iosApp
 							: `https://apps.apple.com/app/${data.service.iosApp}`}
-						target="_blank"
-						rel="noopener noreferrer external">App Store</a
+						external>App Store</Link
 					>
 				</li>
 			{/if}
@@ -170,7 +166,7 @@
 							href={resolve(
 								`/awesome-privacy/${data.categorySlug}/${data.sectionSlug}/${awesomePrivacy.slugify(rel.name)}`
 							)}
-							class="group flex items-center gap-3 bg-base-100 px-4 py-3 hover:shadow-sm"
+							class="group flex items-center gap-3 rounded-lg bg-base-100 px-4 py-3"
 						>
 							{#if rel.icon}
 								<img
@@ -182,8 +178,12 @@
 							{:else}
 								<i class="nf nf-fa-cube text-base-content/30"></i>
 							{/if}
-							<span class="text-sm font-semibold text-base-content group-hover:text-primary"
-								>{rel.name}</span
+							<span
+								class={cn(
+									subheadingVariants.base,
+									textVariants.size.default,
+									'font-semibold group-hover:text-primary group-hover:underline'
+								)}>{rel.name}</span
 							>
 							{#if rel.openSource || rel.github}
 								<span class="ml-auto badge badge-soft badge-xs badge-success">Open Source</span>
@@ -192,17 +192,10 @@
 					</li>
 				{/each}
 			</ul>
-			<a
-				href={resolve(`/awesome-privacy/${data.categorySlug}/${data.sectionSlug}`)}
-				class="btn mt-6 block btn-link"
-			>
-				View all {data.section.name}
-			</a>
 		</section>
 	{/if}
 
 	<!-- Back -->
-
 	<a
 		href={resolve(`/awesome-privacy/${data.categorySlug}/${data.sectionSlug}`)}
 		class="btn mt-4 w-full sm:w-fit"

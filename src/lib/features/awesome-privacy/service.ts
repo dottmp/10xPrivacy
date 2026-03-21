@@ -39,6 +39,14 @@ class AwesomePrivacy {
 		return name.toLowerCase().replace(/\s/g, '-').replace(/\+|&/g, 'and').replaceAll('?', '');
 	}
 
+	public slugToName(slug: string): string {
+		return slug
+			.replace(/-/g, ' ')
+			.replace(/and/g, '&')
+			.replaceAll('?', '')
+			.replace(/\b\w/g, (char) => char.toUpperCase());
+	}
+
 	public getCategories(): Category[] {
 		return this._data.categories;
 	}

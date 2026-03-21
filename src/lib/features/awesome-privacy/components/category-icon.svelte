@@ -10,7 +10,7 @@
 
 	let { category, class: klass, ...props }: CategoryIconProps = $props();
 
-	const CATEGORY_ICONS: Record<string, string> = {
+	const CATEGORY_ICONS = Object.freeze({
 		essentials: 'nf-fa-shield',
 		communication: 'nf-fa-comments',
 		'security-tools': 'nf-fa-lock',
@@ -24,11 +24,11 @@
 		social: 'nf-fa-users',
 		media: 'nf-fa-film',
 		creativity: 'nf-fa-paint_brush'
-	};
+	} as const);
 
 	const slug = $derived(awesomePrivacy.slugify(category));
 
-	const icon = $derived(CATEGORY_ICONS[slug] ?? 'nf-fa-circle');
+	const icon = $derived(CATEGORY_ICONS[slug as keyof typeof CATEGORY_ICONS] || 'nf-fa-circle');
 </script>
 
 <i class={cn('nf', icon, klass)} {...props}></i>
