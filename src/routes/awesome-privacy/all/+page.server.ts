@@ -1,9 +1,8 @@
 import type { PageServerLoad } from './$types';
 
+import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 import type { Category } from '$lib/features/awesome-privacy/types';
 
-export const load: PageServerLoad = async ({ parent }) => {
-	const { awesomePrivacyData } = await parent();
-
-	return { categories: awesomePrivacyData.categories } satisfies { categories: Category[] };
+export const load: PageServerLoad = async () => {
+	return { categories: awesomePrivacy.getCategories() } satisfies { categories: Category[] };
 };

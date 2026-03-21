@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import CategoryIcon from '$lib/features/awesome-privacy/components/category-icon.svelte';
+	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 
 	let { data } = $props();
 </script>
