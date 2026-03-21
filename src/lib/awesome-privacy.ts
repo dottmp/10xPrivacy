@@ -1,6 +1,6 @@
 import yaml from 'js-yaml';
 
-import { tryCatch } from './utils/try-catch';
+import rawYaml from './data/awesome-privacy.yml?raw';
 
 export type ShortService = {
 	name: string;
@@ -64,23 +64,8 @@ class AwesomePrivacy {
 		}
 	}
 
-	private _baseUrl =
-		'https://raw.githubusercontent.com/Lissy93/awesome-privacy/main/awesome-privacy.yml' as const;
-
-	public async fetchData(fetch: typeof globalThis.fetch): Promise<AwesomePrivacyData> {
-		const { data: res, error } = await tryCatch(fetch(this._baseUrl));
-
-		if (error) {
-			throw new Error(`Unexpected error while fetching awesome-privacy.yml: ${error.message}`);
-		}
-
-		if (!res.ok) {
-			throw new Error(`Failed to fetch awesome-privacy.yml: HTTP ${res.status}`);
-		}
-
-		const text = await res.text();
-
-		return yaml.load(text) as AwesomePrivacyData;
+	public getData(): AwesomePrivacyData {
+		return yaml.load(rawYaml) as AwesomePrivacyData;
 	}
 
 	/**

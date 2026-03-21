@@ -2,8 +2,8 @@ import type { LayoutServerLoad } from './$types';
 
 import { awesomePrivacy, type AwesomePrivacyData } from '$lib/awesome-privacy';
 
-export const load: LayoutServerLoad = async ({ fetch }) => {
-	const awesomePrivacyData = await awesomePrivacy.fetchData(fetch);
+export const load: LayoutServerLoad = () => {
+	const awesomePrivacyData = awesomePrivacy.getData();
 
 	return {
 		awesomePrivacyData: awesomePrivacyData
