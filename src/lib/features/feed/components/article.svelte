@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import type { Article } from '$lib/features/feed/types';
 	import SourceBadge from '$lib/features/feed/components/source-badge.svelte';
 	import { formatDate } from '$lib/utils/date.js';
 

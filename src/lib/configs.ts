@@ -1,3 +1,5 @@
+import type { Source } from '$lib/features/feed/types';
+
 export const SOURCE_REGISTRY = Object.freeze([
 	{
 		id: 'tuta',

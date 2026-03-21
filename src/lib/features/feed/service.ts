@@ -1,8 +1,17 @@
 import Parser from 'rss-parser';
 
-import { SOURCE_REGISTRY } from './configs';
-import { sanitizeHtml } from './utils/sanitize';
-import { tryCatch } from './utils/try-catch';
+import type {
+	Article,
+	ArticlesResponse,
+	CustomItem,
+	ParsedSource,
+	SourceSearchParam,
+	SourcesResponse
+} from './types';
+
+import { SOURCE_REGISTRY } from '$lib/configs';
+import { sanitizeHtml } from '$lib/utils/sanitize';
+import { tryCatch } from '$lib/utils/try-catch';
 
 class RSS {
 	//----------------------------------------------------------------------

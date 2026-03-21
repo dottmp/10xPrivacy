@@ -4,6 +4,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { SOURCE_REGISTRY } from '$lib/configs';
+	import type { ArticlesResponse, SourceSearchParam } from '$lib/features/feed/types';
 	import { cn } from '$lib/utils/cn';
 
 	const FILTERS = Object.freeze([{ id: 'all', name: 'All' }, ...SOURCE_REGISTRY] as const);

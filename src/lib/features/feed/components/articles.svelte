@@ -4,6 +4,7 @@
 	import SourceBadge from './source-badge.svelte';
 
 	import { resolve } from '$app/paths';
+	import type { ArticlesResponse } from '$lib/features/feed/types';
 	import { cn } from '$lib/utils/cn';
 	import { formatDate } from '$lib/utils/date';
 

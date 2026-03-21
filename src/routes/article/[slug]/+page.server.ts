@@ -2,6 +2,8 @@ import { error } from '@sveltejs/kit';
 
 import type { PageServerLoad } from './$types';
 
+import type { Article } from '$lib/features/feed/types';
+
 export const load: PageServerLoad = async ({ params, parent }) => {
 	const { articlesResponse } = await parent();
 

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type { ArticlesResponse } from '$lib/features/feed/types';
+
 	import ArticleFilters from './article-filters.svelte';
 	import Articles from './articles.svelte';
 
