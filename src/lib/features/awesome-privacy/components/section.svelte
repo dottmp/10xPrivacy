@@ -122,6 +122,6 @@
 	</ul>
 
 	<a href={resolve(`/awesome-privacy/${categorySlug}`)} class="btn mt-4 w-full sm:w-fit">
-		<i class="nf nf-fa-arrow_left mr-1"></i> Back
+		<i class="nf nf-fa-arrow_left mr-1"></i> Back to {awesomePrivacy.slugToName(categorySlug)}
 	</a>
 </div>

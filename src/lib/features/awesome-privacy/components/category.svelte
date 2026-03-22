@@ -50,7 +50,7 @@
 	</ul>
 
 	<!-- Back -->
-	<a href={resolve(`/awesome-privacy/`)} class="btn mt-4 w-full sm:w-fit">
-		<i class="nf nf-fa-arrow_left mr-1"></i> Back
+	<a href={resolve(`/awesome-privacy`)} class="btn mt-4 w-full sm:w-fit">
+		<i class="nf nf-fa-arrow_left mr-1"></i> Back to categories
 	</a>
 </div>
