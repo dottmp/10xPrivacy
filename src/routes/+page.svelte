@@ -1,24 +1,20 @@
 <script lang="ts">
-	import { Heading } from '$lib/components/headings/index.js';
-	import { Link, Text } from '$lib/components/text';
-	import Feed from '$lib/features/feed/components/feed.svelte';
-
-	let { data } = $props();
+	import { resolve } from '$app/paths';
+	import About from '$lib/components/about.svelte';
+	import { LOGO } from '$lib/configs';
 </script>
 
-<main class="mx-auto max-w-3xl px-4 py-8">
-	<header class="mb-8">
-		<Heading size="display" class="mb-4">Privacy News</Heading>
-		<Text>
-			RSS feed aggregator for privacy news from <Link
-				variant="primary"
-				href="https://tuta.com/blog"
-				external>tuta.com</Link
-			>, <Link variant="primary" href="https://www.privacyguides.org/blog/" external
-				>privacyguides.org</Link
-			>, and <Link variant="primary" href="https://techlore.tech/" external>techlore.tech</Link>.
-		</Text>
-	</header>
+<main class="m-auto flex max-w-3xl flex-col items-center px-4 py-8">
+	<pre class="text-xs text-primary">
+		{LOGO}
+	</pre>
 
-	<Feed articlesResponse={data.articlesResponse} />
+	<div class="mx-auto mt-20 flex items-center gap-4">
+		<a class="btn btn-primary" href={resolve('/privacy-news')}> Privacy News </a>
+
+		<a class="btn btn-primary" href={resolve('/awesome-privacy')}> Awesome Privacy </a>
+		<a class="btn btn-primary" href={resolve('/websites')}> Websites </a>
+	</div>
+
+	<About class="mt-20" />
 </main>
