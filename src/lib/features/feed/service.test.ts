@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { SOURCE_REGISTRY } from '../../configs.ts';
+import rssSources from '../../data/rss-sources.json';
 
 import { rss } from './service.ts';
 import type { Output } from './types.ts';
@@ -29,7 +29,7 @@ vi.mock('rss-parser', () => {
 // Helpers
 // ---------------------------------------------------------------------------
 
-const [tutaSource, privacyGuidesSource] = SOURCE_REGISTRY;
+const [tutaSource, privacyGuidesSource] = rssSources.data;
 
 /** Minimal Output fixture for a source */
 function makeFeedOutput(items: Partial<Output['items'][number]>[] = []): Output {
