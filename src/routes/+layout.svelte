@@ -60,5 +60,6 @@
 	<!-- content -->
 	{@render children()}
 
+	<!-- footer -->
 	<Footer class="mt-auto" />
 </div>
