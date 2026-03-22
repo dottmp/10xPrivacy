@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import favicon from '$lib/assets/favicon.png';
+	import logoLg from '$lib/assets/logo-lg.svg';
 	import LlmTermsOfServiceLink from '$lib/components/llm-terms-of-service-link.svelte';
 	import { Link } from '$lib/components/text';
 	import ThemeChange from '$lib/components/theme-change.svelte';
@@ -7,6 +9,15 @@
 
 	let { children } = $props();
 </script>
+
+<svelte:head>
+	<link rel="icon" href={favicon} />
+	<title>10xPrivacy</title>
+	<meta
+		name="description"
+		content="10xPrivacy educates users about digital privacy by providing a curated feed of news, resources, and tools to protect them selves from surveillance capitalism."
+	/>
+</svelte:head>
 
 <div class="min-h-screen bg-base-200 font-mono">
 	<!-- global -->
@@ -18,9 +29,8 @@
 			<!-- logo -->
 			<div class="flex-none">
 				<a class=" text-xl font-bold text-primary" href={resolve('/')}>
-					<i class="nf nf-fa-user_ninja -mr-1"></i>
-					10xPrivacy</a
-				>
+					<img src={logoLg} alt="10x Privacy Logo" class="h-8 w-auto" />
+				</a>
 			</div>
 
 			<!-- desktop nav items  -->
