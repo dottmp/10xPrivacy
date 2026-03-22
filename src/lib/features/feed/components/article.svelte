@@ -6,6 +6,7 @@
 	import type { Article } from '$lib/features/feed/types';
 	import { cn } from '$lib/utils/cn';
 	import { formatDate } from '$lib/utils/date.js';
+	import { isSafeUrl } from '$lib/utils/sanitize';
 
 	type ArticleProps = {
 		article: Article;
@@ -55,9 +56,13 @@
 
 	<!-- footer -->
 	<div class="mt-10 border-t border-base-300 pt-6">
-		<Link href={article.link} variant="primary" external>
-			Read original on {article.source.name}
-			<i class="nf nf-cod-link_external ml-1"></i>
-		</Link>
+		{#if isSafeUrl(article.link)}
+			<Link href={article.link} variant="primary" external>
+				Read original on {article.source.name}
+				<i class="nf nf-cod-link_external ml-1"></i>
+			</Link>
+		{:else}
+			<Text>Original article link unavailable.</Text>
+		{/if}
 	</div>
 </article>

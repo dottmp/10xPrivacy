@@ -22,7 +22,8 @@ export const GET: RequestHandler = async ({ fetch }) => {
 	return new Response(body, {
 		status: response.status,
 		headers: {
-			'Content-Type': response.headers.get('content-type') ?? 'text/html'
+			'Content-Type': response.headers.get('content-type') ?? 'text/html',
+			'Content-Encoding': 'gzip'
 		}
 	});
 };

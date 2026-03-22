@@ -4,15 +4,10 @@ import rawYaml from '../../data/awesome-privacy.yml?raw';
 
 import type { AwesomePrivacyData, Category, Section, Service } from './types';
 
+import { FEATURED_CATEGORIES } from '$lib/configs';
+
 export class AwesomePrivacy {
-	readonly featuredCatgories = [
-		'Essentials',
-		'Communication',
-		'Networking',
-		'Security Tools',
-		'Operating Systems',
-		'Productivity'
-	];
+	readonly featuredCatgories = FEATURED_CATEGORIES;
 
 	private _data: AwesomePrivacyData = this._loadData();
 
@@ -22,10 +17,16 @@ export class AwesomePrivacy {
 		}
 	}
 
+	/*
+	 * Reads the YAML data from the raw string and parses it into a JavaScript object.
+	 */
 	private _loadData(): AwesomePrivacyData {
 		return yaml.load(rawYaml) as AwesomePrivacyData;
 	}
 
+	/*
+	 * Gets the entire Awesome Privacy data object.
+	 */
 	public getData(): AwesomePrivacyData {
 		return this._data;
 	}
@@ -39,6 +40,9 @@ export class AwesomePrivacy {
 		return name.toLowerCase().replace(/\s/g, '-').replace(/\+|&/g, 'and').replaceAll('?', '');
 	}
 
+	/**
+	 * Converts a slug back to a human-readable
+	 */
 	public slugToName(slug: string): string {
 		return slug
 			.replace(/-/g, ' ')
@@ -47,6 +51,9 @@ export class AwesomePrivacy {
 			.replace(/\b\w/g, (char) => char.toUpperCase());
 	}
 
+	/*
+	 * Gets the list of categories from the data.
+	 */
 	public getCategories(): Category[] {
 		return this._data.categories;
 	}
@@ -57,6 +64,7 @@ export class AwesomePrivacy {
 	public getCategory({ categorySlug }: { categorySlug: string }): Category | undefined {
 		return this._data.categories.find((category) => this.slugify(category.name) === categorySlug);
 	}
+
 	/**
 	 * Gets the featured categories from the data based on the predefined list of featured category names.
 	 */
@@ -65,6 +73,7 @@ export class AwesomePrivacy {
 			this.featuredCatgories.includes(category.name)
 		);
 	}
+
 	/**
 	 * Gets the section object from the data based on the provided category slug and section slug.
 	 */
@@ -79,6 +88,7 @@ export class AwesomePrivacy {
 			(section) => this.slugify(section.name) === sectionSlug
 		);
 	}
+
 	/**
 	 * Gets the service object from the data based on the provided category slug, section slug, and service slug.
 	 */
