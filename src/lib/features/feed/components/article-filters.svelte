@@ -24,7 +24,9 @@
 		<a
 			role="tab"
 			href={resolve(
-				activeFilter === 'all' || activeFilter === null ? '/' : `/?source=${filter.id}`
+				activeFilter === 'all' || activeFilter === null
+					? '/privacy-news'
+					: `/privacy-news/?source=${filter.id}`
 			)}
 			class={cn('tab', isActive && 'tab-active text-primary')}
 			onclick={() => {
