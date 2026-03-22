@@ -1,9 +1,10 @@
 import { error } from '@sveltejs/kit';
 
+import type { LayoutServerLoad } from './$types';
+
 import { rss } from '$lib/features/feed/service';
 import type { ArticlesResponse, SourceSearchParam } from '$lib/features/feed/types';
 import { tryCatch } from '$lib/utils/try-catch';
-import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({ url }) => {
 	const sourceSearchParam = url.searchParams.get('source') as SourceSearchParam;
