@@ -7,13 +7,10 @@ import type { ArticlesResponse, SourceSearchParam } from '$lib/features/feed/typ
 import { tryCatch } from '$lib/utils/try-catch';
 
 export const load: LayoutLoad = async () => {
-	const { data, error: err } = await tryCatch(rss.getArticles());
-
-	if (err) {
-		error(500, { message: 'Failed to fetch feed data' });
-	}
-
 	return {
-		articlesResponse: data
+		articlesResponse: {
+			data: [],
+			count: 0
+		}
 	} satisfies { articlesResponse: ArticlesResponse };
 };
