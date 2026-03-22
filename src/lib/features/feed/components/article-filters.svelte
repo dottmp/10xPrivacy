@@ -18,7 +18,7 @@
 	let { articlesResponse, class: klass, ...props }: ArticleFiltersProps = $props();
 </script>
 
-<div role="tablist" class={cn('tabs-border mb-6 tabs', klass)} {...props}>
+<div role="tablist" class={cn('tabs-border mb-6 tabs ', klass)} {...props}>
 	{#each FILTERS as filter (filter.id)}
 		{@const isActive = activeFilter === filter.id || (filter.id === 'all' && activeFilter === null)}
 		<a
@@ -26,7 +26,7 @@
 			href={resolve(
 				activeFilter === 'all' || activeFilter === null ? '/' : `/?source=${filter.id}`
 			)}
-			class={cn('tab', isActive && 'tab-active')}
+			class={cn('tab', isActive && 'tab-active text-primary')}
 			onclick={() => {
 				activeFilter = filter.id;
 			}}

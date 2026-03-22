@@ -11,7 +11,10 @@
 		<div class="flex w-full items-center">
 			<!-- logo -->
 			<div class="flex-none">
-				<a class=" text-xl font-bold text-primary" href={resolve('/')}>10xPrivacy</a>
+				<a class=" text-xl font-bold text-primary" href={resolve('/')}>
+					<i class="nf nf-fa-user_ninja -mr-1"></i>
+					10xPrivacy</a
+				>
 			</div>
 
 			<!-- desktop nav items  -->
@@ -60,7 +63,7 @@
 		<div class=" w-full flex-1 sm:hidden">
 			<ul class="flex space-x-6 [&_a]:font-semibold">
 				<li><Link href={resolve('/')}>Privacy News</Link></li>
-				<li><Link href={resolve('/awesome-privacy')}>Awesome privacy</Link></li>
+				<li><Link href={resolve('/awesome-privacy')}>Awesome Privacy</Link></li>
 				<li><Link href={resolve('/about')}>About</Link></li>
 			</ul>
 		</div>
