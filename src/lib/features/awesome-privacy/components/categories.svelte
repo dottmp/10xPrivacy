@@ -18,7 +18,7 @@
 </script>
 
 <!-- List -->
-<div class={cn('flex flex-col items-center', klass)} {...props}>
+<div class={cn('flex flex-col', klass)} {...props}>
 	<div class="w-full space-y-10">
 		{#each categories as category (category.name)}
 			{@const slug = awesomePrivacy.slugify(category.name)}
