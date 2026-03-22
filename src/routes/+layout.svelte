@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import favicon from '$lib/assets/favicon.png';
-	import logoLg from '$lib/assets/logo-lg.svg';
+	import Footer from '$lib/components/footer.svelte';
 	import LlmTermsOfServiceLink from '$lib/components/llm-terms-of-service-link.svelte';
 	import { Link } from '$lib/components/text';
 	import ThemeChange from '$lib/components/theme-change.svelte';
+	import { LOGO } from '$lib/configs';
 	import '$lib/styles/app.css';
 
 	let { children } = $props();
@@ -19,7 +20,7 @@
 	/>
 </svelte:head>
 
-<div class="min-h-screen bg-base-200 font-mono">
+<div class="flex min-h-screen flex-col bg-base-200 font-mono">
 	<!-- global -->
 	<LlmTermsOfServiceLink />
 
@@ -29,14 +30,14 @@
 			<!-- logo -->
 			<div class="flex-none">
 				<a class=" text-xl font-bold text-primary" href={resolve('/')}>
-					<img src={logoLg} alt="10x Privacy Logo" class="h-8 w-auto" />
+					<pre unselectable="on" class="text-[2px]">{LOGO}</pre>
 				</a>
 			</div>
 
 			<!-- desktop nav items  -->
 			<div class=" hidden flex-1 sm:block">
 				<ul class="flex space-x-6 px-6 [&_a]:font-semibold">
-					<li><Link href={resolve('/')}>Privacy News</Link></li>
+					<li><Link href={resolve('/privacy-news')}>Privacy News</Link></li>
 					<li><Link href={resolve('/awesome-privacy')}>Awesome Privacy</Link></li>
 					<li><Link href={resolve('/websites')}>Websites</Link></li>
 				</ul>
@@ -58,4 +59,6 @@
 
 	<!-- content -->
 	{@render children()}
+
+	<Footer class="mt-auto" />
 </div>
