@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Heading } from '$lib/components/headings';
 	import { Link, Text } from '$lib/components/text';
-	import websites from '$lib/data/wesbites.json';
+	import websites from '$lib/data/websites.json';
 </script>
 
 <main class="mx-auto max-w-3xl px-4 py-8">

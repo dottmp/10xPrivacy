@@ -1,15 +1,15 @@
 import { describe, expect, it } from 'vitest';
 
 import rssSourcesData from './rss-sources.json';
-import websitesData from './wesbites.json';
+import websitesData from './websites.json';
 
 import { isSafeUrl } from '$lib/utils/sanitize';
 
 // ---------------------------------------------------------------------------
-// wesbites.json
+// websites.json
 // ---------------------------------------------------------------------------
 
-describe('wesbites.json', () => {
+describe('websites.json', () => {
 	it('has a data array', () => {
 		expect(Array.isArray(websitesData.data)).toBe(true);
 	});
