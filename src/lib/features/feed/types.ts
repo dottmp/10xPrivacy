@@ -1,5 +1,3 @@
-import type Parser from 'rss-parser';
-
 //----------------------------------------------------------------------
 // raw rss output
 //----------------------------------------------------------------------
@@ -9,7 +7,22 @@ export type CustomItem = {
 	'content:encoded': string;
 };
 
-export type Output = Record<symbol, never> & Parser.Output<CustomItem>;
+export type FeedItem = CustomItem & {
+	title?: string;
+	link?: string;
+	guid?: string;
+	pubDate?: string;
+	isoDate?: string;
+	content?: string;
+	contentSnippet?: string;
+	summary?: string;
+	[key: string]: unknown;
+};
+
+export type Output = {
+	title?: string;
+	items: FeedItem[];
+};
 
 //----------------------------------------------------------------------
 // source
@@ -39,11 +52,11 @@ export type SourcesResponse = {
 // article
 //----------------------------------------------------------------------
 
-export type Article = Parser.Item & {
-	date?: Parser.Item['pubDate'] | Parser.Item['isoDate'];
+export type Article = FeedItem & {
+	date?: string;
 	thumbnailUrl?: string;
-	slug: Parser.Item['title'] | Parser.Item['guid'] | string;
-	description: Parser.Item['contentSnippet'] | Parser.Item['summary'] | string;
+	slug: string;
+	description: string | undefined;
 	source: Source;
 };
 

@@ -1,10 +1,11 @@
-import Parser from 'rss-parser';
+import { XMLParser } from 'fast-xml-parser';
 
 import type {
 	Article,
+	FeedItem,
+	Output,
 	Source,
 	ArticlesResponse,
-	CustomItem,
 	ParsedSource,
 	SourceSearchParam,
 	SourcesResponse
@@ -16,19 +17,107 @@ import { tryCatch } from '$lib/utils/try-catch';
 
 const rssSources = rssSourcesJSON.data as Source[];
 
+// ---------------------------------------------------------------------------
+// XML helpers
+// ---------------------------------------------------------------------------
+
+/** Extract a plain string from a fast-xml-parser value (may be string, object with _text, or number) */
+function _str(val: unknown): string | undefined {
+	if (val == null) return undefined;
+	if (typeof val === 'string') {
+		// strip CDATA wrappers emitted by stopNodes
+		const m = val.match(/^<!\[CDATA\[([\s\S]*?)]]>$/);
+		return m ? m[1] : val;
+	}
+	if (typeof val === 'object')
+		return ((val as Record<string, unknown>)._text as string) ?? undefined;
+	return String(val);
+}
+
+function _mediaContent(val: unknown): { $?: { url?: string } } {
+	if (!val || typeof val !== 'object') return { $: {} };
+	const attrs = (val as Record<string, unknown>).$ as Record<string, unknown> | undefined;
+	// fast-xml-parser keeps attribute names as-is when attributeNamePrefix is ''
+	return { $: { url: attrs?.url as string | undefined } };
+}
+
+function _atomLink(val: unknown): string | undefined {
+	if (!val) return undefined;
+	const links = Array.isArray(val) ? val : [val];
+	const pick =
+		links.find((l) => (l as Record<string, Record<string, unknown>>).$?.rel === 'alternate') ??
+		links[0];
+	return (pick as Record<string, Record<string, unknown>>).$?.href as string | undefined;
+}
+
 class RSS {
 	//----------------------------------------------------------------------
 	// private
 	//----------------------------------------------------------------------
 
 	/**
-	 * Parser instance for fetching and parsing RSS feeds. It is configured to extract custom fields 'media:content' and 'content:encoded' from feed items
+	 * Fetches and parses an RSS/Atom feed URL into our Output shape.
 	 */
-	private _parser = new Parser<Record<symbol, never>, CustomItem>({
-		customFields: {
-			item: ['media:content', 'content:encoded']
+	private async _parseURL(url: string): Promise<Output> {
+		const res = await fetch(url);
+		if (!res.ok) throw new Error(`HTTP ${res.status}`);
+		const xml = await res.text();
+
+		const parser = new XMLParser({
+			ignoreAttributes: false,
+			attributeNamePrefix: '',
+			attributesGroupName: '$',
+			textNodeName: '_text',
+			stopNodes: ['*.description', '*.summary', '*.content\\:encoded', '*.content'],
+			isArray: (name) => name === 'item' || name === 'entry'
+		});
+		const doc = parser.parse(xml);
+
+		// RSS 2.0
+		const channel = doc?.rss?.channel;
+		if (channel) {
+			const items: FeedItem[] = (channel.item ?? []).map((i: Record<string, unknown>) => ({
+				...i,
+				title: _str(i.title),
+				link: _str(i.link),
+				guid: _str(i.guid),
+				pubDate: _str(i.pubDate),
+				isoDate: _str(i.pubDate),
+				content: _str(i['content:encoded']) ?? _str(i.description),
+				contentSnippet: _str(i.description),
+				summary: _str(i.description),
+				'content:encoded': _str(i['content:encoded']) ?? '',
+				'media:content': _mediaContent(i['media:content'])
+			}));
+			return { title: _str(channel.title), items };
 		}
-	});
+
+		// Atom
+		const feed = doc?.feed;
+		if (feed) {
+			const items: FeedItem[] = (feed.entry ?? []).map((e: Record<string, unknown>) => {
+				const contentText = _str(e.content);
+				const summaryText = _str(e.summary);
+				const date = _str(e.published) ?? _str(e.updated);
+				return {
+					...e,
+					title: _str(e.title),
+					link: _atomLink(e.link),
+					guid: _str(e.id),
+					pubDate: date,
+					isoDate: date,
+					content: contentText ?? summaryText,
+					contentSnippet: summaryText,
+					summary: summaryText,
+					'content:encoded': contentText ?? '',
+					'media:content': { $: {} }
+				};
+			});
+			return { title: _str(feed.title), items };
+		}
+
+		throw new Error('Unrecognised feed format');
+	}
 
 	/**
 	 * Creates a URL-friendly slug from a given string by converting it to lowercase, removing non-alphanumeric characters (except for hyphens),
@@ -82,7 +171,7 @@ class RSS {
 
 		const parsedSources: ParsedSource[] = await Promise.all(
 			filteredSourceRegistry.map(async (source) => {
-				const { data: output, error } = await tryCatch(this._parser.parseURL(source.feedUrl));
+				const { data: output, error } = await tryCatch(this._parseURL(source.feedUrl));
 
 				if (error) {
 					throw new Error(`Failed to fetch source ${source.name}: ${error.message}`);
@@ -90,7 +179,7 @@ class RSS {
 
 				return {
 					source,
-					output
+					output: output as Output
 				};
 			})
 		);

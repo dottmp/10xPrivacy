@@ -9,21 +9,9 @@ import type { Output } from './types.ts';
 // Mocks
 // ---------------------------------------------------------------------------
 
-const { mockParseURL } = vi.hoisted(() => ({
-	mockParseURL: vi.fn()
-}));
-
 vi.mock('../../utils/sanitize.js', () => ({
 	sanitizeHtml: (html: string) => html
 }));
-
-vi.mock('rss-parser', () => {
-	return {
-		default: class MockParser {
-			parseURL = mockParseURL;
-		}
-	};
-});
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -31,12 +19,46 @@ vi.mock('rss-parser', () => {
 
 const [tutaSource, privacyGuidesSource] = rssSources.data;
 
-/** Minimal Output fixture for a source */
-function makeFeedOutput(items: Partial<Output['items'][number]>[] = []): Output {
-	return {
-		title: 'Test Feed',
-		items: items as Output['items']
-	} as Output;
+/** Build a minimal RSS 2.0 XML string from a list of item-like objects */
+function makeXml(items: Partial<Output['items'][number]>[]): string {
+	const itemsXml = items
+		.map((item) => {
+			const mediaUrl = item['media:content']?.$?.url;
+			return `<item>
+      ${item.title != null ? `<title>${item.title}</title>` : ''}
+      ${item.guid != null ? `<guid>${item.guid}</guid>` : ''}
+      ${item.pubDate != null ? `<pubDate>${item.pubDate}</pubDate>` : ''}
+      ${item.isoDate != null && item.pubDate == null ? `<pubDate>${item.isoDate}</pubDate>` : ''}
+      ${item.contentSnippet != null ? `<description>${item.contentSnippet}</description>` : ''}
+      ${item.summary != null && item.contentSnippet == null ? `<description>${item.summary}</description>` : ''}
+      ${item['content:encoded'] != null ? `<content:encoded><![CDATA[${item['content:encoded']}]]></content:encoded>` : ''}
+      ${item.content != null && item['content:encoded'] == null ? `<description>${item.content}</description>` : ''}
+      ${mediaUrl != null ? `<media:content url="${mediaUrl}"/>` : ''}
+    </item>`;
+		})
+		.join('\n');
+
+	return `<?xml version="1.0"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Test Feed</title>
+    ${itemsXml}
+  </channel>
+</rss>`;
+}
+
+/** Stub global fetch to return the given XML for every request */
+function stubFetch(xmlPerUrl: Map<string, string> | string) {
+	vi.stubGlobal(
+		'fetch',
+		vi.fn().mockImplementation((url: string) => {
+			const xml = typeof xmlPerUrl === 'string' ? xmlPerUrl : xmlPerUrl.get(url);
+			if (!xml) return Promise.reject(new Error(`Unexpected URL: ${url}`));
+			return Promise.resolve({ ok: true, text: () => Promise.resolve(xml) });
+		})
+	);
 }
 
 // ---------------------------------------------------------------------------
@@ -45,8 +67,7 @@ function makeFeedOutput(items: Partial<Output['items'][number]>[] = []): Output 
 
 describe('RSS', () => {
 	afterEach(() => {
-		vi.clearAllMocks();
-		mockParseURL.mockReset();
+		vi.restoreAllMocks();
 	});
 
 	// -----------------------------------------------------------------------
@@ -54,6 +75,10 @@ describe('RSS', () => {
 	// -----------------------------------------------------------------------
 
 	describe('getSources', () => {
+		beforeEach(() => {
+			stubFetch(makeXml([]));
+		});
+
 		it('returns all sources when source param is "all"', async () => {
 			const result = await rss.getSources({ source: 'all' });
 
@@ -90,10 +115,10 @@ describe('RSS', () => {
 		});
 
 		it('throws when the parser fails for a source', async () => {
-			mockParseURL.mockRejectedValue(new Error('Network error'));
+			vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false, status: 500 }));
 
 			await expect(rss.getSources({ source: 'tuta' })).rejects.toThrow(
-				'Failed to fetch source Tuta: Network error'
+				'Failed to fetch source Tuta'
 			);
 		});
 	});
@@ -105,10 +130,11 @@ describe('RSS', () => {
 	describe('getArticles', () => {
 		describe('basic response shape', () => {
 			beforeEach(() => {
-				mockParseURL.mockImplementation((url: string) => {
-					if (url === tutaSource.feedUrl) {
-						return Promise.resolve(
-							makeFeedOutput([
+				stubFetch(
+					new Map([
+						[
+							tutaSource.feedUrl,
+							makeXml([
 								{
 									title: 'Tuta Article One',
 									guid: 'tuta-1',
@@ -124,12 +150,10 @@ describe('RSS', () => {
 									'content:encoded': '<p>Tuta body two</p>'
 								}
 							])
-						);
-					}
-
-					if (url === privacyGuidesSource.feedUrl) {
-						return Promise.resolve(
-							makeFeedOutput([
+						],
+						[
+							privacyGuidesSource.feedUrl,
+							makeXml([
 								{
 									title: 'PG Article',
 									guid: 'pg-1',
@@ -138,11 +162,9 @@ describe('RSS', () => {
 									'content:encoded': '<p>PG body</p>'
 								}
 							])
-						);
-					}
-
-					return Promise.reject(new Error('Unknown URL'));
-				});
+						]
+					])
+				);
 			});
 
 			it('attaches the correct source object to each article', async () => {
@@ -156,8 +178,8 @@ describe('RSS', () => {
 
 		describe('article field mapping', () => {
 			it('uses contentSnippet as description when available', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
+				stubFetch(
+					makeXml([
 						{ title: 'Test', guid: 'g1', contentSnippet: 'The snippet', 'content:encoded': '' }
 					])
 				);
@@ -167,10 +189,8 @@ describe('RSS', () => {
 			});
 
 			it('falls back to summary when contentSnippet is missing', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
-						{ title: 'Test', guid: 'g1', summary: 'The summary', 'content:encoded': '' }
-					])
+				stubFetch(
+					makeXml([{ title: 'Test', guid: 'g1', summary: 'The summary', 'content:encoded': '' }])
 				);
 
 				const { data } = await rss.getArticles({ source: 'tuta' });
@@ -179,9 +199,7 @@ describe('RSS', () => {
 			});
 
 			it('uses content:encoded as content when available', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([{ title: 'Test', guid: 'g1', 'content:encoded': '<b>encoded</b>' }])
-				);
+				stubFetch(makeXml([{ title: 'Test', guid: 'g1', 'content:encoded': '<b>encoded</b>' }]));
 
 				const { data } = await rss.getArticles({ source: 'tuta' });
 
@@ -189,9 +207,7 @@ describe('RSS', () => {
 			});
 
 			it('falls back to item.content when content:encoded is absent', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([{ title: 'Test', guid: 'g1', content: '<p>plain</p>' }])
-				);
+				stubFetch(makeXml([{ title: 'Test', guid: 'g1', content: '<p>plain</p>' }]));
 
 				const { data } = await rss.getArticles({ source: 'tuta' });
 
@@ -199,8 +215,8 @@ describe('RSS', () => {
 			});
 
 			it('extracts thumbnailUrl from media:content.$url', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
+				stubFetch(
+					makeXml([
 						{
 							title: 'Test',
 							guid: 'g1',
@@ -215,9 +231,7 @@ describe('RSS', () => {
 			});
 
 			it('sets thumbnailUrl to undefined when media:content is absent', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([{ title: 'Test', guid: 'g1', 'content:encoded': '' }])
-				);
+				stubFetch(makeXml([{ title: 'Test', guid: 'g1', 'content:encoded': '' }]));
 
 				const { data } = await rss.getArticles({ source: 'tuta' });
 
@@ -225,8 +239,8 @@ describe('RSS', () => {
 			});
 
 			it('uses pubDate as date when available', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
+				stubFetch(
+					makeXml([
 						{ title: 'Test', guid: 'g1', pubDate: '2024-01-01T00:00:00Z', 'content:encoded': '' }
 					])
 				);
@@ -237,8 +251,8 @@ describe('RSS', () => {
 			});
 
 			it('falls back to isoDate when pubDate is absent', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
+				stubFetch(
+					makeXml([
 						{
 							title: 'Test',
 							guid: 'g1',
@@ -254,9 +268,7 @@ describe('RSS', () => {
 			});
 
 			it('generates a slug from the article title', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([{ title: 'Hello World Article', guid: 'g1', 'content:encoded': '' }])
-				);
+				stubFetch(makeXml([{ title: 'Hello World Article', guid: 'g1', 'content:encoded': '' }]));
 
 				const { data } = await rss.getArticles({ source: 'tuta' });
 
@@ -267,8 +279,8 @@ describe('RSS', () => {
 
 		describe('sorting edge cases', () => {
 			it('places articles without a pubDate at the end', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
+				stubFetch(
+					makeXml([
 						{ title: 'No Date', guid: 'no-date', 'content:encoded': '' },
 						{
 							title: 'Has Date',
@@ -288,10 +300,10 @@ describe('RSS', () => {
 
 		describe('error handling', () => {
 			it('throws when getSources fails', async () => {
-				mockParseURL.mockRejectedValue(new Error('Feed unavailable'));
+				vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false, status: 500 }));
 
 				await expect(rss.getArticles({ source: 'tuta' })).rejects.toThrow(
-					'Failed to fetch source Tuta: Feed unavailable'
+					'Failed to fetch source Tuta'
 				);
 			});
 		});
