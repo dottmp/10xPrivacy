@@ -2,7 +2,6 @@
 	import { resolve } from '$app/paths';
 	import favicon from '$lib/assets/favicon.png';
 	import Footer from '$lib/components/footer.svelte';
-	import LlmTermsOfServiceLink from '$lib/components/llm-terms-of-service-link.svelte';
 	import { Link } from '$lib/components/text';
 	import ThemeChange from '$lib/components/theme-change.svelte';
 	import { LOGO } from '$lib/configs';
@@ -22,7 +21,6 @@
 
 <div class="flex min-h-screen flex-col bg-base-200 font-mono">
 	<!-- global -->
-	<LlmTermsOfServiceLink />
 
 	<!-- header -->
 	<nav class="navbar flex-col justify-center gap-y-2 bg-base-100 px-4 shadow-sm">
