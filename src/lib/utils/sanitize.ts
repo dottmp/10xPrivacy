@@ -9,3 +9,16 @@ export function sanitizeHtml(html: string): string {
 		USE_PROFILES: { html: true }
 	});
 }
+
+/**
+ * Checks if a URL is safe (i.e., uses http or https protocol).
+ */
+export function isSafeUrl(url: string | undefined): url is string {
+	if (!url) return false;
+	try {
+		const parsed = new URL(url);
+		return parsed.protocol === 'https:' || parsed.protocol === 'http:';
+	} catch {
+		return false;
+	}
+}
