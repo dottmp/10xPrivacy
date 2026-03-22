@@ -33,8 +33,8 @@ class RSS {
 	private _slugify(str: string): string {
 		return str
 			.toLowerCase()
-			.replace(/[^a-z0-9\source-]/g, '')
-			.replace(/\source+/g, '-')
+			.replace(/[^a-z0-9\s-]/g, '')
+			.replace(/\s+/g, '-')
 			.replace(/-+/g, '-')
 			.slice(0, 80);
 	}
