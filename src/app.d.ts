@@ -1,5 +1,3 @@
-declare const __COMMIT_HASH__: string;
-
 declare global {
 	//----------------------------------------------------------------------
 	// svelte internals
