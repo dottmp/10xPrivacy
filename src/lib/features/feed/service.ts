@@ -4,19 +4,17 @@ import type {
 	Article,
 	FeedItem,
 	Output,
-	Source,
 	ArticlesResponse,
 	ParsedSource,
 	SourceSearchParam,
-	SourcesResponse
+	SourcesResponse,
+	Source
 } from './types';
 
-import rssSourcesJSON from '$lib/data/rss-sources.json';
 import { sanitizeHtml } from '$lib/utils/sanitize';
 import { tryCatch } from '$lib/utils/try-catch';
 
-const rssSources = rssSourcesJSON.data as Source[];
-
+const rssSources = [] as Source[];
 // ---------------------------------------------------------------------------
 // XML helpers
 // ---------------------------------------------------------------------------

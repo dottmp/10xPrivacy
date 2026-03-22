@@ -3,11 +3,10 @@
 
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import rssSources from '$lib/data/rss-sources.json';
 	import type { ArticlesResponse, SourceSearchParam } from '$lib/features/feed/types';
 	import { cn } from '$lib/utils/cn';
 
-	const filters = [{ id: 'all', name: 'All' }, ...rssSources.data];
+	const filters = [{ id: 'all', name: 'All' }];
 
 	let activeFilter = $state(page.url.searchParams.get('source') as SourceSearchParam);
 
