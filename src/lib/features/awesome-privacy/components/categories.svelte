@@ -9,6 +9,7 @@
 	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import type { Category } from '$lib/features/awesome-privacy/types';
 	import { cn } from '$lib/utils/cn';
+
 	type CategoriesProps = HTMLAttributes<HTMLDivElement> & {
 		categories: Category[];
 	};
@@ -18,48 +19,36 @@
 
 <!-- List -->
 <div class={cn('flex flex-col items-center', klass)} {...props}>
-	<ul class="grid w-full gap-2 sm:grid-cols-2">
+	<div class="w-full space-y-10">
 		{#each categories as category (category.name)}
 			{@const slug = awesomePrivacy.slugify(category.name)}
-			<li class="group col-span-1 rounded-lg bg-base-100 px-4 py-3">
-				<!-- Icon + title -->
-				<div class="mb-3 flex items-center gap-2">
-					<CategoryIcon category={category.name} class="text-xl text-primary" />
-					<a href={resolve(`/awesome-privacy/${slug}`)}>
-						<Subheading size="sm" class={cn(linkVariants.base, linkVariants.variant.foreground)}>
-							{category.name}
-						</Subheading>
-					</a>
-				</div>
+			<section>
+				<a href={resolve(`/awesome-privacy/${slug}`)} class=" mb-3 flex items-center gap-2">
+					<CategoryIcon category={category.name} class="text-lg text-primary" />
+					<Subheading class={cn(linkVariants.base, linkVariants.variant.foreground)}>
+						{category.name}
+					</Subheading>
+				</a>
 
-				<!-- Subcategory list -->
-				<ul class="space-y-1">
-					{#each category.sections.slice(0, 5) as section (section.name)}
-						{@const subSlug = awesomePrivacy.slugify(section.name)}
+				<ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
+					{#each category.sections as section (section.name)}
+						{@const sectionSlug = awesomePrivacy.slugify(section.name)}
 						<li>
-							<Link href={resolve(`/awesome-privacy/${slug}/${subSlug}`)} class="font-semibold">
+							<Link
+								href={resolve(`/awesome-privacy/${slug}/${sectionSlug}`)}
+								class="block rounded-lg bg-base-100 px-4 py-3 font-semibold"
+							>
 								{section.name}
 							</Link>
 						</li>
 					{/each}
-					{#if category.sections.length > 5}
-						<li>
-							<Link
-								variant="primary"
-								href={resolve(`/awesome-privacy/${slug}`)}
-								class="font-semibold"
-							>
-								+ {category.sections.length - 5} more
-							</Link>
-						</li>
-					{/if}
 				</ul>
-			</li>
+			</section>
 		{/each}
-	</ul>
+	</div>
 
-	<!-- "Show everything" CTA card -->
-	<a href={resolve('/awesome-privacy/all')} class="btn mt-6 w-full btn-primary sm:w-fit">
-		Show all categories
+	<!-- Back -->
+	<a href={resolve(`/awesome-privacy`)} class="btn mt-4 w-full sm:w-fit">
+		<i class="nf nf-fa-arrow_left mr-1"></i> Back
 	</a>
 </div>

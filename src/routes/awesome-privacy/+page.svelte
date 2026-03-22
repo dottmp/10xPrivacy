@@ -1,17 +1,19 @@
 <script lang="ts">
 	import { Heading } from '$lib/components/headings';
 	import { Text } from '$lib/components/text';
-	import Categories from '$lib/features/awesome-privacy/components/categories.svelte';
+	import FeaturedCategories from '$lib/features/awesome-privacy/components/featured-categories.svelte';
 
 	let { data } = $props();
 </script>
 
-<main class="mx-auto max-w-6xl px-4 py-10">
+<main class="mx-auto max-w-6xl px-4 py-8">
 	<header class="mb-8">
-		<Heading size="display">Awesome Privacy</Heading>
-		<Text>A curated guide to privacy-respecting software and services.</Text>
+		<Heading size="display">Privacy News</Heading>
+		<Text>
+			RSS feed aggregator for privacy news from various sources. Click on an article to read more.</Text
+		>
 	</header>
 
 	<!-- Bento Grid -->
-	<Categories categories={data.categories} />
+	<FeaturedCategories categories={data.categories} />
 </main>

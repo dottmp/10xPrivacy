@@ -5,12 +5,10 @@
 	logs: false;
 
 	themes:
-		nord --default,
-		dark --prefersdark,
+		catppuccin --default --prefersdark,
 		vscode,
 		andromeda,
 		ayudark,
-		catppuccin,
 		everforest,
 		flexoki,
 		githubdark,

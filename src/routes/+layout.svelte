@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { Link } from '$lib/components/text';
 	import '$lib/styles/app.css';
 
 	let { children } = $props();
@@ -15,17 +16,17 @@
 
 			<!-- desktop nav items  -->
 			<div class=" hidden flex-1 sm:block">
-				<ul class=" menu-horizontal px-1 sm:px-3 [&_a]:btn [&_a]:btn-link">
-					<li><a href={resolve('/')}>Privacy News</a></li>
-					<li><a href={resolve('/awesome-privacy')}>Awesome privacy</a></li>
-					<li><a href={resolve('/about')}>About</a></li>
+				<ul class="flex space-x-6 px-6 [&_a]:font-semibold">
+					<li><Link href={resolve('/')}>Privacy News</Link></li>
+					<li><Link href={resolve('/awesome-privacy')}>Awesome privacy</Link></li>
+					<li><Link href={resolve('/about')}>About</Link></li>
 				</ul>
 			</div>
 
 			<!-- theme toggle -->
 			<div class="dropdown dropdown-end ml-auto">
 				<div tabindex="0" role="button" class="btn gap-1 btn-ghost btn-sm">
-					<i class="nf nf-fa-paint_brush"></i>
+					<i class="nf nf-md-theme_light_dark"></i>
 					<svg
 						width="10px"
 						height="10px"
@@ -40,7 +41,7 @@
 					tabindex="-1"
 					class="dropdown-content z-50 mt-1 max-h-96 w-40 overflow-y-auto rounded-box bg-base-300 p-2 shadow-2xl"
 				>
-					{#each ['nord', 'dark', 'vscode', 'andromeda', 'ayudark', 'catppuccin', 'everforest', 'flexoki', 'githubdark', 'githublight', 'gruvbox', 'kanagawa', 'monokai', 'nightfox', 'nightowl', 'onedarkpro', 'rosepine', 'solarized', 'tokyonight'] as theme (theme)}
+					{#each ['vscode', 'andromeda', 'ayudark', 'catppuccin', 'everforest', 'flexoki', 'githubdark', 'githublight', 'gruvbox', 'kanagawa', 'monokai', 'nightfox', 'nightowl', 'onedarkpro', 'rosepine', 'solarized', 'tokyonight'] as theme (theme)}
 						<li>
 							<input
 								type="radio"
@@ -57,10 +58,10 @@
 
 		<!-- mobile nav items  -->
 		<div class=" w-full flex-1 sm:hidden">
-			<ul class=" menu-horizontal space-x-4 [&_a]:btn [&_a]:px-0 [&_a]:btn-link">
-				<li><a href={resolve('/')}>Privacy News</a></li>
-				<li><a href={resolve('/awesome-privacy')}>Awesome privacy</a></li>
-				<li><a href={resolve('/about')}>About</a></li>
+			<ul class="flex space-x-6 [&_a]:font-semibold">
+				<li><Link href={resolve('/')}>Privacy News</Link></li>
+				<li><Link href={resolve('/awesome-privacy')}>Awesome privacy</Link></li>
+				<li><Link href={resolve('/about')}>About</Link></li>
 			</ul>
 		</div>
 	</nav>

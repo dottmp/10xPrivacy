@@ -7,7 +7,8 @@
 		base: 'text-primary',
 		size: {
 			display: 'text-3xl font-bold',
-			default: 'sm:text-xl text-lg font-semibold'
+			lg: 'text-2xl font-semibold',
+			default: 'sm:text-xl text-2xl font-semibold'
 		}
 	} as const;
 
