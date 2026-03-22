@@ -5,7 +5,8 @@
 
 	import { resolve } from '$app/paths';
 	import Subheading from '$lib/components/headings/subheading.svelte';
-	import Link, { linkVariants } from '$lib/components/text/link.svelte';
+	import Link from '$lib/components/text/link.svelte';
+	import { linkVariants } from '$lib/components/text/link';
 	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import type { Category } from '$lib/features/awesome-privacy/types';
 	import { cn } from '$lib/utils/cn';
