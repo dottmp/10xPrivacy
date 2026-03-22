@@ -16,7 +16,7 @@
 
 <footer class={cn('w-full p-4 text-center', klass)} {...props}>
 	<Text>
-		© {copyrightYear} dottmp | Commit: {__COMMIT_HASH__} |<Link
+		© {copyrightYear} dottmp | Commit: |<Link
 			class="ml-2"
 			href="https://github.com/dottmp/10xprivacy"
 			external
