@@ -20,21 +20,21 @@
 
 <!-- List -->
 <div {...props}>
-	<header class="mb-4">
+	<header class="mb-6 space-y-4">
 		<Heading size="display">{section.name}</Heading>
-	</header>
 
-	<!-- Alternatives to -->
-	{#if section.alternativeTo && section.alternativeTo.length > 0}
-		<Text class="mb-6">
-			Privacy-respecting alternatives to:
-			{#each section.alternativeTo as alt, i (alt)}
-				<span class="text-base-content/70">{alt}</span>{#if i < section.alternativeTo.length - 1}
-					<span class="mr-0.5">,</span>
-				{/if}
-			{/each}
-		</Text>
-	{/if}
+		<!-- Alternatives to -->
+		{#if section.alternativeTo && section.alternativeTo.length > 0}
+			<Text>
+				Privacy-respecting alternatives to:
+				{#each section.alternativeTo as alt, i (alt)}
+					<span class="text-base-content/70">{alt}</span>{#if i < section.alternativeTo.length - 1}
+						<span class="mr-0.5">,</span>
+					{/if}
+				{/each}
+			</Text>
+		{/if}
+	</header>
 
 	<!-- Intro text -->
 	{#if section.intro}
@@ -52,7 +52,7 @@
 	<!-- Word of warning -->
 	{#if section.wordOfWarning}
 		<div role="alert" class="mb-8 alert alert-soft alert-warning **:text-warning">
-			<i class="nf nf-fa-exclamation_triangle mt-2 mb-auto shrink-0"></i>
+			<i class="nf nf-fa-exclamation_triangle mt-1 mb-auto shrink-0"></i>
 			<span class="prose prose-sm max-w-none">
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				{@html markdownToHtml(section.wordOfWarning)}

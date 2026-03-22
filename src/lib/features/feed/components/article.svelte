@@ -62,7 +62,7 @@
 				<i class="nf nf-cod-link_external ml-1"></i>
 			</Link>
 		{:else}
-			<Text>Original article link unavailable.</Text>
+			<Text>Original article link is unavailable.</Text>
 		{/if}
 	</div>
 </article>

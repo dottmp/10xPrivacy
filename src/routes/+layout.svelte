@@ -27,7 +27,7 @@
 			<div class=" hidden flex-1 sm:block">
 				<ul class="flex space-x-6 px-6 [&_a]:font-semibold">
 					<li><Link href={resolve('/')}>Privacy News</Link></li>
-					<li><Link href={resolve('/awesome-privacy')}>Awesome privacy</Link></li>
+					<li><Link href={resolve('/awesome-privacy')}>Awesome Privacy</Link></li>
 					<li><Link href={resolve('/websites')}>Websites</Link></li>
 				</ul>
 			</div>
