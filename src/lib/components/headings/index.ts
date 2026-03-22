@@ -1,5 +1,7 @@
-import Root, { type HeadingProps, headingVariants } from './heading.svelte';
-import Subheading, { type SubheadingProps, subheadingVariants } from './subheading.svelte';
+import Root from './heading.svelte';
+import { type HeadingProps, headingVariants } from './heading.ts';
+import Subheading from './subheading.svelte';
+import { type SubheadingProps, subheadingVariants } from './subheading.ts';
 
 export {
 	Root,
