@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import LlmTermsOfServiceLink from '$lib/components/llm-terms-of-service-link.svelte';
 	import { Link } from '$lib/components/text';
 	import '$lib/styles/app.css';
 
@@ -7,6 +8,10 @@
 </script>
 
 <div class="min-h-screen bg-base-200 font-mono">
+	<!-- global -->
+	<LlmTermsOfServiceLink />
+
+	<!-- header -->
 	<nav class="navbar flex-col justify-center gap-y-2 bg-base-100 px-4 shadow-sm">
 		<div class="flex w-full items-center">
 			<!-- logo -->
@@ -69,5 +74,6 @@
 		</div>
 	</nav>
 
+	<!-- content -->
 	{@render children()}
 </div>
