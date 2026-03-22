@@ -4,7 +4,7 @@ import rawYaml from '../../data/awesome-privacy.yml?raw';
 
 import type { AwesomePrivacyData, Category, Section, Service } from './types';
 
-class AwesomePrivacy {
+export class AwesomePrivacy {
 	readonly featuredCatgories = [
 		'Essentials',
 		'Communication',
