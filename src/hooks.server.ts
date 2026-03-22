@@ -25,10 +25,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 		[
 			"default-src 'self'",
 			"script-src 'self' 'unsafe-inline'",
-			"style-src 'self' 'unsafe-inline'",
+			"style-src 'self' 'unsafe-inline' https://www.nerdfonts.com",
+			"font-src 'self' https://www.nerdfonts.com",
 			"img-src 'self' data: https:",
 			"connect-src 'self'",
-			"font-src 'self' https:",
 			"object-src 'none'",
 			"base-uri 'self'",
 			"form-action 'self'",
