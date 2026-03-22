@@ -15,7 +15,8 @@
 		"format": "prettier --write .",
 		"fix": "bun run format && bun run lint:fix",
 		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run",
+		"test:watch": "vitest --watch",
+		"test": "bun run test:unit",
 		"sync:awesome-privacy": "./fetch-awesome-privacy.sh"
 	},
 	"devDependencies": {
