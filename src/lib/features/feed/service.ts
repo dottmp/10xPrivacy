@@ -2,6 +2,7 @@ import Parser from 'rss-parser';
 
 import type {
 	Article,
+	Source,
 	ArticlesResponse,
 	CustomItem,
 	ParsedSource,
@@ -9,9 +10,11 @@ import type {
 	SourcesResponse
 } from './types';
 
-import { SOURCE_REGISTRY } from '$lib/configs';
+import rssSourcesJSON from '$lib/data/rss-sources.json';
 import { sanitizeHtml } from '$lib/utils/sanitize';
 import { tryCatch } from '$lib/utils/try-catch';
+
+const rssSources = rssSourcesJSON.data as Source[];
 
 class RSS {
 	//----------------------------------------------------------------------
@@ -26,6 +29,7 @@ class RSS {
 			item: ['media:content', 'content:encoded']
 		}
 	});
+
 	/**
 	 * Creates a URL-friendly slug from a given string by converting it to lowercase, removing non-alphanumeric characters (except for hyphens),
 	 * replacing sequences of whitespace with a single hyphen, collapsing multiple hyphens into one, and truncating the result to a maximum length of 80 characters.
@@ -38,6 +42,7 @@ class RSS {
 			.replace(/-+/g, '-')
 			.slice(0, 80);
 	}
+
 	/**
 	 * Sorts feed items by their publication date, with the most recent items appearing first.
 	 * If an item does not have a publication date, it is treated as having a date of 0 (the Unix epoch), which will place it at the end of the sorted list.
@@ -49,11 +54,12 @@ class RSS {
 			return dateB - dateA;
 		});
 	}
+
 	/**
-	 * Filters the SOURCE_REGISTRY based on the provided search parameter.
+	 * Filters the rssSources based on the provided search parameter.
 	 */
 	private _filterSourceRegistry(sourceSearchParam: SourceSearchParam) {
-		return SOURCE_REGISTRY.filter(
+		return rssSources.filter(
 			(source) =>
 				sourceSearchParam === 'all' || sourceSearchParam === null || source.id === sourceSearchParam
 		);
@@ -64,7 +70,7 @@ class RSS {
 	//----------------------------------------------------------------------
 
 	/**
-	 * Gets sources defined in the SOURCE_REGISTRY, filtered by the searchParams, and parses their feed URLs.
+	 * Gets sources defined in the rssSources, filtered by the searchParams, and parses their feed URLs.
 	 * @param {Object} searchParams - The parameters to filter the sources.
 	 * @example
 	 * const sources = await rss.getSources({ source: 'tuta' });
@@ -96,7 +102,7 @@ class RSS {
 	}
 
 	/**
-	 * Gets articles from the sources defined in the SOURCE_REGISTRY, filtered by the searchParams.
+	 * Gets articles from the sources defined in the rssSources, filtered by the searchParams.
 	 * @param {Object} searchParams - The parameters to filter the sources.
 	 * @example
 	 * const articles = await rss.getArticles({ source: 'tuta' });

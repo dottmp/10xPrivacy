@@ -1,3 +1,8 @@
+/*
+ * formatDate - Formats a date string into a nice format
+ *
+ * today, yesterday, 3d ago, or Jan 1, 2020
+ */
 export function formatDate(dateStr: string | null) {
 	if (!dateStr) return '';
 

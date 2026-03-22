@@ -3,11 +3,11 @@
 
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { SOURCE_REGISTRY } from '$lib/configs';
+	import rssSources from '$lib/data/rss-sources.json';
 	import type { ArticlesResponse, SourceSearchParam } from '$lib/features/feed/types';
 	import { cn } from '$lib/utils/cn';
 
-	const FILTERS = Object.freeze([{ id: 'all', name: 'All' }, ...SOURCE_REGISTRY] as const);
+	const filters = [{ id: 'all', name: 'All' }, ...rssSources.data];
 
 	let activeFilter = $state(page.url.searchParams.get('source') as SourceSearchParam);
 
@@ -19,7 +19,7 @@
 </script>
 
 <div role="tablist" class={cn('tabs-border mb-6 tabs ', klass)} {...props}>
-	{#each FILTERS as filter (filter.id)}
+	{#each filters as filter (filter.id)}
 		{@const isActive = activeFilter === filter.id || (filter.id === 'all' && activeFilter === null)}
 		<a
 			role="tab"
@@ -28,7 +28,7 @@
 			)}
 			class={cn('tab', isActive && 'tab-active text-primary')}
 			onclick={() => {
-				activeFilter = filter.id;
+				activeFilter = filter.id as SourceSearchParam;
 			}}
 		>
 			{filter.name}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Heading } from '$lib/components/headings/index.js';
-	import { Text } from '$lib/components/text';
+	import { Link, Text } from '$lib/components/text';
 	import Feed from '$lib/features/feed/components/feed.svelte';
 
 	let { data } = $props();
@@ -8,8 +8,16 @@
 
 <main class="mx-auto max-w-3xl px-4 py-8">
 	<header class="mb-8">
-		<Heading size="display">Awesome Privacy</Heading>
-		<Text>A curated guide to privacy-respecting software and services.</Text>
+		<Heading size="display" class="mb-4">Privacy News</Heading>
+		<Text>
+			RSS feed aggregator for privacy news from <Link
+				variant="primary"
+				href="https://tuta.com/blog"
+				external>tuta.com</Link
+			>, <Link variant="primary" href="https://www.privacyguides.org/blog/" external
+				>privacyguides.org</Link
+			>, and <Link variant="primary" href="https://techlore.tech/" external>techlore.tech</Link>.
+		</Text>
 	</header>
 
 	<Feed articlesResponse={data.articlesResponse} />
