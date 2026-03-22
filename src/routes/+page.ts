@@ -5,6 +5,8 @@ import type { ArticlesResponse, SourceSearchParam } from '$lib/features/feed/typ
 import { tryCatch } from '$lib/utils/try-catch';
 import type { PageLoad } from './$types';
 
+export const ssr = false;
+
 export const load: PageLoad = async () => {
 	return {
 		articlesResponse: {
