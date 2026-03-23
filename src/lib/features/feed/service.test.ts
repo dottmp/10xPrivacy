@@ -3,40 +3,74 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import rssSources from '../../data/rss-sources.json';
 
 import { rss } from './service.ts';
-import type { Output } from './types.ts';
 
 // ---------------------------------------------------------------------------
 // Mocks
 // ---------------------------------------------------------------------------
 
-const { mockParseURL } = vi.hoisted(() => ({
-	mockParseURL: vi.fn()
-}));
-
 vi.mock('../../utils/sanitize.js', () => ({
 	sanitizeHtml: (html: string) => html
 }));
 
-vi.mock('rss-parser', () => {
-	return {
-		default: class MockParser {
-			parseURL = mockParseURL;
-		}
-	};
-});
+const [tutaSource, privacyGuidesSource] = rssSources.data;
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
-const [tutaSource, privacyGuidesSource] = rssSources.data;
+function makeRssFeed(
+	items: {
+		title?: string;
+		guid?: string;
+		pubDate?: string;
+		isoDate?: string;
+		description?: string;
+		'content:encoded'?: string;
+		'media:content'?: string;
+	}[]
+): string {
+	const itemsXml = items
+		.map(
+			(i) => `
+    <item>
+      ${i.title ? `<title>${i.title}</title>` : ''}
+      ${i.guid ? `<guid>${i.guid}</guid>` : ''}
+      ${i.pubDate ? `<pubDate>${i.pubDate}</pubDate>` : ''}
+      ${i.description ? `<description>${i.description}</description>` : ''}
+      ${i['content:encoded'] ? `<content:encoded><![CDATA[${i['content:encoded']}]]></content:encoded>` : ''}
+      ${i['media:content'] ? `<media:content url="${i['media:content']}" />` : ''}
+    </item>`
+		)
+		.join('');
 
-/** Minimal Output fixture for a source */
-function makeFeedOutput(items: Partial<Output['items'][number]>[] = []): Output {
-	return {
-		title: 'Test Feed',
-		items: items as Output['items']
-	} as Output;
+	return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Test Feed</title>
+    ${itemsXml}
+  </channel>
+</rss>`;
+}
+
+function mockFetchWith(urlMap: Record<string, string>) {
+	vi.stubGlobal(
+		'fetch',
+		vi.fn((url: string) => {
+			const body = urlMap[url];
+			if (!body) return Promise.reject(new Error(`Unknown URL: ${url}`));
+			return Promise.resolve({
+				ok: true,
+				text: () => Promise.resolve(body)
+			});
+		})
+	);
+}
+
+function mockFetchError() {
+	vi.stubGlobal(
+		'fetch',
+		vi.fn(() => Promise.reject(new Error('Network error')))
+	);
 }
 
 // ---------------------------------------------------------------------------
@@ -46,7 +80,7 @@ function makeFeedOutput(items: Partial<Output['items'][number]>[] = []): Output 
 describe('RSS', () => {
 	afterEach(() => {
 		vi.clearAllMocks();
-		mockParseURL.mockReset();
+		vi.unstubAllGlobals();
 	});
 
 	// -----------------------------------------------------------------------
@@ -54,6 +88,11 @@ describe('RSS', () => {
 	// -----------------------------------------------------------------------
 
 	describe('getSources', () => {
+		beforeEach(() => {
+			const allFeeds = Object.fromEntries(rssSources.data.map((s) => [s.feedUrl, makeRssFeed([])]));
+			mockFetchWith(allFeeds);
+		});
+
 		it('returns all sources when source param is "all"', async () => {
 			const result = await rss.getSources({ source: 'all' });
 
@@ -80,17 +119,17 @@ describe('RSS', () => {
 			expect(result.count).toBe(3);
 		});
 
-		it('each parsed source contains a source and output property', async () => {
+		it('each parsed source contains a source and feed property', async () => {
 			const result = await rss.getSources({ source: 'all' });
 
 			result.data.forEach((parsedSource) => {
 				expect(parsedSource).toHaveProperty('source');
-				expect(parsedSource).toHaveProperty('output');
+				expect(parsedSource).toHaveProperty('feed');
 			});
 		});
 
-		it('throws when the parser fails for a source', async () => {
-			mockParseURL.mockRejectedValue(new Error('Network error'));
+		it('throws when the fetch fails for a source', async () => {
+			mockFetchError();
 
 			await expect(rss.getSources({ source: 'tuta' })).rejects.toThrow(
 				'Failed to fetch source Tuta: Network error'
@@ -105,43 +144,32 @@ describe('RSS', () => {
 	describe('getArticles', () => {
 		describe('basic response shape', () => {
 			beforeEach(() => {
-				mockParseURL.mockImplementation((url: string) => {
-					if (url === tutaSource.feedUrl) {
-						return Promise.resolve(
-							makeFeedOutput([
-								{
-									title: 'Tuta Article One',
-									guid: 'tuta-1',
-									pubDate: '2024-03-15T10:00:00Z',
-									contentSnippet: 'Tuta snippet one',
-									'content:encoded': '<p>Tuta body one</p>'
-								},
-								{
-									title: 'Tuta Article Two',
-									guid: 'tuta-3',
-									pubDate: '2024-03-10T10:00:00Z',
-									contentSnippet: 'Tuta snippet two',
-									'content:encoded': '<p>Tuta body two</p>'
-								}
-							])
-						);
-					}
-
-					if (url === privacyGuidesSource.feedUrl) {
-						return Promise.resolve(
-							makeFeedOutput([
-								{
-									title: 'PG Article',
-									guid: 'pg-1',
-									pubDate: '2024-03-20T10:00:00Z',
-									contentSnippet: 'PG snippet',
-									'content:encoded': '<p>PG body</p>'
-								}
-							])
-						);
-					}
-
-					return Promise.reject(new Error('Unknown URL'));
+				mockFetchWith({
+					[tutaSource.feedUrl]: makeRssFeed([
+						{
+							title: 'Tuta Article One',
+							guid: 'tuta-1',
+							pubDate: 'Fri, 15 Mar 2024 10:00:00 +0000',
+							'content:encoded': '<p>Tuta body one</p>',
+							description: 'Tuta snippet one'
+						},
+						{
+							title: 'Tuta Article Two',
+							guid: 'tuta-2',
+							pubDate: 'Sun, 10 Mar 2024 10:00:00 +0000',
+							'content:encoded': '<p>Tuta body two</p>',
+							description: 'Tuta snippet two'
+						}
+					]),
+					[privacyGuidesSource.feedUrl]: makeRssFeed([
+						{
+							title: 'PG Article',
+							guid: 'pg-1',
+							pubDate: 'Wed, 20 Mar 2024 10:00:00 +0000',
+							'content:encoded': '<p>PG body</p>',
+							description: 'PG snippet'
+						}
+					])
 				});
 			});
 
@@ -155,69 +183,51 @@ describe('RSS', () => {
 		});
 
 		describe('article field mapping', () => {
-			it('uses contentSnippet as description when available', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
-						{ title: 'Test', guid: 'g1', contentSnippet: 'The snippet', 'content:encoded': '' }
+			it('uses description as contentSnippet (stripped HTML) when available', async () => {
+				mockFetchWith({
+					[tutaSource.feedUrl]: makeRssFeed([
+						{ title: 'Test', guid: 'g1', description: 'The snippet', 'content:encoded': '' }
 					])
-				);
+				});
+
 				const { data } = await rss.getArticles({ source: 'tuta' });
 
 				expect(data[0].description).toBe('The snippet');
 			});
 
-			it('falls back to summary when contentSnippet is missing', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
-						{ title: 'Test', guid: 'g1', summary: 'The summary', 'content:encoded': '' }
-					])
-				);
-
-				const { data } = await rss.getArticles({ source: 'tuta' });
-
-				expect(data[0].description).toBe('The summary');
-			});
-
 			it('uses content:encoded as content when available', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([{ title: 'Test', guid: 'g1', 'content:encoded': '<b>encoded</b>' }])
-				);
+				mockFetchWith({
+					[tutaSource.feedUrl]: makeRssFeed([
+						{ title: 'Test', guid: 'g1', 'content:encoded': '<b>encoded</b>' }
+					])
+				});
 
 				const { data } = await rss.getArticles({ source: 'tuta' });
 
 				expect(data[0].content).toBe('<b>encoded</b>');
 			});
 
-			it('falls back to item.content when content:encoded is absent', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([{ title: 'Test', guid: 'g1', content: '<p>plain</p>' }])
-				);
-
-				const { data } = await rss.getArticles({ source: 'tuta' });
-
-				expect(data[0].content).toBe('<p>plain</p>');
-			});
-
-			it('extracts thumbnailUrl from media:content.$url', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
+			it('extracts thumbnailUrl from media:content url attribute', async () => {
+				mockFetchWith({
+					[tutaSource.feedUrl]: makeRssFeed([
 						{
 							title: 'Test',
 							guid: 'g1',
-							'media:content': { $: { url: 'https://example.com/thumb.jpg' } },
+							'media:content': 'https://example.com/thumb.jpg',
 							'content:encoded': ''
 						}
 					])
-				);
+				});
+
 				const { data } = await rss.getArticles({ source: 'tuta' });
 
 				expect(data[0].thumbnailUrl).toBe('https://example.com/thumb.jpg');
 			});
 
 			it('sets thumbnailUrl to undefined when media:content is absent', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([{ title: 'Test', guid: 'g1', 'content:encoded': '' }])
-				);
+				mockFetchWith({
+					[tutaSource.feedUrl]: makeRssFeed([{ title: 'Test', guid: 'g1', 'content:encoded': '' }])
+				});
 
 				const { data } = await rss.getArticles({ source: 'tuta' });
 
@@ -225,38 +235,28 @@ describe('RSS', () => {
 			});
 
 			it('uses pubDate as date when available', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
-						{ title: 'Test', guid: 'g1', pubDate: '2024-01-01T00:00:00Z', 'content:encoded': '' }
-					])
-				);
-
-				const { data } = await rss.getArticles({ source: 'tuta' });
-
-				expect(data[0].date).toBe('2024-01-01T00:00:00Z');
-			});
-
-			it('falls back to isoDate when pubDate is absent', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
+				mockFetchWith({
+					[tutaSource.feedUrl]: makeRssFeed([
 						{
 							title: 'Test',
 							guid: 'g1',
-							isoDate: '2024-06-01T00:00:00.000Z',
+							pubDate: 'Mon, 01 Jan 2024 00:00:00 +0000',
 							'content:encoded': ''
 						}
 					])
-				);
+				});
 
 				const { data } = await rss.getArticles({ source: 'tuta' });
 
-				expect(data[0].date).toBe('2024-06-01T00:00:00.000Z');
+				expect(data[0].date).toBe('Mon, 01 Jan 2024 00:00:00 +0000');
 			});
 
 			it('generates a slug from the article title', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([{ title: 'Hello World Article', guid: 'g1', 'content:encoded': '' }])
-				);
+				mockFetchWith({
+					[tutaSource.feedUrl]: makeRssFeed([
+						{ title: 'Hello World Article', guid: 'g1', 'content:encoded': '' }
+					])
+				});
 
 				const { data } = await rss.getArticles({ source: 'tuta' });
 
@@ -265,19 +265,19 @@ describe('RSS', () => {
 			});
 		});
 
-		describe('sorting edge cases', () => {
+		describe('sorting', () => {
 			it('places articles without a pubDate at the end', async () => {
-				mockParseURL.mockResolvedValue(
-					makeFeedOutput([
+				mockFetchWith({
+					[tutaSource.feedUrl]: makeRssFeed([
 						{ title: 'No Date', guid: 'no-date', 'content:encoded': '' },
 						{
 							title: 'Has Date',
 							guid: 'has-date',
-							pubDate: '2024-03-01T00:00:00Z',
+							pubDate: 'Fri, 01 Mar 2024 00:00:00 +0000',
 							'content:encoded': ''
 						}
 					])
-				);
+				});
 
 				const { data } = await rss.getArticles({ source: 'tuta' });
 
@@ -287,11 +287,11 @@ describe('RSS', () => {
 		});
 
 		describe('error handling', () => {
-			it('throws when getSources fails', async () => {
-				mockParseURL.mockRejectedValue(new Error('Feed unavailable'));
+			it('throws when fetch fails', async () => {
+				mockFetchError();
 
 				await expect(rss.getArticles({ source: 'tuta' })).rejects.toThrow(
-					'Failed to fetch source Tuta: Feed unavailable'
+					'Failed to fetch source Tuta: Network error'
 				);
 			});
 		});

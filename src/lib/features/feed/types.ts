@@ -1,16 +1,3 @@
-import type Parser from 'rss-parser';
-
-//----------------------------------------------------------------------
-// raw rss output
-//----------------------------------------------------------------------
-
-export type CustomItem = {
-	'media:content': { $?: { url?: string } };
-	'content:encoded': string;
-};
-
-export type Output = Record<symbol, never> & Parser.Output<CustomItem>;
-
 //----------------------------------------------------------------------
 // source
 //----------------------------------------------------------------------
@@ -25,9 +12,32 @@ export type Source = {
 	feedUrl: string;
 };
 
+//----------------------------------------------------------------------
+// raw item (as parsed from XML)
+//----------------------------------------------------------------------
+
+export type RawItem = {
+	title?: string;
+	link?: string;
+	guid?: string;
+	pubDate?: string;
+	isoDate?: string;
+	summary?: string;
+	content?: string;
+	contentSnippet?: string;
+	creator?: string;
+	'content:encoded'?: string;
+	'media:content'?: { url?: string };
+};
+
+export type Feed = {
+	title?: string;
+	items: RawItem[];
+};
+
 export type ParsedSource = {
 	source: Source;
-	output: Output;
+	feed: Feed;
 };
 
 export type SourcesResponse = {
@@ -39,11 +49,12 @@ export type SourcesResponse = {
 // article
 //----------------------------------------------------------------------
 
-export type Article = Parser.Item & {
-	date?: Parser.Item['pubDate'] | Parser.Item['isoDate'];
+export type Article = RawItem & {
+	date?: RawItem['pubDate'] | RawItem['isoDate'];
 	thumbnailUrl?: string;
-	slug: Parser.Item['title'] | Parser.Item['guid'] | string;
-	description: Parser.Item['contentSnippet'] | Parser.Item['summary'] | string;
+	slug: RawItem['guid'] | RawItem['title'] | string;
+	description: RawItem['contentSnippet'] | RawItem['summary'] | string;
+	content: RawItem['content:encoded'] | RawItem['content'] | RawItem['summary'] | string;
 	source: Source;
 };
 

@@ -5,8 +5,10 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
+		"dev:cf": "bun run build && wrangler pages dev .svelte-kit/cloudflare",
 		"build": "vite build",
 		"preview": "vite preview",
+		"preview:cf": "wrangler pages dev .svelte-kit/cloudflare",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -47,13 +49,14 @@
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.54.0",
 		"vite": "^7.3.1",
-		"vitest": "^4.1.0"
+		"vitest": "^4.1.0",
+		"wrangler": "^4.76.0"
 	},
 	"dependencies": {
+		"fast-xml-parser": "^5.5.8",
 		"isomorphic-dompurify": "^3.4.0",
 		"js-yaml": "^4.1.1",
 		"marked": "^17.0.5",
-		"rss-parser": "^3.13.0",
 		"tailwind-merge": "^3.5.0",
 		"theme-change": "^2.5.0"
 	}

@@ -6,7 +6,7 @@
 	import type { Article } from '$lib/features/feed/types';
 	import { cn } from '$lib/utils/cn';
 	import { formatDate } from '$lib/utils/date.js';
-	import { isSafeUrl } from '$lib/utils/sanitize';
+	import { isSafeUrl, sanitizeHtml } from '$lib/utils/sanitize';
 
 	type ArticleProps = {
 		article: Article;
@@ -46,9 +46,8 @@
 	<!-- content -->
 	{#if article.content}
 		<div class="prose prose-sm max-w-none">
-			<!-- sanitized in rss.ts  -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			{@html article.content}
+			{@html sanitizeHtml(article.content)}
 		</div>
 	{:else}
 		<Text>No content available for this article.</Text>

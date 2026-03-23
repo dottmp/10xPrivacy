@@ -1,6 +1,4 @@
 <script lang="ts">
-	import About from '$lib/components/about.svelte';
-	import Footer from '$lib/components/footer.svelte';
 	import { Heading } from '$lib/components/headings/index.js';
 	import { Link, Text } from '$lib/components/text';
 	import Feed from '$lib/features/feed/components/feed.svelte';
@@ -23,8 +21,4 @@
 	</header>
 
 	<Feed articlesResponse={data.articlesResponse} />
-
-	<About class="mt-20" />
-
-	<Footer class="mt-20" />
 </main>

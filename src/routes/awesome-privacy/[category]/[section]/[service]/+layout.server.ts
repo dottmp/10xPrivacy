@@ -1,11 +1,13 @@
 import { error } from '@sveltejs/kit';
 
-import type { PageServerLoad } from './$types';
+import type { LayoutServerLoad } from './$types';
 
 import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 import type { Section, Service } from '$lib/features/awesome-privacy/types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const ssr = false;
+
+export const load: LayoutServerLoad = async ({ params }) => {
 	const { category: categorySlug, section: sectionSlug, service: serviceSlug } = params;
 
 	const section = awesomePrivacy.getSection({ categorySlug, sectionSlug });
