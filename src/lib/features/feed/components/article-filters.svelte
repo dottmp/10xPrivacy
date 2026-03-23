@@ -21,13 +21,11 @@
 <div role="tablist" class={cn('tabs-border mb-6 tabs ', klass)} {...props}>
 	{#each filters as filter (filter.id)}
 		{@const isActive = activeFilter === filter.id || (filter.id === 'all' && activeFilter === null)}
+		{@const href =
+			filter.id === 'all' ? '/privacy-news' : (`/privacy-news?source=${filter.id}` as const)}
 		<a
 			role="tab"
-			href={resolve(
-				activeFilter === 'all' || activeFilter === null
-					? '/privacy-news'
-					: `/privacy-news/?source=${filter.id}`
-			)}
+			href={resolve(href)}
 			class={cn('tab', isActive && 'tab-active text-primary')}
 			onclick={() => {
 				activeFilter = filter.id as SourceSearchParam;
