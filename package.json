@@ -53,10 +53,10 @@
 		"wrangler": "^4.76.0"
 	},
 	"dependencies": {
+		"fast-xml-parser": "^5.5.8",
 		"isomorphic-dompurify": "^3.4.0",
 		"js-yaml": "^4.1.1",
 		"marked": "^17.0.5",
-		"rss-parser": "^3.13.0",
 		"tailwind-merge": "^3.5.0",
 		"theme-change": "^2.5.0"
 	}

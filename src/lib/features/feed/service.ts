@@ -1,38 +1,37 @@
-import Parser from 'rss-parser';
-
 import type {
 	Article,
-	Source,
 	ArticlesResponse,
-	CustomItem,
 	ParsedSource,
+	RawItem,
+	Source,
 	SourceSearchParam,
 	SourcesResponse
 } from './types';
+import { RssXmlParser } from './xml-parser';
 
 import rssSourcesJSON from '$lib/data/rss-sources.json';
-import { sanitizeHtml } from '$lib/utils/sanitize';
 import { tryCatch } from '$lib/utils/try-catch';
 
 const rssSources = rssSourcesJSON.data as Source[];
 
-class RSS {
-	//----------------------------------------------------------------------
-	// private
-	//----------------------------------------------------------------------
-
+class RSS extends RssXmlParser {
 	/**
-	 * Parser instance for fetching and parsing RSS feeds. It is configured to extract custom fields 'media:content' and 'content:encoded' from feed items
+	 * Converts a raw `RawItem` into the richer `Article`
 	 */
-	private _parser = new Parser<Record<symbol, never>, CustomItem>({
-		customFields: {
-			item: ['media:content', 'content:encoded']
-		}
-	});
+	private _toArticle(item: RawItem, source: Source): Article {
+		return {
+			...item,
+			source,
+			date: item.pubDate ?? item.isoDate,
+			slug: this._slugify(item.title ?? item.guid ?? crypto.randomUUID()),
+			description: item.contentSnippet ?? item.summary ?? '',
+			content: item['content:encoded'] ?? item.content ?? item.summary ?? '',
+			thumbnailUrl: item['media:content']?.url
+		};
+	}
 
 	/**
-	 * Creates a URL-friendly slug from a given string by converting it to lowercase, removing non-alphanumeric characters (except for hyphens),
-	 * replacing sequences of whitespace with a single hyphen, collapsing multiple hyphens into one, and truncating the result to a maximum length of 80 characters.
+	 * Creates a URL-friendly slug
 	 */
 	private _slugify(str: string): string {
 		return str
@@ -43,92 +42,70 @@ class RSS {
 			.slice(0, 80);
 	}
 
-	/**
-	 * Sorts feed items by their publication date, with the most recent items appearing first.
-	 * If an item does not have a publication date, it is treated as having a date of 0 (the Unix epoch), which will place it at the end of the sorted list.
-	 */
-	private _sortByRecent(items: Article[]): Article[] {
-		return items.sort((a, b) => {
+	/** Returns a new array sorted newest-first by `pubDate`. */
+	private _sortByRecent(articles: Article[]): Article[] {
+		return articles.toSorted((a, b) => {
 			const dateA = a.pubDate ? new Date(a.pubDate).getTime() : 0;
 			const dateB = b.pubDate ? new Date(b.pubDate).getTime() : 0;
 			return dateB - dateA;
 		});
 	}
 
-	/**
-	 * Filters the rssSources based on the provided search parameter.
-	 */
-	private _filterSourceRegistry(sourceSearchParam: SourceSearchParam) {
+	/** Filters the source registry down to the requested source(s). */
+	private _filterSourceRegistry(sourceSearchParam: SourceSearchParam): Source[] {
 		return rssSources.filter(
 			(source) =>
 				sourceSearchParam === 'all' || sourceSearchParam === null || source.id === sourceSearchParam
 		);
 	}
 
-	//----------------------------------------------------------------------
+	/**
+	 * Fetches and parses a single RSS/Atom feed URL.
+	 * Throws if the network request fails or the server returns a non-OK status.
+	 */
+	private async _fetchFeed(source: Source): Promise<ParsedSource> {
+		const { data: response, error: fetchError } = await tryCatch(fetch(source.feedUrl));
+
+		if (fetchError || !response?.ok) {
+			throw new Error(
+				`Failed to fetch source ${source.name}: ${fetchError?.message ?? response?.statusText}`
+			);
+		}
+
+		const xml = await response.text();
+		const feed = this.parse(xml);
+
+		return { source, feed };
+	}
+
+	// ------------------------------------------------------------------
 	// public
-	//----------------------------------------------------------------------
+	// ------------------------------------------------------------------
 
 	/**
-	 * Gets sources defined in the rssSources, filtered by the searchParams, and parses their feed URLs.
-	 * @param {Object} searchParams - The parameters to filter the sources.
-	 * @example
-	 * const sources = await rss.getSources({ source: 'tuta' });
+	 * Fetches and parses all configured RSS/Atom sources, optionally filtered
+	 * to a single source by `searchParams.source`.
 	 */
 	public async getSources(
 		searchParams: { source: SourceSearchParam } = { source: 'all' }
 	): Promise<SourcesResponse> {
-		const filteredSourceRegistry = this._filterSourceRegistry(searchParams.source);
-
-		const parsedSources: ParsedSource[] = await Promise.all(
-			filteredSourceRegistry.map(async (source) => {
-				const { data: output, error } = await tryCatch(this._parser.parseURL(source.feedUrl));
-
-				if (error) {
-					throw new Error(`Failed to fetch source ${source.name}: ${error.message}`);
-				}
-
-				return {
-					source,
-					output
-				};
-			})
-		);
-
-		return {
-			data: parsedSources,
-			count: parsedSources.length
-		};
+		const sources = this._filterSourceRegistry(searchParams.source);
+		const data = await Promise.all(sources.map((source) => this._fetchFeed(source)));
+		return { data, count: data.length };
 	}
 
 	/**
-	 * Gets articles from the sources defined in the rssSources, filtered by the searchParams.
-	 * @param {Object} searchParams - The parameters to filter the sources.
-	 * @example
-	 * const articles = await rss.getArticles({ source: 'tuta' });
+	 * Returns a flat, sorted list of articles from all matching sources.
+	 * Articles are sorted newest-first by publication date.
 	 */
 	public async getArticles(
 		searchParams: { source: SourceSearchParam } = { source: 'all' }
 	): Promise<ArticlesResponse> {
-		const { data: parsedSources, error } = await tryCatch(this.getSources(searchParams));
+		const { data: parsedSources } = await this.getSources(searchParams);
 
-		if (error) {
-			throw new Error(`Failed to fetch feed parsedSources: ${error.message}`);
-		}
-
-		const articles = parsedSources.data.flatMap((parsedSource): Article[] => {
-			return parsedSource.output.items.map((item): Article => {
-				return {
-					...item,
-					source: parsedSource.source,
-					date: item.pubDate || item.isoDate,
-					slug: this._slugify(item.title || item.guid || crypto.randomUUID()),
-					description: item.contentSnippet || item.summary,
-					content: sanitizeHtml(item['content:encoded'] || item.content || item.summary || ''),
-					thumbnailUrl: item['media:content']?.$?.url
-				};
-			});
-		});
+		const articles = parsedSources.flatMap(({ source, feed }) =>
+			feed.items.map((item) => this._toArticle(item, source))
+		);
 
 		return {
 			data: this._sortByRecent(articles),
@@ -137,7 +114,4 @@ class RSS {
 	}
 }
 
-/**
- * RSS variable is an instance of the RSS class, which can be used to call the getSources and getArticles methods to fetch and parse RSS feeds from the predefined sources.
- */
 export const rss = new RSS();
