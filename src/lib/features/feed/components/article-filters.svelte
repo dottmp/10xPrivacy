@@ -22,7 +22,9 @@
 	{#each filters as filter (filter.id)}
 		{@const isActive = activeFilter === filter.id || (filter.id === 'all' && activeFilter === null)}
 		{@const href =
-			filter.id === 'all' ? '/privacy-news' : (`/privacy-news?source=${filter.id}` as const)}
+			filter.id === 'all'
+				? ('/privacy-news' as const)
+				: (`/privacy-news?source=${filter.id}` as const)}
 		<a
 			role="tab"
 			href={resolve(href)}
