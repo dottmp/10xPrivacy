@@ -20,7 +20,7 @@
 	/>
 </svelte:head>
 
-<div class="flex min-h-screen flex-col bg-base-200 font-mono">
+<div class="flex min-h-screen flex-col bg-base-200 font-mono *:w-full">
 	<!-- global -->
 	<LlmTermsOfServiceLink />
 
@@ -49,8 +49,8 @@
 
 		<!-- mobile nav items  -->
 		<div class=" w-full flex-1 sm:hidden">
-			<ul class="flex space-x-6 [&_a]:font-semibold">
-				<li><Link href={resolve('/')}>Privacy News</Link></li>
+			<ul class="flex flex-wrap gap-x-6 gap-y-2 [&_a]:font-semibold">
+				<li><Link href={resolve('/privacy-news')}>Privacy News</Link></li>
 				<li><Link href={resolve('/awesome-privacy')}>Awesome Privacy</Link></li>
 				<li><Link href={resolve('/websites')}>Websites</Link></li>
 			</ul>

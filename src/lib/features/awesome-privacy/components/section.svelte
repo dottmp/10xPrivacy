@@ -25,8 +25,8 @@
 
 		<!-- Alternatives to -->
 		{#if section.alternativeTo && section.alternativeTo.length > 0}
-			<Text>
-				Privacy-respecting alternatives to:
+			<Text class="flex flex-wrap items-center">
+				Privacy-respecting alternatives to:&nbsp;
 				{#each section.alternativeTo as alt, i (alt)}
 					<span class="text-base-content/70">{alt}</span>{#if i < section.alternativeTo.length - 1}
 						<span class="mr-0.5">,</span>
