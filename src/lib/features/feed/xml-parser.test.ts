@@ -41,7 +41,7 @@ describe('RSS ', () => {
         <link>https://example.com/hello</link>
         <guid>abc-123</guid>
         <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-        <description>A short summary</description>
+        <description>Blahblah</description>
       </item>`)
 		);
 
