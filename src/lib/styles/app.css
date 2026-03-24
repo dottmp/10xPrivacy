@@ -623,3 +623,8 @@
 	--depth: 0;
 	--noise: 0;
 }
+
+
+@theme inline {
+	--font-mono: 'IBM Plex Mono', monospace;
+}
