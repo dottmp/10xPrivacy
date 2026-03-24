@@ -14,9 +14,9 @@ const commitHash = (() => {
 })();
 
 export default defineConfig({
-	// TODO: Fix this
-	// @ts-expect-error Plugin types from vite and vitest/config are incompatible
-	plugins: [tailwindcss(), sveltekit(), svelteTesting()],
+	// TODO: Fix this Plugin types from vite and vitest/config are incompatible
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	plugins: [tailwindcss(), sveltekit(), svelteTesting() as any],
 	define: {
 		__COMMIT_HASH__: JSON.stringify(commitHash)
 	},
