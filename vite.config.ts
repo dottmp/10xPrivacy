@@ -2,6 +2,7 @@ import { execSync } from 'child_process';
 
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
+import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vitest/config';
 
 const commitHash = (() => {
@@ -18,15 +19,32 @@ export default defineConfig({
 		__COMMIT_HASH__: JSON.stringify(commitHash)
 	},
 	test: {
-		expect: { requireAssertions: true },
 		projects: [
 			{
-				extends: './vite.config.ts',
+				extends: true,
 				test: {
 					name: 'server',
 					environment: 'node',
 					include: ['src/**/*.{test,spec}.{js,ts}'],
 					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
+				}
+			},
+			{
+				extends: true,
+				test: {
+					name: 'browser',
+					environment: 'jsdom',
+					include: ['src/**/*.svelte.{test,spec}.{js,ts}'],
+					setupFiles: ['vitest-browser-svelte'],
+					browser: {
+						enabled: true,
+						headless: true,
+						provider: playwright(),
+						instances: [{ browser: 'chromium' }, { browser: 'firefox' }, { browser: 'webkit' }]
+					}
+				},
+				resolve: {
+					conditions: ['browser']
 				}
 			}
 		]
