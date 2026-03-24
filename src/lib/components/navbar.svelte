@@ -10,7 +10,10 @@
 		<!-- logo -->
 		<div class="flex-none">
 			<a class=" text-xl font-bold text-primary" href={resolve('/')}>
-				<pre unselectable="on" class="text-[2px]">{LOGO}</pre>
+				<pre unselectable="on" class="text-[2px]">
+          {LOGO}
+            <span class="sr-only">10xPrivacy</span>
+        </pre>
 			</a>
 		</div>
 
