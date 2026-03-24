@@ -5,7 +5,8 @@
 </script>
 
 <main class="m-auto flex max-w-3xl flex-col items-center px-4 py-8">
-	<pre class=" text-[5px] text-primary sm:text-[10px] md:text-xs">
+	<pre
+		class="font-mono text-[5px] leading-none whitespace-pre text-primary sm:text-[10px] md:text-xs">
 		{LOGO}
 	</pre>
 
