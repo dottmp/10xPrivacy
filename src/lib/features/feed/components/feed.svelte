@@ -11,6 +11,6 @@
 	let { articlesResponse }: FeedProps = $props();
 </script>
 
-<ArticleFilters {articlesResponse} />
+<ArticleFilters />
 
 <Articles {articlesResponse} />
