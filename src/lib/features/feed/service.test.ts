@@ -8,9 +8,7 @@ import { rss } from './service.ts';
 // Mocks
 // ---------------------------------------------------------------------------
 
-vi.mock('../../utils/sanitize.js', () => ({
-	sanitizeHtml: (html: string) => html
-}));
+vi.mock('../../utils/sanitize.js');
 
 const [tutaSource, privacyGuidesSource] = rssSources.data;
 
@@ -28,7 +26,7 @@ function makeRssFeed(
 		'content:encoded'?: string;
 		'media:content'?: string;
 	}[]
-): string {
+) {
 	const itemsXml = items
 		.map(
 			(i) => `
@@ -106,17 +104,17 @@ describe('RSS', () => {
 			expect(result.count).toBe(3);
 		});
 
+		it('returns all sources when source is null', async () => {
+			const result = await rss.getSources({ source: null });
+
+			expect(result.count).toBe(3);
+		});
+
 		it('returns only the matching source when a specific source id is provided', async () => {
 			const result = await rss.getSources({ source: 'tuta' });
 
 			expect(result.count).toBe(1);
 			expect(result.data[0].source.id).toBe('tuta');
-		});
-
-		it('returns all sources when source is null', async () => {
-			const result = await rss.getSources({ source: null });
-
-			expect(result.count).toBe(3);
 		});
 
 		it('each parsed source contains a source and feed property', async () => {
@@ -265,35 +263,31 @@ describe('RSS', () => {
 			});
 		});
 
-		describe('sorting', () => {
-			it('places articles without a pubDate at the end', async () => {
-				mockFetchWith({
-					[tutaSource.feedUrl]: makeRssFeed([
-						{ title: 'No Date', guid: 'no-date', 'content:encoded': '' },
-						{
-							title: 'Has Date',
-							guid: 'has-date',
-							pubDate: 'Fri, 01 Mar 2024 00:00:00 +0000',
-							'content:encoded': ''
-						}
-					])
-				});
-
-				const { data } = await rss.getArticles({ source: 'tuta' });
-
-				expect(data[0].title).toBe('Has Date');
-				expect(data[1].title).toBe('No Date');
+		it('places articles without a pubDate at the end', async () => {
+			mockFetchWith({
+				[tutaSource.feedUrl]: makeRssFeed([
+					{ title: 'No Date', guid: 'no-date', 'content:encoded': '' },
+					{
+						title: 'Has Date',
+						guid: 'has-date',
+						pubDate: 'Fri, 01 Mar 2024 00:00:00 +0000',
+						'content:encoded': ''
+					}
+				])
 			});
+
+			const { data } = await rss.getArticles({ source: 'tuta' });
+
+			expect(data[0].title).toBe('Has Date');
+			expect(data[1].title).toBe('No Date');
 		});
 
-		describe('error handling', () => {
-			it('throws when fetch fails', async () => {
-				mockFetchError();
+		it('throws when fetch fails', async () => {
+			mockFetchError();
 
-				await expect(rss.getArticles({ source: 'tuta' })).rejects.toThrow(
-					'Failed to fetch source Tuta: Network error'
-				);
-			});
+			await expect(rss.getArticles({ source: 'tuta' })).rejects.toThrow(
+				'Failed to fetch source Tuta: Network error'
+			);
 		});
 	});
 });
