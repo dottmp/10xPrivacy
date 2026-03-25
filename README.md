@@ -70,6 +70,7 @@ Contributions are welcome. Feel free to open an issue or pull request for:
 ## Acknowledgements
 
 - [Lissy93/awesome-privacy](https://github.com/Lissy93/awesome-privacy) — the Awesome Privacy dataset used in this project is MIT licensed, created and maintained by Alicia Sykes.
+- [dachinat/daisyui-themes](https://github.com/dachinat/daisyui-themes) — DaisyUI themes, CC-BY-4.0 licensed.
 
 ## License
 
