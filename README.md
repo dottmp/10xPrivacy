@@ -4,6 +4,9 @@
 
 **A digital privacy hub — news, tools, and resources against surveillance capitalism.**
 
+Created this website for the ones around me who are interested in privacy but don't know where to start. The intention of this website is
+not to be a comprehensive resource, more a simple starting point. If you want a more in depth introduction to digital privacy, I recommend the [Privacy Guides](https://www.privacyguides.org) website.
+
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Built with SvelteKit](https://img.shields.io/badge/SvelteKit-2-FF3E00?logo=svelte&logoColor=white)](https://kit.svelte.dev)
 [![Styled with Tailwind](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
@@ -70,6 +73,7 @@ Contributions are welcome. Feel free to open an issue or pull request for:
 ## Acknowledgements
 
 - [Lissy93/awesome-privacy](https://github.com/Lissy93/awesome-privacy) — the Awesome Privacy dataset used in this project is MIT licensed, created and maintained by Alicia Sykes.
+- [dachinat/daisyui-themes](https://github.com/dachinat/daisyui-themes) — DaisyUI themes, CC-BY-4.0 licensed.
 
 ## License
 
