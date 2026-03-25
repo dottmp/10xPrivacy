@@ -18,6 +18,7 @@
 	<div class="text-center">
 		<h1 class="text-3xl font-bold text-primary">{status}</h1>
 		<p class="mt-4 text-center text-sm text-base-content/40">{description}</p>
+		<!-- actions -->
 		<a href={resolve('/')} class="btn mt-6 btn-primary"> Back to home </a>
 		{#if status !== 404}
 			<button onclick={() => location.reload()} class="btn mt-6"> Try again </button>

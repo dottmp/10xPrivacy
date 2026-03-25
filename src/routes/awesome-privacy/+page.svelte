@@ -18,6 +18,5 @@
 		>
 	</header>
 
-	<!-- Bento Grid -->
 	<FeaturedCategories categories={data.categories} />
 </main>
