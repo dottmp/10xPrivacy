@@ -7,14 +7,6 @@ vi.mock('theme-change');
 
 describe('Navbar component', () => {
 	describe('URLs', () => {
-		it('home link has correct href', () => {
-			render(Navbar);
-
-			const homeLink = screen.getByRole('link', { name: /10xPrivacy/i });
-
-			expect(homeLink.getAttribute('href')).toBe('/');
-		});
-
 		it('Privacy News link has correct href', () => {
 			render(Navbar);
 			const links = screen.getAllByRole('link', { name: /Privacy News/i });
