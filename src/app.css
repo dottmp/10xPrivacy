@@ -1,6 +1,11 @@
 @import 'https://www.nerdfonts.com/assets/css/webfont.css';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+/*----------------------------------------------------------------------*/
+/* daisyui themes                                                       */
+/*----------------------------------------------------------------------*/
+
 @plugin 'daisyui' {
 	logs: false;
 
