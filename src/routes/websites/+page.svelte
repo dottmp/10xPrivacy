@@ -2,6 +2,10 @@
 	import { Heading } from '$lib/components/headings';
 	import { Link, Text } from '$lib/components/text';
 	import websites from '$lib/data/websites.json';
+
+	function stripProtocol(url: string): string {
+		return url.replace(/https?:\/\//, '');
+	}
 </script>
 
 <main class="mx-auto max-w-3xl px-4 py-8">
@@ -25,7 +29,7 @@
 					class="block rounded-lg bg-base-100 px-2 py-1.5  font-semibold"
 					external
 				>
-					{website.replace(/https?:\/\//, '')}
+					{stripProtocol(website)}
 				</Link>
 			</li>
 		{/each}
