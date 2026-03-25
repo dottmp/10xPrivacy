@@ -1,14 +1,11 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import About from '$lib/components/about.svelte';
-	import { LOGO } from '$lib/configs';
+	import Brand from '$lib/components/brand.svelte';
 </script>
 
 <main class="m-auto flex max-w-3xl flex-col items-center px-4 py-8">
-	<pre
-		class="font-mono text-[5px] leading-none whitespace-pre text-primary sm:text-[10px] md:text-xs">
-		{LOGO}
-	</pre>
+	<Brand size="lg" />
 
 	<div class="mx-auto mt-6 flex flex-col items-center gap-4 sm:mt-20 sm:flex-row">
 		<a class="btn btn-primary" href={resolve('/privacy-news')}> Privacy News </a>
