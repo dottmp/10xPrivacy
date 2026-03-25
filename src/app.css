@@ -1,6 +1,15 @@
 @import 'https://www.nerdfonts.com/assets/css/webfont.css';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+.ascii {
+	font-family: 'Courier Prime', monospace;
+}
+
+/*----------------------------------------------------------------------*/
+/* daisyui themes                                                       */
+/*----------------------------------------------------------------------*/
+
 @plugin 'daisyui' {
 	logs: false;
 

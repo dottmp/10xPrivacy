@@ -1,8 +1,9 @@
 <script lang="ts">
+	import Brand from './brand.svelte';
+
 	import { resolve } from '$app/paths';
 	import { Link } from '$lib/components/text';
 	import ThemeChange from '$lib/components/theme-change.svelte';
-	import { LOGO } from '$lib/configs';
 </script>
 
 <nav class="navbar flex-col justify-center gap-y-2 bg-base-100 px-4 shadow-sm">
@@ -10,10 +11,7 @@
 		<!-- logo -->
 		<div class="flex-none">
 			<a class=" text-xl font-bold text-primary" href={resolve('/')}>
-				<pre unselectable="on" class="font-mono text-[2px] leading-none whitespace-pre">
-          {LOGO}
-            <span class="sr-only">10xPrivacy</span>
-        </pre>
+				<Brand size="xs" />
 			</a>
 		</div>
 

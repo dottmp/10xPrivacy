@@ -1,9 +1,10 @@
 <script lang="ts">
+	import '@fontsource/courier-prime';
 	import favicon from '$lib/assets/favicon.png';
 	import Footer from '$lib/components/footer.svelte';
 	import LlmTermsOfServiceLink from '$lib/components/llm-terms-of-service-link.svelte';
 	import Navbar from '$lib/components/navbar.svelte';
-	import '$lib/styles/app.css';
+	import '../app.css';
 
 	let { children } = $props();
 </script>
