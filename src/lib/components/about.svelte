@@ -11,12 +11,12 @@
 	let { class: klass, ...props }: AboutProps = $props();
 </script>
 
-<div class={cn('rounded-lg bg-base-100 p-4', klass)} {...props}>
+<div class={cn('rounded-lg bg-base-100 p-4 text-center', klass)} {...props}>
 	<div>
 		<Subheading>About</Subheading>
-		<Text
-			>10xPrivacy is website dedicated to gathering and sharing information about digital privacy.
-			It provides a curated feed of news, resources, and tools to help users protect themselves from
+		<Text class="mt-2">
+			10xPrivacy is website dedicated to gathering and sharing information about digital privacy. It
+			provides a curated feed of news, resources, and tools to help users protect themselves from
 			surveillance capitalism.
 		</Text>
 	</div>
