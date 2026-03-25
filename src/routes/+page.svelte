@@ -9,7 +9,6 @@
 
 	<div class="mx-auto mt-6 flex flex-col items-center gap-4 sm:mt-20 sm:flex-row">
 		<a class="btn btn-primary" href={resolve('/privacy-news')}> Privacy News </a>
-
 		<a class="btn btn-primary" href={resolve('/awesome-privacy')}> Awesome Privacy </a>
 		<a class="btn btn-primary" href={resolve('/websites')}> Websites </a>
 	</div>
