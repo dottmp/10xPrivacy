@@ -2,6 +2,10 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+.ascii {
+	font-family: 'Courier Prime', monospace;
+}
+
 /*----------------------------------------------------------------------*/
 /* daisyui themes                                                       */
 /*----------------------------------------------------------------------*/
