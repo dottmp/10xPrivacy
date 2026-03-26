@@ -77,7 +77,7 @@ describe('Navbar component', () => {
 
 			const links = mobileNav?.querySelectorAll('a');
 
-			expect(links).toHaveLength(3);
+			expect(links).toHaveLength(4);
 		});
 	});
 });
