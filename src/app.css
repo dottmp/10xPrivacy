@@ -676,7 +676,7 @@
 }
 
 .prose figure:has(a[href]) a > div:last-child > img {
-	@apply my-0 rounded-lg py-4 pr-4;
+	@apply my-0 rounded-lg p-4;
 }
 
 @media (min-width: 640px) {
