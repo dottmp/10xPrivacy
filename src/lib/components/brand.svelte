@@ -5,7 +5,7 @@
 	import { cn } from '$lib/utils/cn';
 
 	export let brandVariants = {
-		base: 'whitespace-pre text-primary font-mono unselectable',
+		base: 'whitespace-pre text-primary font-mono select-none',
 		size: {
 			lg: 'text-[6px] sm:text-xs md:text-sm  ',
 			default: 'text-xs',
