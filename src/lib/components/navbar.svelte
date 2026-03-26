@@ -57,8 +57,8 @@
 				<div class="drawer-side">
 					<label for={DRAWER_ID} aria-label="close drawer" class="drawer-overlay"></label>
 
-					<div class="flex min-h-full w-80 flex-col bg-base-200 py-4 *:w-full">
-						<div class="w-full bg-base-100 pb-2">
+					<div class="flex min-h-full w-80 flex-col bg-base-200 *:w-full">
+						<div class="w-full bg-base-100 pt-2 pb-1">
 							<a href={resolve('/')} onclick={toggleDrawer}>
 								<Brand size="xs" class="px-4" />
 								<span class="sr-only">Home</span>
@@ -70,7 +70,7 @@
 							{/each}
 						</ul>
 
-						<div class="mt-auto w-full bg-base-100 pt-4">
+						<div class="mt-auto w-full bg-base-100 py-4">
 							<ThemeChange variant="select" class=" w-full  px-4" />
 						</div>
 					</div>
