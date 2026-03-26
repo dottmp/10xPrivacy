@@ -112,6 +112,18 @@ class RSS extends RssXmlParser {
 			count: articles.length
 		};
 	}
+	/** Filters a list of articles to those matching the specified source. */
+	public filterArticlesBySource(
+		articles: Article[],
+		searchParams: { source: SourceSearchParam }
+	): Article[] {
+		return articles.filter(
+			(article) =>
+				searchParams.source === 'all' ||
+				searchParams.source === null ||
+				article.source.id === searchParams.source
+		);
+	}
 }
 
 export const rss = new RSS();
