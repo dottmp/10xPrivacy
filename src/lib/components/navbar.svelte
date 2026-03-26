@@ -23,51 +23,64 @@
 	];
 </script>
 
-<nav class="navbar flex-col justify-center gap-y-2 bg-base-100 px-4 shadow-sm">
-	<div class="flex w-full items-center">
-		<!-- logo -->
-		<div class="flex-none">
-			<a class=" text-xl font-bold text-primary" href={resolve('/')}>
-				<Brand size="xs" />
-			</a>
+<nav class="w-full bg-base-100 shadow-sm">
+	<div class="navbar mx-auto w-full max-w-6xl flex-col gap-y-2 bg-base-100 px-4">
+		<div class="flex w-full items-center">
+			<!-- logo -->
+			<div class="mt-1 -mb-2 flex-none">
+				<a href={resolve('/')}>
+					<Brand size="xs" />
+					<span class="sr-only">Home</span>
+				</a>
+			</div>
+
+			<!-- mobile drawer -->
+			<div class="drawer drawer-end ml-auto w-fit sm:hidden">
+				<input bind:this={drawer} id={DRAWER_ID} type="checkbox" class="drawer-toggle" />
+				<div class="drawer-content">
+					<label
+						for={DRAWER_ID}
+						class="drawer-button btn btn-square text-base-content/50 btn-ghost"
+					>
+						<i class="nf nf-md-menu text-lg"></i>
+					</label>
+				</div>
+				<div class="drawer-side">
+					<label for={DRAWER_ID} aria-label="close drawer" class="drawer-overlay"></label>
+
+					<div class="flex min-h-full w-80 flex-col bg-base-200 py-4 *:w-full">
+						<div class="w-full bg-base-100 pb-2">
+							<a href={resolve('/')} onclick={toggleDrawer}>
+								<Brand size="xs" class="px-4" />
+								<span class="sr-only">Home</span>
+							</a>
+						</div>
+						<ul class="menu py-4">
+							{#each navItems as navItem (navItem.href)}
+								<li><Link href={navItem.href} onclick={toggleDrawer}>{navItem.label}</Link></li>
+							{/each}
+						</ul>
+
+						<div class="mt-auto w-full bg-base-100 pt-4">
+							<ThemeChange variant="select" class=" w-full  px-4" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- theme toggle -->
+			<ThemeChange variant="dropdown" class="ml-auto hidden sm:block" />
 		</div>
 
 		<!-- desktop nav items  -->
-		<div class=" hidden flex-1 sm:block">
+		<div class="hidden w-full sm:block">
 			<ul
-				class="flex md:px-6 [&_a]:btn [&_a]:font-semibold [&_a]:btn-link [&_a]:no-underline [&_a]:hover:underline"
+				class="-mx-4 flex [&_a]:btn [&_a]:font-semibold [&_a]:btn-link [&_a]:no-underline [&_a]:hover:underline"
 			>
 				{#each navItems as navItem (navItem.href)}
 					<li><Link href={navItem.href}>{navItem.label}</Link></li>
 				{/each}
 			</ul>
 		</div>
-
-		<!-- mobile drawer -->
-		<div class="drawer drawer-end ml-auto w-fit sm:hidden">
-			<input bind:this={drawer} id={DRAWER_ID} type="checkbox" class="drawer-toggle" />
-			<div class="drawer-content">
-				<label for={DRAWER_ID} class="drawer-button btn btn-square text-base-content/50 btn-ghost">
-					<i class="nf nf-md-menu text-lg"></i>
-				</label>
-			</div>
-			<div class="drawer-side">
-				<label for={DRAWER_ID} aria-label="close drawer" class="drawer-overlay"></label>
-
-				<div class="flex min-h-full w-80 flex-col bg-base-200 p-4 *:w-full">
-					<ul class="menu p-0">
-						{#each navItems as navItem (navItem.href)}
-							<li><Link href={navItem.href} onclick={toggleDrawer}>{navItem.label}</Link></li>
-						{/each}
-					</ul>
-
-					<div class="divider mt-auto"></div>
-					<ThemeChange variant="select" class=" w-full " />
-				</div>
-			</div>
-		</div>
-
-		<!-- theme toggle -->
-		<ThemeChange variant="dropdown" class="hidden sm:block" />
 	</div>
 </nav>
