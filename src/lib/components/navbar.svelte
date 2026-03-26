@@ -73,7 +73,7 @@
 		</div>
 
 		<!-- desktop nav items  -->
-		<div class="hidden w-full sm:block">
+		<div class=" hidden w-full sm:block">
 			<ul
 				class="-mx-4 flex [&_a]:btn [&_a]:font-semibold [&_a]:btn-link [&_a]:no-underline [&_a]:hover:underline"
 			>
