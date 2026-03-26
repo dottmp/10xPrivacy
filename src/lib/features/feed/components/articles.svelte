@@ -19,8 +19,11 @@
 <!-- List -->
 <ul class={cn('space-y-3', klass)} {...props}>
 	{#each articlesResponse.data as item (item.guid)}
-		<li class="group rounded-lg bg-base-100 px-4 py-3">
-			<a href={resolve(`/privacy-news/article/${item.slug}`)} class="flex items-baseline gap-3">
+		<li>
+			<a
+				href={resolve(`/privacy-news/article/${item.slug}`)}
+				class="group flex items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3"
+			>
 				<!-- Title -->
 				<span
 					class={cn(
