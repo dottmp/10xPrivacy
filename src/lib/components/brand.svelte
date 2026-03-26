@@ -5,11 +5,11 @@
 	import { cn } from '$lib/utils/cn';
 
 	export let brandVariants = {
-		base: 'ascii whitespace-pre text-primary leading-none',
+		base: 'ascii whitespace-pre text-primary font-mono  ',
 		size: {
 			lg: 'text-[6px] sm:text-xs md:text-sm  ',
 			default: 'text-xs',
-			xs: 'text-[4px] '
+			xs: 'text-[3px] '
 		}
 	} as const;
 
