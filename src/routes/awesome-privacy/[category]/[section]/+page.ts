@@ -3,7 +3,6 @@ import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
 import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-import type { Section } from '$lib/features/awesome-privacy/types';
 
 export const ssr = false;
 
@@ -17,12 +16,12 @@ export const load: PageLoad = async ({ params }) => {
 	}
 
 	return {
+		meta: {
+			title: `${section.name} | 10xPrivacy`,
+			description: section.intro
+		},
 		categorySlug,
 		sectionSlug,
 		section
-	} satisfies {
-		categorySlug: string;
-		sectionSlug: string;
-		section: Section;
 	};
 };

@@ -1,7 +1,6 @@
 import type { LayoutServerLoad } from './$types';
 
 import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-import type { AwesomePrivacyData } from '$lib/features/awesome-privacy/types';
 
 export const load: LayoutServerLoad = ({ setHeaders }) => {
 	setHeaders({ 'cache-control': 'public, max-age=3600' });
@@ -9,6 +8,10 @@ export const load: LayoutServerLoad = ({ setHeaders }) => {
 	const awesomePrivacyData = awesomePrivacy.getData();
 
 	return {
+		meta: {
+			title: 'Awesome Privacy | 10xPrivacy',
+			description: 'A curated guide to privacy-respecting software and services.'
+		},
 		awesomePrivacyData: awesomePrivacyData
-	} satisfies { awesomePrivacyData: AwesomePrivacyData };
+	};
 };

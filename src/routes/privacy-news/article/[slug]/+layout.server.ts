@@ -2,8 +2,6 @@ import { error } from '@sveltejs/kit';
 
 import type { LayoutServerLoad } from './$types';
 
-import type { Article } from '$lib/features/feed/types';
-
 export const load: LayoutServerLoad = async ({ params, parent }) => {
 	const { articlesResponse } = await parent();
 
@@ -13,5 +11,11 @@ export const load: LayoutServerLoad = async ({ params, parent }) => {
 		error(404, 'Article not found');
 	}
 
-	return { article } satisfies { article: Article };
+	return {
+		meta: {
+			title: `${article.title} | 10xPrivacy`,
+			description: article.description
+		},
+		article
+	};
 };

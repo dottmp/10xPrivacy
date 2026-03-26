@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import favicon from '$lib/assets/favicon.png';
 	import Footer from '$lib/components/footer.svelte';
 	import LlmTermsOfServiceLink from '$lib/components/llm-terms-of-service-link.svelte';
@@ -10,11 +11,14 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>10xPrivacy</title>
-	<meta
-		name="description"
-		content="10xPrivacy educates users about digital privacy by providing a curated feed of news, resources, and tools to protect them selves from surveillance capitalism."
-	/>
+
+	{#if page.data.meta?.title}
+		<title>{page.data.meta.title}</title>
+	{/if}
+
+	{#if page.data.meta?.description}
+		<meta name="description" content={page.data.meta.description} />
+	{/if}
 </svelte:head>
 
 <div class="flex min-h-screen flex-col bg-base-200 font-mono *:w-full">

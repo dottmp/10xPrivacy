@@ -3,7 +3,6 @@ import { error } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
 
 import { rss } from '$lib/features/feed/service';
-import type { ArticlesResponse } from '$lib/features/feed/types';
 import { tryCatch } from '$lib/utils/try-catch';
 
 export const load: LayoutServerLoad = async () => {
@@ -14,6 +13,11 @@ export const load: LayoutServerLoad = async () => {
 	}
 
 	return {
+		meta: {
+			title: 'Privacy News | 10xPrivacy',
+			description:
+				'RSS feed aggregator for privacy news from tuta.com, privacyguides.org, and techlore.tech.'
+		},
 		articlesResponse: data
-	} satisfies { articlesResponse: ArticlesResponse };
+	};
 };

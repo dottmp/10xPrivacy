@@ -3,7 +3,6 @@ import { error } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
 
 import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-import type { Section, Service } from '$lib/features/awesome-privacy/types';
 
 export const ssr = false;
 
@@ -27,18 +26,15 @@ export const load: LayoutServerLoad = async ({ params }) => {
 		.slice(0, 4);
 
 	return {
+		meta: {
+			title: `${service.name} | 10xPrivacy`,
+			description: service.description
+		},
 		categorySlug,
 		sectionSlug,
 		serviceSlug,
 		section,
 		service,
 		related
-	} satisfies {
-		categorySlug: string;
-		sectionSlug: string;
-		serviceSlug: string;
-		section: Section;
-		service: Service;
-		related: Service[];
 	};
 };
