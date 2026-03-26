@@ -44,6 +44,8 @@
 	)}
 	{...props}
 >
+	<span class="sr-only">Select Theme</span>
+
 	{#if variant === 'dropdown'}
 		<div tabindex="0" role="button" class="btn gap-1 btn-ghost btn-sm">
 			<i class="nf nf-md-theme_light_dark"></i>
@@ -76,13 +78,7 @@
 			{/each}
 		</ul>
 	{:else}
-		<label for="theme-select" class="sr-only">Select Theme</label>
-		<select
-			id="theme-select"
-			data-choose-theme
-			class="select appearance-none"
-			aria-label="Select Theme"
-		>
+		<select data-choose-theme class="select appearance-none" aria-label="Select Theme">
 			{#each themes as theme (theme)}
 				<option class="theme-controller" aria-label={theme} value={theme}>{theme}</option>
 			{/each}
