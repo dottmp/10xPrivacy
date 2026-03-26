@@ -5,7 +5,7 @@
 	import { cn } from '$lib/utils/cn';
 
 	export let brandVariants = {
-		base: 'whitespace-pre text-primary font-mono',
+		base: 'whitespace-pre text-primary font-mono unselectable',
 		size: {
 			lg: 'text-[6px] sm:text-xs md:text-sm  ',
 			default: 'text-xs',
@@ -22,10 +22,8 @@
 	let { class: className, size = 'default', ...props }: BrandProps = $props();
 </script>
 
-<div>
-	<pre
-		class={cn(brandVariants.base, brandVariants.size[size], className)}
-		aria-disabled="true"
-		{...props}>{brand}</pre>
-	<span class="sr-only">10xPrivacy</span>
-</div>
+<pre
+	class={cn(brandVariants.base, brandVariants.size[size], className)}
+	aria-hidden="true"
+	{...props}>{brand}</pre>
+<span class="sr-only">10xPrivacy</span>
