@@ -632,3 +632,63 @@
 	--depth: 0;
 	--noise: 0;
 }
+
+/*Techlore figure card styling */
+.prose figure:has(a[href]) {
+	@apply my-6;
+}
+
+.prose figure:has(a[href]) a {
+	@apply flex flex-col overflow-hidden rounded-box border-none bg-base-100 no-underline;
+}
+
+.prose figure:has(a[href]) a:hover {
+	@apply bg-base-300;
+}
+
+.prose figure:has(a[href]) a > div:first-child {
+	@apply flex flex-1 flex-col gap-2 p-4;
+}
+
+.prose figure:has(a[href]) a > div:first-child > div:first-child {
+	@apply text-base leading-snug font-semibold text-base-content;
+}
+
+.prose figure:has(a[href]) a > div:first-child > div:nth-child(2) {
+	@apply line-clamp-2 text-sm leading-relaxed text-base-content/70;
+}
+
+.prose figure:has(a[href]) a > div:first-child > div:last-child {
+	@apply flex items-center gap-2 text-xs text-base-content/60;
+}
+
+.prose figure:has(a[href]) a > div:first-child > div:last-child img:first-child {
+	@apply my-0 size-5 rounded-sm;
+}
+
+.prose figure:has(a[href]) a > div:first-child > div:last-child span:first-child + span::before {
+	content: '·';
+	@apply mr-2;
+}
+
+.prose figure:has(a[href]) a > div:last-child {
+	@apply relative max-h-52 w-full overflow-hidden;
+}
+
+.prose figure:has(a[href]) a > div:last-child img {
+	@apply h-full w-full object-cover;
+}
+
+.prose figure:has(a[href]) a > div:last-child > img {
+	@apply my-0 rounded-lg py-4 pr-4;
+}
+
+@media (min-width: 640px) {
+	.prose figure:has(a[href]) a {
+		@apply flex-row;
+	}
+
+	.prose figure:has(a[href]) a > div:last-child {
+		@apply max-h-none w-52 max-w-52 shrink-0;
+	}
+}
