@@ -37,9 +37,9 @@
 				<!-- Meta: articlesResponse + date -->
 				<span class="ml-auto flex shrink-0 items-center gap-2">
 					<SourceBadge class="badge-sm" source={item.source} />
-					<span class={cn(textVariants.size.xs, 'text-base-content/40')}>
+					<time datetime={item.date} class={cn(textVariants.size.xs, 'text-base-content/40')}>
 						{item.date ? formatDate(item.date) : 'Date unknown'}
-					</span>
+					</time>
 				</span></a
 			>
 		</li>
