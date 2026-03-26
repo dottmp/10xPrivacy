@@ -6,7 +6,7 @@
 	let { data } = $props();
 </script>
 
-<main class="mx-auto max-w-6xl px-4 py-10">
+<main class="mx-auto max-w-6xl px-4 py-8">
 	<header class="mb-8">
 		<Heading size="display" class="mb-4">Awesome Privacy</Heading>
 		<Text class="max-w-3xl"

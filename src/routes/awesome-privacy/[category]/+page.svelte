@@ -5,11 +5,7 @@
 	let { data } = $props();
 </script>
 
-<svelte:head>
-	<title>{data.category.name} | Awesome Privacy</title>
-</svelte:head>
-
-<main class="mx-auto max-w-4xl px-4 py-10">
+<main class="mx-auto max-w-4xl px-4 py-8">
 	<!-- Breadcrumb -->
 	<nav
 		class="breadcrumbs mb-4 text-sm font-medium text-base-content/50 capitalize [&_a]:hover:text-primary"

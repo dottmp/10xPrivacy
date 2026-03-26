@@ -3,7 +3,7 @@ import { error } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
 
 import { rss } from '$lib/features/feed/service';
-import type { ArticlesResponse, SourceSearchParam } from '$lib/features/feed/types';
+import type { SourceSearchParam } from '$lib/features/feed/types';
 import { tryCatch } from '$lib/utils/try-catch';
 
 export const load: LayoutServerLoad = async ({ url }) => {
@@ -16,6 +16,11 @@ export const load: LayoutServerLoad = async ({ url }) => {
 	}
 
 	return {
+		meta: {
+			title: 'Privacy News | 10xPrivacy',
+			description:
+				'RSS feed aggregator for privacy news from tuta.com, privacyguides.org, and techlore.tech.'
+		},
 		articlesResponse: data
-	} satisfies { articlesResponse: ArticlesResponse };
+	};
 };
