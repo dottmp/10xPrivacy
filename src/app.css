@@ -639,7 +639,7 @@
 }
 
 .prose figure:has(a[href]) a {
-	@apply flex flex-col overflow-hidden rounded-box border border-base-100 bg-base-100 no-underline;
+	@apply flex flex-col overflow-hidden rounded-box border-none bg-base-100 no-underline;
 }
 
 .prose figure:has(a[href]) a:hover {
