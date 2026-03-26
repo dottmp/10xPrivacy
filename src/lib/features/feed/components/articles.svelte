@@ -19,8 +19,11 @@
 <!-- List -->
 <ul class={cn('space-y-3', klass)} {...props}>
 	{#each articlesResponse.data as item (item.guid)}
-		<li class="group bg-base-100 px-4 py-3">
-			<a href={resolve(`/privacy-news/article/${item.slug}`)} class="flex items-baseline gap-3">
+		<li>
+			<a
+				href={resolve(`/privacy-news/article/${item.slug}`)}
+				class="group flex items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3"
+			>
 				<!-- Title -->
 				<span
 					class={cn(
@@ -34,9 +37,9 @@
 				<!-- Meta: articlesResponse + date -->
 				<span class="ml-auto flex shrink-0 items-center gap-2">
 					<SourceBadge class="badge-sm" source={item.source} />
-					<span class={cn(textVariants.size.xs, 'text-base-content/40')}>
+					<time datetime={item.date} class={cn(textVariants.size.xs, 'text-base-content/40')}>
 						{item.date ? formatDate(item.date) : 'Date unknown'}
-					</span>
+					</time>
 				</span></a
 			>
 		</li>
