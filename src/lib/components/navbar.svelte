@@ -6,6 +6,21 @@
 	import ThemeChange from '$lib/components/theme-change.svelte';
 
 	const DRAWER_ID = 'navbar-drawer';
+
+	let drawer: HTMLInputElement | undefined;
+
+	function toggleDrawer() {
+		const drawer = document.getElementById(DRAWER_ID) as HTMLInputElement;
+		if (drawer) {
+			drawer.checked = !drawer.checked;
+		}
+	}
+
+	let navItems = [
+		{ href: resolve('/privacy-news'), label: 'Privacy News' },
+		{ href: resolve('/awesome-privacy'), label: 'Awesome Privacy' },
+		{ href: resolve('/websites'), label: 'Websites' }
+	];
 </script>
 
 <nav class="navbar flex-col justify-center gap-y-2 bg-base-100 px-4 shadow-sm">
@@ -22,37 +37,37 @@
 			<ul
 				class="flex md:px-6 [&_a]:btn [&_a]:font-semibold [&_a]:btn-link [&_a]:no-underline [&_a]:hover:underline"
 			>
-				<li><Link href={resolve('/privacy-news')}>Privacy News</Link></li>
-				<li><Link href={resolve('/awesome-privacy')}>Awesome Privacy</Link></li>
-				<li><Link href={resolve('/websites')}>Websites</Link></li>
+				{#each navItems as navItem (navItem.href)}
+					<li><Link href={navItem.href}>{navItem.label}</Link></li>
+				{/each}
 			</ul>
 		</div>
 
-		<!-- mobile nav items  -->
+		<!-- mobile drawer -->
 		<div class="drawer drawer-end ml-auto w-fit sm:hidden">
-			<input id={DRAWER_ID} type="checkbox" class="drawer-toggle" />
+			<input bind:this={drawer} id={DRAWER_ID} type="checkbox" class="drawer-toggle" />
 			<div class="drawer-content">
-				<label for={DRAWER_ID} class="drawer-button btn btn-square btn-ghost">
+				<label for={DRAWER_ID} class="drawer-button btn btn-square text-base-content/50 btn-ghost">
 					<i class="nf nf-md-menu text-lg"></i>
 				</label>
 			</div>
 			<div class="drawer-side">
-				<label for={DRAWER_ID} aria-label="close sidebar" class="drawer-overlay"></label>
-				<ul class="menu min-h-full w-80 bg-base-200 p-4">
-					<!-- Sidebar content here -->
-					<li><Link href={resolve('/privacy-news')}>Privacy News</Link></li>
-					<li><Link href={resolve('/awesome-privacy')}>Awesome Privacy</Link></li>
-					<li><Link href={resolve('/websites')}>Websites</Link></li>
-					<li class="mt-auto">
-						<ThemeChange variant="select" />
-					</li>
-				</ul>
+				<label for={DRAWER_ID} aria-label="close drawer" class="drawer-overlay"></label>
+
+				<div class="flex min-h-full w-80 flex-col bg-base-200 p-4 *:w-full">
+					<ul class="menu p-0">
+						{#each navItems as navItem (navItem.href)}
+							<li><Link href={navItem.href} onclick={toggleDrawer}>{navItem.label}</Link></li>
+						{/each}
+					</ul>
+
+					<div class="divider mt-auto"></div>
+					<ThemeChange variant="select" class=" w-full " />
+				</div>
 			</div>
 		</div>
 
 		<!-- theme toggle -->
-		<div class="hidden sm:block">
-			<ThemeChange variant="dropdown" />
-		</div>
+		<ThemeChange variant="dropdown" class="hidden sm:block" />
 	</div>
 </nav>

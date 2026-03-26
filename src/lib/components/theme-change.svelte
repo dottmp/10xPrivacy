@@ -1,16 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 	import { themeChange } from 'theme-change';
-
-	import { textVariants } from './text';
 
 	import { cn } from '$lib/utils/cn';
 
-	type ThemeChangeProps = {
+	type ThemeChangeProps = HTMLAttributes<HTMLDivElement> & {
 		variant?: 'dropdown' | 'select';
 	};
 
-	let { variant = 'dropdown' }: ThemeChangeProps = $props();
+	let { variant = 'dropdown', class: klass, ...props }: ThemeChangeProps = $props();
 
 	const themes = [
 		'vscode',
@@ -37,8 +36,15 @@
 	});
 </script>
 
-{#if variant === 'dropdown'}
-	<div class="dropdown dropdown-end ml-auto">
+<div
+	class={cn(
+		variant === 'dropdown' && 'dropdown dropdown-end',
+		variant === 'select' && 'flex flex-col items-start',
+		klass
+	)}
+	{...props}
+>
+	{#if variant === 'dropdown'}
 		<div tabindex="0" role="button" class="btn gap-1 btn-ghost btn-sm">
 			<i class="nf nf-md-theme_light_dark"></i>
 			<svg
@@ -69,22 +75,18 @@
 				</li>
 			{/each}
 		</ul>
-	</div>
-{:else}
-	<div class="flex flex-col items-start">
-		<label for="theme-select" class={cn(textVariants.base, textVariants.size.xs)}
-			>Select Theme</label
-		>
+	{:else}
+		<label for="theme-select" class="sr-only">Select Theme</label>
 		<select id="theme-select" class="select appearance-none" aria-label="Select Theme">
 			{#each themes as theme (theme)}
 				<option
 					data-set-theme={theme}
 					data-act-class="btn-active"
-					class="theme-controlle"
+					class="theme-controller"
 					aria-label={theme}
 					value={theme}>{theme}</option
 				>
 			{/each}
 		</select>
-	</div>
-{/if}
+	{/if}
+</div>
