@@ -77,15 +77,14 @@
 		</ul>
 	{:else}
 		<label for="theme-select" class="sr-only">Select Theme</label>
-		<select id="theme-select" class="select appearance-none" aria-label="Select Theme">
+		<select
+			id="theme-select"
+			data-choose-theme
+			class="select appearance-none"
+			aria-label="Select Theme"
+		>
 			{#each themes as theme (theme)}
-				<option
-					data-set-theme={theme}
-					data-act-class="btn-active"
-					class="theme-controller"
-					aria-label={theme}
-					value={theme}>{theme}</option
-				>
+				<option class="theme-controller" aria-label={theme} value={theme}>{theme}</option>
 			{/each}
 		</select>
 	{/if}
