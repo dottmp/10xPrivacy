@@ -25,7 +25,7 @@
 
 		<!-- Alternatives to -->
 		{#if section.alternativeTo && section.alternativeTo.length > 0}
-			<Text class="flex flex-wrap items-center">
+			<Text class="flex max-w-3xl flex-wrap items-center">
 				Privacy-respecting alternatives to:&nbsp;
 				{#each section.alternativeTo as alt, i (alt)}
 					<span class="text-base-content/70">{alt}</span>{#if i < section.alternativeTo.length - 1}
@@ -70,18 +70,12 @@
 				>
 					<!-- Icon -->
 					<div class="mt-0.5 shrink-0">
-						{#if service.icon}
-							<img
-								referrerpolicy="no-referrer"
-								src={service.icon}
-								alt={service.name}
-								class="h-8 w-8 object-contain"
-							/>
-						{:else}
-							<div class="flex size-8 items-center justify-center bg-base-200 text-base-content/30">
-								<i class="nf nf-fa-cube text-lg"></i>
-							</div>
-						{/if}
+						<img
+							referrerpolicy="no-referrer"
+							src={service.icon ?? `https://icon.horse/icon/${service.url}`}
+							alt={service.name}
+							class="h-8 w-8 object-contain"
+						/>
 					</div>
 
 					<!-- Content -->

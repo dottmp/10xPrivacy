@@ -24,14 +24,12 @@
 <div {...props}>
 	<!-- Hero -->
 	<div class="mb-8 flex items-start gap-5">
-		{#if service.icon}
-			<img
-				referrerpolicy="no-referrer"
-				src={service.icon}
-				alt={service.name}
-				class=" size-14 shrink-0 object-contain"
-			/>
-		{/if}
+		<img
+			referrerpolicy="no-referrer"
+			src={service.icon ?? `https://icon.horse/icon/${service.url}`}
+			alt={service.name}
+			class=" size-14 shrink-0 object-contain"
+		/>
 		<div>
 			<Heading size="display">{service.name}</Heading>
 			{#if service.url}
@@ -137,9 +135,10 @@
 	<!-- related services -->
 	{#if related.length > 0}
 		<section class="mb-8">
-			<h2 class="mb-3 text-sm font-semibold tracking-widest text-base-content/40 uppercase">
-				More {section.name}
-			</h2>
+			<Subheading size="xs" class={cn('mb-3 tracking-widest uppercase', textVariants.base)}>
+				More {section.name}</Subheading
+			>
+
 			<ul class="space-y-2">
 				{#each related as rel (rel.name)}
 					<li>
@@ -149,16 +148,12 @@
 							)}
 							class="group flex items-center gap-3 rounded-lg bg-base-100 px-4 py-3"
 						>
-							{#if rel.icon}
-								<img
-									referrerpolicy="no-referrer"
-									src={rel.icon}
-									alt={rel.name}
-									class="h-6 w-6 object-contain"
-								/>
-							{:else}
-								<i class="nf nf-fa-cube text-base-content/30"></i>
-							{/if}
+							<img
+								referrerpolicy="no-referrer"
+								src={rel.icon ?? `https://icon.horse/icon/${rel.url}`}
+								alt={rel.name}
+								class="h-6 w-6 object-contain"
+							/>
 							<span
 								class={cn(
 									subheadingVariants.base,

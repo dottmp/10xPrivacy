@@ -12,8 +12,8 @@
 	<header class="mb-8">
 		<Heading size="display" class="mb-4">Websites</Heading>
 		<Text
-			>A list of websites that has to do with digital privacy. Can be anything from news sites,
-			intresting articles to tools and resources. If you have any suggestions, feel free to <Link
+			>A list of websites related to digital privacy. Can be anything from news sites, intresting
+			articles to tools and resources. If you have any suggestions, feel free to <Link
 				href="https://github.com/dottmp/10xprivacy/edit/main/src/lib/data/websites.json"
 				external
 				variant="primary">suggest websites on GitHub</Link

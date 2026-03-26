@@ -9,7 +9,7 @@
 <main class="mx-auto max-w-6xl px-4 py-8">
 	<header class="mb-8">
 		<Heading size="display" class="mb-4">Awesome Privacy</Heading>
-		<Text
+		<Text class="max-w-3xl"
 			>A curated guide to privacy-respecting software and services. Based on data from <Link
 				href="https://awesome-privacy.xyz/"
 				variant="primary"
