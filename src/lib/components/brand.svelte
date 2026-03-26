@@ -5,11 +5,11 @@
 	import { cn } from '$lib/utils/cn';
 
 	export let brandVariants = {
-		base: 'ascii whitespace-pre text-primary leading-none',
+		base: 'whitespace-pre text-primary font-mono select-none',
 		size: {
 			lg: 'text-[6px] sm:text-xs md:text-sm  ',
 			default: 'text-xs',
-			xs: 'text-[4px] '
+			xs: 'text-[3px] '
 		}
 	} as const;
 
@@ -22,10 +22,8 @@
 	let { class: className, size = 'default', ...props }: BrandProps = $props();
 </script>
 
-<div>
-	<pre
-		class={cn(brandVariants.base, brandVariants.size[size], className)}
-		aria-disabled="true"
-		{...props}>{brand}</pre>
-	<span class="sr-only">10xPrivacy</span>
-</div>
+<pre
+	class={cn(brandVariants.base, brandVariants.size[size], className)}
+	aria-hidden="true"
+	{...props}>{brand}</pre>
+<span class="sr-only">10xPrivacy</span>
