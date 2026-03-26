@@ -27,11 +27,20 @@
 	<div class="navbar mx-auto w-full max-w-6xl flex-col gap-y-2 bg-base-100 px-4">
 		<div class="flex w-full items-center">
 			<!-- logo -->
-			<div class="mt-1 -mb-2 flex-none">
-				<a href={resolve('/')}>
-					<Brand size="xs" />
-					<span class="sr-only">Home</span>
-				</a>
+			<a class="text-xl" href={resolve('/')}>
+				<Brand size="xs" />
+				<span class="sr-only">Home</span>
+			</a>
+
+			<!-- desktop nav items  -->
+			<div class=" hidden sm:block md:px-6">
+				<ul
+					class="flex [&_a]:btn [&_a]:font-semibold [&_a]:btn-link [&_a]:no-underline [&_a]:hover:underline"
+				>
+					{#each navItems as navItem (navItem.href)}
+						<li><Link href={navItem.href}>{navItem.label}</Link></li>
+					{/each}
+				</ul>
 			</div>
 
 			<!-- mobile drawer -->
@@ -70,17 +79,6 @@
 
 			<!-- theme toggle -->
 			<ThemeChange variant="dropdown" class="ml-auto hidden sm:block" />
-		</div>
-
-		<!-- desktop nav items  -->
-		<div class=" hidden w-full sm:block">
-			<ul
-				class="-mx-4 flex [&_a]:btn [&_a]:font-semibold [&_a]:btn-link [&_a]:no-underline [&_a]:hover:underline"
-			>
-				{#each navItems as navItem (navItem.href)}
-					<li><Link href={navItem.href}>{navItem.label}</Link></li>
-				{/each}
-			</ul>
 		</div>
 	</div>
 </nav>
