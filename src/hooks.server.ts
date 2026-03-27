@@ -1,8 +1,31 @@
 import type { Handle } from '@sveltejs/kit';
+import { sequence } from '@sveltejs/kit/hooks';
+import { RetryAfterRateLimiter } from 'sveltekit-rate-limiter/server';
 
 import { dev } from '$app/environment';
 
-export const handle: Handle = async ({ event, resolve }) => {
+export const limiter = new RetryAfterRateLimiter({
+	IP: [1000, 'd'],
+	IPUA: [50, 'm']
+});
+
+const handleRateLimit: Handle = async ({ event, resolve }) => {
+	const status = await limiter.check(event);
+	if (status.limited) {
+		const response = new Response(
+			`You are being rate limited. Please try after ${status.retryAfter} seconds.`,
+			{
+				status: 429,
+				headers: { 'Retry-After': status.retryAfter.toString() }
+			}
+		);
+		return response;
+	}
+	const response = await resolve(event);
+	return response;
+};
+
+const handleHeaders: Handle = async ({ event, resolve }) => {
 	const response = await resolve(event);
 
 	response.headers.set('X-Frame-Options', 'DENY');
@@ -38,3 +61,5 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	return response;
 };
+
+export const handle = sequence(handleRateLimit, handleHeaders);
