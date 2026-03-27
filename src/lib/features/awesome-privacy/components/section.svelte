@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 
+	import ServiceLogo from './service-logo.svelte';
+
 	import { resolve } from '$app/paths';
 	import { Heading, Subheading } from '$lib/components/headings';
 	import { Text, textVariants } from '$lib/components/text';
@@ -70,12 +72,7 @@
 				>
 					<!-- Icon -->
 					<div class="mt-0.5 shrink-0">
-						<img
-							referrerpolicy="no-referrer"
-							src={service.icon ?? `https://icon.horse/icon/${service.url}`}
-							alt={service.name}
-							class="h-8 w-8 object-contain"
-						/>
+						<ServiceLogo {service} class="size-8" />
 					</div>
 
 					<!-- Content -->
