@@ -26,7 +26,7 @@
 			<li>
 				<Link
 					href={website}
-					class="block rounded-lg bg-base-100 px-2 py-1.5  font-semibold"
+					class="block rounded-lg bg-base-100 px-2 py-1.5 font-semibold shadow-sm"
 					external
 				>
 					{stripProtocol(website)}

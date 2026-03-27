@@ -22,7 +22,7 @@
 		<li>
 			<a
 				href={resolve(`/privacy-news/article/${item.slug}`)}
-				class="group flex items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3"
+				class="group flex items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm"
 			>
 				<!-- Title -->
 				<span

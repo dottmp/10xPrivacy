@@ -36,7 +36,7 @@
 						<li>
 							<Link
 								href={resolve(`/awesome-privacy/${slug}/${sectionSlug}`)}
-								class="block rounded-lg bg-base-100 px-4 py-3 font-semibold"
+								class="block rounded-lg bg-base-100 px-4 py-3 font-semibold shadow-sm"
 							>
 								{section.name}
 							</Link>

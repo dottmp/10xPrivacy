@@ -32,7 +32,7 @@
 			<li>
 				<a
 					href={resolve(`/awesome-privacy/${categorySlug}/${sectionSlug}`)}
-					class="group flex items-center justify-between rounded-lg bg-base-100 px-5 py-4"
+					class="group flex items-center justify-between rounded-lg bg-base-100 px-5 py-4 shadow-sm"
 				>
 					<span
 						class={cn(
