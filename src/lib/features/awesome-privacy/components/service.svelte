@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 
+	import ServiceLogo from './service-logo.svelte';
+
 	import { resolve } from '$app/paths';
 	import { Heading, Subheading, subheadingVariants } from '$lib/components/headings';
 	import { Link, textVariants } from '$lib/components/text';
@@ -24,12 +26,7 @@
 <div {...props}>
 	<!-- Hero -->
 	<div class="mb-8 flex items-start gap-5">
-		<img
-			referrerpolicy="no-referrer"
-			src={service.icon ?? `https://icon.horse/icon/${service.url}`}
-			alt={service.name}
-			class=" size-14 shrink-0 object-contain"
-		/>
+		<ServiceLogo {service} class="size-14" />
 		<div>
 			<Heading size="display">{service.name}</Heading>
 			{#if service.url}
@@ -148,12 +145,8 @@
 							)}
 							class="group flex items-center gap-3 rounded-lg bg-base-100 px-4 py-3"
 						>
-							<img
-								referrerpolicy="no-referrer"
-								src={rel.icon ?? `https://icon.horse/icon/${rel.url}`}
-								alt={rel.name}
-								class="h-6 w-6 object-contain"
-							/>
+							<ServiceLogo service={rel} class="size-6" />
+
 							<span
 								class={cn(
 									subheadingVariants.base,
