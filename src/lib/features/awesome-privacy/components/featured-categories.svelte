@@ -22,7 +22,7 @@
 	<ul class="grid w-full gap-2 sm:grid-cols-2">
 		{#each categories as category (category.name)}
 			{@const slug = awesomePrivacy.slugify(category.name)}
-			<li class="group col-span-1 rounded-lg bg-base-100 px-4 py-3">
+			<li class="group col-span-1 rounded-lg bg-base-100 px-4 py-3 shadow-sm">
 				<!-- Icon + title -->
 				<div class="mb-3 flex items-center gap-2">
 					<CategoryIcon category={category.name} class="text-xl text-primary" />

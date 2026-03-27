@@ -12,7 +12,7 @@
 	let { class: klass, ...props }: AboutProps = $props();
 </script>
 
-<section class={cn('rounded-lg bg-base-100 p-4 text-center', klass)} {...props}>
+<section class={cn('rounded-lg bg-base-100 p-4 text-center shadow-sm', klass)} {...props}>
 	<div class="flex flex-col">
 		<Subheading>About</Subheading>
 		<Text class="mt-2">

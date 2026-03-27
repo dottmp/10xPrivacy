@@ -60,7 +60,11 @@
 
 	<!-- Description -->
 	<section
-		class={cn('mb-8 rounded-lg bg-base-100 p-5', textVariants.base, textVariants.size.default)}
+		class={cn(
+			'mb-8 rounded-lg bg-base-100 p-5  shadow-sm',
+			textVariants.base,
+			textVariants.size.default
+		)}
 	>
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html markdownToHtml(service.description)}
@@ -143,7 +147,7 @@
 							href={resolve(
 								`/awesome-privacy/${categorySlug}/${sectionSlug}/${awesomePrivacy.slugify(rel.name)}`
 							)}
-							class="group flex items-center gap-3 rounded-lg bg-base-100 px-4 py-3"
+							class="group flex items-center gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm"
 						>
 							<ServiceLogo service={rel} class="size-6" />
 

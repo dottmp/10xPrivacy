@@ -68,7 +68,7 @@
 			<li>
 				<a
 					href={resolve(`/awesome-privacy/${categorySlug}/${sectionSlug}/${serviceSlug}`)}
-					class="group flex gap-4 rounded-lg bg-base-100 p-5"
+					class="group flex gap-4 rounded-lg bg-base-100 p-5 shadow-sm"
 				>
 					<!-- Icon -->
 					<div class="mt-0.5 shrink-0">
