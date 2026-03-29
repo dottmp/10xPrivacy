@@ -6,7 +6,7 @@ import { dev } from '$app/environment';
 
 export const limiter = new RetryAfterRateLimiter({
 	IP: [1000, 'd'],
-	IPUA: [50, 'm']
+	IPUA: [100, 'm']
 });
 
 const handleRateLimit: Handle = async ({ event, resolve }) => {
