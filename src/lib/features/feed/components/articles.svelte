@@ -31,7 +31,7 @@
 		<li>
 			<a
 				href={resolve(`/privacy-news/${article.slug}`)}
-				class="group flex items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm"
+				class="group flex flex-col-reverse items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm sm:flex-row"
 			>
 				<!-- Title -->
 				<span
@@ -44,7 +44,7 @@
 				</span>
 
 				<!-- Meta: articles + date -->
-				<span class="ml-auto flex shrink-0 items-center gap-2">
+				<span class="flex shrink-0 items-center gap-2 sm:ml-auto">
 					<SourceBadge class="badge-sm" source={article.source} />
 					<time datetime={article.date} class={cn(textVariants.size.xs, 'text-base-content/40')}>
 						{article.date ? formatDate(article.date) : 'Date unknown'}
