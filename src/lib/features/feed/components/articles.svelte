@@ -1,28 +1,37 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 
+	import { rss } from '../service';
+
 	import SourceBadge from './source-badge.svelte';
 
 	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import { Text, textVariants } from '$lib/components/text';
-	import type { ArticlesResponse } from '$lib/features/feed/types';
+	import type { Article, SourceSearchParam } from '$lib/features/feed/types';
 	import { cn } from '$lib/utils/cn';
 	import { formatDate } from '$lib/utils/date';
 
 	type ArticlesProps = HTMLAttributes<HTMLUListElement> & {
-		articlesResponse: ArticlesResponse;
+		articles: Article[];
 	};
 
-	let { articlesResponse, class: klass, ...props }: ArticlesProps = $props();
+	let { articles, class: klass, ...props }: ArticlesProps = $props();
+
+	let _articles = $derived(
+		rss.filterArticlesBySource(articles, {
+			source: page.url.searchParams.get('source') as SourceSearchParam
+		})
+	);
 </script>
 
 <!-- List -->
 <ul class={cn('space-y-3', klass)} {...props}>
-	{#each articlesResponse.data as item (item.guid)}
+	{#each _articles as article (article.guid)}
 		<li>
 			<a
-				href={resolve(`/privacy-news/article/${item.slug}`)}
-				class="group flex items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm"
+				href={resolve(`/privacy-news/${article.slug}`)}
+				class="group flex flex-col-reverse items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm sm:flex-row"
 			>
 				<!-- Title -->
 				<span
@@ -31,14 +40,14 @@
 						'min-w-0 flex-1 font-semibold group-hover:text-primary group-hover:underline'
 					)}
 				>
-					{item.title}
+					{article.title}
 				</span>
 
-				<!-- Meta: articlesResponse + date -->
-				<span class="ml-auto flex shrink-0 items-center gap-2">
-					<SourceBadge class="badge-sm" source={item.source} />
-					<time datetime={item.date} class={cn(textVariants.size.xs, 'text-base-content/40')}>
-						{item.date ? formatDate(item.date) : 'Date unknown'}
+				<!-- Meta: articles + date -->
+				<span class="flex shrink-0 items-center gap-2 sm:ml-auto">
+					<SourceBadge class="badge-sm" source={article.source} />
+					<time datetime={article.date} class={cn(textVariants.size.xs, 'text-base-content/40')}>
+						{article.date ? formatDate(article.date) : 'Date unknown'}
 					</time>
 				</span></a
 			>
@@ -46,6 +55,6 @@
 	{/each}
 </ul>
 
-{#if articlesResponse.count === 0}
+{#if _articles.length === 0}
 	<Text class="py-12 text-center">No articles found.</Text>
 {/if}

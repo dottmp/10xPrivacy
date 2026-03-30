@@ -1,12 +1,4 @@
-import type {
-	Article,
-	ArticlesResponse,
-	ParsedSource,
-	RawItem,
-	Source,
-	SourceSearchParam,
-	SourcesResponse
-} from './types';
+import type { Article, ParsedSource, RawItem, Source, SourceSearchParam } from './types';
 import { RssXmlParser } from './xml-parser';
 
 import rssSourcesJSON from '$lib/data/rss-sources.json';
@@ -88,10 +80,10 @@ class RSS extends RssXmlParser {
 	 */
 	public async getSources(
 		searchParams: { source: SourceSearchParam } = { source: 'all' }
-	): Promise<SourcesResponse> {
+	): Promise<ParsedSource[]> {
 		const sources = this._filterSourceRegistry(searchParams.source);
-		const data = await Promise.all(sources.map((source) => this._fetchFeed(source)));
-		return { data, count: data.length };
+
+		return Promise.all(sources.map((source) => this._fetchFeed(source)));
 	}
 
 	/**
@@ -100,17 +92,14 @@ class RSS extends RssXmlParser {
 	 */
 	public async getArticles(
 		searchParams: { source: SourceSearchParam } = { source: 'all' }
-	): Promise<ArticlesResponse> {
-		const { data: parsedSources } = await this.getSources(searchParams);
+	): Promise<Article[]> {
+		const parsedSources = await this.getSources(searchParams);
 
 		const articles = parsedSources.flatMap(({ source, feed }) =>
 			feed.items.map((item) => this._toArticle(item, source))
 		);
 
-		return {
-			data: this._sortByRecent(articles),
-			count: articles.length
-		};
+		return this._sortByRecent(articles);
 	}
 	/** Filters a list of articles to those matching the specified source. */
 	public filterArticlesBySource(

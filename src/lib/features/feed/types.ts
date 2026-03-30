@@ -40,11 +40,6 @@ export type ParsedSource = {
 	feed: Feed;
 };
 
-export type SourcesResponse = {
-	data: ParsedSource[];
-	count: number;
-};
-
 //----------------------------------------------------------------------
 // article
 //----------------------------------------------------------------------
@@ -56,9 +51,4 @@ export type Article = RawItem & {
 	description: RawItem['contentSnippet'] | RawItem['summary'] | string;
 	content: RawItem['content:encoded'] | RawItem['content'] | RawItem['summary'] | string;
 	source: Source;
-};
-
-export type ArticlesResponse = {
-	data: Article[];
-	count: number;
 };
