@@ -94,33 +94,33 @@ describe('RSS', () => {
 		it('returns all sources when source param is "all"', async () => {
 			const result = await rss.getSources({ source: 'all' });
 
-			expect(result.count).toBe(3);
-			expect(result.data).toHaveLength(3);
+			expect(result.length).toBe(3);
+			expect(result).toHaveLength(3);
 		});
 
 		it('returns all sources when called with default param', async () => {
 			const result = await rss.getSources();
 
-			expect(result.count).toBe(3);
+			expect(result.length).toBe(3);
 		});
 
 		it('returns all sources when source is null', async () => {
 			const result = await rss.getSources({ source: null });
 
-			expect(result.count).toBe(3);
+			expect(result.length).toBe(3);
 		});
 
 		it('returns only the matching source when a specific source id is provided', async () => {
 			const result = await rss.getSources({ source: 'tuta' });
 
-			expect(result.count).toBe(1);
-			expect(result.data[0].source.id).toBe('tuta');
+			expect(result.length).toBe(1);
+			expect(result[0].source.id).toBe('tuta');
 		});
 
 		it('each parsed source contains a source and feed property', async () => {
 			const result = await rss.getSources({ source: 'all' });
 
-			result.data.forEach((parsedSource) => {
+			result.forEach((parsedSource) => {
 				expect(parsedSource).toHaveProperty('source');
 				expect(parsedSource).toHaveProperty('feed');
 			});
@@ -174,7 +174,7 @@ describe('RSS', () => {
 			it('attaches the correct source object to each article', async () => {
 				const result = await rss.getArticles({ source: 'tuta' });
 
-				result.data.forEach((article) => {
+				result.forEach((article) => {
 					expect(article.source.id).toBe('tuta');
 				});
 			});
@@ -188,9 +188,9 @@ describe('RSS', () => {
 					])
 				});
 
-				const { data } = await rss.getArticles({ source: 'tuta' });
+				const articles = await rss.getArticles({ source: 'tuta' });
 
-				expect(data[0].description).toBe('The snippet');
+				expect(articles[0].description).toBe('The snippet');
 			});
 
 			it('uses content:encoded as content when available', async () => {
@@ -200,9 +200,9 @@ describe('RSS', () => {
 					])
 				});
 
-				const { data } = await rss.getArticles({ source: 'tuta' });
+				const articles = await rss.getArticles({ source: 'tuta' });
 
-				expect(data[0].content).toBe('<b>encoded</b>');
+				expect(articles[0].content).toBe('<b>encoded</b>');
 			});
 
 			it('extracts thumbnailUrl from media:content url attribute', async () => {
@@ -217,9 +217,9 @@ describe('RSS', () => {
 					])
 				});
 
-				const { data } = await rss.getArticles({ source: 'tuta' });
+				const articles = await rss.getArticles({ source: 'tuta' });
 
-				expect(data[0].thumbnailUrl).toBe('https://example.com/thumb.jpg');
+				expect(articles[0].thumbnailUrl).toBe('https://example.com/thumb.jpg');
 			});
 
 			it('sets thumbnailUrl to undefined when media:content is absent', async () => {
@@ -227,9 +227,9 @@ describe('RSS', () => {
 					[tutaSource.feedUrl]: makeRssFeed([{ title: 'Test', guid: 'g1', 'content:encoded': '' }])
 				});
 
-				const { data } = await rss.getArticles({ source: 'tuta' });
+				const articles = await rss.getArticles({ source: 'tuta' });
 
-				expect(data[0].thumbnailUrl).toBeUndefined();
+				expect(articles[0].thumbnailUrl).toBeUndefined();
 			});
 
 			it('uses pubDate as date when available', async () => {
@@ -244,9 +244,9 @@ describe('RSS', () => {
 					])
 				});
 
-				const { data } = await rss.getArticles({ source: 'tuta' });
+				const articles = await rss.getArticles({ source: 'tuta' });
 
-				expect(data[0].date).toBe('Mon, 01 Jan 2024 00:00:00 +0000');
+				expect(articles[0].date).toBe('Mon, 01 Jan 2024 00:00:00 +0000');
 			});
 
 			it('generates a slug from the article title', async () => {
@@ -256,10 +256,10 @@ describe('RSS', () => {
 					])
 				});
 
-				const { data } = await rss.getArticles({ source: 'tuta' });
+				const articles = await rss.getArticles({ source: 'tuta' });
 
-				expect(typeof data[0].slug).toBe('string');
-				expect((data[0].slug as string).length).toBeGreaterThan(0);
+				expect(typeof articles[0].slug).toBe('string');
+				expect((articles[0].slug as string).length).toBeGreaterThan(0);
 			});
 		});
 
@@ -276,10 +276,10 @@ describe('RSS', () => {
 				])
 			});
 
-			const { data } = await rss.getArticles({ source: 'tuta' });
+			const articles = await rss.getArticles({ source: 'tuta' });
 
-			expect(data[0].title).toBe('Has Date');
-			expect(data[1].title).toBe('No Date');
+			expect(articles[0].title).toBe('Has Date');
+			expect(articles[1].title).toBe('No Date');
 		});
 
 		it('throws when fetch fails', async () => {
