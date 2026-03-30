@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { Heading } from '$lib/components/headings/index.js';
 	import { Link, Text } from '$lib/components/text';
-	import Feed from '$lib/features/feed/components/feed.svelte';
+	import ArticleFilters from '$lib/features/feed/components/article-filters.svelte';
+	import Articles from '$lib/features/feed/components/articles.svelte';
 
 	let { data } = $props();
 </script>
@@ -20,5 +21,19 @@
 		</Text>
 	</header>
 
-	<Feed articlesResponse={data.articlesResponse} />
+	<ArticleFilters />
+
+	{#await data.promisedArticles}
+		<ul class="space-y-3">
+			{#each Array.from({ length: 8 })}
+				<li class="h-32 animate-pulse rounded-lg bg-base-100 px-4 py-3 sm:h-16"></li>
+			{/each}
+		</ul>
+	{:then articles}
+		<Articles {articles} />
+	{:catch}
+		<div role="alert" class="alert alert-soft alert-error">
+			<span>Error! Failed to load articles. Please try again later.</span>
+		</div>
+	{/await}
 </main>
