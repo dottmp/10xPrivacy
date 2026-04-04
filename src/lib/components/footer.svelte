@@ -16,15 +16,13 @@
 
 <footer class={cn('w-full p-4 text-center', klass)} {...props}>
 	<Text>
-		© {copyrightYear} dottmp | Commit: {__COMMIT_HASH__} |<Link
+		<Link href="https://dottmp.dev/">© {copyrightYear} dottmp</Link> | Commit: {__COMMIT_HASH__} |<Link
 			class="ml-2"
 			href="https://github.com/dottmp/10xprivacy"
-			external
 			variant="primary">GitHub repo</Link
 		> |<Link
 			class="ml-2"
 			href="https://github.com/dottmp/10xprivacy/blob/main/LICENSE"
-			external
 			variant="primary">MIT License</Link
 		>
 	</Text>
