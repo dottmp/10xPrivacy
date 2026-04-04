@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.3.0...v0.3.1) (2026-04-04)
+
+### Bug Fixes
+
+* link icons are shrinking ([#65](https://github.com/Jonathandah/rss-privacy-news/issues/65)) ([bb44fa5](https://github.com/Jonathandah/rss-privacy-news/commit/bb44fa5fb95c0aae2eb8e121d13c518b11ebb4bb))
+
 ## [0.3.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.2.1...v0.3.0) (2026-04-04)
 
 ### Features
