@@ -1,6 +1,9 @@
-@import 'https://www.nerdfonts.com/assets/css/webfont.css';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+svg {
+	@apply size-4.5;
+}
 
 /*----------------------------------------------------------------------*/
 /* daisyui themes                                                       */

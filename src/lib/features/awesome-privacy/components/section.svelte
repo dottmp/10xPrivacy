@@ -5,6 +5,7 @@
 
 	import { resolve } from '$app/paths';
 	import { Heading, Subheading } from '$lib/components/headings';
+	import { Icons } from '$lib/components/icons/icons.svelte';
 	import { Text, textVariants } from '$lib/components/text';
 	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import type { Section } from '$lib/features/awesome-privacy/types';
@@ -54,7 +55,7 @@
 	<!-- Word of warning -->
 	{#if section.wordOfWarning}
 		<div role="alert" class="mb-8 alert alert-soft alert-warning **:text-warning">
-			<i class="nf nf-fa-exclamation_triangle mt-1 mb-auto shrink-0"></i>
+			<Icons.triangleAlert class="mt-1 mb-auto shrink-0" />
 			<span class="prose prose-sm max-w-none">
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				{@html markdownToHtml(section.wordOfWarning)}
@@ -105,7 +106,7 @@
 					<div
 						class="ml-auto flex shrink-0 items-center text-base-content/20 group-hover:text-primary"
 					>
-						<i class="nf nf-fa-chevron_right"></i>
+						<Icons.chevronRight />
 					</div>
 				</a>
 			</li>
@@ -113,6 +114,6 @@
 	</ul>
 
 	<a href={resolve(`/awesome-privacy/${categorySlug}`)} class="btn mt-4 w-full sm:w-fit">
-		<i class="nf nf-fa-arrow_left mr-1"></i> Back to {awesomePrivacy.slugToName(categorySlug)}
+		<Icons.arrowLeft class="mr-1" /> Back to {awesomePrivacy.slugToName(categorySlug)}
 	</a>
 </div>

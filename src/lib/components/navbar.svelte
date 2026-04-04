@@ -2,6 +2,7 @@
 	import Brand from './brand.svelte';
 
 	import { resolve } from '$app/paths';
+	import { Icons } from '$lib/components/icons/icons.svelte';
 	import { Link } from '$lib/components/text';
 	import ThemeChange from '$lib/components/theme-change.svelte';
 
@@ -51,7 +52,7 @@
 						for={DRAWER_ID}
 						class="drawer-button btn btn-square text-base-content/50 btn-ghost"
 					>
-						<i class="nf nf-md-menu text-lg"></i>
+						<Icons.menu class="text-lg" />
 					</label>
 				</div>
 				<div class="drawer-side">
