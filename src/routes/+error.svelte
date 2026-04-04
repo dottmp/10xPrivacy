@@ -14,7 +14,7 @@
 	<title>{title}</title>
 </svelte:head>
 
-<main class="mx-auto flex h-screen max-w-3xl items-center justify-center px-4 py-8">
+<main class="mx-auto flex max-w-3xl flex-1 items-center justify-center px-4 py-8">
 	<div class="text-center">
 		<h1 class="text-3xl font-bold text-primary">{status}</h1>
 		<p class="mt-4 text-center text-sm text-base-content/40">{description}</p>
