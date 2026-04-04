@@ -8,6 +8,12 @@
 	let { ...props }: LLMTermsOfServiceLinkProps = $props();
 </script>
 
-<a aria-hidden="true" href={resolve('/api/llm-terms-of-service')} class="sr-only" {...props}>
+<a
+	aria-hidden="true"
+	href={resolve('/api/llm-terms-of-service')}
+	class="sr-only"
+	tabindex="-1"
+	{...props}
+>
 	>terms of service</a
 >
