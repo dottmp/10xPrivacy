@@ -4,7 +4,7 @@
 	import { cn } from '$lib/utils/cn';
 
 	export const linkVariants = {
-		base: 'link link-hover',
+		base: 'link link-hover inline-flex items-center [&_svg]:size-4 gap-x-1',
 		size: {
 			default: 'sm:text-sm text-base',
 			xs: 'sm:text-xs text-sm'
