@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.2](https://github.com/Jonathandah/rss-privacy-news/compare/v0.3.1...v0.3.2) (2026-04-04)
+
+### Bug Fixes
+
+* link component is not displaying svgs inline ([#67](https://github.com/Jonathandah/rss-privacy-news/issues/67)) ([f37714a](https://github.com/Jonathandah/rss-privacy-news/commit/f37714a934105ae3d310323b4bb074fe6c1a2f25))
+
 ## [0.3.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.3.0...v0.3.1) (2026-04-04)
 
 ### Bug Fixes
