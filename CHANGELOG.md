@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.2.0...v0.2.1) (2026-04-04)
+
+### Bug Fixes
+
+* ignore formatting CHANGELOG.md ([#61](https://github.com/Jonathandah/rss-privacy-news/issues/61)) ([8da8f27](https://github.com/Jonathandah/rss-privacy-news/commit/8da8f274e440642c28e5d42d47d5c0574b582af5))
+
 ## [0.2.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.1.0...v0.2.0) (2026-04-04)
 
 ### Features
