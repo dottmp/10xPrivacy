@@ -8,6 +8,48 @@ Contributions are welcome. Feel free to open an issue or pull request for:
 - Bug fixes or improvements
 - Additional RSS news sources
 
+## Commit Conventions
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org). Commit messages drive automatic version bumping and changelog generation.
+
+### Format
+
+```
+<type>: <short description>
+```
+
+### Types
+
+| Type       | When to use                                     | Version bump |
+| ---------- | ----------------------------------------------- | ------------ |
+| `feat`     | New feature or capability                       | `minor`      |
+| `fix`      | Bug fix                                         | `patch`      |
+| `chore`    | Maintenance, deps, config — nothing user-facing | none         |
+| `docs`     | Documentation only                              | none         |
+| `refactor` | Code restructure, no behaviour change           | none         |
+| `test`     | Adding or updating tests                        | none         |
+| `ci`       | CI/CD changes                                   | none         |
+
+For a **breaking change**, add `!` after the type:
+
+```
+feat!: redesign navigation
+```
+
+This triggers a `major` version bump.
+
+### Examples
+
+```bash
+feat: add RSS feed filter by category
+fix: correct broken link in privacy tools list
+chore: update dependencies
+docs: improve getting started guide
+refactor: extract fetch logic into utility function
+ci: add lint step to CI workflow
+feat!: remove legacy theme support
+```
+
 ## Release Process (maintainers)
 
 This project uses [release-it](https://github.com/release-it/release-it) for versioning, changelog generation, and GitHub Releases.
