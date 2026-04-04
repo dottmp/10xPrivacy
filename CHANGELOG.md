@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.2.1...v0.3.0) (2026-04-04)
+
+### Features
+
+* replace nerdfont with lucide ([#63](https://github.com/Jonathandah/rss-privacy-news/issues/63)) ([9e62f4b](https://github.com/Jonathandah/rss-privacy-news/commit/9e62f4bcda2d769990d9adda95a75e81ea536c30))
+
 ## [0.2.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.2.0...v0.2.1) (2026-04-04)
 
 ### Bug Fixes
