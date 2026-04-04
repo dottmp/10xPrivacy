@@ -5,6 +5,7 @@
 
 	import { resolve } from '$app/paths';
 	import { Heading } from '$lib/components/headings';
+	import { Icons } from '$lib/components/icons/icons.svelte';
 	import { textVariants } from '$lib/components/text';
 	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import type { Category } from '$lib/features/awesome-privacy/types';
@@ -51,6 +52,6 @@
 
 	<!-- Back -->
 	<a href={resolve(`/awesome-privacy`)} class="btn mt-4 w-full sm:w-fit">
-		<i class="nf nf-fa-arrow_left mr-1"></i> Back to categories
+		<Icons.arrowLeft class="mr-1" /> Back to categories
 	</a>
 </div>

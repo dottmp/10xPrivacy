@@ -10,6 +10,7 @@
 	import type { Section, Service } from '$lib/features/awesome-privacy/types';
 	import { cn } from '$lib/utils/cn';
 	import { markdownToHtml } from '$lib/utils/markdown';
+	import { Icons } from '$lib/components/icons/icons.svelte';
 
 	type SectionProps = HTMLAttributes<HTMLDivElement> & {
 		service: Service;
@@ -76,18 +77,18 @@
 			>Links</Subheading
 		>
 		<ul
-			class="space-y-2 [&_a]:truncate [&_a]:text-primary [&_a]:hover:underline [&_i]:w-4 [&_i]:text-primary [&_li]:flex [&_li]:items-center [&_li]:gap-3 [&_li]:text-sm [&_span]:text-base-content/50"
+			class="space-y-2 [&_a]:truncate [&_a]:text-primary [&_a]:hover:underline [&_li]:flex [&_li]:items-center [&_li]:gap-3 [&_li]:text-sm [&_span]:text-base-content/50 [&_svg]:w-4 [&_svg]:text-primary"
 		>
 			{#if service.url}
 				<li>
-					<i class="nf nf-fa-globe"></i>
+					<Icons.globe />
 					<span>Homepage:</span>
 					<Link href={service.url} external>{service.url}</Link>
 				</li>
 			{/if}
 			{#if service.github}
 				<li>
-					<i class="nf nf-fa-github"></i>
+					<Icons.github />
 					<span>GitHub:</span>
 					<Link href="https://github.com/{service.github}" external
 						>github.com/{service.github}</Link
@@ -96,7 +97,7 @@
 			{/if}
 			{#if service.subreddit}
 				<li>
-					<i class="nf nf-fa-reddit"></i>
+					<Icons.reddit />
 					<span>Reddit:</span>
 					<Link href="https://reddit.com/r/{service.subreddit}" external>r/{service.subreddit}</Link
 					>
@@ -104,15 +105,15 @@
 			{/if}
 			{#if service.discordInvite}
 				<li>
-					<i class="nf nf-fa-comment"></i>
+					<Icons.messageCircle />
 					<span class="text-base-content/50">Discord:</span>
 					<Link href="https://discord.gg/{service.discordInvite}" external>Join server</Link>
 				</li>
 			{/if}
 			{#if service.androidApp}
 				<li>
-					<i class="nf nf-fa-android"></i>
-					<span> Android:</span>
+					<Icons.android />
+					<span>Android:</span>
 					<Link href="https://play.google.com/store/apps/details?id={service.androidApp}" external
 						>{service.androidApp}</Link
 					>
@@ -120,7 +121,7 @@
 			{/if}
 			{#if service.iosApp}
 				<li>
-					<i class="nf nf-fa-apple"></i>
+					<Icons.apple />
 					<span>iOS:</span>
 					<Link
 						href={service.iosApp.startsWith('http')
@@ -173,6 +174,6 @@
 		href={resolve(`/awesome-privacy/${categorySlug}/${sectionSlug}`)}
 		class="btn mt-4 w-full sm:w-fit"
 	>
-		<i class="nf nf-fa-arrow_left mr-1"></i> Back to {awesomePrivacy.slugToName(sectionSlug)}
+		<Icons.arrowLeft class="mr-1" /> Back to {awesomePrivacy.slugToName(sectionSlug)}
 	</a>
 </div>

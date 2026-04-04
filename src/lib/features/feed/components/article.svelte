@@ -7,6 +7,7 @@
 	import { cn } from '$lib/utils/cn';
 	import { formatDate } from '$lib/utils/date.js';
 	import { isSafeUrl, sanitizeHtml } from '$lib/utils/sanitize';
+	import { Icons } from '$lib/components/icons/icons.svelte';
 
 	type ArticleProps = {
 		article: Article;
@@ -17,7 +18,7 @@
 
 <article class="mx-auto max-w-3xl space-y-8 px-4 py-8">
 	<a href={resolve('/')} class="btn mb-8">
-		<i class="nf nf-fa-arrow_left mr-1"></i>
+		<Icons.arrowLeft class="mr-1" />
 		Back to feed
 	</a>
 
@@ -58,7 +59,7 @@
 		{#if isSafeUrl(article.link)}
 			<Link href={article.link} variant="primary" external>
 				Read original on {article.source.name}
-				<i class="nf nf-cod-link_external ml-1"></i>
+				<Icons.external class="ml-1" />
 			</Link>
 		{:else}
 			<Text>Original article link is unavailable.</Text>
