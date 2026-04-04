@@ -17,8 +17,7 @@
 				"name": "conventionalcommits"
 			},
 			"infile": "CHANGELOG.md",
-			"strictSemVer": false,
-			"ignoreRecommendedBump": true
+			"strictSemVer": false
 		}
 	}
 }
