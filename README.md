@@ -1,6 +1,6 @@
 <div align="center">
 
-# 10xPrivacy
+  <img src="https://github.com/dottmp/10xPrivacy/blob/main/src/lib/assets/logo-lg.png?raw=true" alt="10xPrivacy" width="400" style="filter:drop-shadow(-3px 0px 3px #000);" />
 
 **A digital privacy hub — news, tools, and resources against surveillance capitalism.**
 
