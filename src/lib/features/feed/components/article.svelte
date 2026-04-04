@@ -59,7 +59,7 @@
 		{#if isSafeUrl(article.link)}
 			<Link href={article.link} variant="primary" external>
 				Read original on {article.source.name}
-				<Icons.external class="ml-1" />
+				<Icons.external />
 			</Link>
 		{:else}
 			<Text>Original article link is unavailable.</Text>
