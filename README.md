@@ -25,7 +25,7 @@ not to be a comprehensive resource, more a simple starting point. If you want a 
 ```bash
 # Clone the repo
 git clone https://github.com/dottmp/10xPrivacy.git
-cd 10xprivacy
+cd 10xPrivacy
 
 # Install dependencies
 bun install
@@ -42,6 +42,9 @@ The app will be available at `http://localhost:5173`.
 bun run dev                   # Start dev server
 bun run build                 # Production build
 bun run preview               # Preview production build
+bun run dev:cf                # Builds app and serves it with wrangler (Useful for simulating production environment locally)
+bun run preview:cf            # Runs latest build for with wrangler (Useful for simulating production environment locally)
+
 
 bun run check                 # Type check with svelte-check
 bun run test                  # Run unit tests
@@ -49,7 +52,7 @@ bun run test                  # Run unit tests
 bun run lint                  # Check formatting & lint
 bun run fix                   # Auto-fix formatting & lint issues
 
-bun run sync:awesome-privacy  # Pull latest Awesome Privacy dataset
+bun run sync:ap               # Pull latest Awesome Privacy dataset
 ```
 
 ## Data Sources
