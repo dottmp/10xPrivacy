@@ -1,34 +1,36 @@
 <script lang="ts">
-	import type { HTMLAttributes } from 'svelte/elements';
-
+	import { Icons } from '$lib/components/icons/icons.svelte';
 	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import { cn } from '$lib/utils/cn';
 
-	type CategoryIconProps = HTMLAttributes<HTMLElement> & {
+	type CategoryIconProps = {
 		category: string;
+		class?: string;
 	};
 
-	let { category, class: klass, ...props }: CategoryIconProps = $props();
+	let { category, class: klass }: CategoryIconProps = $props();
 
-	const CATEGORY_ICONS = Object.freeze({
-		essentials: 'nf-fa-shield',
-		communication: 'nf-fa-comments',
-		'security-tools': 'nf-fa-lock',
-		networking: 'nf-fa-globe',
-		productivity: 'nf-fa-tasks',
-		utilities: 'nf-fa-wrench',
-		'operating-systems': 'nf-fa-desktop',
-		development: 'nf-fa-code',
-		'smart-home-and-iot': 'nf-fa-home',
-		finance: 'nf-fa-money',
-		social: 'nf-fa-users',
-		media: 'nf-fa-film',
-		creativity: 'nf-fa-paint_brush'
-	} as const);
+	const categoryIcons = {
+		essentials: Icons.essentials,
+		communication: Icons.communication,
+		'security-tools': Icons['security-tools'],
+		networking: Icons.networking,
+		productivity: Icons.productivity,
+		utilities: Icons.utilities,
+		'operating-systems': Icons['operating-systems'],
+		development: Icons.development,
+		'smart-home-and-iot': Icons['smart-home-and-iot'],
+		finance: Icons.finance,
+		social: Icons.social,
+		media: Icons.media,
+		creativity: Icons.creativity
+	} as const;
 
 	const slug = $derived(awesomePrivacy.slugify(category));
 
-	const icon = $derived(CATEGORY_ICONS[slug as keyof typeof CATEGORY_ICONS] || 'nf-fa-circle');
+	const IconComponent = $derived(
+		(categoryIcons as Record<string, typeof Icons.categoryFallback>)[slug] ?? Icons.categoryFallback
+	);
 </script>
 
-<i class={cn('nf', icon, klass)} {...props}></i>
+<IconComponent class={cn(klass)} />
