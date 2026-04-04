@@ -21,7 +21,7 @@
 		"test:ui": "vitest --ui",
 		"test:watch": "vitest",
 		"test:coverage": "vitest run --coverage",
-		"sync:ap": "./fetch-awesome-privacy.sh"
+		"sync-data": "./scripts/sync-data.sh"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.2",
