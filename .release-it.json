@@ -1,5 +1,8 @@
 {
 	"$schema": "https://unpkg.com/release-it@19/schema/release-it.json",
+	"hooks": {
+		"before:init": ["bun run check", "bun run lint", "bun run test"]
+	},
 	"git": {
 		"commitMessage": "chore: release v${version}",
 		"tagName": "v${version}",
