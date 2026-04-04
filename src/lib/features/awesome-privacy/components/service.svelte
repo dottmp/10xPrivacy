@@ -77,7 +77,7 @@
 			>Links</Subheading
 		>
 		<ul
-			class="space-y-2 [&_a]:truncate [&_a]:text-primary [&_a]:hover:underline [&_li]:flex [&_li]:items-center [&_li]:gap-3 [&_li]:text-sm [&_span]:text-base-content/50 [&_svg]:w-4 [&_svg]:text-primary"
+			class="space-y-2 [&_a]:truncate [&_a]:text-primary [&_a]:hover:underline [&_li]:flex [&_li]:items-center [&_li]:gap-3 [&_li]:text-sm [&_span]:text-base-content/50 [&_svg]:w-4 [&_svg]:shrink-0 [&_svg]:text-primary"
 		>
 			{#if service.url}
 				<li>
