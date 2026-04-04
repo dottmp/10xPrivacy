@@ -67,11 +67,7 @@ bun run sync-data             # Creates a data/YYYY-MM-DDTHH-MM-SS branch and sy
 
 ## Contributing
 
-Contributions are welcome. Feel free to open an issue or pull request for:
-
-- New privacy website suggestions
-- Bug fixes or improvements
-- Additional RSS news sources
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Acknowledgements
 
