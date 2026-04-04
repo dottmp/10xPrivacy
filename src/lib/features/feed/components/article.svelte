@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { Heading } from '$lib/components/headings';
+	import { Icons } from '$lib/components/icons/icons.svelte';
 	import { Link, Text, textVariants } from '$lib/components/text';
 	import SourceBadge from '$lib/features/feed/components/source-badge.svelte';
 	import type { Article } from '$lib/features/feed/types';
 	import { cn } from '$lib/utils/cn';
 	import { formatDate } from '$lib/utils/date.js';
 	import { isSafeUrl, sanitizeHtml } from '$lib/utils/sanitize';
-	import { Icons } from '$lib/components/icons/icons.svelte';
 
 	type ArticleProps = {
 		article: Article;

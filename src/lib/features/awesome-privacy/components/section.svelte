@@ -5,12 +5,12 @@
 
 	import { resolve } from '$app/paths';
 	import { Heading, Subheading } from '$lib/components/headings';
+	import { Icons } from '$lib/components/icons/icons.svelte';
 	import { Text, textVariants } from '$lib/components/text';
 	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import type { Section } from '$lib/features/awesome-privacy/types';
 	import { cn } from '$lib/utils/cn';
 	import { markdownToHtml, markdownToInlineHtml } from '$lib/utils/markdown';
-	import { Icons } from '$lib/components/icons/icons.svelte';
 
 	type SectionProps = HTMLAttributes<HTMLDivElement> & {
 		section: Section;

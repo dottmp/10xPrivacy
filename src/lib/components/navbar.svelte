@@ -2,9 +2,9 @@
 	import Brand from './brand.svelte';
 
 	import { resolve } from '$app/paths';
+	import { Icons } from '$lib/components/icons/icons.svelte';
 	import { Link } from '$lib/components/text';
 	import ThemeChange from '$lib/components/theme-change.svelte';
-	import { Icons } from '$lib/components/icons/icons.svelte';
 
 	const DRAWER_ID = 'navbar-drawer';
 

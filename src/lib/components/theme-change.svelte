@@ -2,8 +2,8 @@
 	import { onMount } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { themeChange } from 'theme-change';
-	import { Icons } from '$lib/components/icons/icons.svelte';
 
+	import { Icons } from '$lib/components/icons/icons.svelte';
 	import { cn } from '$lib/utils/cn';
 
 	type ThemeChangeProps = HTMLAttributes<HTMLDivElement> & {
