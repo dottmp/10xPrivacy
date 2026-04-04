@@ -52,7 +52,7 @@ bun run test                  # Run unit tests
 bun run lint                  # Check formatting & lint
 bun run fix                   # Auto-fix formatting & lint issues
 
-bun run sync:ap               # Pull latest Awesome Privacy dataset
+bun run sync-data             # Creates a data/YYYY-MM-DDTHH-MM-SS branch and syncs data from external sources
 ```
 
 ## Data Sources
