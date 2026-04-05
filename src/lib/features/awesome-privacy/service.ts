@@ -2,7 +2,7 @@ import yaml from 'js-yaml';
 
 import rawYaml from '../../data/awesome-privacy.yml?raw';
 
-import type { AwesomePrivacyData, Category, Section, Service } from './types';
+import type { AwesomePrivacyData, Category, SearchEntry, Section, Service } from './types';
 
 import { FEATURED_CATEGORIES } from '$lib/configs';
 
@@ -10,6 +10,7 @@ export class AwesomePrivacy {
 	readonly featuredCatgories = FEATURED_CATEGORIES;
 
 	private _data: AwesomePrivacyData = this._loadData();
+	private _searchIndex: SearchEntry[] | null = null;
 
 	constructor(featuredCategories?: string[]) {
 		if (featuredCategories) {
@@ -104,6 +105,60 @@ export class AwesomePrivacy {
 		return this.getSection({ categorySlug, sectionSlug })?.services.find(
 			(service) => this.slugify(service.name) === serviceSlug
 		);
+	}
+
+	/**
+	 * Returns a flat array of all categories, sections, and services with their slugs and hrefs.
+	 */
+	public getSearchIndex(): SearchEntry[] {
+		if (this._searchIndex) return this._searchIndex;
+
+		const entries: SearchEntry[] = [];
+
+		for (const category of this._data.categories) {
+			const categorySlug = this.slugify(category.name);
+
+			entries.push({
+				type: 'category',
+				name: category.name,
+				categorySlug,
+				href: `/awesome-privacy/${categorySlug}`
+			});
+
+			for (const section of category.sections) {
+				const sectionSlug = this.slugify(section.name);
+
+				entries.push({
+					type: 'section',
+					name: section.name,
+					description: section.intro,
+					categorySlug,
+					sectionSlug,
+					href: `/awesome-privacy/${categorySlug}/${sectionSlug}`
+				});
+
+				for (const service of section.services) {
+					const serviceSlug = this.slugify(service.name);
+
+					entries.push({
+						type: 'service',
+						name: service.name,
+						description: service.description,
+						meta: {
+							url: service.url,
+							icon: service.icon
+						},
+						categorySlug,
+						sectionSlug,
+						serviceSlug,
+						href: `/awesome-privacy/${categorySlug}/${sectionSlug}/${serviceSlug}`
+					});
+				}
+			}
+		}
+
+		this._searchIndex = entries;
+		return entries;
 	}
 }
 
