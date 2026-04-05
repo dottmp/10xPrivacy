@@ -3,7 +3,9 @@ declare global {
 
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			securityHeaders: Record<string, string>;
+		}
 		// interface PageState {}
 		// interface Platform {}
 		interface PageData {
