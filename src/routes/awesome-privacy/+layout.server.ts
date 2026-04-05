@@ -3,7 +3,7 @@ import type { LayoutServerLoad } from './$types';
 import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 
 export const load: LayoutServerLoad = ({ setHeaders }) => {
-	setHeaders({ 'cache-control': 'public, max-age=3600' });
+	setHeaders({ 'Cache-Control': 'public, max-age=3600' });
 
 	const awesomePrivacyData = awesomePrivacy.getData();
 
