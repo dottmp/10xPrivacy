@@ -52,6 +52,6 @@
 
 	<!-- Back -->
 	<a href={resolve(`/awesome-privacy`)} class="btn mt-4 w-full sm:w-fit">
-		<Icons.arrowLeft class="mr-1" /> Back to categories
+		<Icons.arrowLeft class="mr-1" /> Back to Categories
 	</a>
 </div>
