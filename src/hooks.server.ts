@@ -31,18 +31,9 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 		'X-Content-Type-Options': 'nosniff',
 		'Referrer-Policy': 'strict-origin-when-cross-origin',
 		'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
-		'Content-Security-Policy': [
-			"default-src 'self'",
-			"script-src 'self' 'unsafe-inline'",
-			"style-src 'self' 'unsafe-inline'",
-			"font-src 'self'",
-			"img-src 'self' data: https:",
-			"connect-src 'self'",
-			"object-src 'none'",
-			"base-uri 'self'",
-			"form-action 'self'",
-			"frame-ancestors 'none'"
-		].join('; ')
+		'Cross-Origin-Embedder-Policy': 'require-corp',
+		'Cross-Origin-Opener-Policy': 'same-origin',
+		'Cross-Origin-Resource-Policy': 'same-origin'
 	};
 
 	if (!dev) {
@@ -55,6 +46,13 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 
 	for (const [name, value] of Object.entries(headers)) {
 		response.headers.set(name, value);
+	}
+
+	// CSP is managed by SvelteKit's built-in nonce system (svelte.config.js kit.csp)
+	// Read it back from the response so it appears on the /security page
+	const csp = response.headers.get('content-security-policy');
+	if (csp) {
+		event.locals.securityHeaders['Content-Security-Policy'] = csp;
 	}
 
 	return response;
