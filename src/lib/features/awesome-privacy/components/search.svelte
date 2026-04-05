@@ -43,10 +43,11 @@
 		}));
 	}
 
+	let { searchIndex }: { searchIndex: Promise<SearchEntry[]> } = $props();
+
 	let dialog: HTMLDialogElement | null;
 	let inputElement: HTMLInputElement | null;
 	let fuse: Fuse<SearchEntry> | null;
-	let abortController = new AbortController();
 
 	let query = $state('');
 	let results = $state<SearchEntry[]>(featuredAsResults());
@@ -61,9 +62,7 @@
 	async function loadIndex() {
 		loading = true;
 		try {
-			const res = await fetch('/api/search-index', { signal: abortController.signal });
-
-			const data: SearchEntry[] = await res.json();
+			const data = await searchIndex;
 
 			fuse = new Fuse(data, {
 				keys: [
@@ -85,7 +84,6 @@
 
 	$effect(() => {
 		loadIndex();
-		return () => abortController.abort();
 	});
 
 	// ----------------------------------------------------------------

@@ -6,7 +6,7 @@
 	import Navbar from '$lib/components/navbar.svelte';
 	import '../app.css';
 
-	let { children } = $props();
+	let { children, data } = $props();
 </script>
 
 <svelte:head>
@@ -26,7 +26,7 @@
 	<LlmTermsOfServiceLink />
 
 	<!-- header -->
-	<Navbar />
+	<Navbar searchIndex={data.searchIndex} />
 
 	<!-- content -->
 	{@render children()}
