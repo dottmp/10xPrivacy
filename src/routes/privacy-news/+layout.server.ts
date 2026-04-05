@@ -2,7 +2,9 @@ import type { LayoutServerLoad } from './$types';
 
 import { rss } from '$lib/features/feed/service';
 
-export const load: LayoutServerLoad = async () => {
+export const load: LayoutServerLoad = async ({ setHeaders }) => {
+	setHeaders({ 'Cache-Control': 'public, max-age=1800' });
+
 	return {
 		meta: {
 			title: 'Privacy News | 10xPrivacy',
