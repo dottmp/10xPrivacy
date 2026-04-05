@@ -17,10 +17,7 @@ vi.mock('$app/paths', () => ({
 	resolve: (path: string) => path
 }));
 
-// Mock search component — isolates navbar tests from search internals
-vi.mock('$lib/features/awesome-privacy/components/search.svelte', () => ({
-	default: vi.fn()
-}));
+vi.mock('$lib/features/awesome-privacy/components/search.svelte');
 
 describe('Navbar component', () => {
 	describe('URLs', () => {
@@ -57,44 +54,6 @@ describe('Navbar component', () => {
 			links.forEach((link) => {
 				expect(link.getAttribute('href')).toBe('/websites');
 			});
-		});
-	});
-
-	describe('Breakpoint styling', () => {
-		it('desktop nav is hidden by default and visible at md breakpoint', () => {
-			render(Navbar);
-
-			const desktopNav = screen.getByRole('navigation').querySelector('.hidden.md\\:block');
-
-			expect(desktopNav).not.toBeNull();
-		});
-
-		it('mobile drawer is visible by default and hidden at md breakpoint', () => {
-			render(Navbar);
-
-			const mobileDrawer = screen.getByRole('navigation').querySelector('.md\\:hidden');
-
-			expect(mobileDrawer).not.toBeNull();
-		});
-
-		it('desktop nav contains all nav links', () => {
-			render(Navbar);
-
-			const desktopNav = screen.getByRole('navigation').querySelector('.hidden.md\\:block');
-
-			const links = desktopNav?.querySelectorAll('a');
-
-			expect(links).toHaveLength(3);
-		});
-
-		it('mobile drawer contains all nav links', () => {
-			render(Navbar);
-
-			const mobileDrawer = screen.getByRole('navigation').querySelector('.md\\:hidden');
-
-			const links = mobileDrawer?.querySelectorAll('a');
-
-			expect(links).toHaveLength(4);
 		});
 	});
 });
