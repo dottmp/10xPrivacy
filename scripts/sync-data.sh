@@ -7,7 +7,7 @@ set -euo pipefail
 #----------------------------------------------------------------------
 SCRIPTS_DIR="$(dirname "$0")"
 DATE="$(date +%Y-%m-%dT%H-%M-%S)"
-BRANCH="data/$DATE"
+BRANCH="chore/$DATE"
 
 echo "Creating branch $BRANCH ..."
 git switch -c "$BRANCH"
