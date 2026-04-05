@@ -31,6 +31,7 @@
 	import Discord from './icon-discord.svelte';
 	import Github from './icon-github.svelte';
 	import Reddit from './icon-reddit.svelte';
+	import Loader from './icons-loader.svelte';
 
 	export const Icons = {
 		arrowLeft: ArrowLeft,
@@ -51,6 +52,7 @@
 		discord: Discord,
 		close: X,
 		section: Box,
+		loading: Loader,
 
 		// Category icons (keyed by slug)
 		essentials: ShieldHalf,
