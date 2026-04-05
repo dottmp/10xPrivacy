@@ -26,6 +26,6 @@
 			class="ml-2"
 			href="https://github.com/dottmp/10xprivacy/blob/main/LICENSE"
 			variant="primary">MIT License</Link
-		>
+		> |<Link class="ml-2" href="/security" variant="primary">Security</Link>
 	</Text>
 </footer>
