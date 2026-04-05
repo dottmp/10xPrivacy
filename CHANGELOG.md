@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.4.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.3.3...v0.4.0) (2026-04-05)
+
+### Features
+
+* add service count on category in all categories-page ([#73](https://github.com/Jonathandah/rss-privacy-news/issues/73)) ([b8f5283](https://github.com/Jonathandah/rss-privacy-news/commit/b8f52834538d1961fd6321eab72dcad94a0e5bce))
+
+### Bug Fixes
+
+* add capital c on back to all categories button ([#74](https://github.com/Jonathandah/rss-privacy-news/issues/74)) ([6b2822e](https://github.com/Jonathandah/rss-privacy-news/commit/6b2822e836fffd8bdbd5a3f10e3ed11b5a5da160))
+* wrong ios icon ([#72](https://github.com/Jonathandah/rss-privacy-news/issues/72)) ([8907e3d](https://github.com/Jonathandah/rss-privacy-news/commit/8907e3d028dc608bdf954e502c235cfd444dbd39))
+
 ## [0.3.3](https://github.com/Jonathandah/rss-privacy-news/compare/v0.3.2...v0.3.3) (2026-04-04)
 
 ## [0.3.2](https://github.com/Jonathandah/rss-privacy-news/compare/v0.3.1...v0.3.2) (2026-04-04)
