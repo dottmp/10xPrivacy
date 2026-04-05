@@ -26,26 +26,12 @@ const handleRateLimit: Handle = async ({ event, resolve }) => {
 };
 
 const handleHeaders: Handle = async ({ event, resolve }) => {
-	const response = await resolve(event);
-
-	response.headers.set('X-Frame-Options', 'DENY');
-
-	response.headers.set('X-Content-Type-Options', 'nosniff');
-
-	if (!dev) {
-		response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-	}
-
-	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-
-	response.headers.set(
-		'Permissions-Policy',
-		'camera=(), microphone=(), geolocation=(), payment=()'
-	);
-
-	response.headers.set(
-		'Content-Security-Policy',
-		[
+	const headers: Record<string, string> = {
+		'X-Frame-Options': 'DENY',
+		'X-Content-Type-Options': 'nosniff',
+		'Referrer-Policy': 'strict-origin-when-cross-origin',
+		'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
+		'Content-Security-Policy': [
 			"default-src 'self'",
 			"script-src 'self' 'unsafe-inline'",
 			"style-src 'self' 'unsafe-inline'",
@@ -57,7 +43,19 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 			"form-action 'self'",
 			"frame-ancestors 'none'"
 		].join('; ')
-	);
+	};
+
+	if (!dev) {
+		headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains';
+	}
+
+	event.locals.securityHeaders = headers;
+
+	const response = await resolve(event);
+
+	for (const [name, value] of Object.entries(headers)) {
+		response.headers.set(name, value);
+	}
 
 	return response;
 };
