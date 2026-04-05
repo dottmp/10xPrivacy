@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.4.1...v0.5.0) (2026-04-05)
+
+### Features
+
+* add search feature for awesome privacy ([#77](https://github.com/Jonathandah/rss-privacy-news/issues/77)) ([833cbf4](https://github.com/Jonathandah/rss-privacy-news/commit/833cbf4d0e1d1f49aaa30d1426f5961e50b1d7da))
+
 ## [0.4.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.4.0...v0.4.1) (2026-04-05)
 
 ### Bug Fixes
