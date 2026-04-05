@@ -79,6 +79,6 @@ This will interactively:
 6. Create and push a git tag (e.g. `v0.1.0`)
 7. Create a GitHub Release with changelog notes
 
-Then open a PR from `dev → main` on GitHub and merge it. Cloudflare will automatically deploy to production.
+Then rebase `main -> dev` and push latests changes to `main`. Cloudflare will automatically deploy to production.
 
 > Requires `GITHUB_TOKEN` to be set in your environment for GitHub Release creation.
