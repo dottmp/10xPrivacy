@@ -1,6 +1,8 @@
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 
-export const load: PageLoad = async () => {
+export const load: PageServerLoad = ({ setHeaders }) => {
+	setHeaders({ 'Cache-Control': 'public, max-age=86400' });
+
 	return {
 		meta: {
 			title: '10xPrivacy',
