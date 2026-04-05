@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.4.0...v0.4.1) (2026-04-05)
+
+### Bug Fixes
+
+* show all categories button is missing capital letter ([#76](https://github.com/Jonathandah/rss-privacy-news/issues/76)) ([7625695](https://github.com/Jonathandah/rss-privacy-news/commit/76256955ab1b744fa379c5f70da3227244902494))
+
 ## [0.4.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.3.3...v0.4.0) (2026-04-05)
 
 ### Features
