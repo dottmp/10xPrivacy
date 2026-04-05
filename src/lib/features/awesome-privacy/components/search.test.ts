@@ -6,7 +6,7 @@ import SearchComponent from './search.svelte';
 import type { SearchEntry } from '$lib/features/awesome-privacy/types';
 
 // ----------------------------------------------------------------
-// SvelteKit mocks
+//  mocks
 // ----------------------------------------------------------------
 
 vi.mock('$app/paths', () => ({
@@ -29,7 +29,7 @@ beforeEach(() => {
 });
 
 // ----------------------------------------------------------------
-// Sample data
+//  mock data
 // ----------------------------------------------------------------
 
 const featuredCategories: SearchEntry[] = [
@@ -76,7 +76,7 @@ function getSearchInput() {
 }
 
 // ----------------------------------------------------------------
-// Tests
+// tests
 // ----------------------------------------------------------------
 
 describe('Search component', () => {
