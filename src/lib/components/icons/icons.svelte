@@ -1,6 +1,7 @@
 <script module lang="ts">
 	import {
 		ArrowLeft,
+		Box,
 		ChevronDown,
 		ChevronRight,
 		Circle,
@@ -16,11 +17,13 @@
 		MessageCircle,
 		Monitor,
 		Paintbrush,
+		Search,
 		ShieldHalf,
 		SwatchBook,
 		TriangleAlert,
 		UsersRound,
-		Wrench
+		Wrench,
+		X
 	} from 'lucide-svelte';
 
 	import Android from './icon-android.svelte';
@@ -35,6 +38,7 @@
 		chevronDown: ChevronDown,
 		external: ExternalLink,
 		menu: Menu,
+		search: Search,
 		theme: SwatchBook,
 		circle: Circle,
 		warning: TriangleAlert,
@@ -45,6 +49,8 @@
 		github: Github,
 		reddit: Reddit,
 		discord: Discord,
+		close: X,
+		section: Box,
 
 		// Category icons (keyed by slug)
 		essentials: ShieldHalf,
