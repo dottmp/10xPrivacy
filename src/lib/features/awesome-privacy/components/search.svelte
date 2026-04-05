@@ -176,7 +176,7 @@
 					bind:this={inputElement}
 					type="search"
 					class={cn(
-						'grow bg-transparent outline-none',
+						'grow bg-transparent outline-none [&::-webkit-search-cancel-button]:hidden',
 						textVariants.base,
 						textVariants.size.default
 					)}
