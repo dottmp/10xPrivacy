@@ -55,7 +55,7 @@
 	<!-- Word of warning -->
 	{#if section.wordOfWarning}
 		<div role="alert" class="mb-8 alert alert-soft alert-warning **:text-warning">
-			<Icons.triangleAlert class="mt-1 mb-auto shrink-0" />
+			<Icons.warning class="mt-1 mb-auto shrink-0" />
 			<span class="prose prose-sm max-w-none">
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				{@html markdownToHtml(section.wordOfWarning)}
