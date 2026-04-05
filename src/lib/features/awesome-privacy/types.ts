@@ -43,3 +43,20 @@ export type Category = {
 export type AwesomePrivacyData = {
 	categories: Category[];
 };
+
+export type SearchEntryType = 'category' | 'section' | 'service';
+
+export type SearchEntry = {
+	type: SearchEntryType;
+	name: string;
+	meta?: {
+		url?: string;
+		icon?: string;
+	};
+	description?: string;
+	categorySlug: string;
+	sectionSlug?: string;
+	serviceSlug?: string;
+
+	href: string;
+};

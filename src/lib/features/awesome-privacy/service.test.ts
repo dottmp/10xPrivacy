@@ -287,4 +287,73 @@ describe('AwesomePrivacy', () => {
 			expect(Array.isArray(data.categories)).toBe(true);
 		});
 	});
+
+	//--------------------------------------------------------------------
+	// getSearchIndex
+	//--------------------------------------------------------------------
+
+	describe('getSearchIndex', () => {
+		it('returns an array', () => {
+			expect(service.getSearchIndex()).toBeInstanceOf(Array);
+		});
+
+		it('includes category entries', () => {
+			const index = service.getSearchIndex();
+			const categories = index.filter((e) => e.type === 'category');
+
+			expect(categories.length).toBeGreaterThan(0);
+		});
+
+		it('includes section entries', () => {
+			const index = service.getSearchIndex();
+			const sections = index.filter((e) => e.type === 'section');
+
+			expect(sections.length).toBeGreaterThan(0);
+		});
+
+		it('includes service entries', () => {
+			const index = service.getSearchIndex();
+			const services = index.filter((e) => e.type === 'service');
+
+			expect(services.length).toBeGreaterThan(0);
+		});
+
+		it('category entries have correct href', () => {
+			const index = service.getSearchIndex();
+			const essentials = index.find((e) => e.type === 'category' && e.name === 'Essentials');
+
+			expect(essentials?.href).toBe('/awesome-privacy/essentials');
+			expect(essentials?.categorySlug).toBe('essentials');
+			expect(essentials?.sectionSlug).toBeUndefined();
+			expect(essentials?.serviceSlug).toBeUndefined();
+		});
+
+		it('section entries have correct href and slugs', () => {
+			const index = service.getSearchIndex();
+			const section = index.find((e) => e.type === 'section' && e.name === 'Password Managers');
+
+			expect(section?.href).toBe('/awesome-privacy/essentials/password-managers');
+			expect(section?.categorySlug).toBe('essentials');
+			expect(section?.sectionSlug).toBe('password-managers');
+			expect(section?.serviceSlug).toBeUndefined();
+		});
+
+		it('service entries have correct href and slugs', () => {
+			const index = service.getSearchIndex();
+			const svc = index.find((e) => e.type === 'service' && e.name === 'Bitwarden');
+
+			expect(svc?.href).toBe('/awesome-privacy/essentials/password-managers/bitwarden');
+			expect(svc?.categorySlug).toBe('essentials');
+			expect(svc?.sectionSlug).toBe('password-managers');
+			expect(svc?.serviceSlug).toBe('bitwarden');
+		});
+
+		it('service entries include a description', () => {
+			const index = service.getSearchIndex();
+			const svc = index.find((e) => e.type === 'service' && e.name === 'Bitwarden');
+
+			expect(typeof svc?.description).toBe('string');
+			expect(svc!.description!.length).toBeGreaterThan(0);
+		});
+	});
 });

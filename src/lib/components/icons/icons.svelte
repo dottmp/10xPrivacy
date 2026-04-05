@@ -1,6 +1,7 @@
 <script module lang="ts">
 	import {
 		ArrowLeft,
+		Box,
 		ChevronDown,
 		ChevronRight,
 		Circle,
@@ -16,11 +17,13 @@
 		MessageCircle,
 		Monitor,
 		Paintbrush,
+		Search,
 		ShieldHalf,
 		SwatchBook,
 		TriangleAlert,
 		UsersRound,
-		Wrench
+		Wrench,
+		X
 	} from 'lucide-svelte';
 
 	import Android from './icon-android.svelte';
@@ -28,6 +31,7 @@
 	import Discord from './icon-discord.svelte';
 	import Github from './icon-github.svelte';
 	import Reddit from './icon-reddit.svelte';
+	import Loader from './icons-loader.svelte';
 
 	export const Icons = {
 		arrowLeft: ArrowLeft,
@@ -35,6 +39,7 @@
 		chevronDown: ChevronDown,
 		external: ExternalLink,
 		menu: Menu,
+		search: Search,
 		theme: SwatchBook,
 		circle: Circle,
 		warning: TriangleAlert,
@@ -45,6 +50,9 @@
 		github: Github,
 		reddit: Reddit,
 		discord: Discord,
+		close: X,
+		section: Box,
+		loading: Loader,
 
 		// Category icons (keyed by slug)
 		essentials: ShieldHalf,

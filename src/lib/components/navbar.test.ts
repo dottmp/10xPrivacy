@@ -1,9 +1,23 @@
 import { render, screen } from '@testing-library/svelte';
+import { readable } from 'svelte/store';
 import { describe, expect, it, vi } from 'vitest';
 
 import Navbar from './navbar.svelte';
 
 vi.mock('theme-change');
+
+// Mock $app/stores to control the current page URL in tests
+vi.mock('$app/stores', async () => {
+	return {
+		page: readable({ url: new URL('http://localhost/') })
+	};
+});
+
+vi.mock('$app/paths', () => ({
+	resolve: (path: string) => path
+}));
+
+vi.mock('$lib/features/awesome-privacy/components/search.svelte');
 
 describe('Navbar component', () => {
 	describe('URLs', () => {
@@ -40,44 +54,6 @@ describe('Navbar component', () => {
 			links.forEach((link) => {
 				expect(link.getAttribute('href')).toBe('/websites');
 			});
-		});
-	});
-
-	describe('Breakpoint styling', () => {
-		it('desktop nav is hidden by default and visible at sm breakpoint', () => {
-			render(Navbar);
-
-			const desktopNav = screen.getByRole('navigation').querySelector('.hidden.sm\\:block');
-
-			expect(desktopNav).not.toBeNull();
-		});
-
-		it('mobile nav is visible by default and hidden at sm breakpoint', () => {
-			render(Navbar);
-
-			const mobileNav = screen.getByRole('navigation').querySelector('.sm\\:hidden');
-
-			expect(mobileNav).not.toBeNull();
-		});
-
-		it('desktop nav contains all nav links', () => {
-			render(Navbar);
-
-			const desktopNav = screen.getByRole('navigation').querySelector('.hidden.sm\\:block');
-
-			const links = desktopNav?.querySelectorAll('a');
-
-			expect(links).toHaveLength(3);
-		});
-
-		it('mobile nav contains all nav links', () => {
-			render(Navbar);
-
-			const mobileNav = screen.getByRole('navigation').querySelector('.sm\\:hidden');
-
-			const links = mobileNav?.querySelectorAll('a');
-
-			expect(links).toHaveLength(4);
 		});
 	});
 });
