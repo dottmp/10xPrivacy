@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Fuse from 'fuse.js';
 
+	import type { LayoutData } from '../../../../routes/$types';
 	import type { Service } from '../types';
 
 	import CategoryIcon from './category-icon.svelte';
@@ -10,7 +11,6 @@
 	import type { Pathname } from '$app/types';
 	import { Icons } from '$lib/components/icons/icons.svelte';
 	import Text, { textVariants } from '$lib/components/text/text.svelte';
-	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import type { SearchEntry, SearchEntryType } from '$lib/features/awesome-privacy/types';
 	import { cn } from '$lib/utils/cn';
 	import { debounce } from '$lib/utils/debounce';
@@ -32,27 +32,15 @@
 			class: 'badge-accent'
 		}
 	} as const);
-
-	function featuredAsResults(): SearchEntry[] {
-		return awesomePrivacy.getFeaturedCategories().map((c) => ({
-			type: 'category' as const,
-			name: c.name,
-			href: `/awesome-privacy/${awesomePrivacy.slugify(c.name)}`,
-			categorySlug: awesomePrivacy.slugify(c.name),
-			description: undefined
-		}));
-	}
-
-	let { searchIndex }: { searchIndex: Promise<SearchEntry[]> } = $props();
+	let { search: _search }: { search: LayoutData['search'] } = $props();
 
 	let dialog: HTMLDialogElement | null;
 	let inputElement: HTMLInputElement | null;
 	let fuse: Fuse<SearchEntry> | null;
 
 	let query = $state('');
-	let results = $state<SearchEntry[]>(featuredAsResults());
+	let results = $state<SearchEntry[]>([]);
 	let loading = $state(false);
-
 	const isSearching = $derived(query.trim().length >= MIN_QUERY_LENGTH);
 
 	// ----------------------------------------------------------------
@@ -62,7 +50,7 @@
 	async function loadIndex() {
 		loading = true;
 		try {
-			const data = await searchIndex;
+			const data = await _search.index;
 
 			fuse = new Fuse(data, {
 				keys: [
@@ -102,7 +90,6 @@
 
 	function clear() {
 		query = '';
-		results = featuredAsResults();
 	}
 
 	// ----------------------------------------------------------------
@@ -111,8 +98,7 @@
 
 	function search(query: string) {
 		if (!fuse || query.trim().length < MIN_QUERY_LENGTH) {
-			results = featuredAsResults();
-
+			results = [];
 			return;
 		}
 		results = fuse.search(query).map((result) => result.item);
@@ -182,7 +168,7 @@
 				class="input sticky top-0 z-10 input-lg flex w-full items-center gap-3 rounded-none border-0 border-b border-base-200 bg-base-100 px-4 shadow-none focus-within:shadow-none focus-within:outline-none"
 			>
 				{#if loading}
-					<span class="loading loading-sm shrink-0 loading-spinner text-base-content/40"></span>
+					<Icons.loading class="shrink-0"></Icons.loading>
 				{:else}
 					<Icons.search class="size-5 shrink-0 text-base-content/40" />
 				{/if}
@@ -217,11 +203,9 @@
 
 			<!-- Results  -->
 			<div class="flex-1 overflow-y-auto [scrollbar-width:thin]">
-				{#if isSearching && results.length === 0 && !loading}
-					<Text class="px-4 py-8 text-center">No results for "{query}"</Text>
-				{:else}
+				{#snippet entryList(entries: SearchEntry[])}
 					<ul role="listbox" class="space-y-2 p-2">
-						{#each results as entry (entry.href)}
+						{#each entries as entry (entry.href)}
 							{@const badge = ENTRY_BADGE[entry.type]}
 							<li>
 								<a
@@ -253,6 +237,22 @@
 							</li>
 						{/each}
 					</ul>
+				{/snippet}
+
+				{#if isSearching}
+					{#if results.length === 0 && !loading}
+						<Text class="px-4 py-8 text-center">No results for "{query}"</Text>
+					{:else}
+						{@render entryList(results)}
+					{/if}
+				{:else}
+					{#await _search.featuredCategories}
+						<div class="flex items-center justify-center py-8">
+							<Icons.loading class="shrink-0 "></Icons.loading>
+						</div>
+					{:then featuredCategories}
+						{@render entryList(featuredCategories)}
+					{/await}
 				{/if}
 			</div>
 		</div>
