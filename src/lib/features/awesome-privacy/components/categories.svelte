@@ -6,7 +6,8 @@
 	import { resolve } from '$app/paths';
 	import Subheading from '$lib/components/headings/subheading.svelte';
 	import { Icons } from '$lib/components/icons/icons.svelte';
-	import Link, { linkVariants } from '$lib/components/text/link.svelte';
+	import { textVariants } from '$lib/components/text';
+	import { linkVariants } from '$lib/components/text/link.svelte';
 	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import type { Category } from '$lib/features/awesome-privacy/types';
 	import { cn } from '$lib/utils/cn';
@@ -35,12 +36,21 @@
 					{#each category.sections as section (section.name)}
 						{@const sectionSlug = awesomePrivacy.slugify(section.name)}
 						<li>
-							<Link
+							<a
 								href={resolve(`/awesome-privacy/${slug}/${sectionSlug}`)}
-								class="block rounded-lg bg-base-100 px-4 py-3 font-semibold shadow-sm"
+								class="group flex items-center justify-between rounded-lg bg-base-100 px-5 py-4 shadow-sm"
 							>
-								{section.name}
-							</Link>
+								<span
+									class={cn(
+										textVariants.base,
+										textVariants.size.default,
+										'font-semibold group-hover:text-primary group-hover:underline'
+									)}>{section.name}</span
+								>
+								<span class={cn(textVariants.base, textVariants.size.xs)}
+									>{section.services.length}
+								</span>
+							</a>
 						</li>
 					{/each}
 				</ul>
