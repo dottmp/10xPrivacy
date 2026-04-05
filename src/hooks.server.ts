@@ -48,9 +48,8 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 		response.headers.set(name, value);
 	}
 
-	// CSP is managed by SvelteKit's built-in nonce system (svelte.config.js kit.csp)
-	// Read it back from the response so it appears on the /security page
 	const csp = response.headers.get('content-security-policy');
+
 	if (csp) {
 		event.locals.securityHeaders['Content-Security-Policy'] = csp;
 	}
