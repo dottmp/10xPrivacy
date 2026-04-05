@@ -61,6 +61,6 @@
 
 	<!-- "Show everything" CTA card -->
 	<a href={resolve('/awesome-privacy/all')} class="btn mt-6 w-full btn-primary sm:w-fit">
-		Show all categories
+		Show all Categories
 	</a>
 </div>
