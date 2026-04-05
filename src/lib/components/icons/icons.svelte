@@ -23,10 +23,11 @@
 		Wrench
 	} from 'lucide-svelte';
 
-	import Android from '$lib/components/icons/icon-android.svelte';
-	import Apple from '$lib/components/icons/icon-apple.svelte';
-	import Github from '$lib/components/icons/icon-github.svelte';
-	import Reddit from '$lib/components/icons/icon-reddit.svelte';
+	import Android from './icon-android.svelte';
+	import Apple from './icon-apple.svelte';
+	import Discord from './icon-discord.svelte';
+	import Github from './icon-github.svelte';
+	import Reddit from './icon-reddit.svelte';
 
 	export const Icons = {
 		arrowLeft: ArrowLeft,
@@ -36,13 +37,14 @@
 		menu: Menu,
 		theme: SwatchBook,
 		circle: Circle,
-		triangleAlert: TriangleAlert,
+		warning: TriangleAlert,
 		globe: Globe,
 		apple: Apple,
 		android: Android,
 		messageCircle: MessageCircle,
 		github: Github,
 		reddit: Reddit,
+		discord: Discord,
 
 		// Category icons (keyed by slug)
 		essentials: ShieldHalf,
