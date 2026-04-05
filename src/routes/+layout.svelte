@@ -26,7 +26,7 @@
 	<LlmTermsOfServiceLink />
 
 	<!-- header -->
-	<Navbar searchIndex={data.searchIndex} />
+	<Navbar search={data.search} />
 
 	<!-- content -->
 	{@render children()}

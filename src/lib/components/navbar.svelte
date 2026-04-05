@@ -1,19 +1,20 @@
 <script lang="ts">
+	import type { LayoutData } from '../../routes/$types';
+
 	import Brand from './brand.svelte';
 
 	import { resolve } from '$app/paths';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { Icons } from '$lib/components/icons/icons.svelte';
 	import { Link } from '$lib/components/text';
 	import ThemeChange from '$lib/components/theme-change.svelte';
 	import { NAV_ITMES } from '$lib/configs';
 	import Search from '$lib/features/awesome-privacy/components/search.svelte';
-	import type { SearchEntry } from '$lib/features/awesome-privacy/types';
 	import { cn } from '$lib/utils/cn';
 
 	const drawerId = 'navbar-drawer';
 
-	let { searchIndex }: { searchIndex: Promise<SearchEntry[]> } = $props();
+	let { search }: { search: LayoutData['search'] } = $props();
 
 	let drawer: HTMLInputElement | undefined;
 
@@ -37,12 +38,9 @@
 			<div class="ml-auto flex items-center gap-2">
 				<!-- awesome-privacy search trigger (desktop) -->
 				<div
-					class={cn(
-						'hidden',
-						$page.url.pathname.startsWith(resolve('/awesome-privacy')) && 'block'
-					)}
+					class={cn('hidden', page.url.pathname.startsWith(resolve('/awesome-privacy')) && 'block')}
 				>
-					<Search {searchIndex} />
+					<Search {search} />
 				</div>
 
 				<!-- theme toggle -->

@@ -1,7 +1,20 @@
-import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
+import type { LayoutServerLoad } from './$types';
 
-export const load = () => {
+import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
+import type { SearchEntry } from '$lib/features/awesome-privacy/types';
+
+export const load: LayoutServerLoad = () => {
 	return {
-		searchIndex: Promise.resolve(awesomePrivacy.getSearchIndex())
+		search: {
+			index: Promise.resolve(awesomePrivacy.getSearchIndex()),
+			featuredCategories: Promise.resolve(
+				awesomePrivacy.getFeaturedCategories().map((category) => ({
+					type: 'category' as const,
+					name: category.name,
+					href: `/awesome-privacy/${awesomePrivacy.slugify(category.name)}`,
+					categorySlug: awesomePrivacy.slugify(category.name)
+				})) as SearchEntry[]
+			)
+		}
 	};
 };
