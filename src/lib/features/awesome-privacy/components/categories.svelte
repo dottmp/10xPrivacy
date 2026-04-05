@@ -6,11 +6,11 @@
 	import { resolve } from '$app/paths';
 	import Subheading from '$lib/components/headings/subheading.svelte';
 	import { Icons } from '$lib/components/icons/icons.svelte';
+	import { textVariants } from '$lib/components/text';
 	import { linkVariants } from '$lib/components/text/link.svelte';
 	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import type { Category } from '$lib/features/awesome-privacy/types';
 	import { cn } from '$lib/utils/cn';
-	import { textVariants } from '$lib/components/text';
 
 	type CategoriesProps = HTMLAttributes<HTMLDivElement> & {
 		categories: Category[];
