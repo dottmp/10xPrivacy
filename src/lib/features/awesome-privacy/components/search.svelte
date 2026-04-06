@@ -251,20 +251,34 @@
 									onclick={close}
 									class="flex w-full items-center gap-3 rounded-box px-3 py-2.5 text-left focus-within:bg-base-200 focus-within:outline-1 focus-within:outline-primary hover:bg-base-200"
 								>
-									<span class="shrink-0 text-base-content/40">
+									<span
+										class="flex size-6 shrink-0 items-center justify-center text-base-content/40 *:mr-1 [&>img]:size-6 [&>svg]:size-5"
+									>
 										{#if entry.type === 'service'}
-											<ServiceLogo service={{ ...entry.meta } as Service} class="size-6" />
+											<ServiceLogo service={{ ...entry.meta } as Service} />
 										{:else if entry.type === 'category'}
-											<CategoryIcon category={entry.name} class="size-5" />
+											<CategoryIcon category={entry.name} />
 										{:else}
-											<Icons.section class="size-5" />
+											<Icons.section />
 										{/if}
 									</span>
 
 									<span class="min-w-0 flex-1">
 										<Text class="truncate font-medium text-base-content">{entry.name}</Text>
 										{#if entry.description}
-											<Text size="xs" class="truncate">{entry.description}</Text>
+											<Text size="xs" class="line-clamp-3 sm:line-clamp-1">{entry.description}</Text
+											>
+										{/if}
+
+										{#if entry?.meta?.parent}
+											{@const parents = entry.meta.parent.split(',')}
+											<div class="mt-1 flex flex-wrap items-center gap-1">
+												{#each parents as parent, index (index)}
+													<span class="badge badge-soft badge-xs">
+														{parent}
+													</span>
+												{/each}
+											</div>
 										{/if}
 									</span>
 
