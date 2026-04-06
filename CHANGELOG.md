@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.3](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.2...v0.6.3) (2026-04-06)
+
+### Bug Fixes
+
+* make svelte announcer sr-only ([#118](https://github.com/Jonathandah/rss-privacy-news/issues/118)) ([3fbbb13](https://github.com/Jonathandah/rss-privacy-news/commit/3fbbb13757a103e8d7189208ab92d6b9582fb83a))
+
 ## [0.6.2](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.1...v0.6.2) (2026-04-06)
 
 ### Bug Fixes
