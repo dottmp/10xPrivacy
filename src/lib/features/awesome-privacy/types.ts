@@ -50,6 +50,7 @@ export type SearchEntry = {
 	type: SearchEntryType;
 	name: string;
 	meta?: {
+		parent?: string;
 		url?: string;
 		icon?: string;
 	};
