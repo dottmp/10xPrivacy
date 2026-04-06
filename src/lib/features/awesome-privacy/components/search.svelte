@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Fuse from 'fuse.js';
+	import { onMount, tick } from 'svelte';
 
 	import type { LayoutData } from '../../../../routes/$types';
 	import type { Service } from '../types';
@@ -17,6 +18,8 @@
 
 	const MIN_QUERY_LENGTH = 2;
 	const SEARCH_DEBOUNCE_MS = 200;
+	const KEYBOARD_THRESHOLD_PX = 100; // consider keyboard open when viewport shrinks this much
+	const SAFETY_PADDING = 12; // px between focused element and keyboard
 
 	const ENTRY_BADGE: Record<SearchEntryType, { label: string; class: string }> = Object.freeze({
 		category: {
@@ -32,16 +35,100 @@
 			class: 'badge-accent'
 		}
 	} as const);
+
 	let { search: _search }: { search: LayoutData['search'] } = $props();
 
 	let dialog: HTMLDialogElement | null;
-	let inputElement: HTMLInputElement | null;
+	let input: HTMLInputElement | null;
+	let modalBox: HTMLElement | null;
 	let fuse: Fuse<SearchEntry> | null;
+	let translateY = 0;
 
 	let query = $state('');
 	let results = $state<SearchEntry[]>([]);
 	let loading = $state(false);
+
 	const isSearching = $derived(query.trim().length >= MIN_QUERY_LENGTH);
+
+	// ----------------------------------------------------------------
+	//  battle phone keyboards
+	// ----------------------------------------------------------------
+
+	function updateViewportShift() {
+		const vv = window.visualViewport;
+		if (!vv) {
+			translateY = 0;
+			return;
+		}
+
+		const keyboardHeight = window.innerHeight - vv.height;
+
+		translateY = keyboardHeight > KEYBOARD_THRESHOLD_PX ? -keyboardHeight : 0;
+
+		if (translateY < -window.innerHeight * 0.75) {
+			translateY = -window.innerHeight * 0.75;
+		}
+	}
+
+	async function ensureVisible(el: HTMLElement | null) {
+		if (!el) return;
+
+		const vv = window.visualViewport;
+		await tick();
+
+		const rect = el.getBoundingClientRect();
+		const viewportHeight = vv ? vv.height : window.innerHeight;
+		const bottomVisibleY = viewportHeight - SAFETY_PADDING;
+
+		if (rect.bottom > bottomVisibleY) {
+			const delta = rect.bottom - bottomVisibleY;
+
+			const scrollContainer = modalBox?.querySelector(
+				'.flex-1.overflow-y-auto'
+			) as HTMLElement | null;
+
+			if (scrollContainer) {
+				scrollContainer.scrollBy({ top: delta, behavior: 'smooth' });
+			} else {
+				translateY -= delta;
+			}
+		}
+	}
+
+	function onFocusIn(e: FocusEvent) {
+		const target = e.target as HTMLElement | null;
+
+		if (!target) return;
+		if (modalBox && (target === input || modalBox.contains(target))) {
+			ensureVisible(target);
+		}
+	}
+
+	onMount(() => {
+		const vv = window.visualViewport;
+
+		updateViewportShift();
+
+		if (vv) {
+			vv.addEventListener('resize', updateViewportShift, { passive: true });
+			vv.addEventListener('scroll', updateViewportShift, { passive: true });
+		} else {
+			window.addEventListener('resize', updateViewportShift);
+		}
+		window.addEventListener('focusin', onFocusIn);
+
+		return () => {
+			const vv = window.visualViewport;
+
+			if (vv) {
+				vv.removeEventListener('resize', updateViewportShift);
+				vv.removeEventListener('scroll', updateViewportShift);
+			} else {
+				window.removeEventListener('resize', updateViewportShift);
+			}
+			window.removeEventListener('focusin', onFocusIn);
+		};
+	});
 
 	// ----------------------------------------------------------------
 	// Index
@@ -80,7 +167,7 @@
 
 	function open() {
 		dialog?.showModal();
-		inputElement?.focus();
+		input?.focus();
 	}
 
 	function close() {
@@ -129,7 +216,7 @@
 			next.scrollIntoView({ block: 'nearest' });
 		} else {
 			if (currentIndex <= 0) {
-				inputElement?.focus();
+				input?.focus();
 			} else {
 				const prev = anchors[currentIndex - 1];
 				prev.focus();
@@ -160,7 +247,8 @@
 	onclose={close}
 >
 	<div
-		class="relative modal-box max-w-3xl p-0 max-md:h-[80dvh] md:mt-[10vh] md:h-[clamp(12rem,75vh,75vh)] md:w-11/12"
+		bind:this={modalBox}
+		class="relative modal-box max-w-3xl p-0 max-md:h-[80vh] md:mt-[10vh] md:h-[clamp(12rem,75vh,75vh)] md:w-11/12"
 	>
 		<div class="flex h-full flex-col">
 			<!-- Search bar -->
@@ -173,7 +261,7 @@
 					<Icons.search class="size-5 shrink-0 text-base-content/40" />
 				{/if}
 				<input
-					bind:this={inputElement}
+					bind:this={input}
 					type="search"
 					class={cn(
 						'grow bg-transparent outline-none [&::-webkit-search-cancel-button]:hidden',
@@ -192,7 +280,7 @@
 						onclick={() => {
 							clear();
 
-							inputElement?.focus();
+							input?.focus();
 						}}
 					>
 						<Icons.close />
