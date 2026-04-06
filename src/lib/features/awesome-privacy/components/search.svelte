@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Fuse from 'fuse.js';
+	import { onMount } from 'svelte';
 
 	import type { LayoutData } from '../../../../routes/$types';
 	import type { Service } from '../types';
@@ -137,6 +138,33 @@
 			}
 		}
 	}
+
+	let keyboardHeight = $state(0);
+
+	onMount(() => {
+		const initial = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+
+		function handler() {
+			const hv = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+			keyboardHeight = Math.max(0, initial - hv);
+		}
+
+		if (window.visualViewport) {
+			window.visualViewport.addEventListener('resize', handler);
+			window.visualViewport.addEventListener('scroll', handler);
+		} else {
+			window.addEventListener('resize', handler);
+		}
+
+		return () => {
+			if (window.visualViewport) {
+				window.visualViewport.removeEventListener('resize', handler);
+				window.visualViewport.removeEventListener('scroll', handler);
+			} else {
+				window.removeEventListener('resize', handler);
+			}
+		};
+	});
 </script>
 
 <button
@@ -160,23 +188,26 @@
 	onclose={close}
 >
 	<div
-		class="relative modal-box max-w-3xl p-0 max-md:h-[80dvh] md:mt-[10vh] md:h-[clamp(12rem,75vh,75vh)] md:w-11/12"
+		class="relative modal-box max-w-3xl p-0 max-md:h-dvh max-md:max-h-none md:mt-[10vh] md:h-[clamp(12rem,75vh,75vh)] md:w-11/12"
 	>
 		<div class="flex h-full flex-col">
 			<!-- Search bar -->
 			<label
 				class="input sticky top-0 z-10 input-lg flex w-full items-center gap-3 rounded-none border-0 border-b border-base-200 bg-base-100 px-4 shadow-none focus-within:shadow-none focus-within:outline-none"
 			>
+				<button class="btn btn-square btn-ghost btn-sm md:hidden" onclick={close}>
+					<Icons.arrowLeft />
+					<span class="sr-only">Back</span>
+				</button>
+
 				{#if loading}
 					<Icons.loading class="shrink-0"></Icons.loading>
-				{:else}
-					<Icons.search class="size-5 shrink-0 text-base-content/40" />
 				{/if}
 				<input
 					bind:this={inputElement}
 					type="search"
 					class={cn(
-						'grow bg-transparent outline-none [&::-webkit-search-cancel-button]:hidden',
+						'grow bg-transparent outline-none placeholder:truncate [&::-webkit-search-cancel-button]:hidden',
 						textVariants.base,
 						textVariants.size.default
 					)}
@@ -202,7 +233,10 @@
 			</label>
 
 			<!-- Results  -->
-			<div class="flex-1 overflow-y-auto [scrollbar-width:thin]">
+			<div
+				class="flex-1 overflow-y-auto [scrollbar-width:thin]"
+				style="margin-bottom: {keyboardHeight}px"
+			>
 				{#snippet entryList(entries: SearchEntry[])}
 					<ul role="listbox" class="space-y-2 p-2">
 						{#each entries as entry (entry.href)}
