@@ -41,15 +41,17 @@
 
 	let query = $state('');
 	let results = $state<SearchEntry[]>([]);
-	let loading = $state(false);
-	const isSearching = $derived(query.trim().length >= MIN_QUERY_LENGTH);
+	let searching = $state(false);
+	let hasQuery = $derived(query.trim().length >= MIN_QUERY_LENGTH);
+	let initiating = $state(false);
 
 	// ----------------------------------------------------------------
 	// Index
 	// ----------------------------------------------------------------
 
 	async function loadIndex() {
-		loading = true;
+		initiating = true;
+
 		try {
 			const data = await _search.index;
 
@@ -68,7 +70,7 @@
 			throw new Error('Failed to load search index', error);
 		}
 
-		loading = false;
+		initiating = false;
 	}
 
 	$effect(() => {
@@ -102,6 +104,7 @@
 	// ----------------------------------------------------------------
 
 	function search(query: string) {
+		searching = false;
 		if (!fuse || query.trim().length < MIN_QUERY_LENGTH) {
 			results = [];
 			return;
@@ -204,9 +207,10 @@
 					<span class="sr-only">Back</span>
 				</button>
 
-				{#if loading}
+				{#if initiating}
 					<Icons.loading class="shrink-0"></Icons.loading>
 				{/if}
+
 				<input
 					bind:this={inputElement}
 					type="search"
@@ -217,7 +221,10 @@
 					)}
 					placeholder="Search categories, sections and services..."
 					bind:value={query}
-					oninput={(e) => debouncedSearch((e.target as HTMLInputElement).value)}
+					oninput={(e) => {
+						if (!searching) searching = true;
+						debouncedSearch((e.target as HTMLInputElement).value);
+					}}
 					autocomplete="off"
 					spellcheck="false"
 				/>
@@ -291,13 +298,21 @@
 					</ul>
 				{/snippet}
 
-				{#if isSearching}
-					{#if results.length === 0 && !loading}
+				{#if hasQuery}
+					<!-- loading indicator while searching results -->
+					{#if searching && results.length === 0}
+						<div class="flex items-center justify-center py-8">
+							<Icons.loading class="shrink-0 "></Icons.loading>
+						</div>
+						<!-- no results message -->
+					{:else if results.length === 0}
 						<Text class="px-4 py-8 text-center">No results for "{query}"</Text>
+						<!-- results -->
 					{:else}
 						{@render entryList(results)}
 					{/if}
 				{:else}
+					<!-- intial data -->
 					{#await _search.featuredCategories}
 						<div class="flex items-center justify-center py-8">
 							<Icons.loading class="shrink-0 "></Icons.loading>
