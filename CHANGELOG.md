@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.5.0...v0.6.0) (2026-04-06)
+
+### Features
+
+* look in to displaying security score ([#110](https://github.com/Jonathandah/rss-privacy-news/issues/110)) ([f1c8942](https://github.com/Jonathandah/rss-privacy-news/commit/f1c8942d53bd4b04d5e7d2893255a63a69a325be))
+* security page ([#109](https://github.com/Jonathandah/rss-privacy-news/issues/109)) ([0b956e7](https://github.com/Jonathandah/rss-privacy-news/commit/0b956e79fa1560595d232e741f82a7776157da2b))
+
+### Bug Fixes
+
+* getting two close icons on mobile in search drawer ([#105](https://github.com/Jonathandah/rss-privacy-news/issues/105)) ([b2df199](https://github.com/Jonathandah/rss-privacy-news/commit/b2df19974ea6f06669afdfd8d01ddea97e0b19b9))
+* unreachable items behind keyboard when opening search drawer on mobile ([#107](https://github.com/Jonathandah/rss-privacy-news/issues/107)) ([e2d6abc](https://github.com/Jonathandah/rss-privacy-news/commit/e2d6abc6073a1a003f7b9deb67f6530236caa7b2))
+
 ## [0.5.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.4.1...v0.5.0) (2026-04-05)
 
 ### Features
