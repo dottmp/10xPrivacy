@@ -65,11 +65,11 @@
 		"wrangler": "^4.76.0"
 	},
 	"dependencies": {
+		"@lucide/svelte": "^1.7.0",
 		"fast-xml-parser": "^5.5.8",
 		"fuse.js": "^7.3.0",
 		"isomorphic-dompurify": "^3.4.0",
 		"js-yaml": "^4.1.1",
-		"lucide-svelte": "^1.0.1",
 		"marked": "^17.0.5",
 		"tailwind-merge": "^3.5.0",
 		"theme-change": "^2.5.0"
