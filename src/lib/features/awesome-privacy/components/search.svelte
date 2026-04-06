@@ -234,7 +234,7 @@
 
 			<!-- Results  -->
 			<div
-				class="flex-1 overflow-y-auto [scrollbar-width:thin]"
+				class="flex-1 overflow-y-auto overscroll-none [scrollbar-width:thin]"
 				style="margin-bottom: {keyboardHeight}px"
 			>
 				{#snippet entryList(entries: SearchEntry[])}
