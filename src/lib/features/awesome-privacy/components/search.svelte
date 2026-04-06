@@ -81,9 +81,11 @@
 
 	function open() {
 		dialog?.showModal();
+
+		//NOTE: needed in chromium based browsers to prevent the dialog to endup outside the viewport.
 		setTimeout(() => {
 			inputElement?.focus();
-		}, 200);
+		}, 50);
 	}
 
 	function close() {
@@ -190,7 +192,7 @@
 	onclose={close}
 >
 	<div
-		class="relative modal-box max-w-3xl p-0 max-md:h-full max-md:max-h-none md:mt-[10vh] md:h-[clamp(12rem,75vh,75vh)] md:w-11/12"
+		class="relative modal-box max-w-3xl p-0 max-md:h-dvh max-md:max-h-none md:mt-[10vh] md:h-[clamp(12rem,75vh,75vh)] md:w-11/12"
 	>
 		<div class="flex h-full flex-col">
 			<!-- Search bar -->
@@ -236,7 +238,7 @@
 
 			<!-- Results  -->
 			<div
-				class="flex-1 overflow-y-auto overscroll-none [scrollbar-width:thin]"
+				class="flex-1 overflow-y-auto [scrollbar-width:thin]"
 				style="margin-bottom: {keyboardHeight}px"
 			>
 				{#snippet entryList(entries: SearchEntry[])}
