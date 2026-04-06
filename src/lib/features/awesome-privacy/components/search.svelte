@@ -81,7 +81,9 @@
 
 	function open() {
 		dialog?.showModal();
-		inputElement?.focus();
+		setTimeout(() => {
+			inputElement?.focus();
+		}, 200);
 	}
 
 	function close() {
