@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Loader, type IconProps } from 'lucide-svelte';
+	import type { IconProps } from '@lucide/svelte';
+	import Loader from '@lucide/svelte/icons/loader';
 
 	import { cn } from '$lib/utils/cn';
 
