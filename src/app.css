@@ -1,6 +1,10 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+#svelte-announcer {
+	@apply sr-only;
+}
+
 svg {
 	@apply size-4.5;
 }
