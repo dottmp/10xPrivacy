@@ -6,8 +6,8 @@
 	export const textVariants = {
 		base: 'text-base-content/50',
 		size: {
-			default: 'sm:text-sm text-base',
-			xs: 'sm:text-xs text-sm'
+			default: 'sm:text-sm/6 text-base/6',
+			xs: 'sm:text-xs/6 text-sm/6'
 		}
 	} as const;
 
