@@ -292,7 +292,7 @@
 						</div>
 						<!-- no results message -->
 					{:else if results.length === 0}
-						<Text class="px-4 py-8 text-center">No results "{query}"</Text>
+						<Text class="px-4 py-8 text-center">No results for "{query}"</Text>
 						<!-- results -->
 					{:else}
 						{@render entryList(results)}
