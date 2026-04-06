@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.2](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.1...v0.6.2) (2026-04-06)
+
+### Bug Fixes
+
+* add missing csp in locals ([#112](https://github.com/Jonathandah/rss-privacy-news/issues/112)) ([0ad8dea](https://github.com/Jonathandah/rss-privacy-news/commit/0ad8dea211d21f0533a6eede5ac1ae5ee26eb3fd))
+* hardcode csp headers for now ([#117](https://github.com/Jonathandah/rss-privacy-news/issues/117)) ([cdfa98f](https://github.com/Jonathandah/rss-privacy-news/commit/cdfa98f0d02d32bf8c88da38ebf986ab5003637b))
+* missing fallback icon to failed service images ([#116](https://github.com/Jonathandah/rss-privacy-news/issues/116)) ([d663ec6](https://github.com/Jonathandah/rss-privacy-news/commit/d663ec6d56542b02df53587cfede76ef85be6839))
+
 ## [0.6.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.0...v0.6.1) (2026-04-06)
 
 ### Bug Fixes
