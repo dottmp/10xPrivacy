@@ -29,7 +29,7 @@
 	const slug = $derived(awesomePrivacy.slugify(category));
 
 	const IconComponent = $derived(
-		(categoryIcons as Record<string, typeof Icons.categoryFallback>)[slug] ?? Icons.categoryFallback
+		(categoryIcons as Record<string, typeof Icons.fallback>)[slug] ?? Icons.fallback
 	);
 </script>
 
