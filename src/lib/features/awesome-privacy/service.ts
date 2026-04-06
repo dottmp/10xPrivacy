@@ -130,6 +130,9 @@ export class AwesomePrivacy {
 
 				entries.push({
 					type: 'section',
+					meta: {
+						parent: category.name
+					},
 					name: section.name,
 					description: section.intro,
 					categorySlug,
@@ -145,6 +148,7 @@ export class AwesomePrivacy {
 						name: service.name,
 						description: service.description,
 						meta: {
+							parent: `${category.name},${section.name}`,
 							url: service.url,
 							icon: service.icon
 						},
