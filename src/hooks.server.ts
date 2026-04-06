@@ -2,6 +2,8 @@ import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 import { RetryAfterRateLimiter } from 'sveltekit-rate-limiter/server';
 
+import svelteConfig from '../svelte.config.js';
+
 import { dev } from '$app/environment';
 
 export const limiter = new RetryAfterRateLimiter({
@@ -36,22 +38,23 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 		'Cross-Origin-Resource-Policy': 'cross-origin'
 	};
 
+	const csp = Object.entries(svelteConfig.kit?.csp?.directives ?? {})
+		.map(([directive, value]) => `${directive} ${value.join(' ')}`)
+		.join('; ');
+
 	if (!dev) {
 		headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains';
 	}
 
-	event.locals.securityHeaders = headers;
+	event.locals.securityHeaders = {
+		...headers,
+		['Content-Security-Policy']: csp
+	};
 
 	const response = await resolve(event);
 
 	for (const [name, value] of Object.entries(headers)) {
 		response.headers.set(name, value);
-	}
-
-	const csp = response.headers.get('content-security-policy');
-
-	if (csp) {
-		event.locals.securityHeaders['Content-Security-Policy'] = csp;
 	}
 
 	return response;
