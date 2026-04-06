@@ -36,29 +36,11 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 		'Cross-Origin-Resource-Policy': 'cross-origin'
 	};
 
-	const csp = Object.entries({
-		'default-src': ['self'],
-		'script-src': ['self'],
-		'style-src': ['self'],
-		'font-src': ['self'],
-		'img-src': ['self', 'data:', 'https:'],
-		'connect-src': ['self'],
-		'object-src': ['none'],
-		'base-uri': ['self'],
-		'form-action': ['self'],
-		'frame-ancestors': ['none']
-	})
-		.map(([directive, value]) => `${directive} ${value.join(' ')}`)
-		.join('; ');
-
 	if (!dev) {
 		headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains';
 	}
 
-	event.locals.securityHeaders = {
-		...headers,
-		['Content-Security-Policy']: csp
-	};
+	event.locals.securityHeaders = headers;
 
 	const response = await resolve(event);
 
