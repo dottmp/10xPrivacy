@@ -66,6 +66,6 @@
 		social: UsersRound,
 		media: Film,
 		creativity: Paintbrush,
-		categoryFallback: Circle
+		fallback: Box
 	} as const;
 </script>
