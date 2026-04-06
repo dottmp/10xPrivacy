@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = ({ setHeaders }) => {
-	setHeaders({ 'Cache-Control': 'public, max-age=86400' });
+	setHeaders({ 'Cache-Control': 'public, max-age=1800' });
 
 	return {
 		meta: {
