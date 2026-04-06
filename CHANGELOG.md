@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.4](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.3...v0.6.4) (2026-04-06)
+
+### Bug Fixes
+
+* same service can be included in difference sections which is not clear in search result ([#123](https://github.com/Jonathandah/rss-privacy-news/issues/123)) ([1f873f9](https://github.com/Jonathandah/rss-privacy-news/commit/1f873f9c6cce1852078ed3cd6d81416e33d1885c))
+* search dialog input not showing on mobile with keyboard active ([#121](https://github.com/Jonathandah/rss-privacy-news/issues/121)) ([3cda30e](https://github.com/Jonathandah/rss-privacy-news/commit/3cda30ecc2d4ff7f519b4d144b0b1994be690e00))
+* showing no results for query in search placeholder on active debounce ([#122](https://github.com/Jonathandah/rss-privacy-news/issues/122)) ([7dbee9f](https://github.com/Jonathandah/rss-privacy-news/commit/7dbee9f1e21a3353a4e0179409cde72bf1d9ab8c))
+
 ## [0.6.3](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.2...v0.6.3) (2026-04-06)
 
 ### Bug Fixes
