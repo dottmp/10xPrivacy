@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.0...v0.6.1) (2026-04-06)
+
+### Bug Fixes
+
+* update policies ([#111](https://github.com/Jonathandah/rss-privacy-news/issues/111)) ([b21d307](https://github.com/Jonathandah/rss-privacy-news/commit/b21d3078ad05768d5bd5bd079f9900aa4f195f25))
+
 ## [0.6.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.5.0...v0.6.0) (2026-04-06)
 
 ### Features
