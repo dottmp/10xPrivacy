@@ -248,7 +248,8 @@
 >
 	<div
 		bind:this={modalBox}
-		class="relative modal-box max-w-3xl p-0 max-md:h-[80vh] md:mt-[10vh] md:h-[clamp(12rem,75vh,75vh)] md:w-11/12"
+		class="relative modal-box max-w-3xl p-0 transition-transform duration-150 ease-out max-md:h-[80dvh] md:mt-[10vh] md:h-[clamp(12rem,75vh,75vh)] md:w-11/12"
+		style="transform: translateY({translateY}px);"
 	>
 		<div class="flex h-full flex-col">
 			<!-- Search bar -->
