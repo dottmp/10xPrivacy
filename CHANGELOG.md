@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.6](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.5...v0.6.6) (2026-04-08)
+
+### Bug Fixes
+
+* wrong observatory link ([#131](https://github.com/Jonathandah/rss-privacy-news/issues/131)) ([d62f7a7](https://github.com/Jonathandah/rss-privacy-news/commit/d62f7a72e76919385775be9f595924267415bc3b))
+
 ## [0.6.5](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.4...v0.6.5) (2026-04-08)
 
 ## [0.6.4](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.3...v0.6.4) (2026-04-06)
