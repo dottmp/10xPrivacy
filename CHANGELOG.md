@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.6.5](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.4...v0.6.5) (2026-04-08)
+
 ## [0.6.4](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.3...v0.6.4) (2026-04-06)
 
 ### Bug Fixes
