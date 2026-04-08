@@ -26,14 +26,13 @@
 	)}
 	{...props}
 >
-	<span class="sr-only">Select Theme</span>
-
 	{#if variant === 'dropdown'}
-		<div tabindex="0" role="button" class="btn gap-1 btn-ghost btn-sm">
+		<button tabindex="0" role="button" class="btn gap-1 btn-ghost btn-sm">
+			<span class="sr-only">Select Theme</span>
 			<Icons.theme class="size-4" />
 
 			<Icons.chevronDown class="inline-block  size-4 opacity-60" />
-		</div>
+		</button>
 		<ul
 			tabindex="-1"
 			class="dropdown-content z-50 mt-1 max-h-96 w-40 overflow-y-auto rounded-box bg-base-300 p-2 shadow-2xl"
