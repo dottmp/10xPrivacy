@@ -19,6 +19,24 @@
 	{#if page.data.meta?.description}
 		<meta name="description" content={page.data.meta.description} />
 	{/if}
+
+	{#if page.data.meta?.title}
+		<title>{page.data.meta.title}</title>
+		<meta property="og:title" content={page.data.meta.title} />
+	{/if}
+
+	{#if page.data.meta?.description}
+		<meta name="description" content={page.data.meta.description} />
+		<meta property="og:description" content={page.data.meta.description} />
+	{/if}
+
+	{#if page.data.meta?.image}
+		<meta property="og:image" content={page.data.meta.image} />
+	{/if}
+
+	{#if page.data.meta?.url}
+		<meta property="og:url" content={page.data.meta.url} />
+	{/if}
 </svelte:head>
 
 <div class="flex min-h-screen flex-col bg-base-200 font-mono *:w-full">
