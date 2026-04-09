@@ -87,7 +87,7 @@
 		//NOTE: needed in chromium based browsers to prevent the dialog to endup outside the viewport.
 		setTimeout(() => {
 			inputElement?.focus();
-		}, 50);
+		}, 200);
 	}
 
 	function close() {
