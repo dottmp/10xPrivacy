@@ -6,7 +6,7 @@ import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 
 export const ssr = false;
 
-export const load: LayoutServerLoad = async ({ params }) => {
+export const load: LayoutServerLoad = async ({ params, url }) => {
 	const { category: categorySlug, section: sectionSlug, service: serviceSlug } = params;
 
 	const section = awesomePrivacy.getSection({ categorySlug, sectionSlug });
@@ -27,8 +27,9 @@ export const load: LayoutServerLoad = async ({ params }) => {
 
 	return {
 		meta: {
-			title: `${service.name} | 10xPrivacy`,
-			description: service.description
+			title: `${service.name} | ${section.name} | ${awesomePrivacy.slugToName(categorySlug)} | Awesome Privacy | 10xPrivacy`,
+			description: service.description,
+			url: url.href
 		},
 		categorySlug,
 		sectionSlug,
