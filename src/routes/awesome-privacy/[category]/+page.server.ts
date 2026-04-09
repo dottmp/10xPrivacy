@@ -4,7 +4,7 @@ import type { PageServerLoad } from './$types';
 
 import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, url }) => {
 	const { category: categorySlug } = params;
 
 	const category = awesomePrivacy.getCategory({ categorySlug });
@@ -15,7 +15,9 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	return {
 		meta: {
-			title: `${category.name} | 10xPrivacy`
+			title: `${category.name} | Awesome Privacy | 10xPrivacy`,
+			description: `Curated list of privacy-respecting software and services in the ${category.name} category.`,
+			url: url.href
 		},
 		categorySlug,
 		category
