@@ -44,7 +44,11 @@
 	let searching = $state(false);
 	let hasQuery = $derived(query.trim().length >= MIN_QUERY_LENGTH);
 	let initiating = $state(false);
-
+	let ctrlKey = $derived.by(() => {
+		const ua = navigator.userAgent || '';
+		const isMac = /\bMacintosh\b/i.test(ua);
+		return isMac ? '⌘' : 'Ctrl';
+	});
 	// ----------------------------------------------------------------
 	// Index
 	// ----------------------------------------------------------------
@@ -172,6 +176,23 @@
 			}
 		};
 	});
+
+	onMount(() => {
+		function handler(e: KeyboardEvent) {
+			const isK = e.key.toLowerCase() === 'k';
+			const mod = e.metaKey || e.ctrlKey;
+
+			if (!mod || !isK) return;
+
+			e.preventDefault();
+			open();
+		}
+
+		window.addEventListener('keydown', handler);
+		return () => {
+			window.removeEventListener('keydown', handler);
+		};
+	});
 </script>
 
 <button
@@ -185,6 +206,7 @@
 >
 	<Icons.search class="mr-2" />
 	<span class="sr-only md:not-sr-only"> Search...</span>
+	<kbd class="ml-auto kbd hidden kbd-sm md:inline">{ctrlKey}+K</kbd>
 </button>
 
 <dialog
