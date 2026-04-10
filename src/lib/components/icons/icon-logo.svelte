@@ -5,7 +5,7 @@
 
 	const iconLogoVariants = {
 		size: {
-			sm: 'sm:h-11 h-10',
+			sm: 'h-11',
 			default: 'md:h-36 h-20 sm:h-30'
 		}
 	} as const;
