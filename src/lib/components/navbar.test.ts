@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/svelte';
 import { readable } from 'svelte/store';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import Navbar from './navbar.svelte';
 
@@ -20,6 +20,29 @@ vi.mock('$app/paths', () => ({
 vi.mock('$lib/features/awesome-privacy/components/search.svelte');
 
 describe('Navbar component', () => {
+	// mock localStorage
+	beforeEach(() => {
+		globalThis.localStorage = (function () {
+			let store: Record<string, string> = {};
+
+			return {
+				getItem: (k: string) => (k in store ? store[k] : null),
+				setItem: (k: string, v: string) => {
+					store[k] = String(v);
+				},
+				removeItem: (k: string) => {
+					delete store[k];
+				},
+				clear: () => {
+					store = {};
+				},
+
+				length: 0,
+				key: (index: number) => Object.keys(store)[index] ?? null
+			} as Storage;
+		})();
+	});
+
 	describe('URLs', () => {
 		it('Privacy News link has correct href', () => {
 			render(Navbar);
