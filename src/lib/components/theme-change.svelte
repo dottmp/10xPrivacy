@@ -33,7 +33,7 @@
 	{...props}
 >
 	{#if variant === 'dropdown'}
-		<button tabindex="0" class="btn gap-1 btn-ghost btn-sm">
+		<button class="btn gap-1 btn-ghost btn-sm">
 			<span class="sr-only">Select Theme</span>
 			<Icons.theme class="size-4" />
 			<Icons.chevronDown class="inline-block  size-4 opacity-60" />

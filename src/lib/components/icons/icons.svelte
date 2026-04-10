@@ -28,6 +28,7 @@
 	import Apple from './icon-apple.svelte';
 	import Discord from './icon-discord.svelte';
 	import Github from './icon-github.svelte';
+	import Logo from './icon-logo.svelte';
 	import Reddit from './icon-reddit.svelte';
 	import Loader from './icons-loader.svelte';
 
@@ -51,6 +52,7 @@
 		close: X,
 		section: Box,
 		loading: Loader,
+		logo: Logo,
 
 		// Category icons (keyed by slug)
 		essentials: ShieldHalf,

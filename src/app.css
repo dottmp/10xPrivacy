@@ -5,7 +5,7 @@
 	@apply sr-only;
 }
 
-svg {
+.btn > svg {
 	@apply size-4.5;
 }
 
