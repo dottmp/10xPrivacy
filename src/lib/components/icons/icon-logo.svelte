@@ -1,0 +1,397 @@
+<script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	import { cn } from '$lib/utils/cn';
+
+	const iconLogoVariants = {
+		size: {
+			sm: 'sm:h-11 h-10',
+			default: 'md:h-36 h-20 sm:h-30'
+		}
+	} as const;
+
+	type IconLogoProps = HTMLAttributes<SVGElement> & {
+		size?: keyof typeof iconLogoVariants.size;
+	};
+
+	let { class: klass, size = 'default', ...props }: IconLogoProps = $props();
+</script>
+
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 650 140"
+	aria-hidden="true"
+	class={cn('w-auto text-primary select-none', iconLogoVariants.size[size], klass)}
+	{...props}
+>
+	<rect
+		width="100%"
+		height="100%"
+		fill="transparent"
+		color="currentColor"
+		font-family="Geist, &quot;Geist Fallback&quot;"
+		font-size="16"
+		font-weight="400"
+		rx="4"
+	/>
+	<text
+		x="40"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄██</text
+	>
+	<text
+		x="90"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄██▄</text
+	>
+	<text
+		x="150"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄▄</text
+	>
+	<text
+		x="180"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄▄</text
+	>
+	<text
+		x="210"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">█████▄</text
+	>
+	<text
+		x="280"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄▄▄▄</text
+	>
+	<text
+		x="340"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄▄</text
+	>
+	<text
+		x="370"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄▄</text
+	>
+	<text
+		x="400"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄▄</text
+	>
+	<text
+		x="440"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄▄▄</text
+	>
+	<text
+		x="500"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄▄▄▄</text
+	>
+	<text
+		x="550"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄▄</text
+	>
+	<text
+		x="580"
+		y="52"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▄▄</text
+	>
+	<text
+		x="50"
+		y="72"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██</text
+	>
+	<text
+		x="80"
+		y="72"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██</text
+	>
+	<text
+		x="120"
+		y="72"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██</text
+	>
+	<text
+		x="150"
+		y="72"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▀█▄█▀</text
+	>
+	<text
+		x="210"
+		y="72"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██▄▄█▀</text
+	>
+	<text
+		x="280"
+		y="72"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██▄█▄</text
+	>
+	<text
+		x="340"
+		y="72"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██</text
+	>
+	<text
+		x="370"
+		y="72"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██▄██</text
+	>
+	<text
+		x="430"
+		y="72"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██▀██</text
+	>
+	<text
+		x="490"
+		y="72"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██▀▀▀</text
+	>
+	<text
+		x="550"
+		y="72"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▀███▀</text
+	>
+	<text
+		x="50"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██</text
+	>
+	<text
+		x="90"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▀██▀</text
+	>
+	<text
+		x="150"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██</text
+	>
+	<text
+		x="180"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██</text
+	>
+	<text
+		x="210"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██</text
+	>
+	<text
+		x="280"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██</text
+	>
+	<text
+		x="310"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██</text
+	>
+	<text
+		x="340"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██</text
+	>
+	<text
+		x="380"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▀█▀</text
+	>
+	<text
+		x="430"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">██▀██</text
+	>
+	<text
+		x="490"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">▀████</text
+	>
+	<text
+		x="570"
+		y="92"
+		fill="currentColor"
+		color="currentColor"
+		font-family="'Geist Mono', 'SF Mono', 'Fira Code', monospace"
+		font-size="14"
+		font-weight="400"
+		opacity=".7">█</text
+	>
+</svg>
