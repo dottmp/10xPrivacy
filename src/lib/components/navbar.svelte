@@ -31,7 +31,7 @@
 		<div class="flex w-full items-center">
 			<!-- logo -->
 			<a class="text-xl" href={resolve('/')}>
-				<Brand size="xs" />
+				<Brand size="xs" class="-ml-4" />
 				<span class="sr-only">Home</span>
 			</a>
 
