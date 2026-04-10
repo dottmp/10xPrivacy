@@ -13,9 +13,14 @@
 	let { service, class: klass, ...props }: ServiceLogoProps = $props();
 
 	let error = $state(false);
+	let loading = $state(true);
 
 	const fallback = $derived(`https://icon.horse/icon/${service.url}`);
 </script>
+
+{#if loading}
+	<span class={cn('size-5 animate-pulse rounded-sm bg-base-300', klass)}></span>
+{/if}
 
 {#if error}
 	<Icons.fallback class={cn('shrink-0', klass)} />
@@ -25,6 +30,7 @@
 		src={service.icon ?? fallback}
 		onerror={(e) => {
 			const target = e.target as HTMLImageElement;
+			loading = false;
 
 			if (target.src !== fallback) {
 				target.src = fallback;
@@ -32,8 +38,12 @@
 				error = true;
 			}
 		}}
+		onload={() => {
+			loading = false;
+			error = false;
+		}}
 		alt={service.name}
-		class={cn('shrink-0 object-contain', klass)}
+		class={cn('shrink-0 object-contain', loading && 'hidden', klass)}
 		{...props}
 	/>
 {/if}
