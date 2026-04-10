@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.7.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.0...v0.7.1) (2026-04-10)
+
+### Bug Fixes
+
+* add loading spinner for service images loaded externally ([#140](https://github.com/Jonathandah/rss-privacy-news/issues/140)) ([c7d46de](https://github.com/Jonathandah/rss-privacy-news/commit/c7d46de50b3dab4fb10bad821ea2bbb92a983cac))
+* logo breakes in ddg browser ([#130](https://github.com/Jonathandah/rss-privacy-news/issues/130)) ([3a7211e](https://github.com/Jonathandah/rss-privacy-news/commit/3a7211ec640589173076374bd0aa57d83de0b586))
+* mock localStorage for failed test ([#141](https://github.com/Jonathandah/rss-privacy-news/issues/141)) ([16f4320](https://github.com/Jonathandah/rss-privacy-news/commit/16f4320b9370f5e5a5fac300b570d7b357b262af))
+* search button is shown on 404 if it starts with awesome privacysomething ([#139](https://github.com/Jonathandah/rss-privacy-news/issues/139)) ([8ded52b](https://github.com/Jonathandah/rss-privacy-news/commit/8ded52bccd34c9de065053544843a565bf73f41b))
+* theme flickering ([#138](https://github.com/Jonathandah/rss-privacy-news/issues/138)) ([a28214d](https://github.com/Jonathandah/rss-privacy-news/commit/a28214d9195e2c782f024e66224f885f9a23447e))
+
 ## [0.7.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.7...v0.7.0) (2026-04-09)
 
 ### Features
