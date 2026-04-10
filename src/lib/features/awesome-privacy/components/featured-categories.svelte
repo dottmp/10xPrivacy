@@ -25,7 +25,7 @@
 			<li class="group col-span-1 rounded-lg bg-base-100 px-4 py-3 shadow-sm">
 				<!-- Icon + title -->
 				<div class="mb-3 flex items-center gap-2">
-					<CategoryIcon category={category.name} class="text-xl text-primary" />
+					<CategoryIcon category={category.name} class="size-4.5 text-xl text-primary" />
 					<a href={resolve(`/awesome-privacy/${slug}`)}>
 						<Subheading size="sm" class={cn(linkVariants.base, linkVariants.variant.foreground)}>
 							{category.name}

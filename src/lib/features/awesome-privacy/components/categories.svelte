@@ -26,7 +26,7 @@
 			{@const slug = awesomePrivacy.slugify(category.name)}
 			<section>
 				<a href={resolve(`/awesome-privacy/${slug}`)} class=" mb-3 flex items-center gap-2">
-					<CategoryIcon category={category.name} class="text-lg text-primary" />
+					<CategoryIcon category={category.name} class="size-4.5 text-lg text-primary" />
 					<Subheading class={cn(linkVariants.base, linkVariants.variant.foreground)}>
 						{category.name}
 					</Subheading>
