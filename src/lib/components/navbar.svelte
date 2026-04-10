@@ -10,18 +10,25 @@
 	import Search from '$lib/features/awesome-privacy/components/search.svelte';
 	import { cn } from '$lib/utils/cn';
 
-	const drawerId = 'navbar-drawer';
-
-	let { search }: { search: LayoutData['search'] } = $props();
+	const DRAWER_ID = 'navbar-drawer';
 
 	let drawer: HTMLInputElement | undefined;
 
+	function isPath(base: string) {
+		const pathname = page.url.pathname;
+
+		return pathname === base || pathname.startsWith(base + '/');
+	}
+
 	function toggleDrawer() {
-		const drawer = document.getElementById(drawerId) as HTMLInputElement;
+		const drawer = document.getElementById(DRAWER_ID) as HTMLInputElement;
+
 		if (drawer) {
 			drawer.checked = !drawer.checked;
 		}
 	}
+
+	let { search }: { search: LayoutData['search'] } = $props();
 </script>
 
 <nav class="w-full bg-base-100 shadow-sm">
@@ -35,9 +42,7 @@
 
 			<div class="ml-auto flex items-center gap-2">
 				<!-- awesome-privacy search trigger (desktop) -->
-				<div
-					class={cn('hidden', page.url.pathname.startsWith(resolve('/awesome-privacy')) && 'block')}
-				>
+				<div class={cn('hidden', isPath(resolve('/awesome-privacy')) && 'block')}>
 					<Search {search} />
 				</div>
 
@@ -46,17 +51,17 @@
 
 				<!-- mobile drawer -->
 				<div class="drawer drawer-end ml-auto w-fit md:hidden">
-					<input bind:this={drawer} id={drawerId} type="checkbox" class="drawer-toggle" />
+					<input bind:this={drawer} id={DRAWER_ID} type="checkbox" class="drawer-toggle" />
 					<div class="drawer-content">
 						<label
-							for={drawerId}
+							for={DRAWER_ID}
 							class="drawer-button btn btn-square text-base-content/50 btn-ghost"
 						>
 							<Icons.menu class="text-lg" />
 						</label>
 					</div>
 					<div class="drawer-side">
-						<label for={drawerId} aria-label="close drawer" class="drawer-overlay"></label>
+						<label for={DRAWER_ID} aria-label="close drawer" class="drawer-overlay"></label>
 
 						<div class="flex min-h-full w-80 flex-col bg-base-200 *:w-full">
 							<div class="w-full bg-base-100 pt-2 pb-1">

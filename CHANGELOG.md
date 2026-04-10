@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.7.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.7...v0.7.0) (2026-04-09)
+
+### Features
+
+* keyboard shortcut for search ([#136](https://github.com/Jonathandah/rss-privacy-news/issues/136)) ([65cedbe](https://github.com/Jonathandah/rss-privacy-news/commit/65cedbe15b57f24e2212fdef4f23bae52b192d7f))
+
+### Bug Fixes
+
+* on mobile closing and opening search dialog fast will cause viewport issues ([#135](https://github.com/Jonathandah/rss-privacy-news/issues/135)) ([f639e9a](https://github.com/Jonathandah/rss-privacy-news/commit/f639e9a1433fa1952b36c5a31d8ad5dc9545c484))
+
+## [0.6.7](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.6...v0.6.7) (2026-04-09)
+
+## [0.6.6](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.5...v0.6.6) (2026-04-08)
+
+### Bug Fixes
+
+* wrong observatory link ([#131](https://github.com/Jonathandah/rss-privacy-news/issues/131)) ([d62f7a7](https://github.com/Jonathandah/rss-privacy-news/commit/d62f7a72e76919385775be9f595924267415bc3b))
+
 ## [0.6.5](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.4...v0.6.5) (2026-04-08)
 
 ## [0.6.4](https://github.com/Jonathandah/rss-privacy-news/compare/v0.6.3...v0.6.4) (2026-04-06)

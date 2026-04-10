@@ -18,11 +18,11 @@
 		<Subheading class="mb-4">Scores</Subheading>
 		<div class="flex flex-wrap items-center gap-4">
 			<Link
-				href="https://observatory.mozilla.org/analyze/10xprivacy.dottmp.dev"
+				href="https://observatory.mozilla.org/analyze/10xprivacy.com"
 				class="inline-flex items-center"
 			>
 				<img
-					src="https://img.shields.io/mozilla-observatory/grade/10xprivacy.dottmp.dev?label=Mozilla%20Observatory"
+					src="https://img.shields.io/mozilla-observatory/grade/10xprivacy.com?label=Mozilla%20Observatory"
 					alt="Mozilla Observatory grade"
 					class="h-5"
 				/>
