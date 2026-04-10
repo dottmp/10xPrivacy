@@ -1,8 +1,6 @@
 <script lang="ts">
 	import type { LayoutData } from '../../routes/$types';
 
-	import Brand from './brand.svelte';
-
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { Icons } from '$lib/components/icons/icons.svelte';
@@ -31,7 +29,7 @@
 		<div class="flex w-full items-center">
 			<!-- logo -->
 			<a class="text-xl" href={resolve('/')}>
-				<Brand size="xs" class="-ml-4" />
+				<Icons.logo size="sm" class="-ml-2" />
 				<span class="sr-only">Home</span>
 			</a>
 
@@ -63,7 +61,8 @@
 						<div class="flex min-h-full w-80 flex-col bg-base-200 *:w-full">
 							<div class="w-full bg-base-100 pt-2 pb-1">
 								<a href={resolve('/')} onclick={toggleDrawer}>
-									<Brand size="xs" class="px-4" />
+									<Icons.logo size="sm" />
+
 									<span class="sr-only">Home</span>
 								</a>
 							</div>
