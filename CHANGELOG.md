@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.5](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.4...v0.7.5) (2026-04-11)
+
+### Bug Fixes
+
+* broken img in readme ([64b6b6d](https://github.com/Jonathandah/rss-privacy-news/commit/64b6b6d54b9ac477de8927448cc15961f32a0dc9))
+
 ## [0.7.4](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.3...v0.7.4) (2026-04-11)
 
 ### Bug Fixes
