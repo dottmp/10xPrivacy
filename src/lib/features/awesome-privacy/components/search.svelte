@@ -157,7 +157,10 @@
 
 		function handler() {
 			const hv = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+
 			keyboardHeight = Math.max(0, initial - hv);
+
+			document.documentElement.style.setProperty('--kb-height', `${keyboardHeight}px`);
 		}
 
 		if (window.visualViewport) {
@@ -266,10 +269,7 @@
 			</label>
 
 			<!-- Results  -->
-			<div
-				class="flex-1 overflow-y-auto [scrollbar-width:thin]"
-				style="margin-bottom: {keyboardHeight}px"
-			>
+			<div class="mb-[var(--kb-height,0px)] flex-1 overflow-y-auto [scrollbar-width:thin]">
 				{#snippet entryList(entries: SearchEntry[])}
 					<ul role="listbox" class="space-y-2 p-2">
 						{#each entries as entry (entry.href)}

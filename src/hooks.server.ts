@@ -3,6 +3,19 @@ import { sequence } from '@sveltejs/kit/hooks';
 
 import { dev } from '$app/environment';
 
+const csp = {
+	'default-src': ['self'],
+	'script-src': ['self'],
+	'style-src': ['self', 'unsafe-hashes', 'sha256-S8qMpvofolR8Mpjy4kQvEm7m1q8clzU4dfDH0AmvZjo='],
+	'font-src': ['self'],
+	'img-src': ['self', 'data:', 'https:'],
+	'connect-src': ['self'],
+	'object-src': ['none'],
+	'base-uri': ['self'],
+	'form-action': ['self'],
+	'frame-ancestors': ['none']
+};
+
 const handleHeaders: Handle = async ({ event, resolve }) => {
 	const headers: Record<string, string> = {
 		'X-Frame-Options': 'DENY',
@@ -18,7 +31,12 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 		headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains';
 	}
 
-	event.locals.securityHeaders = headers;
+	event.locals.securityHeaders = {
+		...headers,
+		['Content-Security-Policy']: Object.entries(csp)
+			.map(([directive, sources]) => `${directive} ${sources.join(' ')}`)
+			.join('; ')
+	};
 
 	const response = await resolve(event);
 
