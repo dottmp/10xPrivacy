@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.2](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.1...v0.7.2) (2026-04-11)
+
+### Bug Fixes
+
+* remove state in theme changer ([#145](https://github.com/Jonathandah/rss-privacy-news/issues/145)) ([9ced39b](https://github.com/Jonathandah/rss-privacy-news/commit/9ced39bdf5cea27ce645118514c6fd490f26303d))
+
 ## [0.7.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.0...v0.7.1) (2026-04-10)
 
 ### Bug Fixes
