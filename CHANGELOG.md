@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.3](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.2...v0.7.3) (2026-04-11)
+
+### Bug Fixes
+
+* remove inline styling to fix content security policy ([#146](https://github.com/Jonathandah/rss-privacy-news/issues/146)) ([ac16685](https://github.com/Jonathandah/rss-privacy-news/commit/ac166855f10c8c59f7bcc74872fc07586cd42259))
+
 ## [0.7.2](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.1...v0.7.2) (2026-04-11)
 
 ### Bug Fixes
