@@ -9,7 +9,11 @@ const config = {
 			directives: {
 				'default-src': ['self'],
 				'script-src': ['self'],
-				'style-src': ['self'],
+				'style-src': [
+					'self',
+					'unsafe-hashes',
+					'sha256-S8qMpvofolR8Mpjy4kQvEm7m1q8clzU4dfDH0AmvZjo='
+				],
 				'font-src': ['self'],
 				'img-src': ['self', 'data:', 'https:'],
 				'connect-src': ['self'],
