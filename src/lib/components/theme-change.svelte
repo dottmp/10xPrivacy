@@ -7,18 +7,11 @@
 	import { THEMES } from '$lib/configs';
 	import { cn } from '$lib/utils/cn';
 
-	const DEFAULT = 'kanagawa';
-
 	type ThemeChangeProps = HTMLAttributes<HTMLDivElement> & {
 		variant?: 'dropdown' | 'select';
 	};
 
 	let { variant = 'dropdown', class: klass, ...props }: ThemeChangeProps = $props();
-
-	let defaultTheme = $state(
-		typeof window !== 'undefined' ? (localStorage.getItem('theme') ?? DEFAULT) : DEFAULT
-	);
-
 	onMount(() => {
 		themeChange(false);
 	});
@@ -52,18 +45,12 @@
 						class="theme-controller btn btn-block w-full justify-start capitalize btn-ghost sm:btn-sm"
 						aria-label={theme}
 						value={theme}
-						checked={theme === defaultTheme}
 					/>
 				</li>
 			{/each}
 		</ul>
 	{:else}
-		<select
-			data-choose-theme
-			class="select appearance-none"
-			aria-label="Select Theme"
-			bind:value={defaultTheme}
-		>
+		<select data-choose-theme class="select appearance-none" aria-label="Select Theme">
 			{#each THEMES as theme (theme)}
 				<option class="theme-controller" aria-label={theme} value={theme}>{theme}</option>
 			{/each}
