@@ -9,6 +9,10 @@
 	@apply size-4.5;
 }
 
+/* NOTE: removed default inline styling from app.html and moved it here */
+body > div {
+	display: contents;
+}
 /*----------------------------------------------------------------------*/
 /* daisyui themes                                                       */
 /*----------------------------------------------------------------------*/
