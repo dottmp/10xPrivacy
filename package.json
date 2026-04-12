@@ -21,7 +21,7 @@
 		"test:ui": "vitest --ui",
 		"test:watch": "vitest",
 		"test:coverage": "vitest run --coverage",
-		"sync-data": "./scripts/sync-data.sh",
+		"sync": "./scripts/sync-data.sh",
 		"release": "release-it"
 	},
 	"devDependencies": {

@@ -52,7 +52,7 @@ bun run test                  # Run unit tests
 bun run lint                  # Check formatting & lint
 bun run fix                   # Auto-fix formatting & lint issues
 
-bun run sync-data             # Creates a data/YYYY-MM-DDTHH-MM-SS branch and syncs data from external sources
+bun run sync             # Creates a chore/data-sync-YYYY-MM-DDTHH-MM-SS branch and syncs data from external sources
 ```
 
 ## Data Sources

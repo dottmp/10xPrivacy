@@ -22,7 +22,7 @@ git switch -c "$BRANCH"
 #----------------------------------------------------------------------
 echo "Committing changes ..."
 git add -A
-git commit -m "data sync: $DATE"
+git commit -m "chore: data sync $DATE"
 
 echo "Pushing branch $BRANCH ..."
 git push -u origin "$BRANCH"
