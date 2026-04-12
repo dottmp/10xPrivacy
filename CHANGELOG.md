@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.6](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.5...v0.7.6) (2026-04-12)
+
+### Bug Fixes
+
+* update GitHub link for suggesting websites ([347c4c4](https://github.com/Jonathandah/rss-privacy-news/commit/347c4c424a8a202f45e1708f62ae606619cb3155))
+
 ## [0.7.5](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.4...v0.7.5) (2026-04-11)
 
 ### Bug Fixes
