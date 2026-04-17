@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.7](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.6...v0.7.7) (2026-04-17)
+
+### Bug Fixes
+
+* get fallback icon by just fetching domain name ([#151](https://github.com/Jonathandah/rss-privacy-news/issues/151)) ([49635e8](https://github.com/Jonathandah/rss-privacy-news/commit/49635e8a3885f08ea1b17176665f5887e217e8f1))
+
 ## [0.7.6](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.5...v0.7.6) (2026-04-12)
 
 ### Bug Fixes
