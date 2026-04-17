@@ -15,7 +15,9 @@
 	let error = $state(false);
 	let loading = $state(true);
 
-	const fallback = $derived(`https://icon.horse/icon/${service.url}`);
+	const fallback = $derived(
+		`https://icon.horse/icon/${service.url.replace(/^(?:https?:\/\/)?(?:www\.)?([^/?#:]+).*/i, '$1')}`
+	);
 </script>
 
 {#if loading}
