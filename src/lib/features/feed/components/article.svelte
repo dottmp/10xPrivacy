@@ -35,7 +35,7 @@
 <svelte:window on:scroll={handleScroll} />
 
 <article class="mx-auto max-w-3xl space-y-8 px-4 py-8">
-	<a href={resolve('/')} class="btn mb-8">
+	<a href={resolve('/privacy-news')} class="btn mb-8">
 		<Icons.arrowLeft class="mr-1" />
 		Back to feed
 	</a>
