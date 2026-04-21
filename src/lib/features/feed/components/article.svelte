@@ -9,12 +9,30 @@
 	import { formatDate } from '$lib/utils/date.js';
 	import { isSafeUrl, sanitizeHtml } from '$lib/utils/sanitize';
 
+	const SCROLL_THRESHOLD = 500;
+
 	type ArticleProps = {
 		article: Article;
 	};
 
 	let { article }: ArticleProps = $props();
+
+	let showBackToTop = $state(hasScrolled());
+
+	function hasScrolled() {
+		return window.scrollY > SCROLL_THRESHOLD;
+	}
+
+	function handleScroll() {
+		showBackToTop = hasScrolled();
+	}
+
+	function scrollToTop() {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
 </script>
+
+<svelte:window on:scroll={handleScroll} />
 
 <article class="mx-auto max-w-3xl space-y-8 px-4 py-8">
 	<a href={resolve('/')} class="btn mb-8">
@@ -65,4 +83,14 @@
 			<Text>Original article link is unavailable.</Text>
 		{/if}
 	</div>
+
+	{#if showBackToTop}
+		<button
+			class="btn fixed right-2 bottom-2 z-50 btn-square shadow-lg btn-xl btn-primary sm:right-6 sm:bottom-6"
+			onclick={scrollToTop}
+			aria-label="Back to top"
+		>
+			<Icons.arrowUp />
+		</button>
+	{/if}
 </article>
