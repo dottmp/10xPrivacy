@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.7...v0.8.0) (2026-04-21)
+
+### Features
+
+* add "new"-badge ([#152](https://github.com/Jonathandah/rss-privacy-news/issues/152)) ([5bdbcb2](https://github.com/Jonathandah/rss-privacy-news/commit/5bdbcb2042b0e0352107943985956b42caa18d0f))
+* back to top button on articles ([#153](https://github.com/Jonathandah/rss-privacy-news/issues/153)) ([f707481](https://github.com/Jonathandah/rss-privacy-news/commit/f707481bc58c7aa0fce2cd73d3467165cbf11474))
+
 ## [0.7.7](https://github.com/Jonathandah/rss-privacy-news/compare/v0.7.6...v0.7.7) (2026-04-17)
 
 ### Bug Fixes
