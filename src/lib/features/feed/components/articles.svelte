@@ -12,6 +12,13 @@
 	import { cn } from '$lib/utils/cn';
 	import { formatDate } from '$lib/utils/date';
 
+	function isToday(dateStr?: string): boolean {
+		if (!dateStr) return false;
+		const d = new Date(dateStr);
+		const now = new Date();
+		return d.toDateString() === now.toDateString();
+	}
+
 	type ArticlesProps = HTMLAttributes<HTMLUListElement> & {
 		articles: Article[];
 	};
@@ -28,11 +35,18 @@
 <!-- List -->
 <ul class={cn('space-y-3', klass)} {...props}>
 	{#each _articles as article (article.guid)}
-		<li>
+		<li class="relative">
 			<a
 				href={resolve(`/privacy-news/${article.slug}`)}
 				class="group flex flex-col-reverse items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm sm:flex-row"
 			>
+				{#if isToday(article.date)}
+					<span
+						class=" absolute -top-2 -right-2 badge rotate-12 badge-sm shadow-xl badge-accent sm:-right-4"
+					>
+						New!
+					</span>
+				{/if}
 				<!-- Title -->
 				<span
 					class={cn(
@@ -49,8 +63,8 @@
 					<time datetime={article.date} class={cn(textVariants.size.xs, 'text-base-content/40')}>
 						{article.date ? formatDate(article.date) : 'Date unknown'}
 					</time>
-				</span></a
-			>
+				</span>
+			</a>
 		</li>
 	{/each}
 </ul>
