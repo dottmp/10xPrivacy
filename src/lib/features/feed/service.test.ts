@@ -94,20 +94,20 @@ describe('RSS', () => {
 		it('returns all sources when source param is "all"', async () => {
 			const result = await rss.getSources({ source: 'all' });
 
-			expect(result.length).toBe(3);
-			expect(result).toHaveLength(3);
+			expect(result.length).toBe(5);
+			expect(result).toHaveLength(5);
 		});
 
 		it('returns all sources when called with default param', async () => {
 			const result = await rss.getSources();
 
-			expect(result.length).toBe(3);
+			expect(result.length).toBe(5);
 		});
 
 		it('returns all sources when source is null', async () => {
 			const result = await rss.getSources({ source: null });
 
-			expect(result.length).toBe(3);
+			expect(result.length).toBe(5);
 		});
 
 		it('returns only the matching source when a specific source id is provided', async () => {
