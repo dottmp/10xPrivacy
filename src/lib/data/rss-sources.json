@@ -17,6 +17,18 @@
 			"name": "Techlore",
 			"url": "https://techlore.tech",
 			"feedUrl": "https://techlore.tech/rss/"
+		},
+		{
+			"id": "proton",
+			"name": "Proton",
+			"url": "https://proton.me/blog",
+			"feedUrl": "https://proton.me/blog/feed"
+		},
+		{
+			"id": "mullvad",
+			"name": "Mullvad",
+			"url": "https://mullvad.net/en/blog",
+			"feedUrl": "https://mullvad.net/en/blog/feed/rss/"
 		}
 	]
 }

@@ -2,7 +2,7 @@
 // source
 //----------------------------------------------------------------------
 
-export type SourceId = 'tuta' | 'privacyguides' | 'techlore';
+export type SourceId = 'tuta' | 'privacyguides' | 'techlore' | 'proton' | 'mullvad';
 export type SourceSearchParam = SourceId | 'all' | null;
 
 export type Source = {
