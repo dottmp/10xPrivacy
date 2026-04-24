@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.8.1...v0.9.0) (2026-04-24)
+
+### Features
+
+* find more rss sources ([#155](https://github.com/Jonathandah/rss-privacy-news/issues/155)) ([00ab849](https://github.com/Jonathandah/rss-privacy-news/commit/00ab849878787cb60a5ae5c64c53cf3d1e09e11c))
+* update page description for privacy news ([#157](https://github.com/Jonathandah/rss-privacy-news/issues/157)) ([2733171](https://github.com/Jonathandah/rss-privacy-news/commit/27331712c42c91ec9c7bd6e35c95f0823500a8cb))
+
 ## [0.8.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.8.0...v0.8.1) (2026-04-21)
 
 ### Bug Fixes
