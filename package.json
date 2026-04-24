@@ -61,7 +61,7 @@
 		"vite": "^7.3.1",
 		"vitest": "^4.1.1",
 		"vitest-browser-svelte": "^2.1.0",
-		"wrangler": "^4.76.0"
+		"wrangler": "^4.85.0"
 	},
 	"dependencies": {
 		"@lucide/svelte": "^1.7.0",
