@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.9.0...v0.9.1) (2026-04-24)
+
+### Bug Fixes
+
+* yaml file formating ([#163](https://github.com/Jonathandah/rss-privacy-news/issues/163)) ([ace59de](https://github.com/Jonathandah/rss-privacy-news/commit/ace59de5c8b94039a0ca25a3cb3a2c34b9f7b784))
+
 ## [0.9.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.8.1...v0.9.0) (2026-04-24)
 
 ### Features
