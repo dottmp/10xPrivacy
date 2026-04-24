@@ -13,7 +13,8 @@
 	const variant = {
 		tuta: 'badge-error',
 		techlore: 'badge-info',
-		privacyguides: 'badge-warning'
+		privacyguides: 'badge-warning',
+		proton: 'bg-violet-950 border-violet-950  text-violet-300'
 	} satisfies Record<Source['id'], string>;
 </script>
 
