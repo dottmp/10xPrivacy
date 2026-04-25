@@ -32,11 +32,12 @@
 		if (stored) {
 			try {
 				completed = JSON.parse(stored);
-				loading = false;
 			} catch {
 				completed = [];
 			}
 		}
+
+		loading = false;
 
 		function onScroll() {
 			const scrollPosition = window.innerHeight + window.scrollY;
