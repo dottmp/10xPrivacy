@@ -1,5 +1,6 @@
 <script module lang="ts">
 	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
+	import ArrowRight from '@lucide/svelte/icons/arrow-right';
 	import ArrowUp from '@lucide/svelte/icons/arrow-up';
 	import Box from '@lucide/svelte/icons/box';
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
@@ -35,6 +36,7 @@
 
 	export const Icons = {
 		arrowLeft: ArrowLeft,
+		arrowRight: ArrowRight,
 		arrowUp: ArrowUp,
 		chevronRight: ChevronRight,
 		chevronDown: ChevronDown,
