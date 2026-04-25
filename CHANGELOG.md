@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.10.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.9.1...v0.10.0) (2026-04-25)
+
+### Features
+
+* add guide pages ([#164](https://github.com/Jonathandah/rss-privacy-news/issues/164)) ([21212d3](https://github.com/Jonathandah/rss-privacy-news/commit/21212d331e250817459350be16315df19c2268e8))
+
 ## [0.9.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.9.0...v0.9.1) (2026-04-24)
 
 ### Bug Fixes
