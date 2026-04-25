@@ -8,7 +8,7 @@
 <main class="mx-auto max-w-3xl px-4 py-16">
 	<header class="mb-8">
 		<Heading size="display" class="mb-4">Security</Heading>
-		<Text>
+		<Text size="lg">
 			Transparency is cool, 10xPrivacy will allways be cool. Below are the security scores from
 			Mozilla HTTP Observatory and the HTTP headers set on every response.
 		</Text>
