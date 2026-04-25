@@ -29,8 +29,25 @@ export const THEMES = Object.freeze([
 	'tokyonight'
 ] as const);
 
+type NavItem =
+	| {
+			href: string;
+			label: string;
+	  }
+	| {
+			label: string;
+			subItems: NavItem[];
+	  };
+
 export const NAV_ITMES = Object.freeze([
 	{ href: resolve('/privacy-news'), label: 'Privacy News' },
 	{ href: resolve('/awesome-privacy'), label: 'Awesome Privacy' },
-	{ href: resolve('/websites'), label: 'Websites' }
-] satisfies { href: string; label: string }[]);
+	{ href: resolve('/websites'), label: 'Websites' },
+	{
+		label: 'Guides',
+		subItems: [
+			{ label: 'Get Started', href: resolve('/guides/get-started') },
+			{ label: 'Checklist', href: resolve('/guides/checklist') }
+		]
+	}
+] satisfies NavItem[]);

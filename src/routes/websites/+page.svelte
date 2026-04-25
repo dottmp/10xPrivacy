@@ -11,13 +11,16 @@
 <main class="mx-auto max-w-3xl px-4 py-16">
 	<header class="mb-8">
 		<Heading size="display" class="mb-4">Websites</Heading>
-		<Text
-			>A list of websites related to digital privacy. Can be anything from news sites, intresting
-			articles to tools and resources. If you have any suggestions, feel free to <Link
+		<Text size="lg">
+			A list of websites related to digital privacy. Can be anything from news sites, intresting
+			articles to tools and resources. If you have any suggestions, feel free to
+			<Link
 				href="https://github.com/dottmp/10xprivacy/edit/dev/src/lib/data/websites.json"
-				variant="primary">suggest websites on GitHub</Link
-			>.</Text
-		>
+				variant="primary"
+			>
+				suggest websites on GitHub
+			</Link>.
+		</Text>
 	</header>
 
 	<ul class="flex flex-wrap gap-2">

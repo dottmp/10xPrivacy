@@ -9,13 +9,14 @@
 <main class="mx-auto max-w-6xl px-4 py-16">
 	<header class="mb-8">
 		<Heading size="display" class="mb-4">Awesome Privacy</Heading>
-		<Text class="max-w-3xl"
-			>A curated guide to privacy-respecting software and services. Based on data from <Link
-				href="https://awesome-privacy.xyz/"
-				variant="primary"
-				external>awesome-privacy.xyz</Link
-			> check them out!</Text
-		>
+
+		<Text size="lg" class="max-w-3xl">
+			A curated guide to privacy-respecting software and services. Based on data from
+			<Link href="https://awesome-privacy.xyz/" variant="primary" external>
+				awesome-privacy.xyz
+			</Link>
+			check them out!
+		</Text>
 	</header>
 
 	<FeaturedCategories categories={data.categories} />

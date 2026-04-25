@@ -10,7 +10,8 @@
 <main class="mx-auto max-w-3xl px-4 py-16">
 	<header class="mb-8">
 		<Heading size="display" class="mb-4">Privacy News</Heading>
-		<Text>
+
+		<Text size="lg">
 			RSS feed aggregator for privacy news from goated sources. Perfect read during your morning
 			coffee! ☕️
 		</Text>
