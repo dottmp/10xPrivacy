@@ -101,6 +101,13 @@ class RSS extends RssXmlParser {
 
 		return this._sortByRecent(articles);
 	}
+
+	public async getFeaturedArticles(count: number = 5): Promise<Article[]> {
+		const articles = await this.getArticles({ source: 'all' });
+
+		return articles.slice(0, count);
+	}
+
 	/** Filters a list of articles to those matching the specified source. */
 	public filterArticlesBySource(
 		articles: Article[],
