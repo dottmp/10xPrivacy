@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.10.2](https://github.com/Jonathandah/rss-privacy-news/compare/v0.10.1...v0.10.2) (2026-04-25)
+
+### Bug Fixes
+
+* stuck loader on checklist page ([#166](https://github.com/Jonathandah/rss-privacy-news/issues/166)) ([6dc70c5](https://github.com/Jonathandah/rss-privacy-news/commit/6dc70c54e0a2a8e412da11136881062dc6a69165))
+
 ## [0.10.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.10.0...v0.10.1) (2026-04-25)
 
 ## [0.10.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.9.1...v0.10.0) (2026-04-25)
