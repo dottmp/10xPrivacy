@@ -58,6 +58,10 @@
 			Starting your digital privacy journey can be overwhelming, thats why we've created this simple
 			checklist to help you take it one step at a time. Each item is a small action you can take to
 			improve your online privacy.
+
+			<span class="mt-4 block">
+				PS: Don't worry we only store your progress locally in your browser's localStorage
+			</span>
 		</Text>
 	</header>
 

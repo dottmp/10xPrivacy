@@ -1,13 +1,21 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import Heading from '$lib/components/headings/heading.svelte';
+	import { Icons } from '$lib/components/icons/icons.svelte';
 </script>
 
 <main class="mx-auto max-w-3xl px-4 py-16">
 	<article>
-		<header class="mb-8">
-			<Heading size="display" class="mb-4">What is Digital Privacy?</Heading>
+		<header class="mb-4">
+			<Heading size="display">What is Digital Privacy?</Heading>
 		</header>
+
+		<div class="mb-6 alert alert-soft alert-warning">
+			<Icons.warning class="shrink-0" />
+			<p>
+				This page is still under construction <span>(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</span>
+			</p>
+		</div>
 
 		<div
 			class="prose prose-base max-w-none not-prose-headings:text-base/6 not-prose-headings:text-base-content/50 not-prose-headings:sm:text-sm/6"
