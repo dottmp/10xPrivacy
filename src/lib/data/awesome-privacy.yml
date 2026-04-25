@@ -75,16 +75,6 @@ categories:
           It omits the need for you to ever need to store or sync your passwords. They
           have apps for all the common platforms and a CLI, but you can also self-host it.
 
-      - name: Padloc
-        url: https://padloc.app
-        github: padloc/padloc
-        androidApp: app.padloc
-        iosApp: https://apps.apple.com/us/app/padloc/id1478877043
-        description: |
-          A modern, open source password manager for individuals and teams. Beautiful,
-          intuitive and dead simple to use. Apps available for all platforms and you can
-          self-host it as well.
-
       - name: ProtonPass
         url: https://proton.me/pass
         openSource: true
@@ -1638,17 +1628,6 @@ categories:
           also a great utility to stop certain apps from collecting data and tracking your actions
           while running in the background. See on [F-Droid](https://f-droid.org/en/packages/superfreeze.tool.android)
 
-      - name: Haven
-        url: https://guardianproject.github.io/haven/
-        icon: https://play-lh.googleusercontent.com/PdE-P3oTwa6fFKqQrSuYS1S7Aa_bIq-GECLhj8kvTzXdSc6S_hUtW2hUx0aCP-3h0pQ=w240-h480
-        github: guardianproject/haven
-        androidApp: org.havenapp.main
-        tosdrId: 682
-        description: |
-          Allows you to protect yourself, your personal space and your possessions - without
-          compromising on security. Leveraging device sensors to monitor nearby space, Haven was
-          developed by The Guardian Project, in partnership with Edward Snowden.
-
       - name: Secure Task
         url: https://play.google.com/store/apps/details?id=com.balda.securetask
         icon: https://play-lh.googleusercontent.com/Xb_KbjGC3J8xrj1QmZqYhUq1A6aww5ikFuXfCqJonww-vz38y6xUjHzvH65AGrQU9P4=s48
@@ -1687,14 +1666,6 @@ categories:
         description: |
           A network scanner to help you monitor and secure your WiFi network. The app is totally free,
           but to use the advanced controls, you will need a Fing Box.
-
-      - name: DPI Tunnel
-        github: nomoresat/DPITunnel-android
-        icon: https://raw.githubusercontent.com/nomoresat/DPITunnel-android/main/assets/logo.webp
-        url: https://f-droid.org/packages/ru.evgeniy.dpitunnelcli/
-        description: |
-          An application for Android that uses various techniques to bypass DPI (Deep Packet Inspection)
-          systems, which are used to block some sites (not available on Play store).
 
       - name: Blokada
         url: https://blokada.org/
@@ -2168,10 +2139,10 @@ categories:
         description: |
           Open-source self-hosted VPN and firewall built on WireGuard®.
 
-    ##########################
-    ###### Mix networks ######
-    ##########################
-    - name: Mix Networks
+    ####################################
+    ###### Anonymity/Mix networks ######
+    ####################################
+    - name: Anonymity Networks
       services:
       - name: Tor
         url: https://www.torproject.org
@@ -2598,15 +2569,6 @@ categories:
         description: |
           A shell script application to manage ad-blocking, Dnsmasq logging, Entware and pixelserv-tls installations
           and more on supported routers running Asuswrt-Merlin firmware, including its forks.
-
-      - name: BlockParty
-        url: https://github.com/krishkumar/BlockParty
-        icon: https://user-images.githubusercontent.com/425580/202258429-28da1274-2fb6-49dc-930c-3833f929b65e.png
-        github: krishkumar/BlockParty
-        followWith: iOS/ MacOS
-        description: |
-          Native Apple (Swift) apps, for system-wide ad-blocking. Can be customized with custom host lists,
-          primarily aimed for just ad-blocking.
 
       - name: hBlock
         url: https://hblock.molinero.dev
@@ -3062,16 +3024,6 @@ categories:
           community, and a lot of plugins and themes. Generally privacy-respecting, but no
           encryption out of the box, and some of the code is obfuscated or not fully open source
 
-      - name: AFFiNE
-        url: https://affine.pro
-        github: toeverything/AFFiNE
-        followWith: Windows, MacOS, Linux
-        securityAudited: false
-        subreddit: AFFiNE
-        description: |
-          Privacy first, open-source alternative to Notion, monday.com and Miro.
-          It is a knowledge management tool that allows you to create, organize and share your knowledge.
-
       - name: Cryptee
         url: https://crypt.ee/
         openSource: false
@@ -3094,7 +3046,7 @@ categories:
         openSource: true
         description: |
           A free, open-source note-taking application built with Qt, focused on providing a pleasant Markdown
-          editing experience. It manages notes directly as plain text files on your local system. 
+          editing experience. It manages notes directly as plain text files on your local system.
 
       notableMentions: |
         If you are already tied into Evernote, One Note etc, then [SafeRoom](https://www.getsaferoom.com)
@@ -3132,6 +3084,27 @@ categories:
           The calendar app from the Proton suite. End-to-end encrypted.
           Supports ICS (not encrypted), colours, recurring events, mail integration,
           notifications and multiple time zones.
+
+      - name: Nextcloud Calendar
+        url: https://apps.nextcloud.com/apps/calendar
+        github: nextcloud/calendar
+        followWith: Self-Hosted
+        icon: https://raw.githubusercontent.com/nextcloud/calendar/refs/heads/main/img/favicon.png
+        description: |
+          Calendar app for the self-hosted Nextcloud platform. Uses CalDAV for
+          sync across devices. No E2E encryption support.
+
+      - name: Fossify Calendar
+        url: https://www.fossify.org/
+        github: FossifyOrg/Calendar
+        androidApp: org.fossify.calendar
+        followWith: Android
+        icon: https://raw.githubusercontent.com/FossifyOrg/Calendar/refs/heads/main/graphics/icon.webp
+        description: |
+          Fossify Calendar from the family of forked FOSS apps from the
+          discontinued SimpleMobileTools. Simple, customizable, includes widgets.
+          Note that CalDAV support is currently limited
+          (see [#921](https://github.com/FossifyOrg/Calendar/issues/921)
 
     ###############################
     ###### Task Management ######
@@ -3326,11 +3299,6 @@ categories:
           Secure file sync, sharing, collaboration and backup for individuals, small businesses and sole practitioners.
           Starts at $8/month for 2 TB.
 
-      - name: pCloud
-        url: https://www.pcloud.com
-        description: |
-          Secure and simple to use cloud storage, with cross-platform client apps. £3.99/month for 500 GB.
-
       - name: Peergos
         url: https://peergos.org/
         description: |
@@ -3354,6 +3322,13 @@ categories:
         description: |
           Zero knowledge end-to-end encrypted affordable cloud storage made in Germany. Open-source mobile and desktop apps.
           10GB FREE with paid plans starting at €0.92/month for 100GB.
+
+      - name: Koofr
+        url: https://koofr.eu
+        description: |
+          GDPR compliant storage (web/desktop/mobile/WebDAV/RClone) with a sensible privacy policy.
+          Has optional open-source client-side encryption, compatible with RClone. Can connect to other cloud services
+          and MS Office. 10GB free, on ISO27001 servers (DE).
 
       notableMentions: |
         An alternative option, is to use a cloud computing provider, and implement
@@ -3873,16 +3848,6 @@ categories:
           Plus, proactive security recommendations and automatic updates take the guesswork out of keeping your personal data personal. Also currently
           only supports Pixel devices and Xiaomi Mi A2 with Fairphone 4, OnePlus 8T, OnePlus 9 test builds available. Developed by the Calyx Foundation.
 
-      - name: DivestOS
-        url: https://divestos.org
-        icon: https://divestos.org/images/favicon.png
-        github: Divested-Mobile/DivestOS-Build
-        tosdrId: 2550
-        description: |
-          DivestOS is a vastly diverged unofficial more secure and private soft fork of LineageOS. DivestOS primary goal is prolonging the life-span of
-          discontinued devices, enhancing user privacy, and providing a modest increase of security where/when possible. Project is developed and maintained
-          solely by Tad (SkewedZeppelin) since 2014.
-
       - name: LineageOS
         url: https://www.lineageos.org
         icon: https://www.lineageos.org/images/logo.png
@@ -3891,6 +3856,14 @@ categories:
         description: |
           A free and open-source operating system for various devices, based on the Android mobile platform - Lineage is light-weight, well maintained,
           supports a wide range of devices, and comes bundled with Privacy Guard.
+
+      - name: AXP.OS
+        url: https://axpos.org
+        icon: https://axpos.org/favicon.svg
+        description: |
+          AXP.OS is an operating system based on AOSP & LineageOS. Emerged from the discontinued
+          [DivestOS](https://divestos-archive.codeberg.page), it aims to prolong the lifespan of discontinued
+          devices, enhance privacy and increase security where possible, e.g. by backporting kernel patches.
 
       notableMentions: |
         [Replicant OS](https://www.replicant.us/) is a fully-featured distro,
@@ -4204,12 +4177,6 @@ categories:
         description: |
           Internet traffic control and monitoring tool.
 
-      - name: Sticky-Keys-Slayer
-        url: https://github.com/linuz/Sticky-Keys-Slayer
-        github: linuz/Sticky-Keys-Slayer
-        description: |
-          Scans for accessibility tools backdoors via RDP.
-
       - name: SigCheck
         url: https://docs.microsoft.com/en-us/sysinternals/downloads/sigcheck
         description: |
@@ -4255,17 +4222,6 @@ categories:
         description: |
           Blocks unauthorized webcam access.
 
-      - name: SpyDish
-        url: https://github.com/mirinsoft/spydish
-        github: mirinsoft/spydish
-        description: |
-          Open source GUI app built upon PowerShell, allowing you to perform a quick and easy privacy check, on Windows 10 systems.
-
-      - name: PrivaZer
-        url: https://privazer.com/
-        description: |
-          Good alternative to CCleaner, for deleting unnecessary data - logs, cache, history, etc.
-
       wordOfWarning: |
         (The above software was last tested on 01/05/20).
         Many of the above tools are not necessary or suitable for beginners,
@@ -4303,14 +4259,6 @@ categories:
         github: alichtman/stronghold
         description: |
           Easily configure macOS security settings from the terminal.
-
-      - name: Fortress
-        url: https://github.com/essandess/macOS-Fortress
-        followWith: Mac OS
-        github: essandess/macOS-Fortress
-        description: |
-          Kernel-level, OS-level, and client-level security for macOS. With a Firewall, Blackhole, and Privatizing Proxy for Trackers, Attackers, Malware, Adware, and Spammers; with On-Demand and On-Access Anti-Virus Scanning.
-
 
     ##########################
     ###### Anti-Malware ######
@@ -4548,13 +4496,6 @@ categories:
         followWith: Bitcoin
         github: sparrowwallet/sparrow
 
-      - name: Atomic Wallet
-        url: https://atomicwallet.io/
-        description: |
-          Atomic is an open-source desktop and mobile-based wallet, where your private keys are stored on your local device, and do not touch the internet. Atomic has a great feature set, and supports swapping, staking, and lending directly from the app. However, most of Atomic's features require an active internet connection, and Atomic does not support hardware wallets yet. Therefore, it may only be a good choice as a secondary wallet, for storing small amounts of your actively used currency.
-        followWith: All Coins
-        github: Atomicwallet/bip38
-
       - name: CryptoSteel
         url: https://cryptosteel.com/how-it-works
         description: |
@@ -4636,14 +4577,6 @@ categories:
           in the US. Unlike other providers, it is free for personal use (up to 12 cards
           per month) with no fees, apps and support is good. There is a premium plan
           for $10/month, with 1% cashback and 36 cards/month.
-
-      - name: Revolut Premium
-        url: https://www.revolut.com/
-        tosdrId: 2310
-        description: |
-          Revolut is more of a digital bank account, and identity checks are required
-          to sign up. Virtual cards are only available on Premium/ Metal accounts, which
-          start at $7/month.
 
       - name: MySudo
         url: https://mysudo.com
@@ -4799,12 +4732,14 @@ categories:
         url: https://github.com/nostr-protocol/nostr
         github: https://github.com/nostr-protocol
 
-      - name: Minds
+      - name: Lemmy
+        url: https://join-lemmy.org
+        github: LemmyNet/lemmy
+        icon: https://join-lemmy.org/static/assets/icons/apple-touch-icon.png
         description: |
-          A social media platform designed to foster open conversations and community
-          engagement. Rewards content creation.
-        url: https://www.minds.com
-        github: minds/minds
+          A federated, open-source link aggregator and discussion platform, similar to Reddit.
+          Built on ActivityPub. Wide range of cross-platform [client apps](https://join-lemmy.org/apps).
+        androidApp: com.jerboa
 
       notableMentions: |
         - [diaspora\*](https://diasporafoundation.org), [Pleroma](https://pleroma.social), [Friendica](https://friendi.ca) and [Hubzilla ](https://hubzilla.org) - distributed, decentralized social networks, built on open protocols
@@ -4837,14 +4772,6 @@ categories:
           users with cryptocurrency, leveraging blockchain technology.
         url: https://d.tube
         tosdrId: 2798
-
-      - name: BitChute
-        description: |
-          Established in 2017, BitChute is a video hosting service that offers a platform for
-          uploaders to evade the content restrictions found on other sites like YouTube.
-        url: https://www.bitchute.com
-        icon: https://i.ibb.co/gvxXK0Z/bitchute.png
-        tosdrId: 513
 
       wordOfWarning: |
         Without moderation, some of these platforms accommodate video creators
