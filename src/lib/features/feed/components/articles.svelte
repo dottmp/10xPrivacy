@@ -35,35 +35,42 @@
 <!-- List -->
 <ul class={cn('space-y-3', klass)} {...props}>
 	{#each _articles as article (article.guid)}
+		{#snippet metaBadges(klass?: string)}
+			<span class={cn('ml-auto flex shrink-0 items-center gap-2 ', klass)}>
+				<SourceBadge class="badge-sm" source={article.source} />
+				<time datetime={article.date} class={cn(textVariants.size.xs, 'text-base-content/40')}>
+					{article.date ? formatDate(article.date) : 'Date unknown'}
+				</time>
+			</span>
+		{/snippet}
+
 		<li class="relative">
 			<a
 				href={resolve(`/privacy-news/${article.slug}`)}
-				class="group flex flex-col-reverse items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm sm:flex-row"
+				class="group flex flex-col items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm sm:flex-row"
 			>
 				{#if isToday(article.date)}
 					<span
-						class=" absolute -top-2 -right-2 badge rotate-12 badge-sm shadow-xl badge-accent sm:-right-4"
+						class=" absolute -top-2 -right-2 z-10 badge rotate-12 badge-sm shadow-xl badge-accent sm:-right-4"
 					>
 						New!
 					</span>
 				{/if}
-				<!-- Title -->
-				<span
-					class={cn(
-						textVariants.size.default,
-						'min-w-0 flex-1 font-semibold group-hover:text-primary group-hover:underline'
-					)}
-				>
-					{article.title}
-				</span>
+				<!-- content -->
+				{@render metaBadges('sm:hidden')}
 
-				<!-- Meta: articles + date -->
-				<span class="flex shrink-0 items-center gap-2 sm:ml-auto">
-					<SourceBadge class="badge-sm" source={article.source} />
-					<time datetime={article.date} class={cn(textVariants.size.xs, 'text-base-content/40')}>
-						{article.date ? formatDate(article.date) : 'Date unknown'}
-					</time>
-				</span>
+				<div>
+					<Text class={cn('flex min-w-0 items-start')}>
+						<span
+							class="font-semibold text-base-content group-hover:text-primary group-hover:underline"
+						>
+							{article.title}
+						</span>
+						{@render metaBadges('sm:inline-flex pl-2 hidden')}
+					</Text>
+
+					<Text class="mt-2 line-clamp-2">{article.description}</Text>
+				</div>
 			</a>
 		</li>
 	{/each}

@@ -62,7 +62,7 @@ describe('Articles component', () => {
 
 		const badges = screen.getAllByText(source.name);
 
-		expect(badges).toHaveLength(articles.length);
+		expect(badges).toHaveLength(articles.length * 2);
 	});
 
 	it('renders formatted date for each article', () => {
