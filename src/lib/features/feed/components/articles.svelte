@@ -59,7 +59,7 @@
 				<!-- content -->
 				{@render metaBadges('sm:hidden')}
 
-				<div>
+				<div class="grid">
 					<Text class={cn('flex min-w-0 items-start')}>
 						<span
 							class="font-semibold text-base-content group-hover:text-primary group-hover:underline"
