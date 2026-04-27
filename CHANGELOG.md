@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.10.3](https://github.com/Jonathandah/rss-privacy-news/compare/v0.10.2...v0.10.3) (2026-04-27)
+
+### Bug Fixes
+
+* articles description is overflowing ([#167](https://github.com/Jonathandah/rss-privacy-news/issues/167)) ([dff34f4](https://github.com/Jonathandah/rss-privacy-news/commit/dff34f4a8c6c62822f3b3cef6d4b0b7a8c431371))
+
 ## [0.10.2](https://github.com/Jonathandah/rss-privacy-news/compare/v0.10.1...v0.10.2) (2026-04-25)
 
 ### Bug Fixes
