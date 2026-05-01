@@ -83,7 +83,7 @@
 							<Subheading size="sm" class="group-hover:text-primary group-hover:underline">
 								{service.name}
 							</Subheading>
-						<ServiceBadges {service} size="xs" />
+							<ServiceBadges {service} size="xs" />
 						</div>
 
 						<div class={cn('mt-1 line-clamp-2', textVariants.base, textVariants.size.xs)}>
