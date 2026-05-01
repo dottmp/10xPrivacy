@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.11.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.11.0...v0.11.1) (2026-05-01)
+
+### Bug Fixes
+
+* missing year for articles older than this year ([#173](https://github.com/Jonathandah/rss-privacy-news/issues/173)) ([ddacc8d](https://github.com/Jonathandah/rss-privacy-news/commit/ddacc8d202065be7aa8bc5a1e21432b2ec34319f))
+
 ## [0.11.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.10.3...v0.11.0) (2026-05-01)
 
 ### Features
