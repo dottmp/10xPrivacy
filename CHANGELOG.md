@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.12.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.11.2...v0.12.0) (2026-05-01)
+
+### Features
+
+* add more info and notable mentions on section page ([#178](https://github.com/Jonathandah/rss-privacy-news/issues/178)) ([8338fcb](https://github.com/Jonathandah/rss-privacy-news/commit/8338fcbe543b8bca2257cc89d3afdbade0aa27c2))
+
+### Bug Fixes
+
+* add missing prose to service description ([#176](https://github.com/Jonathandah/rss-privacy-news/issues/176)) ([8c4547c](https://github.com/Jonathandah/rss-privacy-news/commit/8c4547c541e10609d326de71a74197fa88a99c65))
+* re add tosdr to csp ([#175](https://github.com/Jonathandah/rss-privacy-news/issues/175)) ([a066b4b](https://github.com/Jonathandah/rss-privacy-news/commit/a066b4b55ab76f08834f145c2655ece8b3406055))
+
 ## [0.11.2](https://github.com/Jonathandah/rss-privacy-news/compare/v0.11.1...v0.11.2) (2026-05-01)
 
 ### Bug Fixes
