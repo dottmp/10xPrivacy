@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.10.3...v0.11.0) (2026-05-01)
+
+### Features
+
+* extend service page data ([#171](https://github.com/Jonathandah/rss-privacy-news/issues/171)) ([f349667](https://github.com/Jonathandah/rss-privacy-news/commit/f3496675706069279d8a200f346331660c49c510))
+* finish get started page ([#172](https://github.com/Jonathandah/rss-privacy-news/issues/172)) ([34c4e17](https://github.com/Jonathandah/rss-privacy-news/commit/34c4e172a186177785b5ade812ace1821ebdae93))
+
 ## [0.10.3](https://github.com/Jonathandah/rss-privacy-news/compare/v0.10.2...v0.10.3) (2026-04-27)
 
 ### Bug Fixes
