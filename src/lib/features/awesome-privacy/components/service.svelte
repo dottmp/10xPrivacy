@@ -56,7 +56,8 @@
 
 	<!-- Tabs -->
 	{#if service.tosdrId}
-		<div class="tabs-border mb-2 tabs">
+		<div class="tabs-border mb-2 tabs [&>input]:checked:text-primary">
+			<!-- overview tab  -->
 			<input
 				type="radio"
 				name="service-tabs-{service.name}"
@@ -172,12 +173,14 @@
 				</section>
 			</div>
 
+			<!-- terms of service tab  -->
 			<input
 				type="radio"
 				name="service-tabs-{service.name}"
 				class="tab"
 				aria-label="Terms of Service"
 			/>
+
 			<div class="tab-content pt-6">
 				<TosdrCard tosdrId={service.tosdrId} />
 			</div>
