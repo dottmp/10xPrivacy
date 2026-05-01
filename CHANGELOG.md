@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.11.2](https://github.com/Jonathandah/rss-privacy-news/compare/v0.11.1...v0.11.2) (2026-05-01)
+
+### Bug Fixes
+
+* correct wrong avoid badge variant ([#174](https://github.com/Jonathandah/rss-privacy-news/issues/174)) ([085e521](https://github.com/Jonathandah/rss-privacy-news/commit/085e521078480333f28a322b3ea4189b59f1de92))
+
 ## [0.11.1](https://github.com/Jonathandah/rss-privacy-news/compare/v0.11.0...v0.11.1) (2026-05-01)
 
 ### Bug Fixes
