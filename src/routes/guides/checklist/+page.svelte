@@ -72,8 +72,7 @@
 		<div>
 			<Subheading size="xs" class="mb-2 text-info">Friendly reminder ( ˘ ³˘(◡‿◡˶)</Subheading>
 			<Text class="text-info">
-				Privacy is not binary — you don't have to do everything or everything at once. Start with
-				what feels manageable!
+				You don't have to do everything or everything at once. Start with what feels manageable!
 			</Text>
 		</div>
 
