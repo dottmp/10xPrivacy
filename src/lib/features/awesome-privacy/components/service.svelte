@@ -69,7 +69,7 @@
 				<!-- Description -->
 				<section
 					class={cn(
-						'mb-8 rounded-lg bg-base-100 p-5 shadow-sm',
+						'prose mb-8 max-w-none rounded-lg bg-base-100 p-5 shadow-sm',
 						textVariants.base,
 						textVariants.size.default
 					)}
