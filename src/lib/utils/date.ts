@@ -18,6 +18,6 @@ export function formatDate(dateStr: string | null) {
 	return d.toLocaleDateString('en-US', {
 		month: 'short',
 		day: 'numeric',
-		year: days > 365 ? 'numeric' : undefined
+		year: d.getFullYear() !== now.getFullYear() ? 'numeric' : undefined
 	});
 }
