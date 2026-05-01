@@ -110,11 +110,11 @@
 					{#each navItems as navItem (navItem.href)}
 						<li>
 							{#if navItem.href}
-								<a href={resolve(navItem.href as Pathname)}>{navItem.label}</a>
+								<a href={resolve(navItem.href as Pathname)} onclick={() => { document.querySelectorAll('nav details[open]').forEach(d => d.removeAttribute('open')); }}>{navItem.label}</a>
 							{:else}
 								<details>
 									<summary>{navItem.label}</summary>
-									<ul class="min-w-40 rounded-t-none bg-base-100 p-2">
+									<ul class="min-w-40 rounded-t-none bg-base-100 p-2" onclick={(e) => { const details = (e.currentTarget as HTMLElement).closest('details'); if (details) details.removeAttribute('open'); }}>
 										{@render renderNavItems(navItem.subItems)}
 									</ul>
 								</details>
