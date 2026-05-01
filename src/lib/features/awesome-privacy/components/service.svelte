@@ -97,14 +97,7 @@
 						</Subheading>
 						<div class="flex flex-wrap gap-2">
 							{#each section.alternativeTo as alt (alt)}
-								{@const domain = alt.toLowerCase().replace(/\s+/g, '') + '.com'}
-								<span class="badge bg-base-300 text-sm">
-									<img
-										src="https://icons.duckduckgo.com/ip3/{domain}.ico"
-										{alt}
-										class="size-4 rounded-sm"
-										onerror={(e) => ((e.currentTarget as HTMLImageElement).style.display = 'none')}
-									/>
+								<span class="badge bg-base-100 text-sm">
 									{alt}
 								</span>
 							{/each}
