@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 
+	import ServiceBadges from './service-badges.svelte';
 	import ServiceLogo from './service-logo.svelte';
 
 	import { resolve } from '$app/paths';
@@ -82,18 +83,7 @@
 							<Subheading size="sm" class="group-hover:text-primary group-hover:underline">
 								{service.name}
 							</Subheading>
-							{#if service.openSource || service.github}
-								<span class="badge badge-soft badge-xs badge-success">Open Source</span>
-							{/if}
-							{#if service.securityAudited}
-								<span class="badge badge-soft badge-xs badge-warning">Audited</span>
-							{/if}
-							{#if service.acceptsCrypto}
-								<span class="badge badge-soft badge-xs badge-accent">Accepts Crypto</span>
-							{/if}
-							{#if service.followWith}
-								<span class="badge badge-soft badge-xs badge-info">{service.followWith}</span>
-							{/if}
+						<ServiceBadges {service} size="xs" />
 						</div>
 
 						<div class={cn('mt-1 line-clamp-2', textVariants.base, textVariants.size.xs)}>
