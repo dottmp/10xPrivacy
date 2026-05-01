@@ -5,9 +5,10 @@
 	import ServiceLogo from './service-logo.svelte';
 
 	import { resolve } from '$app/paths';
-	import { Heading, Subheading } from '$lib/components/headings';
+	import { Heading, Subheading, subheadingVariants } from '$lib/components/headings';
 	import { Icons } from '$lib/components/icons/icons.svelte';
 	import { Text, textVariants } from '$lib/components/text';
+	import Link from '$lib/components/text/link.svelte';
 	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
 	import type { Section } from '$lib/features/awesome-privacy/types';
 	import { cn } from '$lib/utils/cn';
@@ -103,7 +104,61 @@
 		{/each}
 	</ul>
 
-	<a href={resolve(`/awesome-privacy/${categorySlug}`)} class="btn mt-4 w-full sm:w-fit">
+	<!-- Notable Mentions -->
+	{#if section.notableMentions}
+		<section class="mt-8 alert flex flex-col items-start alert-outline alert-info">
+			<Subheading size="xs" class="text-info">Notable Mentions 📣</Subheading>
+			{#if typeof section.notableMentions === 'string'}
+				<div class={cn('prose prose-sm max-w-none ', textVariants.base)}>
+					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+					{@html markdownToHtml(section.notableMentions)}
+				</div>
+			{:else}
+				<ul class="space-y-6">
+					{#each section.notableMentions as mention (mention.name)}
+						<li>
+							{#if mention.url}
+								<Link
+									href={mention.url}
+									external
+									class={cn(
+										'text-info! underline',
+										subheadingVariants.size.sm,
+										subheadingVariants.base
+									)}
+								>
+									{mention.name}
+								</Link>
+							{:else}
+								<span class={cn('text-info!', subheadingVariants.size.sm, subheadingVariants.base)}>
+									{mention.name}
+								</span>
+							{/if}
+							{#if mention.description}
+								<div class={cn('prose prose-sm max-w-none', textVariants.base)}>
+									<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+									{@html markdownToInlineHtml(mention.description)}
+								</div>
+							{/if}
+						</li>
+					{/each}
+				</ul>
+			{/if}
+		</section>
+	{/if}
+
+	<!-- Further Info -->
+	{#if section.furtherInfo}
+		<div class="mt-8 alert flex flex-col items-start alert-outline alert-info text-info">
+			<Subheading size="xs" class="text-info">Further Reading 📖</Subheading>
+			<div class={cn('prose prose-sm max-w-none', textVariants.base)}>
+				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+				{@html markdownToHtml(section.furtherInfo)}
+			</div>
+		</div>
+	{/if}
+
+	<a href={resolve(`/awesome-privacy/${categorySlug}`)} class="btn mt-6 w-full sm:w-fit">
 		<Icons.arrowLeft class="mr-1" /> Back to {awesomePrivacy.slugToName(categorySlug)}
 	</a>
 </div>
