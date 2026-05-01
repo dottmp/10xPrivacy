@@ -20,7 +20,7 @@ const config = {
 				],
 				'font-src': ['self'],
 				'img-src': ['self', 'data:', 'https:'],
-				'connect-src': ['self'],
+				'connect-src': ['self', 'https://api.tosdr.org'],
 				'object-src': ['none'],
 				'base-uri': ['self'],
 				'form-action': ['self'],
