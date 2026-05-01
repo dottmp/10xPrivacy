@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 
+	import ServiceBadges from './service-badges.svelte';
 	import ServiceLogo from './service-logo.svelte';
 
 	import { resolve } from '$app/paths';
@@ -37,18 +38,7 @@
 			{/if}
 			<!-- Badges -->
 			<div class="mt-2 flex flex-wrap gap-2">
-				{#if service.openSource || service.github}
-					<span class="badge badge-soft badge-sm badge-success">Open Source</span>
-				{/if}
-				{#if service.securityAudited}
-					<span class="badge badge-soft badge-sm badge-warning">Security Audited</span>
-				{/if}
-				{#if service.acceptsCrypto}
-					<span class="badge badge-soft badge-sm badge-accent">Accepts Crypto</span>
-				{/if}
-				{#if service.followWith}
-					<span class="badge badge-soft badge-sm badge-info">{service.followWith}</span>
-				{/if}
+				<ServiceBadges {service} size="sm" />
 				{#if service.androidApp}
 					<span class="badge badge-soft badge-sm">Android</span>
 				{/if}
@@ -159,9 +149,7 @@
 									'font-semibold group-hover:text-primary group-hover:underline'
 								)}>{rel.name}</span
 							>
-							{#if rel.openSource || rel.github}
-								<span class="ml-auto badge badge-soft badge-xs badge-success">Open Source</span>
-							{/if}
+							<ServiceBadges service={rel} size="xs" />
 						</a>
 					</li>
 				{/each}
