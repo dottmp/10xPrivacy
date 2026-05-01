@@ -12,6 +12,8 @@
 	import type { Pathname } from '$app/types';
 	import { Icons } from '$lib/components/icons/icons.svelte';
 	import Text, { textVariants } from '$lib/components/text/text.svelte';
+	import { registerKeyboardShortcut } from '$lib/features/awesome-privacy/hooks/keyboard-shortcut.svelte';
+	import { trackViewportHeight } from '$lib/features/awesome-privacy/hooks/viewport-height.svelte';
 	import type { SearchEntry, SearchEntryType } from '$lib/features/awesome-privacy/types';
 	import { cn } from '$lib/utils/cn';
 	import { debounce } from '$lib/utils/debounce';
@@ -44,11 +46,9 @@
 	let searching = $state(false);
 	let hasQuery = $derived(query.trim().length >= MIN_QUERY_LENGTH);
 	let initiating = $state(false);
-	let ctrlKey = $derived.by(() => {
-		const ua = navigator.userAgent || '';
-		const isMac = /\bMacintosh\b/i.test(ua);
-		return isMac ? '⌘' : 'Ctrl';
-	});
+
+	const { ctrlKey } = registerKeyboardShortcut(() => open());
+	trackViewportHeight();
 	// ----------------------------------------------------------------
 	// Index
 	// ----------------------------------------------------------------
@@ -77,9 +77,7 @@
 		initiating = false;
 	}
 
-	$effect(() => {
-		loadIndex();
-	});
+	onMount(loadIndex);
 
 	// ----------------------------------------------------------------
 	// utils
@@ -119,7 +117,7 @@
 	const debouncedSearch = debounce(search, SEARCH_DEBOUNCE_MS);
 
 	// ----------------------------------------------------------------
-	// Keyboard
+	// Keyboard (arrow-key navigation within results)
 	// ----------------------------------------------------------------
 
 	function handleKeydown(e: KeyboardEvent) {
@@ -149,53 +147,6 @@
 			}
 		}
 	}
-
-	let keyboardHeight = $state(0);
-
-	onMount(() => {
-		const initial = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-
-		function handler() {
-			const hv = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-
-			keyboardHeight = Math.max(0, initial - hv);
-
-			document.documentElement.style.setProperty('--kb-height', `${keyboardHeight}px`);
-		}
-
-		if (window.visualViewport) {
-			window.visualViewport.addEventListener('resize', handler);
-			window.visualViewport.addEventListener('scroll', handler);
-		} else {
-			window.addEventListener('resize', handler);
-		}
-
-		return () => {
-			if (window.visualViewport) {
-				window.visualViewport.removeEventListener('resize', handler);
-				window.visualViewport.removeEventListener('scroll', handler);
-			} else {
-				window.removeEventListener('resize', handler);
-			}
-		};
-	});
-
-	onMount(() => {
-		function handler(e: KeyboardEvent) {
-			const isK = e.key.toLowerCase() === 'k';
-			const mod = e.metaKey || e.ctrlKey;
-
-			if (!mod || !isK) return;
-
-			e.preventDefault();
-			open();
-		}
-
-		window.addEventListener('keydown', handler);
-		return () => {
-			window.removeEventListener('keydown', handler);
-		};
-	});
 </script>
 
 <button
