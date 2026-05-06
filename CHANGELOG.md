@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.13.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.12.0...v0.13.0) (2026-05-06)
+
+### Features
+
+* make headings in get started guide linkable ([#186](https://github.com/Jonathandah/rss-privacy-news/issues/186)) ([0bbc0de](https://github.com/Jonathandah/rss-privacy-news/commit/0bbc0de92454958824474a221f2e59d0e96e9b32))
+
+### Bug Fixes
+
+* revert eslint version ([#185](https://github.com/Jonathandah/rss-privacy-news/issues/185)) ([baddb01](https://github.com/Jonathandah/rss-privacy-news/commit/baddb01fc7618c73da9b5054f7690c5e8faba940))
+* update eslint package ([#184](https://github.com/Jonathandah/rss-privacy-news/issues/184)) ([50cc7aa](https://github.com/Jonathandah/rss-privacy-news/commit/50cc7aab507505f768b72972fe2b51bf8af367bc))
+
 ## [0.12.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.11.2...v0.12.0) (2026-05-01)
 
 ### Features
