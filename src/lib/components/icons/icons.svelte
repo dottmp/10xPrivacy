@@ -12,8 +12,8 @@
 	import Film from '@lucide/svelte/icons/film';
 	import Globe from '@lucide/svelte/icons/globe';
 	import House from '@lucide/svelte/icons/house';
-	import ListTodo from '@lucide/svelte/icons/list-todo';
 	import Link from '@lucide/svelte/icons/link';
+	import ListTodo from '@lucide/svelte/icons/list-todo';
 	import Lock from '@lucide/svelte/icons/lock';
 	import Menu from '@lucide/svelte/icons/menu';
 	import MessageCircle from '@lucide/svelte/icons/message-circle';
