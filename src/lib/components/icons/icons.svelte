@@ -12,6 +12,7 @@
 	import Film from '@lucide/svelte/icons/film';
 	import Globe from '@lucide/svelte/icons/globe';
 	import House from '@lucide/svelte/icons/house';
+	import Link from '@lucide/svelte/icons/link';
 	import ListTodo from '@lucide/svelte/icons/list-todo';
 	import Lock from '@lucide/svelte/icons/lock';
 	import Menu from '@lucide/svelte/icons/menu';
@@ -55,6 +56,7 @@
 		discord: Discord,
 		close: X,
 		section: Box,
+		link: Link,
 		loading: Loader,
 		logo: Logo,
 
