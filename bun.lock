@@ -5,7 +5,7 @@
     "": {
       "name": "rss-privacy-news",
       "dependencies": {
-        "@lucide/svelte": "^1.7.0",
+        "@lucide/svelte": "^1.14.0",
         "fast-xml-parser": "^5.7.1",
         "fuse.js": "^7.3.0",
         "isomorphic-dompurify": "^3.4.0",
@@ -292,7 +292,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
-    "@lucide/svelte": ["@lucide/svelte@1.7.0", "", { "peerDependencies": { "svelte": "^5" } }, "sha512-YytBKOUBGox7yWcykZnYxOkn5WpR5G1qYXLYXV/j1B79SOTTEKzB+s5yF5Rq9l9OkweDStNH2b4yTqfvhEhV8g=="],
+    "@lucide/svelte": ["@lucide/svelte@1.14.0", "", { "peerDependencies": { "svelte": "^5" } }, "sha512-MVuP5VRCBQa2OaIpaRbuEV4k5OV2dy9MyxA6Tf4Sz/IN0v3zzUU72ObHc9r2Zn/wSMXDg6lLrHrczqI7w7gCzQ=="],
 
     "@nodable/entities": ["@nodable/entities@2.1.0", "", {}, "sha512-nyT7T3nbMyBI/lvr6L5TyWbFJAI9FTgVRakNoBqCD+PmID8DzFrrNdLLtHMwMszOtqZa8PAOV24ZqDnQrhQINA=="],
 
