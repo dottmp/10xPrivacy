@@ -65,7 +65,7 @@
 	},
 	"dependencies": {
 		"@lucide/svelte": "^1.14.0",
-		"fast-xml-parser": "^5.7.1",
+		"fast-xml-parser": "^5.8.0",
 		"fuse.js": "^7.3.0",
 		"isomorphic-dompurify": "^3.4.0",
 		"js-yaml": "^4.1.1",
