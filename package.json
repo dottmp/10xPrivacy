@@ -25,7 +25,7 @@
 		"release": "release-it"
 	},
 	"devDependencies": {
-		"@eslint/compat": "^2.0.2",
+		"@eslint/compat": "^2.1.0",
 		"@eslint/js": "^9.39.2",
 		"@release-it/conventional-changelog": "^10.0.6",
 		"@sveltejs/adapter-cloudflare": "^7.2.8",
