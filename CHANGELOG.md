@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.13.1](https://github.com/dottmp/10xPrivacy/compare/v0.13.0...v0.13.1) (2026-05-31)
+
+### Bug Fixes
+
+* update package to 11.0.0 ([#198](https://github.com/dottmp/10xPrivacy/issues/198)) ([93f965b](https://github.com/dottmp/10xPrivacy/commit/93f965b78134794673d6b2e37d90f5d9a6e52d7b))
+
 ## [0.13.0](https://github.com/Jonathandah/rss-privacy-news/compare/v0.12.0...v0.13.0) (2026-05-06)
 
 ### Features
