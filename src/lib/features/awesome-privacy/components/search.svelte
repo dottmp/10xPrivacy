@@ -220,7 +220,7 @@
 			</label>
 
 			<!-- Results  -->
-			<div class="mb-[var(--kb-height,0px)] flex-1 overflow-y-auto [scrollbar-width:thin]">
+			<div class="mb-[var(--kb-height,0px)] flex-1 [scrollbar-width:thin] overflow-y-auto">
 				{#snippet entryList(entries: SearchEntry[])}
 					<ul role="listbox" class="space-y-2 p-2">
 						{#each entries as entry (entry.href)}
