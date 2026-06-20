@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.14.1](https://github.com/dottmp/10xPrivacy/compare/v0.14.0...v0.14.1) (2026-06-20)
+
+### Bug Fixes
+
+* downgrade eslint package ([#206](https://github.com/dottmp/10xPrivacy/issues/206)) ([ce517db](https://github.com/dottmp/10xPrivacy/commit/ce517db96a98e4603ea828ef704e90727a9e13ec))
+
 ## [0.14.0](https://github.com/dottmp/10xPrivacy/compare/v0.13.1...v0.14.0) (2026-06-20)
 
 ### Features
