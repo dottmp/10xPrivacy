@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.14.0](https://github.com/dottmp/10xPrivacy/compare/v0.13.1...v0.14.0) (2026-06-20)
+
+### Features
+
+* update websites ([a22a973](https://github.com/dottmp/10xPrivacy/commit/a22a973b73d4aae56751fec89c7c01358f54b3e6))
+
 ## [0.13.1](https://github.com/dottmp/10xPrivacy/compare/v0.13.0...v0.13.1) (2026-05-31)
 
 ### Bug Fixes
