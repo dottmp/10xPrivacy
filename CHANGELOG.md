@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.15.0](https://github.com/dottmp/10xPrivacy/compare/v0.14.1...v0.15.0) (2026-06-22)
+
+### Features
+
+* update get started text ([#207](https://github.com/dottmp/10xPrivacy/issues/207)) ([590d571](https://github.com/dottmp/10xPrivacy/commit/590d5713fce321dec52582a4533d1d478133baaf))
+
 ## [0.14.1](https://github.com/dottmp/10xPrivacy/compare/v0.14.0...v0.14.1) (2026-06-20)
 
 ### Bug Fixes
