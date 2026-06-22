@@ -155,8 +155,9 @@
 
 			<blockquote>&ldquo;It&apos;s already too late&rdquo;</blockquote>
 			<p>
-				That&apos;s like saying you haven&apos;t worked out in years so you might as well never
-				start. Privacy is not binary, every step counts and it&apos;s never too late.
+				No, its not. See it as working out. Just because you havn&apos;t worked out in a while
+				doesn&apos;t mean that there is no point in starting. Privacy is not binary, every step
+				counts and it&apos;s never too late.
 			</p>
 
 			<blockquote>&ldquo;Why bother, I still use some Google services&rdquo;</blockquote>
