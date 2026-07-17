@@ -64,7 +64,7 @@
 		"wrangler": "^4.87.0"
 	},
 	"dependencies": {
-		"@lucide/svelte": "^1.21.0",
+		"@lucide/svelte": "^1.25.0",
 		"fast-xml-parser": "^5.8.0",
 		"fuse.js": "^7.4.2",
 		"isomorphic-dompurify": "^3.18.0",
