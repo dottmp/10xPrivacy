@@ -1,4 +1,4 @@
-import yaml from 'js-yaml';
+import { load } from 'js-yaml';
 
 import rawYaml from '../../data/awesome-privacy.yml?raw';
 
@@ -22,7 +22,7 @@ export class AwesomePrivacy {
 	 * Reads the YAML data from the raw string and parses it into a JavaScript object.
 	 */
 	private _loadData(): AwesomePrivacyData {
-		return yaml.load(rawYaml) as AwesomePrivacyData;
+		return load(rawYaml) as AwesomePrivacyData;
 	}
 
 	/*
