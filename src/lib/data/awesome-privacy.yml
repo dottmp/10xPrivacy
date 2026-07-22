@@ -59,7 +59,10 @@ categories:
 
       - name: KeePass
         url: https://keepass.info
-        openSource: true
+        icon: https://keepass.info/images/icons/keepass_256x256.png
+        git: https://sourceforge.net/projects/keepass/
+        securityAudited: true
+        tosdrId: 3276
         subreddit: KeePass
         description: |
           Hardened, secure and offline password manager. Does not have cloud-sync baked
@@ -114,6 +117,15 @@ categories:
           AliasVault protects your privacy by creating alternative identities, passwords
           and email addresses for every website you use. Use the cloud version, or self-host and
           deploy within minutes via Docker.
+
+      - name: PaperVault
+        url: https://papervault.xyz
+        icon: https://papervault.xyz/papervault-512.png
+        github: boazeb/papervault
+        openSource: true
+        description: |
+          Store secrets and passwords on encrypted paper with distributed keys.
+          Designed to last generations. Open source, client-side only, works offline.
 
       notableMentions:
       - name: Password Safe
@@ -534,16 +546,17 @@ categories:
       - name: DuckDuckGo
         url: https://duckduckgo.com
         icon: https://duckduckgo.com/favicon.png
-        openSource: true
         tosdrId: 222
         iosApp: https://apps.apple.com/us/app/duckduckgo-private-browser/id663592361
         androidApp: com.duckduckgo.mobile.android
         subreddit: duckduckgo
         description: |
-          DuckDuckGo is a very user-friendly, fast and secure search engine. It's totally
-          private, with no trackers, cookies or ads. It's also highly customisable, with
-          dark-mode, many languages and features. They even have a [.onion](https://3g2upl4pq6kufc4m.onion)
-          URL, for use with Tor and a [no Javascript version](https://duckduckgo.com/html/)
+          DuckDuckGo is a user-friendly and fast secure search engine.
+          While it doesn't use trackers or cookies, there are search-related ads.
+          It's also highly customisable, with theming, languages, bangs and plugins.
+          There's also an [.onion](https://3g2upl4pq6kufc4m.onion) URL,
+          and a [no Javascript version](https://duckduckgo.com/html/).
+          Note: Search data is primarily sourced from Bing, and DDG operates from within the US.
 
       - name: Qwant
         url: https://www.qwant.com
@@ -685,14 +698,14 @@ categories:
         icon: https://matrix.org/assets/favicon.ico
         openSource: true
         tosdrId: 2455
-        github: matrix-org/dendrite
+        github: matrix-org/matrix-spec
+        subreddit: matrixdotorg
         description: |
           Matrix is a decentralized open network for secure communications, with E2E
           encryption with Olm and Megolm. Along with the [Element](https://element.io/)
-          client, it supports VOIP + video calling and IM + group chats. Since Matrix has
-          an open specification and Simple pragmatic RESTful HTTP/JSON API it makes it easy
-          to integrates with existing 3rd party IDs to authenticate and discover users, as
-          well as to build apps on top of it.
+          client, it supports VOIP + video calling and IM + group chats.
+          Note that homeservers can log IP addresses and metadata, and
+          unrelayed 1:1 calls may reveal your IP to the other party.
 
       notableMentions:
         - name: Chat Secure
@@ -809,24 +822,6 @@ categories:
         For a more details comparison of email providers, see
         [email-comparison.as93.net](https://email-comparison.as93.net/)
       services:
-      - name: Forward Email
-        url: https://forwardemail.net
-        icon: https://forwardemail.net/img/android-chrome-192x192.png
-        github: forwardemail/free-email-forwarding
-        openSource: true
-        subreddit: forwardemail
-        description: |
-          A 100% open-source, privacy-focused email service with quantum-safe encrypted
-          SQLite mailboxes (sandboxed and portable). Supports IMAP, POP3, SMTP, CalDAV
-          (calendars), and CardDAV (contacts). Features include
-          [OpenPGP/MIME and E2EE](https://forwardemail.net/en/faq#do-you-support-openpgpmime-end-to-end-encryption-e2ee-and-web-key-directory-wkd),
-          [Web Key Directory (WKD)](https://forwardemail.net/en/faq#do-you-support-openpgpmime-end-to-end-encryption-e2ee-and-web-key-directory-wkd),
-          and [quantum-resistant encryption](https://forwardemail.net/blog/docs/best-quantum-safe-encrypted-email-service)
-          using ChaCha20-Poly1305. Offers a free plan (forwarding only), Enhanced Protection
-          at $3/month (10 GB storage, unlimited domains/aliases), Team at $9/month, and
-          Enterprise at $250/month. Additional storage available. Can be
-          [self-hosted via Docker](https://forwardemail.net/en/faq#do-you-support-self-hosting).
-          All code is available on [GitHub](https://github.com/forwardemail).
       - name: ProtonMail
         url: https://protonmail.com
         icon: https://proton.me/favicons/android-chrome-192x192.png
@@ -1029,16 +1024,6 @@ categories:
           An open source anonymous email forwarding service, allowing you to
           create unlimited email aliases. Has a free plan.
 
-      - name: 33Mail
-        url: http://33mail.com
-        icon: https://33mail.com/favicon.ico
-        openSource: false
-        tosdrId: 8301
-        description: |
-          A long-standing aliasing service. As well as receiving, 33Mail also lets you reply
-          to forwarded addresses anonymously. Free plan, as well as Premium plan ($1/ month)
-          if you'd like to use a custom domain. Note that 33Mail usese Google Analytics.
-
       - name: SimpleLogin
         url: https://simplelogin.io
         github: simple-login/app
@@ -1065,25 +1050,24 @@ categories:
           [open source](https://github.com/mozilla/fx-private-relay), and able to me self-hosted
           for advanced usage.
 
-      - name: ForwardEmail
+      - name: Forward Email
         url: https://forwardemail.net
         icon: https://forwardemail.net/img/android-chrome-192x192.png
-        github: forwardemail/free-email-forwarding
+        github: forwardemail/forwardemail.net
+        securityAudited: true
+        subreddit: forwardemail
         description: |
-          Simple open source catch-all email forwarding service. Easy to self-host (see on
-          [GitHub](https://github.com/forwardemail/free-email-forwarding)), or the hosted version
-          has a free plan as well as a ($3/month) premium plan.
+          Catch-all email forwarding service with unlimited aliases and custom domains,
+          configured via DNS records. Self-hostable; the hosted version has a limited free plan,
+          with paid plans (from $3/month) adding encrypted IMAP/POP3 mailboxes.
+          Audited by Cure53 in 2026.
 
-      - name: ProtonMail
-        followWith: Professional plan or higher
-        url: https://protonmail.com/pricing
-        github: ProtonMail/WebClients
-        icon: https://proton.me/favicons/android-chrome-192x192.png
-        tosdrId: 491
-        openSource: true
-        description: |
-          If you already have ProtonMail's Professional (€8/month) or Visionary (€30/month) package,
-          then an implementation of this feature is available via the Catch-All Email feature.
+      notableMentions: >
+        Some full email providers include aliasing or catch-all addresses as a built-in
+        (usually premium) feature.
+        For example, [Proton](https://proton.me) (catch-all, plus hide-my-email aliases via Proton Pass),
+        [StartMail](https://www.startmail.com), [mailbox.org](https://mailbox.org) and
+        [Posteo](https://posteo.de) all offer this.
 
     ##################################
     ###### Mail Security Tools ######
@@ -1093,17 +1077,13 @@ categories:
       services:
       - name: Email Privacy Tester
         url: https://www.emailprivacytester.com/
-        openSource: true
-        github: mikecardwell/email-privacy-tester
+        git: https://gitlab.com/grepular/ept3
         tosdrId: 9837
         description: |
-          Quick tool, that enables you to test whether your mail client "reads" your emails
-          before you've opened them, and also checks what analytics, read-receipts or other
-          tracking data your mail client allows to be sent back to the sender. The system is
-          open source ([on GitLab](https://gitlab.com/mikecardwell/ept3)), developed by
-          [Mike Cardwell](https://www.grepular.com/) and trusted, but if you do not want to
-          use your real email, creating a second account with the same provider, should yield
-          identical results.
+          Tests whether your mail client "reads" emails before you open them, and what
+          analytics, read-receipts or other tracking data it leaks back to the sender.
+          Developed by [Mike Cardwell](https://www.grepular.com/); use a spare address
+          if you'd rather not test your real one.
 
       - name: DKIM Verifier
         url: https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/?collection_id=a5557f08-eafd-7a39-81c6-09127da790f7
@@ -1112,6 +1092,16 @@ categories:
         description: |
           Verifies DKIM signatures and shows the result in the e-mail header, in order to help
           spot spoofed emails (which do not come from the domain that they claim to).
+
+      - name: Paperweight
+        description: |
+          Paperweight scans your inbox to map your digital footprint, then helps you take back control and delete your data.
+        url: https://www.paperweight.email/
+        icon: https://www.paperweight.email/icon.png
+        github: wslyvh/paperweight
+        followWith: Desktop [Linux, Mac & Windows]
+        openSource: true
+        acceptsCrypto: true
 
       notableMentions: >
         If you are using ProtonMail, then the [ProtonMail Bridge](https://protonmail.com/bridge/thunderbird)
@@ -1554,7 +1544,7 @@ categories:
           [Chrome](https://chrome.google.com/webstore/detail/gbefmodhlophhakmoecijeppjblibmie) / [Firefox](https://addons.mozilla.org/addon/linguist-translator/)
 
       - name: LibRedirect
-        url: https://libredirect.github.io
+        url: https://libredirect.manerakai.com
         github: libredirect/browser_extension
         icon: https://raw.githubusercontent.com/libredirect/browser_extension/refs/heads/master/src/assets/images/libredirect.svg
         description: |
@@ -1582,9 +1572,11 @@ categories:
     - name: Mobile Apps
       services:
       - name: Orbot
-        url: https://support.torproject.org/glossary/orbot/
-        github: guardianproject/orbot
-        icon: https://play-lh.googleusercontent.com/dIIbpr1fh-w7ykJJmfLyu6UH1HJ8bpFKEmyUlKqYHSEinG8v_B7mlqgeTzlFRhs0Uw=s48
+        url: https://orbot.app/
+        github: guardianproject/orbot-android
+        icon: https://raw.githubusercontent.com/guardianproject/orbot-android/master/fastlane/metadata/android/en-US/images/icon.png
+        androidApp: org.torproject.android
+        iosApp: https://apps.apple.com/us/app/orbot/id1609461599
         description: |
           System-wide Tor proxy, which encrypts your connection through multiple nodes.
           You can also use it alongside Tor Browser to access .onion sites.
@@ -1592,8 +1584,8 @@ categories:
       - name: NetGuard
         url: https://netguard.me/
         github: M66B/NetGuard
-        icon: https://play-lh.googleusercontent.com/XEd1PsXgOSNNpD2hlZMvigIOJ9e5JCL2KhCJ4X984Az5EFw6YiecDebqdsZ12VNU2kPu=w240-h480
-        androidApp: org.torproject.android
+        icon: https://raw.githubusercontent.com/M66B/NetGuard/master/app/src/main/ic_launcher-web.png
+        androidApp: eu.faircode.netguard
         description: |
           A firewall app for Android, which does not require root. NetGuard provides simple
           and advanced ways to block access to the internet, where applications and addresses
@@ -1705,16 +1697,6 @@ categories:
           This application blocks ads and trackers, doesn't require root and works for all the apps on your
           Android phone. Check out how it works here.
 
-      - name: SnoopSnitch
-        url: https://opensource.srlabs.de/projects/snoopsnitch
-        github: srlabs/snoopsnitch
-        icon: https://f-droid.org/repo/icons-640/de.srlabs.snoopsnitch.50.png
-        androidApp: de.srlabs.snoopsnitch
-        description: |
-          Collects and analyzes mobile radio data to make you aware of your mobile network security and to
-          warn you about threats like fake base stations (IMSI catchers), user tracking and over-the-air updates.
-          Get from [F-Droid](https://f-droid.org/en/packages/de.srlabs.snoopsnitch/)
-
       - name: TrackerControl
         url: https://trackercontrol.org/
         github: TrackerControl/tracker-control-android
@@ -1795,6 +1777,15 @@ categories:
         description: |
           F-Droid is an installable catalogue of FOSS applications for Android. The client enables you
           to browse, install, and keep track of updates on your device.
+
+      - name: Spectre
+        url: https://github.com/thomasbuilds/Spectre
+        github: thomasbuilds/Spectre
+        openSource: true
+        icon: https://raw.githubusercontent.com/thomasbuilds/Spectre/refs/heads/main/metadata/en-US/images/icon.png
+        androidApp: dev.thomasbuilds.spectre
+        description: |
+          A radio frequency scanner app for Android with recon and offensive capabilities.
 
       wordOfWarning: |
         Too many installed apps will increase your attack surface - only install applications that you need.
@@ -2414,14 +2405,6 @@ categories:
           with Anonymized Relays. (Note, since this uses Android's VPN API, it is not possible to run a
           VPN while using RethinkDNS + Firewall.)
 
-      - name: DNS Cloak
-        url: https://apps.apple.com/us/app/dnscloak-secure-dns-client/id1452162351
-        github: s-s/dnscloak
-        followWith: iOS
-        icon: https://github.com/s-s/dnscloak/blob/master/src/images/logo.png?raw=true
-        description: |
-          Simple all that allows for the use for dnscrypt-proxy 2 on an iPhone.
-
       - name: Stubby
         url: https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Daemon+-+Stubby
         icon: https://dnsprivacy.org/images/favicon.png
@@ -2557,6 +2540,17 @@ categories:
         description: |
           An open source firewall tool for Linux that builds upon the Netfilter system built into the Linux kernel,
           making it easier to manage more complex configuration schemes with iptables.
+
+      - name: BunkerWeb
+        url: https://www.bunkerweb.io
+        followWith: Self-Hosted
+        github: bunkerity/bunkerweb
+        icon: https://docs.bunkerweb.io/latest/assets/favicon.png
+        openSource: true
+        description: |
+          BunkerWeb is an open-source Next-Generation Web Application Firewall (WAF).
+          It provides easy protection for your web services and is designed to remain secure by default.
+          It integrates seamlessly with modern environments (Docker, Kubernetes, Linux, etc.).
 
       - name: OPNSense
         url: https://opnsense.org
@@ -3121,6 +3115,8 @@ categories:
         [Safe Notes](https://play.google.com/store/apps/details?id=com.protectedtext.android) Android app.
         [Laverna](https://laverna.cc/) is a cross-platform secure notes app,
         where all entries are formatted with markdown.
+        [Bangle.io](https://app.bangle.io) is a local-first WYSIWYG Markdown notes PWA,
+        storing notes in browser storage or user-selected folders.
 
     ######################
     ###### Calendar ######
@@ -3164,6 +3160,33 @@ categories:
           Note that CalDAV support is currently limited
           (see [#921](https://github.com/FossifyOrg/Calendar/issues/921)
 
+    ########################
+    ###### Scheduling ######
+    ########################
+    - name: Scheduling
+      alternativeTo: ['calendly', 'cal.com', 'doodle']
+      services:
+      - name: Tymeslot
+        url: https://tymeslot.app
+        icon: https://tymeslot.app/images/brand/favicon-ca68e86a59d4a3ed9891fa9d036807e5.svg
+        github: Tymeslot/tymeslot
+        openSource: true
+        description: |
+          Open-source (AGPL-3.0), self-hostable scheduling and calendar platform. Guests book
+          without creating an account; hosts get a full calendar with two-way sync to Google,
+          Outlook and iCloud. A managed cloud plan is offered too, not self-hosted.
+
+      - name: Rallly
+        url: https://rallly.co/
+        icon: https://raw.githubusercontent.com/lukevella/rallly/refs/heads/main/apps/web/public/favicon.svg
+        github: lukevella/rallly
+        discordInvite: uzg4ZcHbuM
+        openSource: true
+        description: |
+          Open-source & self-hostable scheduling tool that helps you find the best date
+          and time to meet. Create a poll with a few options, share the link, and let your
+          participants vote on when they're available. No more back-and-forth emails.
+
     ###############################
     ###### Task Management ######
     ##############################
@@ -3183,6 +3206,20 @@ categories:
           cloud dependency, and zero telemetry. Supports Jira, GitLab, GitHub,
           Gitea, OpenProject and CalDAV integration. Features include time
           tracking, Pomodoro timer, break reminders, and idle detection.
+
+      - name: Mindwtr
+        url: https://mindwtr.app
+        github: dongdongbh/Mindwtr
+        discordInvite: gc4h5t58PR
+        openSource: true
+        icon: https://github.com/dongdongbh/Mindwtr/raw/main/apps/mobile/assets/images/icon.png
+        androidApp: tech.dongdongbh.mindwtr
+        iosApp: https://apps.apple.com/app/mindwtr/id6758597144
+        description: |
+          A Getting Things Done + Pomodoro productivity system
+          for desktop and mobile. Local-first, no account required,
+          can sync via WebDAV/Dropbox/local file or self-hosted deployment.
+          With a CLI, REST API and MCP for scripting, has optional BYOK AI.
 
     ###########################
     ###### Backup & Sync ######
@@ -3532,6 +3569,25 @@ categories:
         Available on desktop, mobile, web and through a browser extension.
         The catch is that it is not open source, there is a free and premium plan, but no option for self-hosting.
 
+    ############################
+    ###### Habit Trackers ######
+    ############################
+    - name: Habit Trackers
+      alternativeTo: ['streaks', 'habitbull', 'productive', 'way of life', 'done']
+      services:
+      - name: OpenHabitTracker
+        url: https://openhabittracker.net
+        github: Jinjinov/OpenHabitTracker
+        icon: https://openhabittracker.net/icons/icon-512.png
+        followWith: Web, Windows, Linux, Android, iOS, macOS
+        openSource: true
+        securityAudited: false
+        androidApp: net.openhabittracker
+        iosApp: https://apps.apple.com/us/app/openhabittracker/id6654885470
+        description: |
+          Free, open source habit tracker. Take notes, plan tasks, and track habits.
+          All data stored locally or self-hosted via Docker. No accounts required.
+
     ##############################
     ###### Conference Calls ######
     #############################
@@ -3872,9 +3928,10 @@ categories:
           A CLI utility that can be used to securely delete files and devices, to make them extremely difficult to recover.
 
       - name: Secure Remove
-        url: https://www.systutorials.com/docs/linux/man/1-srm/
+        url: https://srm.sourceforge.net/srm.html
         followWith: Unix
         openSource: true
+        icon: https://pixelflare.cc/alicia/icons/srm
         description: |
           CLI utility for securely removing files, directories and whole disks, works on Linux, BSD and MacOS.
 
@@ -4279,14 +4336,6 @@ categories:
           This frees up disk space, improves performance, but most importantly
           helps to protect privacy.
 
-      - name: Windows Secure Baseline
-        url: https://github.com/nsacyber/Windows-Secure-Host-Baseline
-        github: nsacyber/Windows-Secure-Host-Baseline
-        description: |
-          Group Policy objects, compliance checks, and configuration tools that
-          provide an automated and flexible approach for securely deploying and
-          maintaining the latest releases of Windows 10.
-
       - name: USBFix
         url: https://www.usb-antivirus.com
         icon: https://www.usb-antivirus.com/wp-content/uploads/2015/12/logo-usbfix-80x80.png.webp
@@ -4535,6 +4584,23 @@ categories:
         url: https://gladysassistant.com/
         github: gladysassistant/gladys
         icon: https://avatars.githubusercontent.com/u/7365162?s=200&v=4
+
+    - name: Security Cameras
+      alternativeTo: ['ring', 'nest cam', 'wyze', 'arlo', 'eufy']
+      services:
+      - name: Secluso
+        description: |
+          An open source, end-to-end encrypted home security camera
+          solution (Pi Zero 2W). Easy to setup with GUI deploy tool.
+          Fully E2EE remote access (live streaming & smart motion alerts)
+          via mobile app and untrusted self-hostable relay.
+        url: https://secluso.com
+        icon: https://avatars.githubusercontent.com/u/271067237?s=400&u=183f42b70679974bfd5b7e0ad0bd12aee0b45d98&v=4
+        github: secluso/core
+        iosApp: https://apps.apple.com/sg/app/secluso/id6756543429
+        androidApp: com.secluso.mobile
+        securityAudited: false
+        openSource: true
 
   - name: Finance
     sections:
@@ -4828,6 +4894,19 @@ categories:
         followWith: Self-hosted
         openSource: true
 
+      - name: rotki
+        description: |
+          A self-hosted, opensource, privacy-first portfolio tracking and accounting tool
+          for crypto and more. Support for all 3 major Operating systems and docker.
+          The tool focus is on data self-sovereignty.
+        url: https://rotki.com
+        icon: https://raw.githubusercontent.com/rotki/rotki/develop/frontend/app/public/assets/images/rotkehlchen_no_text.png
+        github: rotki/rotki
+        followWith: Self-hosted
+        openSource: true
+        acceptsCrypto: true
+        subreddit: rotki
+
       notableMentions: |
         Spreadsheets remain a popular choice for managing budgets and financial planning.
         [Collabora](https://nextcloud.com/collaboraonline) or
@@ -5086,16 +5165,39 @@ categories:
     sections:
     - name: Gaming
       alternativeTo: ['steam', 'epic games store', 'origin', 'ubisoft connect', 'battle.net']
-      services: []
+      services:
+      - name: Heroic Games Launcher
+        url: https://heroicgameslauncher.com
+        icon: https://avatars.githubusercontent.com/u/77549103?s=256&v=4
+        openSource: true
+        github: Heroic-Games-Launcher/HeroicGamesLauncher
+        discordInvite: rHJ2uqdquK
+        description: |
+          Open source game launcher for the Epic Games Store, GOG and Amazon Prime Gaming
+          on Linux, Windows and Mac. Replaces the official proprietary clients, though it
+          still connects to your third-party store accounts.
     - name: Media Servers
       alternativeTo: ['plex', 'emby', 'kodi', 'jellyfin', 'universal media server']
       services: []
     - name: Music Players
       alternativeTo: ['spotify', 'apple music', 'google play music', 'amazon music', 'pandora']
       services: []
+
     - name: Video Players
-      alternativeTo: ['vlc', 'windows media player', 'quicktime', 'mplayer', 'kmplayer']
-      services: []
+      alternativeTo: ['windows media player', 'quicktime', 'mplayer', 'kmplayer']
+      services:
+      - name: VLC Media Player
+        url: https://www.videolan.org/vlc/
+        icon: https://avatars.githubusercontent.com/u/1389585?s=256&v=4
+        github: videolan/vlc
+        git: https://code.videolan.org/videolan/vlc
+        iosApp: https://apps.apple.com/us/app/vlc-media-player/id650377962
+        androidApp: org.videolan.vlc
+        subreddit: VLC
+        description: |
+          Free, cross-platform media player from the non-profit VideoLAN project.
+          Plays almost any audio or video format locally, with no ads, trackers or telemetry.
+          VLC has many powerful features and settings, but the UI can initially be hard to use.
 
     - name: Photo Management
       alternativeTo: ['google photos', 'windows photo viewer', 'adobe lightroom', 'apple photos', 'irfanview']
@@ -5429,5 +5531,4 @@ categories:
         description: An animated sprite editor & pixel art tool for Windows, macOS and Linux.
         github: https://github.com/aseprite/aseprite
         openSource: true
-
 
