@@ -68,7 +68,7 @@
 		"fast-xml-parser": "^5.8.0",
 		"fuse.js": "^7.4.2",
 		"isomorphic-dompurify": "^3.18.0",
-		"js-yaml": "^4.2.0",
+		"js-yaml": "^5.2.1",
 		"marked": "^18.0.6",
 		"tailwind-merge": "^3.5.0",
 		"theme-change": "^2.5.0"
