@@ -69,7 +69,7 @@
 		"fuse.js": "^7.4.2",
 		"isomorphic-dompurify": "^3.18.0",
 		"js-yaml": "^4.2.0",
-		"marked": "^17.0.5",
+		"marked": "^18.0.6",
 		"tailwind-merge": "^3.5.0",
 		"theme-change": "^2.5.0"
 	}
