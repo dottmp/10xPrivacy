@@ -77,7 +77,7 @@
 				<h2 class="card-title">Don't know where to start?</h2>
 				<p>
 					Starting your privacy journey can be overwhelming, where do you even start? Don't worry,
-					we got you covered. Check our list of recomneneded first steps to take to kickstart your
+					we got you covered. Check our list of recommended first steps to take to kickstart your
 					privacy journey.
 				</p>
 
