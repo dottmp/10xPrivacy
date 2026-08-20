@@ -1,8 +1,9 @@
 import { load } from 'js-yaml';
 
 import rawYaml from '../../data/awesome-privacy.yml?raw';
+import rawPicks from '../../data/picks.yml?raw';
 
-import type { AwesomePrivacyData, Category, SearchEntry, Section, Service } from './types';
+import type { AwesomePrivacyData, Category, Pick, SearchEntry, Section, Service } from './types';
 
 import { FEATURED_CATEGORIES } from '$lib/configs';
 
@@ -10,12 +11,14 @@ export class AwesomePrivacy {
 	readonly featuredCatgories = FEATURED_CATEGORIES;
 
 	private _data: AwesomePrivacyData = this._loadData();
+	private _picks: Map<string, string> = this._loadPicks();
 	private _searchIndex: SearchEntry[] | null = null;
 
 	constructor(featuredCategories?: string[]) {
 		if (featuredCategories) {
 			this.featuredCatgories = featuredCategories;
 		}
+		this._mergePicks();
 	}
 
 	/*
@@ -26,10 +29,50 @@ export class AwesomePrivacy {
 	}
 
 	/*
+	 * Reads the picks YAML and returns a Map of service name to recommendation reason.
+	 */
+	private _loadPicks(): Map<string, string> {
+		const picksData = load(rawPicks) as { picks: Pick[] };
+		const picksMap = new Map<string, string>();
+
+		for (const pick of picksData.picks) {
+			if (pick.reason) {
+				picksMap.set(pick.name, pick.reason);
+			}
+		}
+
+		return picksMap;
+	}
+
+	/*
+	 * Merges pick data into all services across all categories.
+	 */
+	private _mergePicks(): void {
+		for (const category of this._data.categories) {
+			for (const section of category.sections) {
+				for (const service of section.services) {
+					const reason = this._picks.get(service.name);
+					if (reason) {
+						service.recommended = true;
+						service.recommendationReason = reason;
+					}
+				}
+			}
+		}
+	}
+
+	/*
 	 * Gets the entire Awesome Privacy data object.
 	 */
 	public getData(): AwesomePrivacyData {
 		return this._data;
+	}
+
+	/**
+	 * Gets the list of all picks.
+	 */
+	public getPicks(): Pick[] {
+		return Array.from(this._picks.entries()).map(([name, reason]) => ({ name, reason }));
 	}
 
 	/**
