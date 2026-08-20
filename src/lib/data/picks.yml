@@ -1,0 +1,51 @@
+picks:
+  - name: LibreWolf
+    reason: 'Good balance between increased privacy and usability.'
+
+  - name: Tor Browser
+    reason: 'Provides total anonymity. Use when you need the highest level of privacy.'
+
+  - name: DuckDuckGo
+    reason: 'Privacy-first search engine. Default for Mullvad, LibreWolf, and Tor browsers.'
+
+  - name: Brave Search
+    reason: 'Independent search index, unlike DDG which is based on Bing.'
+
+  - name: uBlock Origin
+    reason: 'Protects from ads, speeds up page load, prevents scripts, trackers, and malware.'
+
+  - name: Cryptomator
+    reason: 'Encrypts your files so cloud providers only see jibberish.'
+
+  - name: Syncthing
+    reason: 'Open source peer-2-peer continuous file syncing. Runs on all your devices.'
+
+  - name: Ente Photos
+    reason: 'End-to-end encrypted photo backup. Fully open source and self-hostable.'
+
+  - name: Obsidian
+    reason: 'Note-taking with local-first storage and markdown support. Can be combined with Syncthing'
+
+  - name: Bitwarden
+    reason: 'Free and open source. Liked by many users because it gives a lot for very cheap. Self-hostable.'
+
+  - name: ProtonPass
+    reason: 'Open source password manager that integrates with SimpleLogin for email aliases.'
+
+  - name: ProtonMail
+    reason: 'Supports OpenPGP encryption. Easy migration from Gmail with one-click forwarding.'
+
+  - name: Tuta
+    reason: 'Quantum computer safe encryption.'
+
+  - name: Mullvad
+    reason: 'Private signup, battle tested, audited. Swedish company with strong privacy stance.'
+
+  - name: ProtonVPN
+    reason: 'Free tier available, port forwarding, good for streaming. Lots of server options.'
+
+  - name: GrapheneOS
+    reason: 'Most secure and private mobile OS today.'
+
+  - name: Signal
+    reason: 'Good fit between privacy, security, and usability. Works without Google notification service.'

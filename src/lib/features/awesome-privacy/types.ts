@@ -4,6 +4,11 @@ export type ShortService = {
 	url: string;
 };
 
+export type Pick = {
+	name: string;
+	reason?: string;
+};
+
 export type Service = {
 	name: string;
 	description: string;
@@ -23,6 +28,8 @@ export type Service = {
 	androidApp?: string;
 	discordInvite?: string;
 	subreddit?: string;
+	recommended?: boolean;
+	recommendationReason?: string;
 };
 
 export type Section = {
