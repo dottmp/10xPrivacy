@@ -89,22 +89,6 @@
 					</section>
 				{/if}
 
-				<!-- Alternative To -->
-				{#if section.alternativeTo && section.alternativeTo.length > 0}
-					<section class="mb-8">
-						<Subheading size="xs" class={cn('mb-3 tracking-widest uppercase', textVariants.base)}>
-							<Icons.warning class="inline size-4 text-error" /> Avoid
-						</Subheading>
-						<div class="flex flex-wrap gap-2">
-							{#each section.alternativeTo as alt (alt)}
-								<span class="badge bg-base-100 text-sm">
-									{alt}
-								</span>
-							{/each}
-						</div>
-					</section>
-				{/if}
-
 				<!-- Links -->
 				<section class="mb-8">
 					<Subheading size="xs" class={cn('mb-3 tracking-widest uppercase', textVariants.base)}
@@ -197,21 +181,6 @@
 					<Icons.warning class="size-4 shrink-0" />
 					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 					<div>{@html markdownToHtml(section.wordOfWarning)}</div>
-				</div>
-			</section>
-		{/if}
-
-		{#if section.alternativeTo && section.alternativeTo.length > 0}
-			<section class="mb-8">
-				<Subheading size="xs" class={cn('mb-3 tracking-widest uppercase', textVariants.base)}>
-					<Icons.warning class="inline size-4 text-error" /> Avoid
-				</Subheading>
-				<div class="flex flex-wrap gap-2">
-					{#each section.alternativeTo as alt (alt)}
-						<span class="badge">
-							{alt}
-						</span>
-					{/each}
 				</div>
 			</section>
 		{/if}
