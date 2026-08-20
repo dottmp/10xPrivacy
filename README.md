@@ -2,7 +2,7 @@
 
   <img src="https://raw.githubusercontent.com/dottmp/10xPrivacy/c7b88085baf4f822c0692469ddbec44a29169f21/src/lib/assets/logo.svg" alt="10xPrivacy" width="400" style="filter:drop-shadow(-3px 0px 3px #000);" />
 
-**A digital privacy hub — news, tools, and resources against surveillance capitalism.**
+**A digital privacy hub. News, tools, and resources against surveillance capitalism.**
 
 Created this website for the ones around me who are interested in privacy but don't know where to start. The intention of this website is
 not to be a comprehensive resource, more a simple starting point. If you want a more in depth introduction to digital privacy, I recommend the [Privacy Guides](https://www.privacyguides.org) website.
