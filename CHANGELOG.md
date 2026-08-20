@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.15.3](https://github.com/dottmp/10xPrivacy/compare/v0.15.2...v0.15.3) (2026-08-20)
+
+### Bug Fixes
+
+* typo on landing page ([#234](https://github.com/dottmp/10xPrivacy/issues/234)) ([f6e2d0e](https://github.com/dottmp/10xPrivacy/commit/f6e2d0e559a673006656ac5daf4d6770b6bf01a3))
+
+### Chores
+
+* data sync 2026-08-20T09-44-11 ([#235](https://github.com/dottmp/10xPrivacy/issues/235)) ([6bd58b7](https://github.com/dottmp/10xPrivacy/commit/6bd58b74557d1a15e48fd5a4719799b74709a464))
+* **deps-dev:** bump @sveltejs/vite-plugin-svelte from 7.1.2 to 7.2.0 ([#226](https://github.com/dottmp/10xPrivacy/issues/226)) ([5bc288e](https://github.com/dottmp/10xPrivacy/commit/5bc288e3528e8f11ceadc3a5ed56824074630455))
+* **deps-dev:** bump @tailwindcss/typography from 0.5.19 to 0.5.20 ([#225](https://github.com/dottmp/10xPrivacy/issues/225)) ([05d02b8](https://github.com/dottmp/10xPrivacy/commit/05d02b8501f761495d1c13da05d01a9c989f837c))
+* **deps-dev:** bump @vitest/browser-playwright from 4.1.9 to 4.1.10 ([#222](https://github.com/dottmp/10xPrivacy/issues/222)) ([508acbb](https://github.com/dottmp/10xPrivacy/commit/508acbb73d94e13cafb4bc84438fb22d5eca5b00))
+* **deps-dev:** bump daisyui from 5.5.20 to 5.7.0 ([#221](https://github.com/dottmp/10xPrivacy/issues/221)) ([bc982a4](https://github.com/dottmp/10xPrivacy/commit/bc982a423ceadd6393518481c506257f75f91067))
+* **deps-dev:** bump wrangler from 4.87.0 to 4.114.0 ([#224](https://github.com/dottmp/10xPrivacy/issues/224)) ([e492285](https://github.com/dottmp/10xPrivacy/commit/e492285bc3c8e179ce1351c98ecac3e877cff6f9))
+* **deps:** bump marked from 18.0.6 to 18.0.7 ([#220](https://github.com/dottmp/10xPrivacy/issues/220)) ([b463f5e](https://github.com/dottmp/10xPrivacy/commit/b463f5e3b63071ebe02e7400bf18be33d636d645))
+* include chores and refactors in changelog ([#237](https://github.com/dottmp/10xPrivacy/issues/237)) ([f17912b](https://github.com/dottmp/10xPrivacy/commit/f17912b7c47d27cd0fe4cdc3e2b3090ead3bb031))
+
+### Refactors
+
+* remove avoid section on the service page ([#236](https://github.com/dottmp/10xPrivacy/issues/236)) ([5b3d2d6](https://github.com/dottmp/10xPrivacy/commit/5b3d2d6a883988b34bc12d287826c299c921bb32))
+
 ## [0.15.2](https://github.com/dottmp/10xPrivacy/compare/v0.15.1...v0.15.2) (2026-07-22)
 
 ### Bug Fixes
