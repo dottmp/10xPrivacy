@@ -127,6 +127,15 @@ categories:
           Store secrets and passwords on encrypted paper with distributed keys.
           Designed to last generations. Open source, client-side only, works offline.
 
+      - name: 2of3 by Ente
+        url: https://2of3.ente.com
+        git: https://github.com/ente/ente/tree/main/web/apps/twoof3
+        openSource: true
+        discordInvite: z2YVKkycX3
+        description: |
+          Turn a recovery key, password, or other secret into 3 cards you can keep in
+          different places. Open-source, client-side only, with an offline recovery page.
+
       notableMentions:
       - name: Password Safe
         url: https://www.pwsafe.org
@@ -558,27 +567,17 @@ categories:
           and a [no Javascript version](https://duckduckgo.com/html/).
           Note: Search data is primarily sourced from Bing, and DDG operates from within the US.
 
-      - name: Qwant
-        url: https://www.qwant.com
-        icon: https://avatars.githubusercontent.com/u/1692504
-        iosApp: https://apps.apple.com/us/app/qwant-private-search/id924470452
-        androidApp: com.qwant.liberty
-        subreddit:  Qwant
-        tosdrId: 527
-        description: |
-          French service that aggregates Bings results, with its own results. Qwant doesn't
-          plant any cookies, nor have any trackers or third-party advertising. It returns
-          non-biased search results, with no promotions. Qwant has a unique, but nice UI.
-
       - name: Startpage
         url: https://www.startpage.com
         icon: https://www.startpage.com/favicon.ico
         tosdrId: 418
         openSource: false
+        iosApp: https://apps.apple.com/us/app/startpage-private-browser/id6478921430
+        androidApp: com.startpage.app
         description: |
-          Dutch search engine that searches on Google and shows the results (slightly
-          rearranged). It has several configurations that improve privacy during use
-          (it is not open source)
+          Dutch search engine returning primarily Google results, proxied to strip IP and identifiers.
+          Includes an "Anonymous View" proxy for previewing results privately.
+          No third-party tracking or cookies, but does have it's own bot detection and analytics.
 
       - name: Brave Search
         url: https://search.brave.com/
@@ -619,7 +618,26 @@ categories:
           or track any personal data (it is not 100% open source, but after 12 months as
           a paying customer, you get a copy of the source code).
 
+      - name: PriEco
+        url: https://prieco.net
+        icon: https://prieco.net/static/img/prieco.webp
+        openSource: true
+        codeberg: https://codeberg.org/JojoYou/PriEco/
+        tosdrId: 9994
+        acceptsCrypto: true
+        discordInvite: 'https://discord.gg/gmUgAVkTKx'
+        description: |
+          PriEco is an independent web search engine with growing index.
+          It is EU-based and 100% open source. It allows customization via Goggles.
+
       notableMentions:
+      - name: Qwant
+        url: https://www.qwant.com
+        description: >
+          French search engine, running on Bing results and the new European Search Perspective.
+          Contains contextual, non-tracking ads.
+          Privacy policy is out-dated, and Qwant does track users despite claiming not to.
+          See [full review](https://github.com/Lissy93/awesome-privacy/issues/45) for more info.
       - name: MetaGear
         url: https://metager.org
       - name: YaCy
@@ -731,10 +749,15 @@ categories:
             defined in [EFAIL](https://efail.de/), so although it still considered
             secure for general purpose use, for general chat, it may be better to
             use an encrypted messaging or email app instead.
+        - name: Threema
+          url: https://threema.ch
+          description: >
+            A paid, business-focused Swiss messenger. The apps are open source,
+            but the server is proprietary.
       wordOfWarning: >
         Many messaging apps claim to be secure, but if they are not open source,
         then this cannot be verified - and they **should not be trusted**.
-        This applies to [Telegram](https://telegram.org), [Threema](https://threema.ch),
+        This applies to [Telegram](https://telegram.org),
         [Cypher](https://www.goldenfrog.com/cyphr), [Wickr](https://wickr.com/),
         [Silent Phone](https://www.silentcircle.com/products-and-solutions/silent-phone/)
         and [Viber](https://www.viber.com/), to name a few - these apps should not
@@ -1551,6 +1574,24 @@ categories:
           A browser extension that redirects popular sites to alternative privacy friendly frontends
           **Download**: [Firefox](https://addons.mozilla.org/firefox/addon/libredirect/) - [Chrome](https://libredirect.github.io/download_chromium.html)
 
+      - name: SponsorBlock
+        url: https://sponsor.ajay.app
+        github: ajayyy/SponsorBlock
+        icon: https://sponsor.ajay.app/icons/icon-192x192.png?v=2190b8dd66c9e760a732842073d0a087
+        description: |
+          Crowdsourced browser extension that skips sponsored segments and other
+          unwanted parts of YouTube videos using community-submitted timestamps.
+          **Download**: [Firefox](https://addons.mozilla.org/firefox/addon/sponsorblock/) - [Chrome](https://chromewebstore.google.com/detail/sponsorblock-para-youtube/mnjggcdmjocbbbhaepdhchncahnbgone)
+
+      - name: DeArrow
+        url: https://dearrow.ajay.app/
+        github: ajayyy/DeArrow
+        icon: https://dearrow.ajay.app/icons/icon-192x192.png?v=6f203adf3dc83cd564c279fa5c263c62
+        description: |
+          Crowdsourced browser extension that replaces YouTube video titles and
+          thumbnails using community-submitted versions to stop clickbait.
+          **Download**: [Firefox](https://addons.mozilla.org/en-US/firefox/addon/dearrow/) - [Chrome](https://chromewebstore.google.com/detail/dearrow-better-titles-and/enamippconapkdmgfgjchkhakpfinmaj)
+
       notableMentions:
       - name: Extension source viewer
         url: https://addons.mozilla.org/en-US/firefox/addon/crxviewer
@@ -1625,17 +1666,6 @@ categories:
           Gives you the ability to grant permissions temporarily, so that you could for example
           use the camera to take a profile picture, but when you close the given app, those permissions
           will be revoked.
-
-      - name: XPrivacyLua
-        url: https://lua.xprivacy.eu/
-        icon: https://raw.githubusercontent.com/M66B/XPrivacyLua/master/app/src/main/ic_launcher-web.png
-        github: M66B/XPrivacyLua
-        description: |
-          Simple to use privacy manager for Android, that enables you to feed apps fake data when
-          they request intimate permissions. Solves the problem caused by apps malfunctioning when
-          you revoke permissions, and protects your real data by only sharing fake information. Enables
-          you to hide call log, calendar, SMS messages, location, installed apps, photos, clipboard,
-          network data plus more. And prevents access to camera, microphone, telemetry, GPS and other sensors.
 
       - name: SuperFreezZ
         url: https://superfreezz.gitlab.io/
@@ -2848,61 +2878,72 @@ categories:
     ###########################
     - name: Cloud Hosting
       intro: |
-        Whether you are hosting a website and want to keep your users data safe,
-        or if you are hosting your own file backup, cloud productivity suite or
-        VP - then choosing a provider that respects your privacy and allows you
-        to sign up anonymously, and will keep your files and data safe is be
-        important.
+        Web, VPS, storage and managed app hosting, from privacy-conscious
+        providers that own and run their own infrastructure
       services:
       - name: Njalla
-        url: https://njal.la
+        url: https://njal.la/servers/
         icon: https://njal.la/favicon.ico
+        openSource: false
+        securityAudited: false
         acceptsCrypto: true
         tosdrId: 3688
         description: |
-          Njalla is a privacy and security-focused domain registrar and VPN hosting provider. They own and manage all their
-          own servers, which are based in Sweden. They accept crypto, for anonymous payments, and allow you to sign up with
-          OTR XMPP if you do not want to provide an email address. Both VPS and domain name pricing is reasonable, with
-          packages starting at $15/ month.
-
-      - name: Private Layer
-        url: https://www.privatelayer.com
-        acceptsCrypto: true
-        description: |
-          Offers enterprise-grade, high-speed offshore dedicated servers, they own their own data centres, have a solid
-          privacy policy and accept anonymous payment.
-
-      - name: Servers Guru
-        url: https://servers.guru
-        acceptsCrypto: true
-        tosdrId: 8079
-        description: |
-          Servers Guru provides affordable and anonymous VPS and cloud servers with dedicated cpu resources. They accept
-          crypto-currencies (Bitcoin, Monero, Ethereum etc..) and don't require any personal informations. They resell from
-          reputable providers.
+          VPS, VPN and domain service run by njalla.srl in Costa Rica, on its own Swedish machines.
+          Sign up with an email or XMPP address, and pay in crypto. Njalla is the legal registrant of
+          domains you buy: you keep full usage rights and can transfer out, but never own them on paper.
 
       - name: Bunker
         url: https://getbunker.net
         github: France-Nuage/plateforme
-        openSource: true
+        openSource: false
+        securityAudited: false
+        acceptsCrypto: false
         icon: https://getbunker.net/images/en/svg/logo.svg
         description: |
-          Sovereign open-source cloud platform (SSPL-1.0) hosted entirely in France. Offers managed
-          hosting of open-source apps (Grafana, Matomo, Vaultwarden, etc.) and S3-compatible object
-          storage. GDPR-native, ISO 27001 compliant, with no vendor lock-in.
+          French sovereign cloud from France Nuage: managed open-source apps, PostgreSQL and
+          S3-compatible storage in its own datacenters. Source is public but under SSPL-1.0, which is not
+          OSI-approved. ISO 27001 is targeted, not held, and card-only payment means no anonymous signup.
+
+      - name: "1984"
+        url: https://1984.hosting
+        icon: https://1984.hosting/favicon.ico
+        openSource: false
+        securityAudited: false
+        acceptsCrypto: true
+        description: |
+          Icelandic hosting, VPS and email, running on its own network (AS44925) and hardware since 2006.
+          Bitcoin and Monero accepted, ISO 27001 certified, and powered by geothermal and hydro. Iceland sits
+          outside the 14 Eyes, and 1984 only releases data on an Icelandic court order.
+
+      - name: Infomaniak
+        url: https://www.infomaniak.com
+        icon: https://www.infomaniak.com/favicon.ico
+        openSource: false
+        securityAudited: false
+        acceptsCrypto: false
+        description: |
+          Swiss web hosting, VPS and OpenStack cloud, from a company that builds and runs its own
+          datacenters and network (AS29222). ISO 27001 certified since 2018, and Swiss law keeps it outside
+          the 14 Eyes and the CLOUD Act. Card payment only, so there is no anonymous signup.
 
       notableMentions: |
-        See also: [1984](https://www.1984.is) based in Iceland.
-        [Shinjiru](http://shinjiru.com?a_aid=5e401db24a3a4), which offers off-shore dedicated servers.
-        [Orange Website](https://www.orangewebsite.com) specialises in protecting online privacy and free speech, hosted in Iceland.
-        [RackBone](https://rackbone.ch) (previously DataCell) provides secure and ethical hosting, based in Switzerland.
-        And [Bahnhof](https://www.bahnhof.net) offers high-security and ethical hosting, with their data centres locates in Sweden.
-        Finally [Simafri](https://www.simafri.com/anonymous) has a range of packages, that support Tor out of the box
+        See also: [Bahnhof](https://bahnhof.cloud), which offers high-security hosting from its own data
+        centres in Sweden, but takes card and PayPal only.
+        [Greenhost](https://greenhost.net) runs its own network in Amsterdam, and hosts GlobaLeaks
+        whistleblowing platforms for journalists and NGOs.
+        [Exoscale](https://www.exoscale.com) is an ISO 27001 certified Swiss IaaS provider with EU zones,
+        though it is owned by Telekom Austria and colocates rather than owning its data centres.
+        [FlokiNET](https://flokinet.is) hosts in Iceland, Finland and Romania, needs no personal data
+        and takes Monero, but its network is tracked by threat intelligence feeds for abuse.
+        And [Packetra](https://packetra.com) offers hosting in Finland and Switzerland, with no identity
+        documents at signup and payment in Bitcoin or Monero via a self-hosted BTCPay instance, though it
+        is a new provider with no track record yet
+        (see [#749](https://github.com/lissy93/awesome-privacy/pull/749) for details).
       wordOfWarning: |
-        The country that your data is hosted in, will be subject to local laws and regulations.
-        It is therefore important to avoid a jurisdiction that is part of the
-        [5 eyes](https://en.wikipedia.org/wiki/Five_Eyes) (Australia, Canada, New Zealand, US and UK)
-        and [other international cooperatives](https://en.wikipedia.org/wiki/Five_Eyes#Other_international_cooperatives)
+        The country that your data is hosted in will be subject to local laws and regulations.
+        It is therefore important to avoid a jurisdiction that is part of the 5 eyes and
+        [other international cooperatives](https://en.wikipedia.org/wiki/Five_Eyes#Other_international_cooperatives)
         who have legal right to view your data.
 
     ###############################
@@ -2921,12 +2962,14 @@ categories:
 
       - name: Orange Website
         url: https://www.orangewebsite.com/domain-registration.php
-        securityAudited: true
+        openSource: false
+        securityAudited: false
         acceptsCrypto: true
         icon: https://orangewebsite.com/fav.ico
         description: |
           Anonymous domain registration, with low online censorship since they are based outside the
-          14-eyes jurisdiction (in Iceland).
+          14-eyes jurisdiction (in Iceland). Crypto is accepted, but through third-party gateways
+          which reserve the right to request identity verification.
 
 
     #########################
@@ -3658,6 +3701,24 @@ categories:
           No tracking, ads or data collection; all search and routing happen on-device. A community fork
           of Organic Maps, supporting driving, cycling and hiking.
 
+    - name: Accessibility
+      intro: |
+        Accessibility software like screen readers, dictation and voice input often runs
+        in the cloud, sending everything you say or read to a remote server. Privacy-respecting
+        alternatives keep this processing on your device, so your input never leaves it.
+      services:
+      - name: Vocalinux
+        description: |
+          Offline system-wide voice dictation for Linux (X11 and Wayland).
+          Uses local models (whisper.cpp, Whisper, or VOSK) so microphone
+          audio never leaves the device. Tray app with hotkeys; GPLv3.
+          Currently beta software.
+        url: https://vocalinux.com/
+        github: jatinkrmalik/vocalinux
+        icon: https://vocalinux.com/icon-192x192.png
+        followWith: Linux
+        openSource: true
+
   - name: Utilities
     sections:
     ##############################
@@ -4000,6 +4061,17 @@ categories:
         description: |
           A free and open-source operating system for various devices, based on the Android mobile platform - Lineage is light-weight, well maintained,
           supports a wide range of devices, and comes bundled with Privacy Guard.
+
+      - name: CalyxOS
+        url: https://calyxos.org
+        icon: https://calyxos.org/assets/images/favicon/apple-touch-icon.png
+        git: https://gitlab.com/CalyxOS
+        tosdrId: 2558
+        openSource: true
+        description: |
+          An open source, de-Googled Android OS focused on privacy and security, with optional microG,
+          a built-in firewall and encrypted backups. Runs on select Google Pixel, Fairphone and
+          Motorola devices, and is developed by the non-profit Calyx Institute.
 
       notableMentions: |
         [Replicant OS](https://www.replicant.us/) is a fully-featured distro,
@@ -4677,13 +4749,6 @@ categories:
         description: |
           Open source, cross-platform, offline, crypto wallet, compatible with 1000+ coins. Your private key is generated on the device, and never leaves it, all transactions are signed by the Trezor, which ensures your wallet is safe from theft. There are native apps for Windows, Linux, MacOS, Android, and iOS, but Trezor is also compatible with other wallets, such as Wasabi. You can back the Trezor up, either by writing down the seed, or by duplicating it to another device. It is simple and intuitive to use, but also incredibly customizable with a large range of advanced features.
         followWith: All Coins
-
-      - name: ColdCard
-        url: https://coldcardwallet.com/
-        description: |
-          An easy-to-use, super secure Bitcoin hardware wallet, which can be used independently as an air-gapped wallet. ColdCard is based on partially signed Bitcoin transactions following the BIP174 standard. Built specifically for Bitcoin, and with a variety of unique security features, ColdCard is secure, trustless, private, and easy-to-use. Companion products for the ColdCard include: BlockClock, SeedPlate, and ColdPower.
-        followWith: Bitcoin
-        github: Coldcard/firmware
 
       - name: Electrum
         url: https://electrum.org/
@@ -5531,4 +5596,3 @@ categories:
         description: An animated sprite editor & pixel art tool for Windows, macOS and Linux.
         github: https://github.com/aseprite/aseprite
         openSource: true
-
