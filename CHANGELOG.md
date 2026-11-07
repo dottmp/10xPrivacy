@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.4](https://github.com/dottmp/10xPrivacy/compare/v0.15.3...v0.15.4) (2026-11-07)
+
+### Chores
+
+* **deps-dev:** bump eslint-plugin-check-file from 3.3.1 to 3.3.2 ([#230](https://github.com/dottmp/10xPrivacy/issues/230)) ([b3ec9c3](https://github.com/dottmp/10xPrivacy/commit/b3ec9c34324094d8e9cd9e0698baeb840342885d))
+* **deps-dev:** bump vitest from 4.1.5 to 4.1.10 ([#229](https://github.com/dottmp/10xPrivacy/issues/229)) ([f013ee9](https://github.com/dottmp/10xPrivacy/commit/f013ee9f09e0ceb2d600f45a03f9762ca673bc96))
+
 ## [0.15.3](https://github.com/dottmp/10xPrivacy/compare/v0.15.2...v0.15.3) (2026-08-20)
 
 ### Bug Fixes
