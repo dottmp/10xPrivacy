@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.16.0](https://github.com/dottmp/10xPrivacy/compare/v0.15.4...v0.16.0) (2026-11-15)
+
+### Features
+
+* 10xprivacy service recomendations ([#240](https://github.com/dottmp/10xPrivacy/issues/240)) ([c4825bf](https://github.com/dottmp/10xPrivacy/commit/c4825bf01b07574c0b16fbebcacf7f6ca220854e))
+
+### Chores
+
+* data sync 2026-11-15T08-56-11 ([#241](https://github.com/dottmp/10xPrivacy/issues/241)) ([53e1a59](https://github.com/dottmp/10xPrivacy/commit/53e1a59135d6a3588640c8eca44e1eae901bad5a))
+* **deps-dev:** bump @testing-library/jest-dom from 6.9.1 to 7.0.0 ([#227](https://github.com/dottmp/10xPrivacy/issues/227)) ([6b6583b](https://github.com/dottmp/10xPrivacy/commit/6b6583b8301de8c2a457749e81c64e7517069543))
+* **deps-dev:** bump release-it from 20.0.1 to 21.1.2 ([#231](https://github.com/dottmp/10xPrivacy/issues/231)) ([d785205](https://github.com/dottmp/10xPrivacy/commit/d78520516b53501a14f19a441a66b5c8479de250))
+* **deps:** bump theme-change from 2.5.0 to 3.0.4 ([#223](https://github.com/dottmp/10xPrivacy/issues/223)) ([0663aa5](https://github.com/dottmp/10xPrivacy/commit/0663aa5f6f9cac49d9ab91665596d19ba02f6839))
+
+### Refactors
+
+* hardening by fixing security ([#243](https://github.com/dottmp/10xPrivacy/issues/243)) ([c879d24](https://github.com/dottmp/10xPrivacy/commit/c879d2412abfdc665b5e277adfda438373aad674))
+* use v3 theme change attributes ([#242](https://github.com/dottmp/10xPrivacy/issues/242)) ([b8fbf6c](https://github.com/dottmp/10xPrivacy/commit/b8fbf6cdd382cbbbe25ee7c2c83b4afbb7533c72))
+
 ## [0.15.4](https://github.com/dottmp/10xPrivacy/compare/v0.15.3...v0.15.4) (2026-11-07)
 
 ### Chores
