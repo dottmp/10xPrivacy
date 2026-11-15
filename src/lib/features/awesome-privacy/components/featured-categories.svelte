@@ -3,12 +3,12 @@
 
 	import CategoryIcon from './category-icon.svelte';
 
+	import Subheading from '#lib/components/headings/subheading.svelte';
+	import Link, { linkVariants } from '#lib/components/text/link.svelte';
+	import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
+	import type { Category } from '#lib/features/awesome-privacy/types.ts';
+	import { cn } from '#lib/utils/cn.ts';
 	import { resolve } from '$app/paths';
-	import Subheading from '$lib/components/headings/subheading.svelte';
-	import Link, { linkVariants } from '$lib/components/text/link.svelte';
-	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-	import type { Category } from '$lib/features/awesome-privacy/types';
-	import { cn } from '$lib/utils/cn';
 
 	type FeaturedCategoriesProps = HTMLAttributes<HTMLDivElement> & {
 		categories: Category[];
@@ -26,10 +26,11 @@
 				<!-- Icon + title -->
 				<div class="mb-3 flex items-center gap-2">
 					<CategoryIcon category={category.name} class="size-4.5 text-xl text-primary" />
-					<a href={resolve(`/awesome-privacy/${slug}`)}>
-						<Subheading size="sm" class={cn(linkVariants.base, linkVariants.variant.foreground)}>
-							{category.name}
-						</Subheading>
+
+					<a href={resolve(`awesome-privacy/${slug}`)}>
+						<Subheading size="sm" class={cn(linkVariants.base, linkVariants.variant.foreground)}
+							>{category.name}</Subheading
+						>
 					</a>
 				</div>
 
@@ -38,16 +39,16 @@
 					{#each category.sections.slice(0, 5) as section (section.name)}
 						{@const subSlug = awesomePrivacy.slugify(section.name)}
 						<li>
-							<Link href={resolve(`/awesome-privacy/${slug}/${subSlug}`)} class="font-semibold">
-								{section.name}
-							</Link>
+							<Link href={resolve(`awesome-privacy/${slug}/${subSlug}`)} class="font-semibold"
+								>{section.name}</Link
+							>
 						</li>
 					{/each}
 					{#if category.sections.length > 5}
 						<li>
 							<Link
 								variant="primary"
-								href={resolve(`/awesome-privacy/${slug}`)}
+								href={resolve(`awesome-privacy/${slug}`)}
 								class="font-semibold"
 							>
 								+ {category.sections.length - 5} more
@@ -60,7 +61,8 @@
 	</ul>
 
 	<!-- "Show everything" CTA card -->
-	<a href={resolve('/awesome-privacy/all')} class="btn mt-6 w-full btn-primary sm:w-fit">
-		Show all Categories
-	</a>
+
+	<a href={resolve('awesome-privacy/all')} class="btn mt-6 w-full btn-primary sm:w-fit"
+		>Show all Categories</a
+	>
 </div>

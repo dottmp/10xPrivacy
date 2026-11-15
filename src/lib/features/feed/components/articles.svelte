@@ -5,12 +5,12 @@
 
 	import SourceBadge from './source-badge.svelte';
 
+	import { Text, textVariants } from '#lib/components/text/index.ts';
+	import type { Article, SourceSearchParam } from '#lib/features/feed/types.ts';
+	import { cn } from '#lib/utils/cn.ts';
+	import { formatDate } from '#lib/utils/date.ts';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { Text, textVariants } from '$lib/components/text';
-	import type { Article, SourceSearchParam } from '$lib/features/feed/types';
-	import { cn } from '$lib/utils/cn';
-	import { formatDate } from '$lib/utils/date';
 
 	function isToday(dateStr?: string): boolean {
 		if (!dateStr) return false;
@@ -46,7 +46,7 @@
 
 		<li class="relative">
 			<a
-				href={resolve(`/privacy-news/${article.slug}`)}
+				href={resolve(`privacy-news/${article.slug}`)}
 				class="group flex flex-col items-baseline gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm sm:flex-row"
 			>
 				{#if isToday(article.date)}

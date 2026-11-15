@@ -1,8 +1,8 @@
 import type { Article, ParsedSource, RawItem, Source, SourceSearchParam } from './types';
 import { RssXmlParser } from './xml-parser';
 
-import rssSourcesJSON from '$lib/data/rss-sources.json';
-import { tryCatch } from '$lib/utils/try-catch';
+import rssSourcesJSON from '#lib/data/rss-sources.json';
+import { tryCatch } from '#lib/utils/try-catch.ts';
 
 const rssSources = rssSourcesJSON.data as Source[];
 

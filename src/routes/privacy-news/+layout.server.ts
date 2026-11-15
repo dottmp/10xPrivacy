@@ -1,6 +1,6 @@
 import type { LayoutServerLoad } from './$types';
 
-import { rss } from '$lib/features/feed/service';
+import { rss } from '#lib/features/feed/service.ts';
 
 export const load: LayoutServerLoad = async ({ setHeaders }) => {
 	setHeaders({ 'Cache-Control': 'public, max-age=1800' });

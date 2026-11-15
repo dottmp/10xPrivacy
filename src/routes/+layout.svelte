@@ -1,9 +1,9 @@
 <script lang="ts">
+	import favicon from '#lib/assets/favicon.png';
+	import Footer from '#lib/components/footer.svelte';
+	import LlmTermsOfServiceLink from '#lib/components/llm-terms-of-service-link.svelte';
+	import Navbar from '#lib/components/navbar.svelte';
 	import { page } from '$app/state';
-	import favicon from '$lib/assets/favicon.png';
-	import Footer from '$lib/components/footer.svelte';
-	import LlmTermsOfServiceLink from '$lib/components/llm-terms-of-service-link.svelte';
-	import Navbar from '$lib/components/navbar.svelte';
 	import '../app.css';
 
 	let { children, data } = $props();

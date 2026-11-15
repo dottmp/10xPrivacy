@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 
 import type { LayoutServerLoad } from './$types';
 
-import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
+import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
 
 export const ssr = false;
 

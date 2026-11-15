@@ -1,7 +1,7 @@
 <script lang="ts" module>
 	import type { HTMLAnchorAttributes } from 'svelte/elements';
 
-	import { cn } from '$lib/utils/cn';
+	import { cn } from '#lib/utils/cn.ts';
 
 	export const linkVariants = {
 		base: 'link link-hover inline-flex items-center [&_svg]:size-4 gap-x-1',

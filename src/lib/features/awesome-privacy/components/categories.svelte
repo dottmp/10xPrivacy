@@ -3,14 +3,14 @@
 
 	import CategoryIcon from './category-icon.svelte';
 
+	import Subheading from '#lib/components/headings/subheading.svelte';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import { textVariants } from '#lib/components/text/index.ts';
+	import { linkVariants } from '#lib/components/text/link.svelte';
+	import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
+	import type { Category } from '#lib/features/awesome-privacy/types.ts';
+	import { cn } from '#lib/utils/cn.ts';
 	import { resolve } from '$app/paths';
-	import Subheading from '$lib/components/headings/subheading.svelte';
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import { textVariants } from '$lib/components/text';
-	import { linkVariants } from '$lib/components/text/link.svelte';
-	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-	import type { Category } from '$lib/features/awesome-privacy/types';
-	import { cn } from '$lib/utils/cn';
 
 	type CategoriesProps = HTMLAttributes<HTMLDivElement> & {
 		categories: Category[];
@@ -25,11 +25,12 @@
 		{#each categories as category (category.name)}
 			{@const slug = awesomePrivacy.slugify(category.name)}
 			<section>
-				<a href={resolve(`/awesome-privacy/${slug}`)} class=" mb-3 flex items-center gap-2">
+				<a href={resolve(`awesome-privacy/${slug}`)} class=" mb-3 flex items-center gap-2">
 					<CategoryIcon category={category.name} class="size-4.5 text-lg text-primary" />
-					<Subheading class={cn(linkVariants.base, linkVariants.variant.foreground)}>
-						{category.name}
-					</Subheading>
+
+					<Subheading class={cn(linkVariants.base, linkVariants.variant.foreground)}
+						>{category.name}</Subheading
+					>
 				</a>
 
 				<ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
@@ -37,7 +38,7 @@
 						{@const sectionSlug = awesomePrivacy.slugify(section.name)}
 						<li>
 							<a
-								href={resolve(`/awesome-privacy/${slug}/${sectionSlug}`)}
+								href={resolve(`awesome-privacy/${slug}/${sectionSlug}`)}
 								class="group flex items-center justify-between rounded-lg bg-base-100 px-5 py-4 shadow-sm"
 							>
 								<span
@@ -59,7 +60,8 @@
 	</div>
 
 	<!-- Back -->
-	<a href={resolve(`/awesome-privacy`)} class="btn mt-4 w-full sm:w-fit">
-		<Icons.arrowLeft class="mr-1" /> Back
-	</a>
+
+	<a href={resolve(`awesome-privacy`)} class="btn mt-4 w-full sm:w-fit"
+		><Icons.arrowLeft class="mr-1" /> Back</a
+	>
 </div>

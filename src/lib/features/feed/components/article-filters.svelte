@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 
+	import rssSources from '#lib/data/rss-sources.json';
+	import type { SourceSearchParam } from '#lib/features/feed/types.ts';
+	import { cn } from '#lib/utils/cn.ts';
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import rssSources from '$lib/data/rss-sources.json';
-	import type { SourceSearchParam } from '$lib/features/feed/types';
-	import { cn } from '$lib/utils/cn';
 
 	type ArticleFiltersProps = HTMLAttributes<HTMLDivElement>;
 

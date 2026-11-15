@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 
-import { rss } from '$lib/features/feed/service';
+import { rss } from '#lib/features/feed/service.ts';
 
 export const load: PageServerLoad = ({ setHeaders }) => {
 	setHeaders({ 'Cache-Control': 'public, max-age=1800' });

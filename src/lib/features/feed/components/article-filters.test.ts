@@ -4,7 +4,7 @@ import { beforeAll, describe, expect, it, vi } from 'vitest';
 import ArticleFilters from './article-filters.svelte';
 
 vi.mock('$app/paths', () => ({
-	resolve: (path: string) => path
+	resolve: (path: string) => (path.startsWith('/') ? path : '/' + path)
 }));
 
 vi.mock('$app/state', () => ({

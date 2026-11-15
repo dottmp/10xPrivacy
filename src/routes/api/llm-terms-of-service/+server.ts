@@ -1,6 +1,6 @@
 import { error, type RequestHandler } from '@sveltejs/kit';
 
-import { tryCatch } from '$lib/utils/try-catch';
+import { tryCatch } from '#lib/utils/try-catch.ts';
 
 export const GET: RequestHandler = async ({ fetch }) => {
 	const { data: response, error: err } = await tryCatch(

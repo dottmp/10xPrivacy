@@ -1,7 +1,7 @@
 import type { LayoutServerLoad } from './$types';
 
-import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-import type { SearchEntry } from '$lib/features/awesome-privacy/types';
+import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
+import type { SearchEntry } from '#lib/features/awesome-privacy/types.ts';
 
 export const load: LayoutServerLoad = () => {
 	return {

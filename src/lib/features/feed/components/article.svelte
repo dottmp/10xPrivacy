@@ -1,13 +1,13 @@
 <script lang="ts">
+	import { Heading } from '#lib/components/headings/index.ts';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import { Link, Text, textVariants } from '#lib/components/text/index.ts';
+	import SourceBadge from '#lib/features/feed/components/source-badge.svelte';
+	import type { Article } from '#lib/features/feed/types.ts';
+	import { cn } from '#lib/utils/cn.ts';
+	import { formatDate } from '#lib/utils/date.js';
+	import { isSafeUrl, sanitizeHtml } from '#lib/utils/sanitize.ts';
 	import { resolve } from '$app/paths';
-	import { Heading } from '$lib/components/headings';
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import { Link, Text, textVariants } from '$lib/components/text';
-	import SourceBadge from '$lib/features/feed/components/source-badge.svelte';
-	import type { Article } from '$lib/features/feed/types';
-	import { cn } from '$lib/utils/cn';
-	import { formatDate } from '$lib/utils/date.js';
-	import { isSafeUrl, sanitizeHtml } from '$lib/utils/sanitize';
 
 	const SCROLL_THRESHOLD = 500;
 
@@ -35,10 +35,9 @@
 <svelte:window on:scroll={handleScroll} />
 
 <article class="mx-auto max-w-3xl space-y-8 px-4 py-8">
-	<a href={resolve('/privacy-news')} class="btn mb-8">
-		<Icons.arrowLeft class="mr-1" />
-		Back to feed
-	</a>
+	<a href={resolve('privacy-news')} class="btn mb-8"
+		><Icons.arrowLeft class="mr-1" /> Back to feed</a
+	>
 
 	<div class="border-b border-base-300 pb-8">
 		<!-- header -->

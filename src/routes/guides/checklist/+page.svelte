@@ -1,12 +1,12 @@
 <script lang="ts">
+	import Heading from '#lib/components/headings/heading.svelte';
+	import Subheading, { subheadingVariants } from '#lib/components/headings/subheading.svelte';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import Text, { textVariants } from '#lib/components/text/text.svelte';
+	import ServiceLogo from '#lib/features/awesome-privacy/components/service-logo.svelte';
+	import { cn } from '#lib/utils/cn.ts';
 	import { resolve } from '$app/paths';
-	import { type Pathname } from '$app/types';
-	import Heading from '$lib/components/headings/heading.svelte';
-	import Subheading, { subheadingVariants } from '$lib/components/headings/subheading.svelte';
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import Text, { textVariants } from '$lib/components/text/text.svelte';
-	import ServiceLogo from '$lib/features/awesome-privacy/components/service-logo.svelte';
-	import { cn } from '$lib/utils/cn';
+	import { type Path } from '$app/types';
 
 	let { data } = $props();
 
@@ -55,14 +55,14 @@
 <main class="mx-auto w-full max-w-3xl px-4 py-16">
 	<header class="mb-8">
 		<Heading size="display" class="mb-4">Privacy Checklist</Heading>
+
 		<Text size="lg">
 			Starting your digital privacy journey can be overwhelming, thats why we've created this simple
 			checklist to help you take it one step at a time. Each item is a small action you can take to
 			improve your online privacy.
-
-			<span class="mt-4 block">
-				PS: Don't worry we only store your progress locally in your browser's localStorage
-			</span>
+			<span class="mt-4 block"
+				>PS: Don't worry we only store your progress locally in your browser's localStorage</span
+			>
 		</Text>
 	</header>
 
@@ -76,9 +76,9 @@
 			</Text>
 		</div>
 
-		<a href={resolve('/guides/get-started')} class="btn whitespace-nowrap btn-info sm:btn-sm">
-			Learn the basics
-		</a>
+		<a href={resolve('guides/get-started')} class="btn whitespace-nowrap btn-info sm:btn-sm"
+			>Learn the basics</a
+		>
 	</div>
 
 	{#if loading}
@@ -112,7 +112,7 @@
 							<div class="mt-2 flex w-fit flex-wrap gap-1.5 pl-11">
 								{#each item.services as service (service.name)}
 									<a
-										href={resolve(service.href as Pathname)}
+										href={resolve(service.href as Path)}
 										class="badge bg-base-300 hover:bg-base-200"
 									>
 										<ServiceLogo {service} class="size-4" />

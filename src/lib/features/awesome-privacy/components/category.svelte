@@ -3,13 +3,13 @@
 
 	import CategoryIcon from './category-icon.svelte';
 
+	import { Heading } from '#lib/components/headings/index.ts';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import { textVariants } from '#lib/components/text/index.ts';
+	import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
+	import type { Category } from '#lib/features/awesome-privacy/types.ts';
+	import { cn } from '#lib/utils/cn.ts';
 	import { resolve } from '$app/paths';
-	import { Heading } from '$lib/components/headings';
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import { textVariants } from '$lib/components/text';
-	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-	import type { Category } from '$lib/features/awesome-privacy/types';
-	import { cn } from '$lib/utils/cn';
 
 	type CategoryProps = HTMLAttributes<HTMLDivElement> & {
 		category: Category;
@@ -32,7 +32,7 @@
 			{@const sectionSlug = awesomePrivacy.slugify(section.name)}
 			<li>
 				<a
-					href={resolve(`/awesome-privacy/${categorySlug}/${sectionSlug}`)}
+					href={resolve(`awesome-privacy/${categorySlug}/${sectionSlug}`)}
 					class="group flex items-center justify-between rounded-lg bg-base-100 px-5 py-4 shadow-sm"
 				>
 					<span
@@ -51,7 +51,9 @@
 	</ul>
 
 	<!-- Back -->
-	<a href={resolve(`/awesome-privacy`)} class="btn mt-4 w-full sm:w-fit">
-		<Icons.arrowLeft class="mr-1" /> Back to Categories
+
+	<a href={resolve(`awesome-privacy`)} class="btn mt-4 w-full sm:w-fit">
+		<Icons.arrowLeft class="mr-1" />
+		Back to Categories
 	</a>
 </div>

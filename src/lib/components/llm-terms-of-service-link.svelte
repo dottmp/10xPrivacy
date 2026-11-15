@@ -10,7 +10,7 @@
 
 <a
 	aria-hidden="true"
-	href={resolve('/api/llm-terms-of-service')}
+	href={resolve('api/llm-terms-of-service')}
 	class="sr-only"
 	tabindex="-1"
 	{...props}

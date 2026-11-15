@@ -8,15 +8,15 @@
 	import CategoryIcon from './category-icon.svelte';
 	import ServiceLogo from './service-logo.svelte';
 
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import Text, { textVariants } from '#lib/components/text/text.svelte';
+	import { registerKeyboardShortcut } from '#lib/features/awesome-privacy/hooks/keyboard-shortcut.svelte.ts';
+	import { trackViewportHeight } from '#lib/features/awesome-privacy/hooks/viewport-height.svelte.ts';
+	import type { SearchEntry, SearchEntryType } from '#lib/features/awesome-privacy/types.ts';
+	import { cn } from '#lib/utils/cn.ts';
+	import { debounce } from '#lib/utils/debounce.ts';
 	import { resolve } from '$app/paths';
-	import type { Pathname } from '$app/types';
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import Text, { textVariants } from '$lib/components/text/text.svelte';
-	import { registerKeyboardShortcut } from '$lib/features/awesome-privacy/hooks/keyboard-shortcut.svelte';
-	import { trackViewportHeight } from '$lib/features/awesome-privacy/hooks/viewport-height.svelte';
-	import type { SearchEntry, SearchEntryType } from '$lib/features/awesome-privacy/types';
-	import { cn } from '$lib/utils/cn';
-	import { debounce } from '$lib/utils/debounce';
+	import type { Path } from '$app/types';
 
 	const MIN_QUERY_LENGTH = 2;
 	const SEARCH_DEBOUNCE_MS = 200;
@@ -184,7 +184,7 @@
 				</button>
 
 				{#if initiating}
-					<Icons.loading class="shrink-0"></Icons.loading>
+					<Icons.loading class="shrink-0" />
 				{/if}
 
 				<input
@@ -227,7 +227,7 @@
 							{@const badge = ENTRY_BADGE[entry.type]}
 							<li>
 								<a
-									href={resolve(entry.href as Pathname)}
+									href={resolve(entry.href as Path)}
 									onclick={close}
 									class="flex w-full items-center gap-3 rounded-box px-3 py-2.5 text-left focus-within:bg-base-200 focus-within:outline-1 focus-within:outline-primary hover:bg-base-200"
 								>
@@ -275,7 +275,7 @@
 					<!-- loading indicator while searching results -->
 					{#if searching && results.length === 0}
 						<div class="flex items-center justify-center py-8">
-							<Icons.loading class="shrink-0 "></Icons.loading>
+							<Icons.loading class="shrink-0 " />
 						</div>
 						<!-- no results message -->
 					{:else if results.length === 0}
@@ -288,7 +288,7 @@
 					<!-- intial data -->
 					{#await _search.featuredCategories}
 						<div class="flex items-center justify-center py-8">
-							<Icons.loading class="shrink-0 "></Icons.loading>
+							<Icons.loading class="shrink-0 " />
 						</div>
 					{:then featuredCategories}
 						{@render entryList(featuredCategories)}

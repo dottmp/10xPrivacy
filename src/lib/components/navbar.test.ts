@@ -1,23 +1,22 @@
 import { render, screen } from '@testing-library/svelte';
-import { readable } from 'svelte/store';
 import { describe, expect, it, vi } from 'vitest';
 
 import Navbar from './navbar.svelte';
 
 vi.mock('theme-change');
 
-// Mock $app/stores to control the current page URL in tests
-vi.mock('$app/stores', async () => {
-	return {
-		page: readable({ url: new URL('http://localhost/') })
-	};
-});
-
-vi.mock('$app/paths', () => ({
-	resolve: (path: string) => path
+// Mock $app/state to control the current page URL in tests
+vi.mock('$app/state', () => ({
+	page: {
+		url: new URL('http://localhost/')
+	}
 }));
 
-vi.mock('$lib/features/awesome-privacy/components/search.svelte');
+vi.mock('$app/paths', () => ({
+	resolve: (path: string) => (path.startsWith('/') ? path : '/' + path)
+}));
+
+vi.mock('#lib/features/awesome-privacy/components/search.svelte');
 
 describe('Navbar component', () => {
 	describe('URLs', () => {
