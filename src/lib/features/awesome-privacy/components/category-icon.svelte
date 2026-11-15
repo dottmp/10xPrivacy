@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-	import { cn } from '$lib/utils/cn';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
+	import { cn } from '#lib/utils/cn.ts';
 
 	type CategoryIconProps = {
 		category: string;

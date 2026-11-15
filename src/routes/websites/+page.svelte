@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Heading } from '$lib/components/headings';
-	import { Link, Text } from '$lib/components/text';
-	import websites from '$lib/data/websites.json';
+	import { Heading } from '#lib/components/headings/index.ts';
+	import { Link, Text } from '#lib/components/text/index.ts';
+	import websites from '#lib/data/websites.json';
 
 	function stripProtocol(url: string): string {
 		return url.replace(/https?:\/\//, '');

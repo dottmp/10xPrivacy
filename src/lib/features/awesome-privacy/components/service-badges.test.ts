@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 import ServiceBadges from './service-badges.svelte';
 
-import type { Service } from '$lib/features/awesome-privacy/types';
+import type { Service } from '#lib/features/awesome-privacy/types.ts';
 
 const baseService: Service = {
 	name: 'Test Service',

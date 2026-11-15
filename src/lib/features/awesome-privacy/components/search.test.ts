@@ -3,14 +3,14 @@ import { describe, expect, it, vi, beforeEach } from 'vitest';
 
 import SearchComponent from './search.svelte';
 
-import type { SearchEntry } from '$lib/features/awesome-privacy/types';
+import type { SearchEntry } from '#lib/features/awesome-privacy/types.ts';
 
 // ----------------------------------------------------------------
 //  mocks
 // ----------------------------------------------------------------
 
 vi.mock('$app/paths', () => ({
-	resolve: (path: string) => path
+	resolve: (path: string) => (path.startsWith('/') ? path : '/' + path)
 }));
 
 // ----------------------------------------------------------------

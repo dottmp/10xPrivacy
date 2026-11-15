@@ -3,10 +3,10 @@ import { describe, expect, it, vi } from 'vitest';
 
 import Articles from './articles.svelte';
 
-import type { Article, Source } from '$lib/features/feed/types';
+import type { Article, Source } from '#lib/features/feed/types.ts';
 
 vi.mock('$app/paths', () => ({
-	resolve: (path: string) => path
+	resolve: (path: string) => (path.startsWith('/') ? path : '/' + path)
 }));
 
 const source = {

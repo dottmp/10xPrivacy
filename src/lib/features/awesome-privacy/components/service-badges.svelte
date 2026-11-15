@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Service } from '$lib/features/awesome-privacy/types';
-	import { cn } from '$lib/utils/cn';
+	import type { Service } from '#lib/features/awesome-privacy/types.ts';
+	import { cn } from '#lib/utils/cn.ts';
 
 	let serviceBadgesVariants = {
 		base: 'badge badge-soft',

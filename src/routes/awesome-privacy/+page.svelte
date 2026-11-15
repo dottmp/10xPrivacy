@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Heading } from '$lib/components/headings';
-	import { Link, Text } from '$lib/components/text';
-	import FeaturedCategories from '$lib/features/awesome-privacy/components/featured-categories.svelte';
+	import { Heading } from '#lib/components/headings/index.ts';
+	import { Link, Text } from '#lib/components/text/index.ts';
+	import FeaturedCategories from '#lib/features/awesome-privacy/components/featured-categories.svelte';
 
 	let { data } = $props();
 </script>

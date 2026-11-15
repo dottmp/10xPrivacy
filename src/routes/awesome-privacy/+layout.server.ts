@@ -1,6 +1,6 @@
 import type { LayoutServerLoad } from './$types';
 
-import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
+import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
 
 export const load: LayoutServerLoad = ({ setHeaders }) => {
 	setHeaders({ 'Cache-Control': 'public, max-age=3600' });

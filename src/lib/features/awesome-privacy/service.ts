@@ -4,7 +4,7 @@ import rawYaml from '../../data/awesome-privacy.yml?raw';
 
 import type { AwesomePrivacyData, Category, SearchEntry, Section, Service } from './types';
 
-import { FEATURED_CATEGORIES } from '$lib/configs';
+import { FEATURED_CATEGORIES } from '#lib/configs.ts';
 
 export class AwesomePrivacy {
 	readonly featuredCatgories = FEATURED_CATEGORIES;

@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
 
-import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-import type { Service } from '$lib/features/awesome-privacy/types';
+import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
+import type { Service } from '#lib/features/awesome-privacy/types.ts';
 
 function mapSection(
 	categoryName: string,

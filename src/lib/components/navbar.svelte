@@ -3,14 +3,14 @@
 
 	import Subheading from './headings/subheading.svelte';
 
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import ThemeChange from '#lib/components/theme-change.svelte';
+	import { NAV_ITMES } from '#lib/configs.ts';
+	import Search from '#lib/features/awesome-privacy/components/search.svelte';
+	import { cn } from '#lib/utils/cn.ts';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { type Pathname } from '$app/types';
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import ThemeChange from '$lib/components/theme-change.svelte';
-	import { NAV_ITMES } from '$lib/configs';
-	import Search from '$lib/features/awesome-privacy/components/search.svelte';
-	import { cn } from '$lib/utils/cn';
+	import { type Path } from '$app/types';
 
 	const DRAWER_ID = 'navbar-drawer';
 
@@ -44,7 +44,7 @@
 
 			<div class="ml-auto flex items-center gap-2">
 				<!-- awesome-privacy search trigger (desktop) -->
-				<div class={cn('hidden', isPath(resolve('/awesome-privacy')) && 'block')}>
+				<div class={cn('hidden', isPath(resolve('awesome-privacy')) && 'block')}>
 					<Search {search} />
 				</div>
 
@@ -78,7 +78,7 @@
 									{#each navItems as navItem (navItem.href)}
 										<li class={cn()}>
 											{#if navItem.href}
-												<a href={resolve(navItem.href as Pathname)} onclick={toggleDrawer}
+												<a href={resolve(navItem.href as Path)} onclick={toggleDrawer}
 													>{navItem.label}</a
 												>
 											{:else}
@@ -111,7 +111,7 @@
 						<li>
 							{#if navItem.href}
 								<a
-									href={resolve(navItem.href as Pathname)}
+									href={resolve(navItem.href as Path)}
 									onclick={() => {
 										document
 											.querySelectorAll('nav details[open]')

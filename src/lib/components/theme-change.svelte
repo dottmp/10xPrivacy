@@ -3,9 +3,9 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { themeChange } from 'theme-change';
 
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import { THEMES } from '$lib/configs';
-	import { cn } from '$lib/utils/cn';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import { THEMES } from '#lib/configs.ts';
+	import { cn } from '#lib/utils/cn.ts';
 
 	type ThemeChangeProps = HTMLAttributes<HTMLDivElement> & {
 		variant?: 'dropdown' | 'select';

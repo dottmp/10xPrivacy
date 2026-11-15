@@ -3,8 +3,8 @@
 
 	import type { Service } from '../types';
 
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import { cn } from '$lib/utils/cn';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import { cn } from '#lib/utils/cn.ts';
 
 	type ServiceLogoProps = HTMLAttributes<HTMLImageElement> & {
 		service: Service;

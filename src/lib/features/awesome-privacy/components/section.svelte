@@ -4,15 +4,15 @@
 	import ServiceBadges from './service-badges.svelte';
 	import ServiceLogo from './service-logo.svelte';
 
+	import { Heading, Subheading, subheadingVariants } from '#lib/components/headings/index.ts';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import { Text, textVariants } from '#lib/components/text/index.ts';
+	import Link from '#lib/components/text/link.svelte';
+	import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
+	import type { Section } from '#lib/features/awesome-privacy/types.ts';
+	import { cn } from '#lib/utils/cn.ts';
+	import { markdownToHtml, markdownToInlineHtml } from '#lib/utils/markdown.ts';
 	import { resolve } from '$app/paths';
-	import { Heading, Subheading, subheadingVariants } from '$lib/components/headings';
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import { Text, textVariants } from '$lib/components/text';
-	import Link from '$lib/components/text/link.svelte';
-	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-	import type { Section } from '$lib/features/awesome-privacy/types';
-	import { cn } from '$lib/utils/cn';
-	import { markdownToHtml, markdownToInlineHtml } from '$lib/utils/markdown';
 
 	type SectionProps = HTMLAttributes<HTMLDivElement> & {
 		section: Section;
@@ -31,7 +31,7 @@
 		<!-- Alternatives to -->
 		{#if section.alternativeTo && section.alternativeTo.length > 0}
 			<Text class="flex max-w-3xl flex-wrap items-center">
-				Privacy-respecting alternatives to:&nbsp;
+				Privacy-respecting alternatives to:
 				{#each section.alternativeTo as alt, i (alt)}
 					<span class="text-base-content/70">{alt}</span>{#if i < section.alternativeTo.length - 1}
 						<span class="mr-0.5">,</span>
@@ -70,20 +70,18 @@
 			{@const serviceSlug = awesomePrivacy.slugify(service.name)}
 			<li>
 				<a
-					href={resolve(`/awesome-privacy/${categorySlug}/${sectionSlug}/${serviceSlug}`)}
+					href={resolve(`awesome-privacy/${categorySlug}/${sectionSlug}/${serviceSlug}`)}
 					class="group flex gap-4 rounded-lg bg-base-100 p-5 shadow-sm"
 				>
 					<!-- Icon -->
-					<div class="mt-0.5 shrink-0">
-						<ServiceLogo {service} class="size-8" />
-					</div>
-
+					<div class="mt-0.5 shrink-0"><ServiceLogo {service} class="size-8" /></div>
 					<!-- Content -->
 					<div class="min-w-0">
 						<div class="flex flex-wrap items-center gap-2">
-							<Subheading size="sm" class="group-hover:text-primary group-hover:underline">
-								{service.name}
-							</Subheading>
+							<Subheading size="sm" class="group-hover:text-primary group-hover:underline"
+								>{service.name}</Subheading
+							>
+
 							<ServiceBadges {service} size="xs" />
 						</div>
 
@@ -158,7 +156,8 @@
 		</div>
 	{/if}
 
-	<a href={resolve(`/awesome-privacy/${categorySlug}`)} class="btn mt-6 w-full sm:w-fit">
-		<Icons.arrowLeft class="mr-1" /> Back to {awesomePrivacy.slugToName(categorySlug)}
+	<a href={resolve(`awesome-privacy/${categorySlug}`)} class="btn mt-6 w-full sm:w-fit">
+		<Icons.arrowLeft class="mr-1" />
+		Back to {awesomePrivacy.slugToName(categorySlug)}
 	</a>
 </div>

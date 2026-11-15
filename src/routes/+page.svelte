@@ -1,10 +1,10 @@
 <script lang="ts">
+	import Heading from '#lib/components/headings/heading.svelte';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import Link from '#lib/components/text/link.svelte';
+	import Text from '#lib/components/text/text.svelte';
+	import Articles from '#lib/features/feed/components/articles.svelte';
 	import { resolve } from '$app/paths';
-	import Heading from '$lib/components/headings/heading.svelte';
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import Link from '$lib/components/text/link.svelte';
-	import Text from '$lib/components/text/text.svelte';
-	import Articles from '$lib/features/feed/components/articles.svelte';
 
 	let { data } = $props();
 </script>
@@ -24,11 +24,11 @@
 		</Text>
 
 		<div class="mt-10 flex items-center gap-x-6">
-			<a href={resolve('/awesome-privacy')} class="btn btn-md btn-primary">
-				Get started <Icons.arrowRight />
-			</a>
+			<a href={resolve('awesome-privacy')} class="btn btn-md btn-primary"
+				>Get started <Icons.arrowRight /></a
+			>
 
-			<a href={resolve('/guides/get-started')} class="link link-hover"> Learn more </a>
+			<a href={resolve('guides/get-started')} class="link link-hover">Learn more</a>
 		</div>
 	</header>
 
@@ -39,13 +39,16 @@
 			<Text size="lg" class="mt-4 max-w-3xl">
 				Get the lates and greates news in the wolrd of privacy. We got a curated feed of news
 				articles from various sources e.g. from our beloved
-				<Link href="https://www.mullvad.com/en/blog/" variant="primary" external>
-					Mullvad Blog
-				</Link>,
 
-				<Link href="https://www.privacyguides.org/blog/" variant="primary" external>
-					Privacy Guides
-				</Link>, and many more.
+				<Link href="https://www.mullvad.com/en/blog/" variant="primary" external>Mullvad Blog</Link>
+
+				,
+
+				<Link href="https://www.privacyguides.org/blog/" variant="primary" external
+					>Privacy Guides</Link
+				>
+
+				, and many more.
 			</Text>
 		</div>
 
@@ -64,9 +67,9 @@
 				</div>
 			{/await}
 
-			<a href={resolve('/privacy-news')} class="btn mt-6 w-full btn-primary sm:w-fit">
-				Show all News
-			</a>
+			<a href={resolve('privacy-news')} class="btn mt-6 w-full btn-primary sm:w-fit"
+				>Show all News</a
+			>
 		</div>
 	</section>
 
@@ -84,7 +87,7 @@
 				<span>(」ﾟﾛﾟ)｣</span>
 
 				<div class="card-actions justify-center">
-					<a href={resolve('/guides/checklist')} class="btn btn-accent">Gimme that list!</a>
+					<a href={resolve('guides/checklist')} class="btn btn-accent">Gimme that list!</a>
 				</div>
 			</div>
 		</div>

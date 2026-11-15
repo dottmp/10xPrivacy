@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import rssSourcesData from './rss-sources.json';
 import websitesData from './websites.json';
 
-import { isSafeUrl } from '$lib/utils/sanitize';
+import { isSafeUrl } from '#lib/utils/sanitize.ts';
 
 // ---------------------------------------------------------------------------
 // websites.json

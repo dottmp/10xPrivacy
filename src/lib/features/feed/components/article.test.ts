@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import Article from './article.svelte';
 
-import type { Article as ArticleType, Source } from '$lib/features/feed/types';
+import type { Article as ArticleType, Source } from '#lib/features/feed/types.ts';
 
 vi.mock('$app/paths');
 

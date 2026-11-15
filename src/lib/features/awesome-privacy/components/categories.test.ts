@@ -3,10 +3,10 @@ import { describe, expect, it, vi } from 'vitest';
 
 import CategoriesComponent from './categories.svelte';
 
-import type { Category } from '$lib/features/awesome-privacy/types';
+import type { Category } from '#lib/features/awesome-privacy/types.ts';
 
 vi.mock('$app/paths', () => ({
-	resolve: (path: string) => path
+	resolve: (path: string) => (path.startsWith('/') ? path : '/' + path)
 }));
 
 const categories: Category[] = [

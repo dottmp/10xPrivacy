@@ -6,14 +6,14 @@
 	import TosdrBadge from './tosdr-badge.svelte';
 	import TosdrCard from './tosdr-card.svelte';
 
+	import { Heading, Subheading, subheadingVariants } from '#lib/components/headings/index.ts';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import { Link, textVariants } from '#lib/components/text/index.ts';
+	import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
+	import type { Section, Service } from '#lib/features/awesome-privacy/types.ts';
+	import { cn } from '#lib/utils/cn.ts';
+	import { markdownToHtml } from '#lib/utils/markdown.ts';
 	import { resolve } from '$app/paths';
-	import { Heading, Subheading, subheadingVariants } from '$lib/components/headings';
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import { Link, textVariants } from '$lib/components/text';
-	import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-	import type { Section, Service } from '$lib/features/awesome-privacy/types';
-	import { cn } from '$lib/utils/cn';
-	import { markdownToHtml } from '$lib/utils/markdown';
 
 	type SectionProps = HTMLAttributes<HTMLDivElement> & {
 		service: Service;
@@ -257,7 +257,7 @@
 					<li>
 						<a
 							href={resolve(
-								`/awesome-privacy/${categorySlug}/${sectionSlug}/${awesomePrivacy.slugify(rel.name)}`
+								`awesome-privacy/${categorySlug}/${sectionSlug}/${awesomePrivacy.slugify(rel.name)}`
 							)}
 							class="group flex items-center gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm"
 						>
@@ -280,7 +280,7 @@
 
 	<!-- Back -->
 	<a
-		href={resolve(`/awesome-privacy/${categorySlug}/${sectionSlug}`)}
+		href={resolve(`awesome-privacy/${categorySlug}/${sectionSlug}`)}
 		class="btn mt-4 w-full sm:w-fit"
 	>
 		<Icons.arrowLeft class="mr-1" /> Back to {awesomePrivacy.slugToName(sectionSlug)}

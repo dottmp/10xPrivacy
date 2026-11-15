@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Subheading } from '$lib/components/headings';
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import { Link, textVariants } from '$lib/components/text';
-	import Text from '$lib/components/text/text.svelte';
-	import { cn } from '$lib/utils/cn';
-	import { formatDate } from '$lib/utils/date';
-	import { tryCatch } from '$lib/utils/try-catch';
+	import { Subheading } from '#lib/components/headings/index.ts';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import { Link, textVariants } from '#lib/components/text/index.ts';
+	import Text from '#lib/components/text/text.svelte';
+	import { cn } from '#lib/utils/cn.ts';
+	import { formatDate } from '#lib/utils/date.ts';
+	import { tryCatch } from '#lib/utils/try-catch.ts';
 
 	type TosdrCardProps = { tosdrId: string };
 

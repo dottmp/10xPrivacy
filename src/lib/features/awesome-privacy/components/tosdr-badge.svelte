@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { tryCatch } from '$lib/utils/try-catch';
+	import { tryCatch } from '#lib/utils/try-catch.ts';
 
 	type Props = { tosdrId: string };
 

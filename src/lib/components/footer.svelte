@@ -3,7 +3,7 @@
 
 	import { Link, Text } from './text';
 
-	import { cn } from '$lib/utils/cn';
+	import { cn } from '#lib/utils/cn.ts';
 
 	type FooterProps = HTMLAttributes<HTMLElement>;
 

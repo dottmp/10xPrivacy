@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 
 import type { PageServerLoad } from './$types';
 
-import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
+import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
 
 export const load: PageServerLoad = async ({ params, url }) => {
 	const { category: categorySlug } = params;

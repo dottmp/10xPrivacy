@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Heading, Subheading } from '$lib/components/headings';
-	import { Link, Text } from '$lib/components/text';
+	import { Heading, Subheading } from '#lib/components/headings/index.ts';
+	import { Link, Text } from '#lib/components/text/index.ts';
 
 	let { data } = $props();
 </script>

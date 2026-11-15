@@ -1,6 +1,6 @@
 <script lang="ts">
+	import Category from '#lib/features/awesome-privacy/components/category.svelte';
 	import { resolve } from '$app/paths';
-	import Category from '$lib/features/awesome-privacy/components/category.svelte';
 
 	let { data } = $props();
 </script>
@@ -11,10 +11,8 @@
 		class="breadcrumbs mb-4 text-sm font-medium text-base-content/50 capitalize [&_a]:hover:text-primary"
 	>
 		<ul>
-			<li><a href={resolve('/awesome-privacy')}>Awesome Privacy</a></li>
-			<li>
-				{data.category.name}
-			</li>
+			<li><a href={resolve('awesome-privacy')}>Awesome Privacy</a></li>
+			<li>{data.category.name}</li>
 		</ul>
 	</nav>
 

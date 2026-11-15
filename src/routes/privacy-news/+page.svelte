@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Heading } from '$lib/components/headings/index.js';
-	import { Text } from '$lib/components/text';
-	import ArticleFilters from '$lib/features/feed/components/article-filters.svelte';
-	import Articles from '$lib/features/feed/components/articles.svelte';
+	import { Heading } from '#lib/components/headings/index.js';
+	import { Text } from '#lib/components/text/index.ts';
+	import ArticleFilters from '#lib/features/feed/components/article-filters.svelte';
+	import Articles from '#lib/features/feed/components/articles.svelte';
 
 	let { data } = $props();
 </script>
