@@ -315,6 +315,7 @@ describe('AwesomePrivacy', () => {
 			});
 
 			expect(svc?.stack?.note).toContain('Firefox-based');
+			expect(svc?.stack?.slug).toBe('librewolf');
 		});
 
 		it('leaves unmatched services without a stack entry', () => {

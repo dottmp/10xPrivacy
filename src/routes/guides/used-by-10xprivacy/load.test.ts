@@ -78,6 +78,15 @@ describe('/guides/used-by-10xprivacy page load', () => {
 		});
 	});
 
+	it('gives every item a unique anchor slug', () => {
+		const slugs = buildStackGroups().flatMap((group) => group.items.map((item) => item.slug));
+
+		expect(new Set(slugs).size).toBe(slugs.length);
+		slugs.forEach((slug) => {
+			expect(slug).toMatch(/^[a-z0-9-]+$/);
+		});
+	});
+
 	it('resolves duplicate names to the first match in document order', () => {
 		const byName = new Map(
 			buildStackGroups()

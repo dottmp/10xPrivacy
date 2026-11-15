@@ -76,9 +76,19 @@ describe('ServiceBadges component', () => {
 
 	it('renders the we-use-this chip when the service is in the stack', () => {
 		render(ServiceBadges, {
-			props: { service: { ...baseService, stack: { note: 'Because.' } } }
+			props: { service: { ...baseService, stack: { note: 'Because.', slug: 'test-service' } } }
 		});
 		expect(screen.getByText('Used by 10xPrivacy')).toBeTruthy();
+	});
+
+	it('links the chip to its item on the used-by page', () => {
+		render(ServiceBadges, {
+			props: { service: { ...baseService, stack: { note: 'Because.', slug: 'test-service' } } }
+		});
+
+		const link = screen.getByText('Used by 10xPrivacy').closest('a');
+
+		expect(link?.getAttribute('href')).toBe('/guides/used-by-10xprivacy#test-service');
 	});
 
 	it('renders no chip when the service is not in the stack', () => {
@@ -88,13 +98,15 @@ describe('ServiceBadges component', () => {
 
 	it('renders the chip without a rating symbol', () => {
 		render(ServiceBadges, {
-			props: { service: { ...baseService, stack: { note: 'Because.' } } }
+			props: { service: { ...baseService, stack: { note: 'Because.', slug: 'test-service' } } }
 		});
 		expect(screen.getByText('Used by 10xPrivacy').querySelector('svg')).toBeNull();
 	});
 
 	it('renders the chip when the stack entry has no note', () => {
-		render(ServiceBadges, { props: { service: { ...baseService, stack: {} } } });
+		render(ServiceBadges, {
+			props: { service: { ...baseService, stack: { slug: 'test-service' } } }
+		});
 		expect(screen.getByText('Used by 10xPrivacy')).toBeTruthy();
 	});
 });

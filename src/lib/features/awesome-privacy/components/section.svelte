@@ -68,21 +68,25 @@
 	<ul class="space-y-4">
 		{#each section.services as service (service.name)}
 			{@const serviceSlug = awesomePrivacy.slugify(service.name)}
-			<li>
+			<li class="group relative rounded-lg bg-base-100 p-5 shadow-sm">
 				<a
 					href={resolve(`awesome-privacy/${categorySlug}/${sectionSlug}/${serviceSlug}`)}
-					class="group flex gap-4 rounded-lg bg-base-100 p-5 shadow-sm"
-				>
+					class="absolute inset-0 rounded-lg"
+					aria-label={service.name}
+				></a>
+
+				<div class="pointer-events-none relative flex gap-4">
 					<!-- Icon -->
 					<div class="mt-0.5 shrink-0"><ServiceLogo {service} class="size-8" /></div>
 					<!-- Content -->
 					<div class="min-w-0">
 						<div class="flex flex-wrap items-center gap-2">
-							<Subheading size="sm" class="group-hover:text-primary group-hover:underline"
-								>{service.name}</Subheading
-							>
-
-							<ServiceBadges {service} size="xs" />
+							<Subheading size="sm" class="group-hover:text-primary group-hover:underline">
+								{service.name}
+							</Subheading>
+							<span class="pointer-events-auto">
+								<ServiceBadges {service} size="xs" />
+							</span>
 						</div>
 
 						<div class={cn('mt-1 line-clamp-2', textVariants.base, textVariants.size.xs)}>
@@ -97,7 +101,7 @@
 					>
 						<Icons.chevronRight />
 					</div>
-				</a>
+				</div>
 			</li>
 		{/each}
 	</ul>

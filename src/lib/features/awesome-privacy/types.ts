@@ -40,6 +40,7 @@ export type Service = {
 	subreddit?: string;
 	stack?: {
 		note?: string;
+		slug?: string;
 	};
 };
 

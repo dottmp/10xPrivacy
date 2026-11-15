@@ -63,7 +63,7 @@ export class AwesomePrivacy {
 					const key = service.name.toLowerCase();
 
 					if (notes.has(key)) {
-						service.stack = { note: notes.get(key) };
+						service.stack = { note: notes.get(key), slug: this.slugify(service.name) };
 					}
 				}
 			}

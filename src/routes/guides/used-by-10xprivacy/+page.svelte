@@ -28,7 +28,7 @@
 
 			<ul class="space-y-2">
 				{#each group.items as item (item.name)}
-					<li>
+					<li id={item.slug} class="scroll-mt-[40vh]">
 						<a
 							href={resolve(item.href as Pathname)}
 							class="group flex items-start gap-3 rounded-lg bg-base-100 p-4 shadow-sm"

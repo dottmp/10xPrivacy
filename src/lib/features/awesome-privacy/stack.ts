@@ -5,6 +5,7 @@ export type StackDisplayEntry = {
 	name: string;
 	note?: string;
 	href: string;
+	slug: string;
 	service: Service;
 };
 
@@ -26,6 +27,7 @@ export function buildStackGroups(): StackDisplayGroup[] {
 					name: found.service.name,
 					note: item.note,
 					href: `/awesome-privacy/${found.categorySlug}/${found.sectionSlug}/${found.serviceSlug}`,
+					slug: found.serviceSlug,
 					service: found.service
 				}
 			];
