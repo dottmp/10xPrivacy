@@ -80,14 +80,20 @@
 				<h2 class="card-title">Don't know where to start?</h2>
 				<p>
 					Starting your privacy journey can be overwhelming, where do you even start? Don't worry,
-					we got you covered. Check our list of recommended first steps to take to kickstart your
-					privacy journey.
+					we got you covered. Check our list of recommended first steps to take, or see the tools we
+					use day to day.
 				</p>
 
 				<span>(」ﾟﾛﾟ)｣</span>
 
 				<div class="card-actions justify-center">
 					<a href={resolve('guides/checklist')} class="btn btn-accent">Gimme that list!</a>
+					<a
+						href={resolve('guides/used-by-10xprivacy')}
+						class="btn btn-outline border-primary-content text-primary-content hover:bg-primary-content hover:text-primary"
+					>
+						See what we use
+					</a>
 				</div>
 			</div>
 		</div>
