@@ -75,7 +75,7 @@
 							</div>
 							<ul class="menu py-4">
 								{#snippet renderMobileNavItems(navItems: typeof NAV_ITMES)}
-									{#each navItems as navItem (navItem.href)}
+									{#each navItems as navItem (navItem.label)}
 										<li class={cn()}>
 											{#if navItem.href}
 												<a href={resolve(navItem.href as Path)} onclick={toggleDrawer}
@@ -107,7 +107,7 @@
 		<div class="-mx-5 hidden md:block">
 			<ul class="menu menu-horizontal">
 				{#snippet renderNavItems(navItems: typeof NAV_ITMES)}
-					{#each navItems as navItem (navItem.href)}
+					{#each navItems as navItem (navItem.label)}
 						<li>
 							{#if navItem.href}
 								<a
