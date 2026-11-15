@@ -50,7 +50,7 @@
 			{/each}
 		</ul>
 	{:else}
-		<select data-choose-theme class="select appearance-none" aria-label="Select Theme">
+		<select data-set-theme class="select appearance-none" aria-label="Select Theme">
 			{#each THEMES as theme (theme)}
 				<option class="theme-controller" aria-label={theme} value={theme}>{theme}</option>
 			{/each}
