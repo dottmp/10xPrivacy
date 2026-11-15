@@ -73,4 +73,28 @@ describe('ServiceBadges component', () => {
 		});
 		expect(container.querySelectorAll('.badge')).toHaveLength(4);
 	});
+
+	it('renders the we-use-this chip when the service is in the stack', () => {
+		render(ServiceBadges, {
+			props: { service: { ...baseService, stack: { note: 'Because.' } } }
+		});
+		expect(screen.getByText('Used by 10xPrivacy')).toBeTruthy();
+	});
+
+	it('renders no chip when the service is not in the stack', () => {
+		render(ServiceBadges, { props: { service: baseService } });
+		expect(screen.queryByText('Used by 10xPrivacy')).toBeNull();
+	});
+
+	it('renders the chip without a rating symbol', () => {
+		render(ServiceBadges, {
+			props: { service: { ...baseService, stack: { note: 'Because.' } } }
+		});
+		expect(screen.getByText('Used by 10xPrivacy').querySelector('svg')).toBeNull();
+	});
+
+	it('renders the chip when the stack entry has no note', () => {
+		render(ServiceBadges, { props: { service: { ...baseService, stack: {} } } });
+		expect(screen.getByText('Used by 10xPrivacy')).toBeTruthy();
+	});
 });
