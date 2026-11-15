@@ -51,7 +51,7 @@
 			>
 				{#if isToday(article.date)}
 					<span
-						class=" absolute -top-2 -right-2 z-10 badge rotate-12 badge-sm shadow-xl badge-accent sm:-right-4"
+						class=" absolute -top-2 -right-2 z-2 badge rotate-12 badge-sm shadow-xl badge-accent sm:-right-4"
 					>
 						New!
 					</span>
