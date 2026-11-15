@@ -21,7 +21,7 @@
 
 {#if service.stack}
 	<a
-		href="{resolve('/guides/used-by-10xprivacy')}#{service.stack.slug}"
+		href="{resolve('guides/used-by-10xprivacy')}#{service.stack.slug}"
 		class={cn(serviceBadgesVariants.base, serviceBadgesVariants.size[size])}
 	>
 		Used by 10xPrivacy

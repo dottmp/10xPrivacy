@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { load } from './+page.server';
 
-import { buildStackGroups } from '$lib/features/awesome-privacy/stack';
+import { buildStackGroups } from '#lib/features/awesome-privacy/stack.ts';
 
 describe('/guides/used-by-10xprivacy page load', () => {
 	it('returns page metadata', () => {
@@ -42,7 +42,7 @@ describe('/guides/used-by-10xprivacy page load', () => {
 
 		expect(items).toHaveLength(21);
 		items.forEach((item) => {
-			expect(item.href).toMatch(/^\/awesome-privacy\/[a-z0-9-]+\/[a-z0-9-]+\/[a-z0-9-]+$/);
+			expect(item.href).toMatch(/^awesome-privacy\/[a-z0-9-]+\/[a-z0-9-]+\/[a-z0-9-]+$/);
 			expect(item.service.name).toBe(item.name);
 			expect(item.service.url.length).toBeGreaterThan(0);
 		});
@@ -94,7 +94,7 @@ describe('/guides/used-by-10xprivacy page load', () => {
 				.map((item) => [item.name, item.href])
 		);
 
-		expect(byName.get('uBlock Origin')).toMatch(/^\/awesome-privacy\/security-tools\//);
-		expect(byName.get('Cryptomator')).toMatch(/^\/awesome-privacy\/essentials\//);
+		expect(byName.get('uBlock Origin')).toMatch(/^awesome-privacy\/security-tools\//);
+		expect(byName.get('Cryptomator')).toMatch(/^awesome-privacy\/essentials\//);
 	});
 });

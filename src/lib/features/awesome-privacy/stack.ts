@@ -26,7 +26,7 @@ export function buildStackGroups(): StackDisplayGroup[] {
 				{
 					name: found.service.name,
 					note: item.note,
-					href: `/awesome-privacy/${found.categorySlug}/${found.sectionSlug}/${found.serviceSlug}`,
+					href: `awesome-privacy/${found.categorySlug}/${found.sectionSlug}/${found.serviceSlug}`,
 					slug: found.serviceSlug,
 					service: found.service
 				}

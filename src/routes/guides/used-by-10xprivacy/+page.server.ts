@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
 
-import { awesomePrivacy } from '$lib/features/awesome-privacy/service';
-import { buildStackGroups } from '$lib/features/awesome-privacy/stack';
+import { awesomePrivacy } from '#lib/features/awesome-privacy/service.ts';
+import { buildStackGroups } from '#lib/features/awesome-privacy/stack.ts';
 
 export const load: PageServerLoad = ({ url }) => ({
 	meta: {

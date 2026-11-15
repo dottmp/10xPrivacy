@@ -1,13 +1,13 @@
 <script lang="ts">
+	import Heading from '#lib/components/headings/heading.svelte';
+	import Subheading from '#lib/components/headings/subheading.svelte';
+	import { Icons } from '#lib/components/icons/icons.svelte';
+	import Link from '#lib/components/text/link.svelte';
+	import Text from '#lib/components/text/text.svelte';
+	import ServiceLogo from '#lib/features/awesome-privacy/components/service-logo.svelte';
+	import { markdownToInlineHtml } from '#lib/utils/markdown.ts';
 	import { resolve } from '$app/paths';
-	import { type Pathname } from '$app/types';
-	import Heading from '$lib/components/headings/heading.svelte';
-	import Subheading from '$lib/components/headings/subheading.svelte';
-	import { Icons } from '$lib/components/icons/icons.svelte';
-	import Link from '$lib/components/text/link.svelte';
-	import Text from '$lib/components/text/text.svelte';
-	import ServiceLogo from '$lib/features/awesome-privacy/components/service-logo.svelte';
-	import { markdownToInlineHtml } from '$lib/utils/markdown';
+	import { type Path } from '$app/types';
 
 	let { data } = $props();
 </script>
@@ -31,7 +31,7 @@
 				{#each group.items as item (item.name)}
 					<li id={item.slug} class="scroll-mt-[40vh]">
 						<a
-							href={resolve(item.href as Pathname)}
+							href={resolve(item.href as Path)}
 							class="group flex items-start gap-3 rounded-lg bg-base-100 p-4 shadow-sm"
 						>
 							<ServiceLogo service={item.service} class="mt-0.5 size-8" />
