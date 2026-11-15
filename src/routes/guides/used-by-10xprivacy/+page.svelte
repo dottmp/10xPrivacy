@@ -16,9 +16,10 @@
 	<header class="mb-10">
 		<Heading size="display" class="mb-4">Used by 10xPrivacy</Heading>
 		<Text size="lg">
-			This is what 10xPrivacy runs day to day, not what YOU nessecerly should run. There is no
-			"best" service, and what fits us may not fit you. Nobody pays us to be here: no sponsorships,
-			no affiliate links. Plenty of good options are not on this page.
+			This is what I actually run, day to day. 10xPrivacy is a one-person project, so "we" really
+			means me. Nothing here is "the best", it's just what I ended up with, and what fits me might
+			not fit you. Nobody pays for a spot: no sponsorships, no affiliate links. Plenty of good
+			options aren't on this page.
 		</Text>
 	</header>
 
@@ -56,7 +57,7 @@
 
 	{#if data.notableMentions.length > 0}
 		<section class="mt-2 alert flex flex-col items-start alert-outline alert-info">
-			<Subheading size="xs" class="text-info">Also in our setup 📣</Subheading>
+			<Subheading size="xs" class="text-info">Also in my setup 📣</Subheading>
 
 			<ul class="space-y-4">
 				{#each data.notableMentions as mention (mention.name)}

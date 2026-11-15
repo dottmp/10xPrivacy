@@ -1,0 +1,93 @@
+# Names must match entries in awesome-privacy.yml, ignoring case.
+# Tools that awesome-privacy does not list go under notableMentions with a url.
+
+groups:
+  - name: Browsers
+    items:
+      - name: LibreWolf
+        note: My everyday browser. Firefox-based, with the privacy defaults already dialled in.
+      - name: Mullvad Browser
+        note: Built on Tor Browser, so you get the same fingerprinting protection without the Tor network itself.
+      - name: Tor Browser
+        note: A bit slow for daily browsing, but great when you want to be as anonymous as possible.
+  - name: Search Engines
+    items:
+      - name: DuckDuckGo
+        note: My default, and already the default in the browsers above.
+  - name: Ad Blockers
+    items:
+      - name: uBlock Origin
+        note: The first thing anyone should install is a good ad blocker. Mine is uBlock Origin.
+  - name: Passwords and 2FA
+    items:
+      - name: ProtonPass
+        note: A good password manager is a must. I like Proton Pass for its SimpleLogin integration.
+      - name: Ente Auth
+        note: You have to trust whoever stores your 2FA codes. I trust the Ente duck.
+  - name: Email
+    items:
+      - name: Tuta
+        note: Apparently email is still a thing. I use Tuta for that — they have a calendar too.
+      - name: SimpleLogin
+        note: Every signup gets its own alias. Once you go alias, you never go back.
+  - name: Messaging
+    items:
+      - name: Signal
+        note: My default. Balances privacy with usability, and works without Google's notification service.
+  - name: Files and backup
+    items:
+      - name: Syncthing
+        note: Keeps files in sync between my devices with no cloud in the middle.
+      - name: FileN
+        note: Where my encrypted backups live.
+      - name: Cryptomator
+        note: Encrypts files before they hit the cloud, so providers only see &)&%~#*>$!~#@+=-.
+  - name: Documents
+    items:
+      - name: NextCloud
+        note: Where I keep shared docs.
+      - name: Obsidian
+        note: Local-first markdown notes I sync myself, perfect with Syncthing.
+  - name: Photos
+    items:
+      - name: Ente Photos
+        note: Encrypted photo backup, open source and self-hostable.
+  - name: Video
+    items:
+      - name: Invidious
+        note: How I watch YouTube without the tracking.
+  - name: Maps
+    items:
+      - name: CoMaps
+        note: Offline maps with no account.
+  - name: Network
+    items:
+      - name: OpenWRT
+        note: Router firmware on a GL.iNet box, so the network is mine to configure.
+      - name: AdGuard Home
+        note: My DNS. Filters ads and trackers before they reach any device.
+  - name: Phone OS
+    items:
+      - name: GrapheneOS
+        note: So I don't have to feel like someone is breathing down my neck.
+
+notableMentions:
+  - name: Arch Linux
+    url: https://archlinux.org
+    description: What my desktop runs on (actually no i run cachyos but hey, same same?).
+
+  - name: Obtainium
+    url: https://github.com/ImranR98/Obtainium
+    description: Keeps my Android apps updated straight from their releases.
+  - name: Home Assistant
+    url: https://www.home-assistant.io
+    description: Runs my home automation so I can say "hey nabu enable romatic mode".
+  - name: Accrescent
+    url: https://accrescent.app
+    description: An Android app store that doesn't need you to signup, take selfies lol.
+  - name: HeliBoard
+    url: https://github.com/HeliBorg/HeliBoard
+    description: A privacy respecting keyboard for my phone, doesnt need internet and stuff.
+  - name: LocalSend
+    url: https://localsend.org
+    description: Moves files between my devices over the local network, perfect we you want to send a bunch of images to your friend.

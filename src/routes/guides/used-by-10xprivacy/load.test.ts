@@ -21,9 +21,9 @@ describe('/guides/used-by-10xprivacy page load', () => {
 		const groups = buildStackGroups();
 
 		expect(groups.map((group) => group.name)).toEqual([
-			'Browsing',
-			'Search',
-			'Ads and trackers',
+			'Browsers',
+			'Search Engines',
+			'Ad Blockers',
 			'Passwords and 2FA',
 			'Email',
 			'Messaging',
@@ -33,7 +33,7 @@ describe('/guides/used-by-10xprivacy page load', () => {
 			'Video',
 			'Maps',
 			'Network',
-			'Phone'
+			'Phone OS'
 		]);
 	});
 
