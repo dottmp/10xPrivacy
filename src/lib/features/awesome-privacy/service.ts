@@ -1,9 +1,18 @@
 import { load } from 'js-yaml';
 
 import rawYaml from '../../data/awesome-privacy.yml?raw';
-import rawPicks from '../../data/picks.yml?raw';
+import rawStack from '../../data/stack.yml?raw';
 
-import type { AwesomePrivacyData, Category, Pick, SearchEntry, Section, Service } from './types';
+import type {
+	AwesomePrivacyData,
+	Category,
+	SearchEntry,
+	Section,
+	Service,
+	ShortService,
+	Stack,
+	StackGroup
+} from './types';
 
 import { FEATURED_CATEGORIES } from '#lib/configs.ts';
 
@@ -11,14 +20,14 @@ export class AwesomePrivacy {
 	readonly featuredCatgories = FEATURED_CATEGORIES;
 
 	private _data: AwesomePrivacyData = this._loadData();
-	private _picks: Map<string, string> = this._loadPicks();
+	private _stack: Stack = this._loadStack();
 	private _searchIndex: SearchEntry[] | null = null;
 
 	constructor(featuredCategories?: string[]) {
 		if (featuredCategories) {
 			this.featuredCatgories = featuredCategories;
 		}
-		this._mergePicks();
+		this._mergeStack();
 	}
 
 	/*
@@ -29,32 +38,32 @@ export class AwesomePrivacy {
 	}
 
 	/*
-	 * Reads the picks YAML and returns a Map of service name to recommendation reason.
+	 * Reads the stack YAML and returns it in file order.
 	 */
-	private _loadPicks(): Map<string, string> {
-		const picksData = load(rawPicks) as { picks: Pick[] };
-		const picksMap = new Map<string, string>();
-
-		for (const pick of picksData.picks) {
-			if (pick.reason) {
-				picksMap.set(pick.name, pick.reason);
-			}
-		}
-
-		return picksMap;
+	private _loadStack(): Stack {
+		return load(rawStack) as Stack;
 	}
 
 	/*
-	 * Merges pick data into all services across all categories.
+	 * Merges stack notes onto every service with a matching name.
+	 * Matching ignores case, since upstream spells names inconsistently.
 	 */
-	private _mergePicks(): void {
+	private _mergeStack(): void {
+		const notes = new Map<string, string | undefined>();
+
+		for (const group of this._stack.groups) {
+			for (const item of group.items) {
+				notes.set(item.name.toLowerCase(), item.note);
+			}
+		}
+
 		for (const category of this._data.categories) {
 			for (const section of category.sections) {
 				for (const service of section.services) {
-					const reason = this._picks.get(service.name);
-					if (reason) {
-						service.recommended = true;
-						service.recommendationReason = reason;
+					const key = service.name.toLowerCase();
+
+					if (notes.has(key)) {
+						service.stack = { note: notes.get(key) };
 					}
 				}
 			}
@@ -69,10 +78,52 @@ export class AwesomePrivacy {
 	}
 
 	/**
-	 * Gets the list of all picks.
+	 * Gets the team stack groups in file order.
 	 */
-	public getPicks(): Pick[] {
-		return Array.from(this._picks.entries()).map(([name, reason]) => ({ name, reason }));
+	public getStack(): StackGroup[] {
+		return this._stack.groups;
+	}
+
+	/**
+	 * Gets tools the team uses that awesome-privacy does not list.
+	 */
+	public getStackNotableMentions(): ShortService[] {
+		return this._stack.notableMentions ?? [];
+	}
+
+	/**
+	 * Finds a service by name and returns it with the slugs needed to link to it.
+	 * Returns the first match in document order.
+	 */
+	public findService(name: string):
+		| {
+				service: Service;
+				categorySlug: string;
+				sectionSlug: string;
+				serviceSlug: string;
+		  }
+		| undefined {
+		for (const category of this._data.categories) {
+			const categorySlug = this.slugify(category.name);
+
+			for (const section of category.sections) {
+				const sectionSlug = this.slugify(section.name);
+				const service = section.services.find(
+					(entry) => entry.name.toLowerCase() === name.toLowerCase()
+				);
+
+				if (service) {
+					return {
+						service,
+						categorySlug,
+						sectionSlug,
+						serviceSlug: this.slugify(service.name)
+					};
+				}
+			}
+		}
+
+		return undefined;
 	}
 
 	/**

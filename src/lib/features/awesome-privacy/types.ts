@@ -4,9 +4,19 @@ export type ShortService = {
 	url: string;
 };
 
-export type Pick = {
+export type StackItem = {
 	name: string;
-	reason?: string;
+	note?: string;
+};
+
+export type StackGroup = {
+	name: string;
+	items: StackItem[];
+};
+
+export type Stack = {
+	groups: StackGroup[];
+	notableMentions?: ShortService[];
 };
 
 export type Service = {
@@ -28,8 +38,9 @@ export type Service = {
 	androidApp?: string;
 	discordInvite?: string;
 	subreddit?: string;
-	recommended?: boolean;
-	recommendationReason?: string;
+	stack?: {
+		note?: string;
+	};
 };
 
 export type Section = {

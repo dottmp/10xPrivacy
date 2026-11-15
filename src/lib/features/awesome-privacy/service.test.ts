@@ -4,6 +4,7 @@ import { AwesomePrivacy } from './service.ts';
 
 // Mock the raw YAML import before importing the service
 vi.mock('../../data/awesome-privacy.yml?raw');
+vi.mock('../../data/stack.yml?raw');
 
 describe('AwesomePrivacy', () => {
 	let service: AwesomePrivacy;
@@ -285,6 +286,64 @@ describe('AwesomePrivacy', () => {
 
 			expect(data).toHaveProperty('categories');
 			expect(Array.isArray(data.categories)).toBe(true);
+		});
+	});
+
+	//--------------------------------------------------------------------
+	// getStack
+	//--------------------------------------------------------------------
+
+	describe('getStack', () => {
+		it('returns groups with items', () => {
+			const stack = service.getStack();
+
+			expect(stack.length).toBeGreaterThan(0);
+			expect(stack[0].items.length).toBeGreaterThan(0);
+		});
+	});
+
+	//--------------------------------------------------------------------
+	// stack merge
+	//--------------------------------------------------------------------
+
+	describe('stack merge', () => {
+		it('attaches the note to a matching service', () => {
+			const svc = service.getService({
+				categorySlug: 'essentials',
+				sectionSlug: 'browsers',
+				serviceSlug: 'librewolf'
+			});
+
+			expect(svc?.stack?.note).toContain('Firefox-based');
+		});
+
+		it('leaves unmatched services without a stack entry', () => {
+			const svc = service.getService({
+				categorySlug: 'essentials',
+				sectionSlug: 'password-managers',
+				serviceSlug: 'keepass'
+			});
+
+			expect(svc?.stack).toBeUndefined();
+		});
+	});
+
+	//--------------------------------------------------------------------
+	// findService
+	//--------------------------------------------------------------------
+
+	describe('findService', () => {
+		it('returns the service with its location slugs', () => {
+			const found = service.findService('Signal');
+
+			expect(found?.service.name).toBe('Signal');
+			expect(found?.categorySlug).toBe('communication');
+			expect(found?.sectionSlug).toBe('encrypted-messaging');
+			expect(found?.serviceSlug).toBe('signal');
+		});
+
+		it('returns undefined for an unknown name', () => {
+			expect(service.findService('Not A Real Service')).toBeUndefined();
 		});
 	});
 
