@@ -91,9 +91,9 @@
 
 				<!-- Links -->
 				<section class="mb-8">
-					<Subheading size="xs" class={cn('mb-3 tracking-widest uppercase', textVariants.base)}
-						>Links</Subheading
-					>
+					<Subheading size="xs" class={cn('mb-3 tracking-widest uppercase', textVariants.base)}>
+						Links
+					</Subheading>
 					<ul
 						class="space-y-2 [&_a]:truncate [&_a]:text-primary [&_a]:hover:underline [&_li]:flex [&_li]:items-center [&_li]:gap-3 [&_li]:text-sm [&_span]:text-base-content/50 [&_svg]:w-4 [&_svg]:shrink-0 [&_svg]:text-primary"
 					>
@@ -254,13 +254,16 @@
 
 			<ul class="space-y-2">
 				{#each related as rel (rel.name)}
-					<li>
+					<li class="group relative rounded-lg bg-base-100 px-4 py-3 shadow-sm">
 						<a
 							href={resolve(
 								`awesome-privacy/${categorySlug}/${sectionSlug}/${awesomePrivacy.slugify(rel.name)}`
 							)}
-							class="group flex items-center gap-3 rounded-lg bg-base-100 px-4 py-3 shadow-sm"
-						>
+							class="absolute inset-0 rounded-lg"
+							aria-label={rel.name}
+						></a>
+
+						<div class="pointer-events-none relative flex items-center gap-3">
 							<ServiceLogo service={rel} class="size-6" />
 
 							<span
@@ -270,8 +273,10 @@
 									'font-semibold group-hover:text-primary group-hover:underline'
 								)}>{rel.name}</span
 							>
-							<ServiceBadges service={rel} size="xs" />
-						</a>
+							<span class="pointer-events-auto">
+								<ServiceBadges service={rel} size="xs" />
+							</span>
+						</div>
 					</li>
 				{/each}
 			</ul>

@@ -21,6 +21,7 @@
 	import Paintbrush from '@lucide/svelte/icons/paintbrush';
 	import Search from '@lucide/svelte/icons/search';
 	import ShieldHalf from '@lucide/svelte/icons/shield-half';
+	import Star from '@lucide/svelte/icons/star';
 	import SwatchBook from '@lucide/svelte/icons/swatch-book';
 	import TriangleAlert from '@lucide/svelte/icons/triangle-alert';
 	import UsersRound from '@lucide/svelte/icons/users-round';
@@ -59,6 +60,7 @@
 		link: Link,
 		loading: Loader,
 		logo: Logo,
+		star: Star,
 
 		// Category icons (keyed by slug)
 		essentials: ShieldHalf,

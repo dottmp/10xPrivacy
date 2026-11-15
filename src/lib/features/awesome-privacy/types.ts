@@ -4,6 +4,21 @@ export type ShortService = {
 	url: string;
 };
 
+export type StackItem = {
+	name: string;
+	note?: string;
+};
+
+export type StackGroup = {
+	name: string;
+	items: StackItem[];
+};
+
+export type Stack = {
+	groups: StackGroup[];
+	notableMentions?: ShortService[];
+};
+
 export type Service = {
 	name: string;
 	description: string;
@@ -23,6 +38,10 @@ export type Service = {
 	androidApp?: string;
 	discordInvite?: string;
 	subreddit?: string;
+	stack?: {
+		note?: string;
+		slug?: string;
+	};
 };
 
 export type Section = {

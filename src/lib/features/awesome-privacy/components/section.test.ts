@@ -136,4 +136,24 @@ describe('Section component', () => {
 
 		expect(backLink.getAttribute('href')).toBe(`/awesome-privacy/${baseProps.categorySlug}`);
 	});
+
+	it('links the badge to its item while the card still opens the service', () => {
+		const withStack: Section = {
+			...section,
+			services: [
+				{ ...section.services[0], stack: { note: 'We like it.', slug: 'bitwarden' } },
+				section.services[1]
+			]
+		};
+
+		render(SectionComponent, { props: { ...baseProps, section: withStack } });
+
+		const badge = screen.getByText('Used by 10xPrivacy').closest('a');
+		const card = document.querySelector('a[aria-label="Bitwarden"]');
+
+		expect(badge?.getAttribute('href')).toBe('/guides/used-by-10xprivacy#bitwarden');
+		expect(card?.getAttribute('href')).toBe(
+			'/awesome-privacy/essentials/password-managers/bitwarden'
+		);
+	});
 });

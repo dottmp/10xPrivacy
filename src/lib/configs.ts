@@ -33,13 +33,17 @@ type NavItem = { href: string; label: string } | { label: string; subItems: NavI
 
 export const NAV_ITMES = Object.freeze([
 	{ href: resolve('privacy-news'), label: 'Privacy News' },
-	{ href: resolve('awesome-privacy'), label: 'Awesome Privacy' },
+	{
+		href: resolve('awesome-privacy'),
+		label: 'Awesome Privacy'
+	},
 	{ href: resolve('websites'), label: 'Websites' },
 	{
 		label: 'Guides',
 		subItems: [
 			{ label: 'Get Started', href: resolve('guides/get-started') },
-			{ label: 'Checklist', href: resolve('guides/checklist') }
+			{ label: 'Checklist', href: resolve('guides/checklist') },
+			{ label: 'Used by 10xPrivacy', href: resolve('guides/used-by-10xprivacy') }
 		]
 	}
 ] satisfies NavItem[]);

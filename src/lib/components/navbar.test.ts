@@ -34,12 +34,24 @@ describe('Navbar component', () => {
 		it('Awesome Privacy link has correct href', () => {
 			render(Navbar);
 
-			const links = screen.getAllByRole('link', { name: /Awesome Privacy/i });
+			const links = screen.getAllByRole('link', { name: /^Awesome Privacy$/i });
 
 			expect(links).toHaveLength(2);
 
 			links.forEach((link) => {
 				expect(link.getAttribute('href')).toBe('/awesome-privacy');
+			});
+		});
+
+		it('Used by 10xPrivacy link has correct href', () => {
+			render(Navbar);
+
+			const links = screen.getAllByRole('link', { name: /^Used by 10xPrivacy$/i });
+
+			expect(links).toHaveLength(2);
+
+			links.forEach((link) => {
+				expect(link.getAttribute('href')).toBe('/guides/used-by-10xprivacy');
 			});
 		});
 

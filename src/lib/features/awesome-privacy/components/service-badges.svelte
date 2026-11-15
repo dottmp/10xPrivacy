@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Service } from '#lib/features/awesome-privacy/types.ts';
 	import { cn } from '#lib/utils/cn.ts';
+	import { resolve } from '$app/paths';
 
 	let serviceBadgesVariants = {
 		base: 'badge badge-soft',
@@ -18,6 +19,14 @@
 	let { service, size = 'sm' }: ServiceBadgesProps = $props();
 </script>
 
+{#if service.stack}
+	<a
+		href="{resolve('guides/used-by-10xprivacy')}#{service.stack.slug}"
+		class={cn(serviceBadgesVariants.base, serviceBadgesVariants.size[size])}
+	>
+		Used by 10xPrivacy
+	</a>
+{/if}
 {#if service.openSource || service.github}
 	<span class={cn(serviceBadgesVariants.base, serviceBadgesVariants.size[size], 'badge-success')}>
 		Open Source
