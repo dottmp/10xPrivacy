@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.16.1](https://github.com/dottmp/10xPrivacy/compare/v0.16.0...v0.16.1) (2026-11-16)
+
+### Bug Fixes
+
+* set ssr false to prevent used by 10xPrivacy page breakage on refresh ([#244](https://github.com/dottmp/10xPrivacy/issues/244)) ([54533a1](https://github.com/dottmp/10xPrivacy/commit/54533a17e4070fcabd79d0ed1a8733282be33f1f))
+
 ## [0.16.0](https://github.com/dottmp/10xPrivacy/compare/v0.15.4...v0.16.0) (2026-11-15)
 
 ### Features
